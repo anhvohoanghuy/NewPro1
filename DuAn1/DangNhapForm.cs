@@ -67,8 +67,7 @@ namespace DuAn1
                             GetDataUser.accountlevel = tg.AccountLevel;
                             MessageBox.Show("Đăng nhập thành công !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
                             this.Hide();
-                            a.FormClosed += FormMenu_FormClosed;
-                            a.Show();
+                            a.ShowDialog();
                             a.BringToFront();
                         }
                         else
@@ -87,11 +86,7 @@ namespace DuAn1
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void FormMenu_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            // Đóng form đăng nhập khi form bán hàng đóng
-            this.Close();
-        }
+
         private void DangNhapForm_Load(object sender, EventArgs e)
         {
             txtUserName.Padding = new Padding(10);

@@ -364,4 +364,5 @@ FodyWeavers.xsd
 .vs/
 BUS/bin
 DAL/bin
+DAL/Models
 DuAn1/bin

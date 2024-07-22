@@ -126,6 +126,7 @@ namespace DuAn1
             // 
             // DangNhapForm
             // 
+            AcceptButton = btnLogin;
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1024, 522);
@@ -140,6 +141,7 @@ namespace DuAn1
             Name = "DangNhapForm";
             Text = "DangNhapForm";
             Load += DangNhapForm_Load;
+            KeyDown += DangNhapForm_KeyDown;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -209,6 +209,7 @@ namespace DuAn1
             }
             else
                 MessageBox.Show("Chọn lại giá trị từ các combo box");
+            ShowOnDataGridView(productBUS.GetAllProduct());
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -246,6 +247,7 @@ namespace DuAn1
             }    
             else
                 MessageBox.Show("Chọn lại giá trị từ các combo box");
+            ShowOnDataGridView(productBUS.GetAllProduct());
         }
 
         private void cbbIDCompany_DropDown(object sender, EventArgs e)

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
             panel1 = new Panel();
             label7 = new Label();
@@ -43,15 +43,12 @@
             label5 = new Label();
             label3 = new Label();
             txtEmail = new TextBox();
-            vbButton1 = new CustomButton.VBButton();
             textBox7 = new TextBox();
             txtId = new TextBox();
             label2 = new Label();
             label1 = new Label();
             groupBox2 = new GroupBox();
             panel2 = new Panel();
-            vbButton3 = new CustomButton.VBButton();
-            btnThem = new CustomButton.VBButton();
             comboBox4 = new ComboBox();
             label4 = new Label();
             comboBox3 = new ComboBox();
@@ -62,15 +59,9 @@
             textBox4 = new TextBox();
             comboBox1 = new ComboBox();
             label11 = new Label();
-            vbButton2 = new CustomButton.VBButton();
             textBox8 = new TextBox();
             groupBox3 = new GroupBox();
             dataGridView1 = new DataGridView();
-            groupBox4 = new GroupBox();
-            btninfoOrder = new CustomButton.VBButton();
-            btnTaoDon = new CustomButton.VBButton();
-            btnHuyDon = new CustomButton.VBButton();
-            btnRefesh = new CustomButton.VBButton();
             idProd = new DataGridViewTextBoxColumn();
             NameProd = new DataGridViewTextBoxColumn();
             Brand = new DataGridViewTextBoxColumn();
@@ -82,25 +73,27 @@
             PromotionalPrice = new DataGridViewTextBoxColumn();
             TotalDiscount = new DataGridViewTextBoxColumn();
             TotalCost = new DataGridViewTextBoxColumn();
+            groupBox4 = new GroupBox();
             groupBox5 = new GroupBox();
-            label10 = new Label();
             label13 = new Label();
+            label10 = new Label();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
             groupBox2.SuspendLayout();
             panel2.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            groupBox4.SuspendLayout();
             groupBox5.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(panel1);
-            groupBox1.Location = new Point(27, 34);
+            groupBox1.Location = new Point(34, 42);
+            groupBox1.Margin = new Padding(4, 4, 4, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(747, 309);
+            groupBox1.Padding = new Padding(4, 4, 4, 4);
+            groupBox1.Size = new Size(934, 386);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin khách";
@@ -116,15 +109,15 @@
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(txtEmail);
-            panel1.Controls.Add(vbButton1);
             panel1.Controls.Add(textBox7);
             panel1.Controls.Add(txtId);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panel1.Location = new Point(23, 26);
+            panel1.Location = new Point(29, 32);
+            panel1.Margin = new Padding(4, 4, 4, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(701, 261);
+            panel1.Size = new Size(876, 326);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
@@ -132,57 +125,64 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(34, 114);
+            label7.Location = new Point(42, 142);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(127, 25);
+            label7.Size = new Size(154, 30);
             label7.TabIndex = 93;
             label7.Text = "PhoneNumber";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(34, 144);
+            textBox2.Location = new Point(42, 180);
+            textBox2.Margin = new Padding(4, 4, 4, 4);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(153, 31);
+            textBox2.Size = new Size(190, 36);
             textBox2.TabIndex = 92;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(222, 114);
+            label6.Location = new Point(278, 142);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(77, 25);
+            label6.Size = new Size(91, 30);
             label6.TabIndex = 91;
             label6.Text = "Address";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(222, 144);
+            textBox1.Location = new Point(278, 180);
+            textBox1.Margin = new Padding(4, 4, 4, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(172, 31);
+            textBox1.Size = new Size(214, 36);
             textBox1.TabIndex = 90;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(432, 142);
+            dateTimePicker1.Location = new Point(540, 178);
+            dateTimePicker1.Margin = new Padding(4, 4, 4, 4);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(250, 31);
+            dateTimePicker1.Size = new Size(312, 36);
             dateTimePicker1.TabIndex = 89;
             // 
             // txtName
             // 
-            txtName.Location = new Point(432, 55);
+            txtName.Location = new Point(540, 69);
+            txtName.Margin = new Padding(4, 4, 4, 4);
             txtName.Name = "txtName";
-            txtName.Size = new Size(158, 31);
+            txtName.Size = new Size(196, 36);
             txtName.TabIndex = 88;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(432, 22);
+            label5.Location = new Point(540, 28);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(88, 25);
+            label5.Size = new Size(106, 30);
             label5.TabIndex = 87;
             label5.Text = "NameCus";
             // 
@@ -190,64 +190,50 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(222, 22);
+            label3.Location = new Point(278, 28);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(107, 25);
+            label3.Size = new Size(128, 30);
             label3.TabIndex = 83;
             label3.Text = "IDCustomer";
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(222, 52);
+            txtEmail.Location = new Point(278, 65);
+            txtEmail.Margin = new Padding(4, 4, 4, 4);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(153, 31);
+            txtEmail.Size = new Size(190, 36);
             txtEmail.TabIndex = 82;
-            // 
-            // vbButton1
-            // 
-            vbButton1.Anchor = AnchorStyles.Left;
-            vbButton1.BackColor = Color.White;
-            vbButton1.BackgroundColor = Color.White;
-            vbButton1.BorderColor = Color.White;
-            vbButton1.BorderRadius = 0;
-            vbButton1.BorderSize = 0;
-            vbButton1.FlatAppearance.BorderSize = 0;
-            vbButton1.FlatStyle = FlatStyle.Flat;
-            vbButton1.ForeColor = Color.White;
-            vbButton1.Image = Properties.Resources.search__1_3;
-            vbButton1.Location = new Point(355, 457);
-            vbButton1.Name = "vbButton1";
-            vbButton1.Size = new Size(72, 29);
-            vbButton1.TabIndex = 81;
-            vbButton1.TextColor = Color.White;
-            vbButton1.UseVisualStyleBackColor = false;
             // 
             // textBox7
             // 
             textBox7.Anchor = AnchorStyles.Left;
             textBox7.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox7.ForeColor = Color.Gray;
-            textBox7.Location = new Point(34, 456);
+            textBox7.Location = new Point(42, 570);
+            textBox7.Margin = new Padding(4, 4, 4, 4);
             textBox7.Multiline = true;
             textBox7.Name = "textBox7";
-            textBox7.Size = new Size(403, 36);
+            textBox7.Size = new Size(503, 44);
             textBox7.TabIndex = 80;
             textBox7.Text = "Tìm kiếm";
             // 
             // txtId
             // 
-            txtId.Location = new Point(34, 50);
+            txtId.Location = new Point(42, 62);
+            txtId.Margin = new Padding(4, 4, 4, 4);
             txtId.Name = "txtId";
-            txtId.Size = new Size(158, 31);
+            txtId.Size = new Size(196, 36);
             txtId.TabIndex = 6;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(432, 114);
+            label2.Location = new Point(540, 142);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(49, 25);
+            label2.Size = new Size(58, 30);
             label2.TabIndex = 1;
             label2.Text = "Date";
             // 
@@ -255,26 +241,27 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(34, 22);
+            label1.Location = new Point(42, 28);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(79, 25);
+            label1.Size = new Size(96, 30);
             label1.TabIndex = 0;
             label1.Text = "Id Order";
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(panel2);
-            groupBox2.Location = new Point(780, 34);
+            groupBox2.Location = new Point(975, 42);
+            groupBox2.Margin = new Padding(4, 4, 4, 4);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(689, 309);
+            groupBox2.Padding = new Padding(4, 4, 4, 4);
+            groupBox2.Size = new Size(861, 386);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Sản phẩm";
             // 
             // panel2
             // 
-            panel2.Controls.Add(vbButton3);
-            panel2.Controls.Add(btnThem);
             panel2.Controls.Add(comboBox4);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(comboBox3);
@@ -285,67 +272,33 @@
             panel2.Controls.Add(textBox4);
             panel2.Controls.Add(comboBox1);
             panel2.Controls.Add(label11);
-            panel2.Controls.Add(vbButton2);
             panel2.Controls.Add(textBox8);
             panel2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panel2.Location = new Point(23, 26);
+            panel2.Location = new Point(29, 32);
+            panel2.Margin = new Padding(4, 4, 4, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(613, 261);
+            panel2.Size = new Size(766, 326);
             panel2.TabIndex = 0;
-            // 
-            // vbButton3
-            // 
-            vbButton3.BackColor = Color.MediumSlateBlue;
-            vbButton3.BackgroundColor = Color.MediumSlateBlue;
-            vbButton3.BorderColor = Color.PaleVioletRed;
-            vbButton3.BorderRadius = 20;
-            vbButton3.BorderSize = 0;
-            vbButton3.FlatAppearance.BorderSize = 0;
-            vbButton3.FlatStyle = FlatStyle.Flat;
-            vbButton3.ForeColor = Color.White;
-            vbButton3.Location = new Point(407, 204);
-            vbButton3.Name = "vbButton3";
-            vbButton3.Size = new Size(131, 40);
-            vbButton3.TabIndex = 101;
-            vbButton3.Text = "Xóa SP";
-            vbButton3.TextColor = Color.White;
-            vbButton3.UseVisualStyleBackColor = false;
-            // 
-            // btnThem
-            // 
-            btnThem.BackColor = Color.MediumSlateBlue;
-            btnThem.BackgroundColor = Color.MediumSlateBlue;
-            btnThem.BorderColor = Color.PaleVioletRed;
-            btnThem.BorderRadius = 20;
-            btnThem.BorderSize = 0;
-            btnThem.FlatAppearance.BorderSize = 0;
-            btnThem.FlatStyle = FlatStyle.Flat;
-            btnThem.ForeColor = Color.White;
-            btnThem.Location = new Point(34, 204);
-            btnThem.Name = "btnThem";
-            btnThem.Size = new Size(131, 40);
-            btnThem.TabIndex = 100;
-            btnThem.Text = "Thêm SP";
-            btnThem.TextColor = Color.White;
-            btnThem.UseVisualStyleBackColor = false;
             // 
             // comboBox4
             // 
             comboBox4.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox4.FormattingEnabled = true;
             comboBox4.Items.AddRange(new object[] { "1", "2" });
-            comboBox4.Location = new Point(225, 144);
+            comboBox4.Location = new Point(281, 180);
+            comboBox4.Margin = new Padding(4, 4, 4, 4);
             comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(151, 33);
+            comboBox4.Size = new Size(188, 38);
             comboBox4.TabIndex = 99;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(225, 114);
+            label4.Location = new Point(281, 142);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(123, 25);
+            label4.Size = new Size(148, 30);
             label4.TabIndex = 98;
             label4.Text = "Ram | Storage";
             // 
@@ -354,18 +307,20 @@
             comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox3.FormattingEnabled = true;
             comboBox3.Items.AddRange(new object[] { "1", "2" });
-            comboBox3.Location = new Point(318, 52);
+            comboBox3.Location = new Point(398, 65);
+            comboBox3.Margin = new Padding(4, 4, 4, 4);
             comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(223, 33);
+            comboBox3.Size = new Size(278, 38);
             comboBox3.TabIndex = 97;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(318, 22);
+            label8.Location = new Point(398, 28);
+            label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(243, 25);
+            label8.Size = new Size(294, 30);
             label8.TabIndex = 96;
             label8.Text = "Id Voucher | Name | DIscount";
             // 
@@ -374,18 +329,20 @@
             comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "1", "2" });
-            comboBox2.Location = new Point(34, 144);
+            comboBox2.Location = new Point(42, 180);
+            comboBox2.Margin = new Padding(4, 4, 4, 4);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(151, 33);
+            comboBox2.Size = new Size(188, 38);
             comboBox2.TabIndex = 95;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label12.Location = new Point(34, 114);
+            label12.Location = new Point(42, 142);
+            label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
-            label12.Size = new Size(55, 25);
+            label12.Size = new Size(66, 30);
             label12.TabIndex = 94;
             label12.Text = "Color";
             // 
@@ -393,17 +350,19 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(407, 114);
+            label9.Location = new Point(509, 142);
+            label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(80, 25);
+            label9.Size = new Size(95, 30);
             label9.TabIndex = 91;
             label9.Text = "Quantity";
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(407, 144);
+            textBox4.Location = new Point(509, 180);
+            textBox4.Margin = new Padding(4, 4, 4, 4);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(172, 31);
+            textBox4.Size = new Size(214, 36);
             textBox4.TabIndex = 90;
             // 
             // comboBox1
@@ -411,49 +370,33 @@
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "1", "2" });
-            comboBox1.Location = new Point(34, 52);
+            comboBox1.Location = new Point(42, 65);
+            comboBox1.Margin = new Padding(4, 4, 4, 4);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(223, 33);
+            comboBox1.Size = new Size(278, 38);
             comboBox1.TabIndex = 86;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(34, 22);
+            label11.Location = new Point(42, 28);
+            label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
-            label11.Size = new Size(192, 25);
+            label11.Size = new Size(233, 30);
             label11.TabIndex = 85;
             label11.Text = "Id Prod | Name | Brand";
-            // 
-            // vbButton2
-            // 
-            vbButton2.Anchor = AnchorStyles.Left;
-            vbButton2.BackColor = Color.White;
-            vbButton2.BackgroundColor = Color.White;
-            vbButton2.BorderColor = Color.White;
-            vbButton2.BorderRadius = 0;
-            vbButton2.BorderSize = 0;
-            vbButton2.FlatAppearance.BorderSize = 0;
-            vbButton2.FlatStyle = FlatStyle.Flat;
-            vbButton2.ForeColor = Color.White;
-            vbButton2.Image = Properties.Resources.search__1_3;
-            vbButton2.Location = new Point(355, 537);
-            vbButton2.Name = "vbButton2";
-            vbButton2.Size = new Size(72, 29);
-            vbButton2.TabIndex = 81;
-            vbButton2.TextColor = Color.White;
-            vbButton2.UseVisualStyleBackColor = false;
             // 
             // textBox8
             // 
             textBox8.Anchor = AnchorStyles.Left;
             textBox8.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox8.ForeColor = Color.Gray;
-            textBox8.Location = new Point(34, 536);
+            textBox8.Location = new Point(42, 670);
+            textBox8.Margin = new Padding(4, 4, 4, 4);
             textBox8.Multiline = true;
             textBox8.Name = "textBox8";
-            textBox8.Size = new Size(403, 36);
+            textBox8.Size = new Size(503, 44);
             textBox8.TabIndex = 80;
             textBox8.Text = "Tìm kiếm";
             // 
@@ -461,9 +404,11 @@
             // 
             groupBox3.Controls.Add(dataGridView1);
             groupBox3.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox3.Location = new Point(27, 480);
+            groupBox3.Location = new Point(34, 600);
+            groupBox3.Margin = new Padding(4, 4, 4, 4);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(1535, 296);
+            groupBox3.Padding = new Padding(4, 4, 4, 4);
+            groupBox3.Size = new Size(1919, 370);
             groupBox3.TabIndex = 8;
             groupBox3.TabStop = false;
             groupBox3.Text = "Danh sách Sản phẩm";
@@ -475,131 +420,47 @@
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.MediumPurple;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.MediumSlateBlue;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.MediumPurple;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idProd, NameProd, Brand, Image, Ram, Storage, Quantity, Voucher, PromotionalPrice, TotalDiscount, TotalCost });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.MediumPurple;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.MediumPurple;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.MediumSlateBlue;
-            dataGridView1.Location = new Point(3, 27);
+            dataGridView1.Location = new Point(4, 33);
+            dataGridView1.Margin = new Padding(4, 4, 4, 4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Control;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 62;
-            dataGridViewCellStyle8.ForeColor = Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.HighlightText;
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.HighlightText;
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1529, 266);
+            dataGridView1.Size = new Size(1911, 333);
             dataGridView1.TabIndex = 1;
-            // 
-            // groupBox4
-            // 
-            groupBox4.Controls.Add(btninfoOrder);
-            groupBox4.Controls.Add(btnTaoDon);
-            groupBox4.Controls.Add(btnHuyDon);
-            groupBox4.Controls.Add(btnRefesh);
-            groupBox4.Location = new Point(234, 349);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(853, 125);
-            groupBox4.TabIndex = 9;
-            groupBox4.TabStop = false;
-            // 
-            // btninfoOrder
-            // 
-            btninfoOrder.BackColor = Color.MediumSlateBlue;
-            btninfoOrder.BackgroundColor = Color.MediumSlateBlue;
-            btninfoOrder.BorderColor = Color.PaleVioletRed;
-            btninfoOrder.BorderRadius = 20;
-            btninfoOrder.BorderSize = 0;
-            btninfoOrder.FlatAppearance.BorderSize = 0;
-            btninfoOrder.FlatStyle = FlatStyle.Flat;
-            btninfoOrder.ForeColor = Color.White;
-            btninfoOrder.Location = new Point(620, 58);
-            btninfoOrder.Name = "btninfoOrder";
-            btninfoOrder.Size = new Size(168, 40);
-            btninfoOrder.TabIndex = 104;
-            btninfoOrder.Text = "Xem chi tiết đơn hàng";
-            btninfoOrder.TextColor = Color.White;
-            btninfoOrder.UseVisualStyleBackColor = false;
-            btninfoOrder.Click += btninfoOrder_Click;
-            // 
-            // btnTaoDon
-            // 
-            btnTaoDon.BackColor = Color.MediumSlateBlue;
-            btnTaoDon.BackgroundColor = Color.MediumSlateBlue;
-            btnTaoDon.BorderColor = Color.PaleVioletRed;
-            btnTaoDon.BorderRadius = 20;
-            btnTaoDon.BorderSize = 0;
-            btnTaoDon.FlatAppearance.BorderSize = 0;
-            btnTaoDon.FlatStyle = FlatStyle.Flat;
-            btnTaoDon.ForeColor = Color.White;
-            btnTaoDon.Location = new Point(461, 58);
-            btnTaoDon.Name = "btnTaoDon";
-            btnTaoDon.Size = new Size(131, 40);
-            btnTaoDon.TabIndex = 103;
-            btnTaoDon.Text = "Tạo đơn hàng";
-            btnTaoDon.TextColor = Color.White;
-            btnTaoDon.UseVisualStyleBackColor = false;
-            // 
-            // btnHuyDon
-            // 
-            btnHuyDon.BackColor = Color.MediumSlateBlue;
-            btnHuyDon.BackgroundColor = Color.MediumSlateBlue;
-            btnHuyDon.BorderColor = Color.PaleVioletRed;
-            btnHuyDon.BorderRadius = 20;
-            btnHuyDon.BorderSize = 0;
-            btnHuyDon.FlatAppearance.BorderSize = 0;
-            btnHuyDon.FlatStyle = FlatStyle.Flat;
-            btnHuyDon.ForeColor = Color.White;
-            btnHuyDon.Location = new Point(273, 58);
-            btnHuyDon.Name = "btnHuyDon";
-            btnHuyDon.Size = new Size(131, 40);
-            btnHuyDon.TabIndex = 102;
-            btnHuyDon.Text = "Hủy đơn hàng";
-            btnHuyDon.TextColor = Color.White;
-            btnHuyDon.UseVisualStyleBackColor = false;
-            // 
-            // btnRefesh
-            // 
-            btnRefesh.BackColor = Color.MediumSlateBlue;
-            btnRefesh.BackgroundColor = Color.MediumSlateBlue;
-            btnRefesh.BorderColor = Color.PaleVioletRed;
-            btnRefesh.BorderRadius = 20;
-            btnRefesh.BorderSize = 0;
-            btnRefesh.FlatAppearance.BorderSize = 0;
-            btnRefesh.FlatStyle = FlatStyle.Flat;
-            btnRefesh.ForeColor = Color.White;
-            btnRefesh.Location = new Point(74, 58);
-            btnRefesh.Name = "btnRefesh";
-            btnRefesh.Size = new Size(131, 40);
-            btnRefesh.TabIndex = 101;
-            btnRefesh.Text = "Refesh";
-            btnRefesh.TextColor = Color.White;
-            btnRefesh.UseVisualStyleBackColor = false;
             // 
             // idProd
             // 
@@ -678,46 +539,61 @@
             TotalCost.Name = "TotalCost";
             TotalCost.ReadOnly = true;
             // 
+            // groupBox4
+            // 
+            groupBox4.Location = new Point(293, 436);
+            groupBox4.Margin = new Padding(4, 4, 4, 4);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Padding = new Padding(4, 4, 4, 4);
+            groupBox4.Size = new Size(1066, 156);
+            groupBox4.TabIndex = 9;
+            groupBox4.TabStop = false;
+            // 
             // groupBox5
             // 
             groupBox5.Controls.Add(label13);
             groupBox5.Controls.Add(label10);
-            groupBox5.Location = new Point(1166, 349);
+            groupBox5.Location = new Point(1458, 436);
+            groupBox5.Margin = new Padding(4, 4, 4, 4);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(303, 125);
+            groupBox5.Padding = new Padding(4, 4, 4, 4);
+            groupBox5.Size = new Size(379, 156);
             groupBox5.TabIndex = 10;
             groupBox5.TabStop = false;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(6, 40);
-            label10.Name = "label10";
-            label10.Size = new Size(108, 28);
-            label10.TabIndex = 0;
-            label10.Text = "Tổng tiền:";
             // 
             // label13
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(147, 40);
+            label13.Location = new Point(184, 50);
+            label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
-            label13.Size = new Size(63, 28);
+            label13.Size = new Size(75, 32);
             label13.TabIndex = 1;
             label13.Text = "value";
             // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.Location = new Point(8, 50);
+            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(131, 32);
+            label10.TabIndex = 0;
+            label10.Text = "Tổng tiền:";
+            // 
             // CreateOrderForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1574, 829);
+            ClientSize = new Size(1968, 1036);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "CreateOrderForm";
             Text = "CreateOrderForm";
             groupBox1.ResumeLayout(false);
@@ -728,7 +604,6 @@
             panel2.PerformLayout();
             groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            groupBox4.ResumeLayout(false);
             groupBox5.ResumeLayout(false);
             groupBox5.PerformLayout();
             ResumeLayout(false);

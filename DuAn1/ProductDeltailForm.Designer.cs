@@ -33,99 +33,114 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
-            txtNameCpu = new TextBox();
-            txtIdAccount = new TextBox();
-            label1 = new Label();
-            cbbIdPromotion = new ComboBox();
-            cbbIdColor = new ComboBox();
+            comboBox4 = new ComboBox();
+            comboBox2 = new ComboBox();
             label2 = new Label();
-            txtColorName = new TextBox();
-            cbbIdCpu = new ComboBox();
-            cbbIdProduct = new ComboBox();
+            textBox2 = new TextBox();
+            comboBox3 = new ComboBox();
+            comboBox1 = new ComboBox();
             btnExcel = new CustomButton.VBButton();
-            dtpEndDate = new DateTimePicker();
-            dtpStartDate = new DateTimePicker();
+            dateTimePicker2 = new DateTimePicker();
+            dateTimePicker1 = new DateTimePicker();
             vbButton2 = new CustomButton.VBButton();
+            btnXoa = new CustomButton.VBButton();
             btnSua = new CustomButton.VBButton();
             btnThem = new CustomButton.VBButton();
             vbButton1 = new CustomButton.VBButton();
             textBox7 = new TextBox();
             label6 = new Label();
             label9 = new Label();
-            txtImeiNumber = new TextBox();
+            textBox5 = new TextBox();
             label27 = new Label();
             label28 = new Label();
             label29 = new Label();
-            txtDiscount = new TextBox();
+            textBox29 = new TextBox();
             label30 = new Label();
-            txtPromotionName = new TextBox();
+            textBox4 = new TextBox();
             label31 = new Label();
-            txtInventory = new TextBox();
+            textBox31 = new TextBox();
             label32 = new Label();
-            txtWarrantyPeriod = new TextBox();
+            textBox32 = new TextBox();
             label33 = new Label();
             label34 = new Label();
-            txtPrice = new TextBox();
+            textBox34 = new TextBox();
             label35 = new Label();
-            txtStorage = new TextBox();
+            textBox35 = new TextBox();
             label36 = new Label();
             label37 = new Label();
-            txtIdProductDetail = new TextBox();
+            textBox37 = new TextBox();
             label43 = new Label();
-            txtManufacturer = new TextBox();
+            textBox43 = new TextBox();
             label44 = new Label();
+            textBox44 = new TextBox();
             label45 = new Label();
             label50 = new Label();
             groupBox2 = new GroupBox();
-            dgvProductDetail = new DataGridView();
+            dataGridView1 = new DataGridView();
+            idproduct = new DataGridViewTextBoxColumn();
+            Colorname = new DataGridViewTextBoxColumn();
+            IdCPU = new DataGridViewTextBoxColumn();
+            NameCpu = new DataGridViewTextBoxColumn();
+            ManuFactu = new DataGridViewTextBoxColumn();
+            IdProductdetal = new DataGridViewTextBoxColumn();
+            IdColor = new DataGridViewTextBoxColumn();
+            Storage = new DataGridViewTextBoxColumn();
+            Price = new DataGridViewTextBoxColumn();
+            IdPromotion = new DataGridViewTextBoxColumn();
+            WarrantyPe = new DataGridViewTextBoxColumn();
+            Inventory = new DataGridViewTextBoxColumn();
+            ImeiNumber = new DataGridViewTextBoxColumn();
+            PromoName = new DataGridViewTextBoxColumn();
+            Discount = new DataGridViewTextBoxColumn();
+            StartTime = new DataGridViewTextBoxColumn();
+            EndTime = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvProductDetail).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(txtNameCpu);
-            groupBox1.Controls.Add(txtIdAccount);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(cbbIdPromotion);
-            groupBox1.Controls.Add(cbbIdColor);
+            groupBox1.Controls.Add(comboBox4);
+            groupBox1.Controls.Add(comboBox2);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(txtColorName);
-            groupBox1.Controls.Add(cbbIdCpu);
-            groupBox1.Controls.Add(cbbIdProduct);
+            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(comboBox3);
+            groupBox1.Controls.Add(comboBox1);
             groupBox1.Controls.Add(btnExcel);
-            groupBox1.Controls.Add(dtpEndDate);
-            groupBox1.Controls.Add(dtpStartDate);
+            groupBox1.Controls.Add(dateTimePicker2);
+            groupBox1.Controls.Add(dateTimePicker1);
             groupBox1.Controls.Add(vbButton2);
+            groupBox1.Controls.Add(btnXoa);
             groupBox1.Controls.Add(btnSua);
             groupBox1.Controls.Add(btnThem);
             groupBox1.Controls.Add(vbButton1);
             groupBox1.Controls.Add(textBox7);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label9);
-            groupBox1.Controls.Add(txtImeiNumber);
+            groupBox1.Controls.Add(textBox5);
             groupBox1.Controls.Add(label27);
             groupBox1.Controls.Add(label28);
             groupBox1.Controls.Add(label29);
-            groupBox1.Controls.Add(txtDiscount);
+            groupBox1.Controls.Add(textBox29);
             groupBox1.Controls.Add(label30);
-            groupBox1.Controls.Add(txtPromotionName);
+            groupBox1.Controls.Add(textBox4);
             groupBox1.Controls.Add(label31);
-            groupBox1.Controls.Add(txtInventory);
+            groupBox1.Controls.Add(textBox31);
             groupBox1.Controls.Add(label32);
-            groupBox1.Controls.Add(txtWarrantyPeriod);
+            groupBox1.Controls.Add(textBox32);
             groupBox1.Controls.Add(label33);
             groupBox1.Controls.Add(label34);
-            groupBox1.Controls.Add(txtPrice);
+            groupBox1.Controls.Add(textBox34);
             groupBox1.Controls.Add(label35);
-            groupBox1.Controls.Add(txtStorage);
+            groupBox1.Controls.Add(textBox35);
             groupBox1.Controls.Add(label36);
             groupBox1.Controls.Add(label37);
-            groupBox1.Controls.Add(txtIdProductDetail);
+            groupBox1.Controls.Add(textBox37);
             groupBox1.Controls.Add(label43);
-            groupBox1.Controls.Add(txtManufacturer);
+            groupBox1.Controls.Add(textBox43);
             groupBox1.Controls.Add(label44);
+            groupBox1.Controls.Add(textBox44);
             groupBox1.Controls.Add(label45);
             groupBox1.Controls.Add(label50);
             groupBox1.Location = new Point(69, 27);
@@ -134,53 +149,21 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             // 
-            // txtNameCpu
+            // comboBox4
             // 
-            txtNameCpu.Location = new Point(15, 194);
-            txtNameCpu.Name = "txtNameCpu";
-            txtNameCpu.ReadOnly = true;
-            txtNameCpu.Size = new Size(174, 27);
-            txtNameCpu.TabIndex = 152;
+            comboBox4.FormattingEnabled = true;
+            comboBox4.Location = new Point(685, 129);
+            comboBox4.Name = "comboBox4";
+            comboBox4.Size = new Size(168, 28);
+            comboBox4.TabIndex = 148;
             // 
-            // txtIdAccount
+            // comboBox2
             // 
-            txtIdAccount.Anchor = AnchorStyles.Left;
-            txtIdAccount.Location = new Point(681, 301);
-            txtIdAccount.Name = "txtIdAccount";
-            txtIdAccount.ReadOnly = true;
-            txtIdAccount.Size = new Size(172, 27);
-            txtIdAccount.TabIndex = 151;
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Left;
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 11F);
-            label1.Location = new Point(685, 276);
-            label1.Name = "label1";
-            label1.Size = new Size(97, 25);
-            label1.TabIndex = 150;
-            label1.Text = "IdAccount";
-            // 
-            // cbbIdPromotion
-            // 
-            cbbIdPromotion.FormattingEnabled = true;
-            cbbIdPromotion.Location = new Point(685, 129);
-            cbbIdPromotion.Name = "cbbIdPromotion";
-            cbbIdPromotion.Size = new Size(168, 28);
-            cbbIdPromotion.TabIndex = 148;
-            cbbIdPromotion.DropDown += cbbIdPromotion_DropDown;
-            cbbIdPromotion.Leave += cbbIdPromotion_Leave;
-            // 
-            // cbbIdColor
-            // 
-            cbbIdColor.FormattingEnabled = true;
-            cbbIdColor.Location = new Point(344, 135);
-            cbbIdColor.Name = "cbbIdColor";
-            cbbIdColor.Size = new Size(168, 28);
-            cbbIdColor.TabIndex = 147;
-            cbbIdColor.DropDown += cbbIdColor_DropDown;
-            cbbIdColor.Leave += cbbIdColor_Leave;
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(344, 135);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(168, 28);
+            comboBox2.TabIndex = 147;
             // 
             // label2
             // 
@@ -193,33 +176,29 @@
             label2.TabIndex = 146;
             label2.Text = "ColorName";
             // 
-            // txtColorName
+            // textBox2
             // 
-            txtColorName.Anchor = AnchorStyles.Left;
-            txtColorName.Location = new Point(340, 191);
-            txtColorName.Name = "txtColorName";
-            txtColorName.ReadOnly = true;
-            txtColorName.Size = new Size(172, 27);
-            txtColorName.TabIndex = 144;
+            textBox2.Anchor = AnchorStyles.Left;
+            textBox2.Location = new Point(340, 191);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(172, 27);
+            textBox2.TabIndex = 144;
             // 
-            // cbbIdCpu
+            // comboBox3
             // 
-            cbbIdCpu.FormattingEnabled = true;
-            cbbIdCpu.Location = new Point(21, 135);
-            cbbIdCpu.Name = "cbbIdCpu";
-            cbbIdCpu.Size = new Size(168, 28);
-            cbbIdCpu.TabIndex = 142;
-            cbbIdCpu.DropDown += cbbIdCpu_DropDown;
-            cbbIdCpu.Leave += cbbIdCpu_Leave;
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(21, 135);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(168, 28);
+            comboBox3.TabIndex = 142;
             // 
-            // cbbIdProduct
+            // comboBox1
             // 
-            cbbIdProduct.FormattingEnabled = true;
-            cbbIdProduct.Location = new Point(17, 69);
-            cbbIdProduct.Name = "cbbIdProduct";
-            cbbIdProduct.Size = new Size(172, 28);
-            cbbIdProduct.TabIndex = 140;
-            cbbIdProduct.DropDown += cbbIdProduct_DropDown;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(17, 69);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(168, 28);
+            comboBox1.TabIndex = 140;
             // 
             // btnExcel
             // 
@@ -232,7 +211,7 @@
             btnExcel.FlatAppearance.BorderSize = 0;
             btnExcel.FlatStyle = FlatStyle.Flat;
             btnExcel.ForeColor = Color.White;
-            btnExcel.Location = new Point(961, 349);
+            btnExcel.Location = new Point(1095, 346);
             btnExcel.Name = "btnExcel";
             btnExcel.Size = new Size(135, 40);
             btnExcel.TabIndex = 139;
@@ -240,21 +219,21 @@
             btnExcel.TextColor = Color.White;
             btnExcel.UseVisualStyleBackColor = false;
             // 
-            // dtpEndDate
+            // dateTimePicker2
             // 
-            dtpEndDate.Anchor = AnchorStyles.Left;
-            dtpEndDate.Location = new Point(979, 299);
-            dtpEndDate.Name = "dtpEndDate";
-            dtpEndDate.Size = new Size(254, 27);
-            dtpEndDate.TabIndex = 138;
+            dateTimePicker2.Anchor = AnchorStyles.Left;
+            dateTimePicker2.Location = new Point(979, 299);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(254, 27);
+            dateTimePicker2.TabIndex = 138;
             // 
-            // dtpStartDate
+            // dateTimePicker1
             // 
-            dtpStartDate.Anchor = AnchorStyles.Left;
-            dtpStartDate.Location = new Point(979, 242);
-            dtpStartDate.Name = "dtpStartDate";
-            dtpStartDate.Size = new Size(254, 27);
-            dtpStartDate.TabIndex = 137;
+            dateTimePicker1.Anchor = AnchorStyles.Left;
+            dateTimePicker1.Location = new Point(979, 242);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(254, 27);
+            dateTimePicker1.TabIndex = 137;
             // 
             // vbButton2
             // 
@@ -268,12 +247,31 @@
             vbButton2.FlatStyle = FlatStyle.Flat;
             vbButton2.ForeColor = Color.White;
             vbButton2.Image = Properties.Resources.reset__1_;
-            vbButton2.Location = new Point(799, 349);
+            vbButton2.Location = new Point(934, 346);
             vbButton2.Name = "vbButton2";
             vbButton2.Size = new Size(135, 40);
             vbButton2.TabIndex = 136;
             vbButton2.TextColor = Color.White;
             vbButton2.UseVisualStyleBackColor = false;
+            // 
+            // btnXoa
+            // 
+            btnXoa.Anchor = AnchorStyles.Left;
+            btnXoa.BackColor = Color.MediumSlateBlue;
+            btnXoa.BackgroundColor = Color.MediumSlateBlue;
+            btnXoa.BorderColor = Color.PaleVioletRed;
+            btnXoa.BorderRadius = 20;
+            btnXoa.BorderSize = 0;
+            btnXoa.FlatAppearance.BorderSize = 0;
+            btnXoa.FlatStyle = FlatStyle.Flat;
+            btnXoa.ForeColor = Color.White;
+            btnXoa.Location = new Point(782, 349);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(135, 40);
+            btnXoa.TabIndex = 135;
+            btnXoa.Text = "Xóa";
+            btnXoa.TextColor = Color.White;
+            btnXoa.UseVisualStyleBackColor = false;
             // 
             // btnSua
             // 
@@ -293,7 +291,6 @@
             btnSua.Text = "Sửa";
             btnSua.TextColor = Color.White;
             btnSua.UseVisualStyleBackColor = false;
-            btnSua.Click += btnSua_Click;
             // 
             // btnThem
             // 
@@ -313,7 +310,6 @@
             btnThem.Text = "Thêm";
             btnThem.TextColor = Color.White;
             btnThem.UseVisualStyleBackColor = false;
-            btnThem.Click += btnThem_Click;
             // 
             // vbButton1
             // 
@@ -333,7 +329,6 @@
             vbButton1.TabIndex = 132;
             vbButton1.TextColor = Color.White;
             vbButton1.UseVisualStyleBackColor = false;
-            vbButton1.Click += vbButton1_Click;
             // 
             // textBox7
             // 
@@ -369,13 +364,13 @@
             label9.TabIndex = 129;
             label9.Text = "ImeiNumber";
             // 
-            // txtImeiNumber
+            // textBox5
             // 
-            txtImeiNumber.Anchor = AnchorStyles.Left;
-            txtImeiNumber.Location = new Point(979, 65);
-            txtImeiNumber.Name = "txtImeiNumber";
-            txtImeiNumber.Size = new Size(172, 27);
-            txtImeiNumber.TabIndex = 128;
+            textBox5.Anchor = AnchorStyles.Left;
+            textBox5.Location = new Point(979, 65);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(172, 27);
+            textBox5.TabIndex = 128;
             // 
             // label27
             // 
@@ -408,14 +403,13 @@
             label29.TabIndex = 126;
             label29.Text = "Discount";
             // 
-            // txtDiscount
+            // textBox29
             // 
-            txtDiscount.Anchor = AnchorStyles.Left;
-            txtDiscount.Location = new Point(979, 187);
-            txtDiscount.Name = "txtDiscount";
-            txtDiscount.ReadOnly = true;
-            txtDiscount.Size = new Size(172, 27);
-            txtDiscount.TabIndex = 124;
+            textBox29.Anchor = AnchorStyles.Left;
+            textBox29.Location = new Point(979, 187);
+            textBox29.Name = "textBox29";
+            textBox29.Size = new Size(172, 27);
+            textBox29.TabIndex = 124;
             // 
             // label30
             // 
@@ -428,14 +422,13 @@
             label30.TabIndex = 123;
             label30.Text = "PromotionName";
             // 
-            // txtPromotionName
+            // textBox4
             // 
-            txtPromotionName.Anchor = AnchorStyles.Left;
-            txtPromotionName.Location = new Point(979, 130);
-            txtPromotionName.Name = "txtPromotionName";
-            txtPromotionName.ReadOnly = true;
-            txtPromotionName.Size = new Size(172, 27);
-            txtPromotionName.TabIndex = 122;
+            textBox4.Anchor = AnchorStyles.Left;
+            textBox4.Location = new Point(979, 130);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(172, 27);
+            textBox4.TabIndex = 122;
             // 
             // label31
             // 
@@ -448,13 +441,13 @@
             label31.TabIndex = 121;
             label31.Text = "inventory";
             // 
-            // txtInventory
+            // textBox31
             // 
-            txtInventory.Anchor = AnchorStyles.Left;
-            txtInventory.Location = new Point(681, 246);
-            txtInventory.Name = "txtInventory";
-            txtInventory.Size = new Size(172, 27);
-            txtInventory.TabIndex = 120;
+            textBox31.Anchor = AnchorStyles.Left;
+            textBox31.Location = new Point(681, 246);
+            textBox31.Name = "textBox31";
+            textBox31.Size = new Size(172, 27);
+            textBox31.TabIndex = 120;
             // 
             // label32
             // 
@@ -467,13 +460,13 @@
             label32.TabIndex = 119;
             label32.Text = "WarrantyPeriod";
             // 
-            // txtWarrantyPeriod
+            // textBox32
             // 
-            txtWarrantyPeriod.Anchor = AnchorStyles.Left;
-            txtWarrantyPeriod.Location = new Point(681, 184);
-            txtWarrantyPeriod.Name = "txtWarrantyPeriod";
-            txtWarrantyPeriod.Size = new Size(172, 27);
-            txtWarrantyPeriod.TabIndex = 118;
+            textBox32.Anchor = AnchorStyles.Left;
+            textBox32.Location = new Point(681, 184);
+            textBox32.Name = "textBox32";
+            textBox32.Size = new Size(172, 27);
+            textBox32.TabIndex = 118;
             // 
             // label33
             // 
@@ -497,13 +490,13 @@
             label34.TabIndex = 117;
             label34.Text = "Price";
             // 
-            // txtPrice
+            // textBox34
             // 
-            txtPrice.Anchor = AnchorStyles.Left;
-            txtPrice.Location = new Point(681, 66);
-            txtPrice.Name = "txtPrice";
-            txtPrice.Size = new Size(172, 27);
-            txtPrice.TabIndex = 115;
+            textBox34.Anchor = AnchorStyles.Left;
+            textBox34.Location = new Point(681, 66);
+            textBox34.Name = "textBox34";
+            textBox34.Size = new Size(172, 27);
+            textBox34.TabIndex = 115;
             // 
             // label35
             // 
@@ -516,13 +509,13 @@
             label35.TabIndex = 113;
             label35.Text = "Storage";
             // 
-            // txtStorage
+            // textBox35
             // 
-            txtStorage.Anchor = AnchorStyles.Left;
-            txtStorage.Location = new Point(340, 248);
-            txtStorage.Name = "txtStorage";
-            txtStorage.Size = new Size(172, 27);
-            txtStorage.TabIndex = 112;
+            textBox35.Anchor = AnchorStyles.Left;
+            textBox35.Location = new Point(340, 248);
+            textBox35.Name = "textBox35";
+            textBox35.Size = new Size(172, 27);
+            textBox35.TabIndex = 112;
             // 
             // label36
             // 
@@ -546,14 +539,14 @@
             label37.TabIndex = 109;
             label37.Text = "IdProductDetail";
             // 
-            // txtIdProductDetail
+            // textBox37
             // 
-            txtIdProductDetail.Anchor = AnchorStyles.Left;
-            txtIdProductDetail.Font = new Font("Segoe UI", 11F);
-            txtIdProductDetail.Location = new Point(340, 65);
-            txtIdProductDetail.Name = "txtIdProductDetail";
-            txtIdProductDetail.Size = new Size(172, 32);
-            txtIdProductDetail.TabIndex = 108;
+            textBox37.Anchor = AnchorStyles.Left;
+            textBox37.Font = new Font("Segoe UI", 11F);
+            textBox37.Location = new Point(340, 65);
+            textBox37.Name = "textBox37";
+            textBox37.Size = new Size(172, 32);
+            textBox37.TabIndex = 108;
             // 
             // label43
             // 
@@ -566,14 +559,13 @@
             label43.TabIndex = 96;
             label43.Text = "ManuFacturer";
             // 
-            // txtManufacturer
+            // textBox43
             // 
-            txtManufacturer.Anchor = AnchorStyles.Left;
-            txtManufacturer.Location = new Point(17, 249);
-            txtManufacturer.Name = "txtManufacturer";
-            txtManufacturer.ReadOnly = true;
-            txtManufacturer.Size = new Size(172, 27);
-            txtManufacturer.TabIndex = 94;
+            textBox43.Anchor = AnchorStyles.Left;
+            textBox43.Location = new Point(17, 249);
+            textBox43.Name = "textBox43";
+            textBox43.Size = new Size(172, 27);
+            textBox43.TabIndex = 94;
             // 
             // label44
             // 
@@ -585,6 +577,14 @@
             label44.Size = new Size(98, 25);
             label44.TabIndex = 97;
             label44.Text = "NameCPU";
+            // 
+            // textBox44
+            // 
+            textBox44.Anchor = AnchorStyles.Left;
+            textBox44.Location = new Point(17, 190);
+            textBox44.Name = "textBox44";
+            textBox44.Size = new Size(172, 27);
+            textBox44.TabIndex = 95;
             // 
             // label45
             // 
@@ -611,31 +611,32 @@
             // groupBox2
             // 
             groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            groupBox2.Controls.Add(dgvProductDetail);
+            groupBox2.Controls.Add(dataGridView1);
             groupBox2.Font = new Font("Segoe UI", 12F);
-            groupBox2.Location = new Point(42, 521);
+            groupBox2.Location = new Point(1, 521);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1475, 346);
+            groupBox2.Size = new Size(1652, 346);
             groupBox2.TabIndex = 67;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách sản phẩm";
             // 
-            // dgvProductDetail
+            // dataGridView1
             // 
-            dgvProductDetail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvProductDetail.BackgroundColor = SystemColors.ButtonFace;
-            dgvProductDetail.BorderStyle = BorderStyle.None;
-            dgvProductDetail.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dgvProductDetail.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = SystemColors.ButtonFace;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.SelectionBackColor = Color.MediumPurple;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvProductDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgvProductDetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idproduct, Colorname, IdCPU, NameCpu, ManuFactu, IdProductdetal, IdColor, Storage, Price, IdPromotion, WarrantyPe, Inventory, ImeiNumber, PromoName, Discount, StartTime, EndTime });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -643,13 +644,13 @@
             dataGridViewCellStyle2.SelectionBackColor = Color.MediumPurple;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvProductDetail.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvProductDetail.Dock = DockStyle.Fill;
-            dgvProductDetail.EnableHeadersVisualStyles = false;
-            dgvProductDetail.GridColor = Color.MediumSlateBlue;
-            dgvProductDetail.Location = new Point(3, 30);
-            dgvProductDetail.Name = "dgvProductDetail";
-            dgvProductDetail.ReadOnly = true;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.GridColor = Color.MediumSlateBlue;
+            dataGridView1.Location = new Point(3, 30);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -657,21 +658,140 @@
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvProductDetail.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dgvProductDetail.RowHeadersVisible = false;
-            dgvProductDetail.RowHeadersWidth = 62;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowHeadersWidth = 62;
             dataGridViewCellStyle4.ForeColor = Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = SystemColors.HighlightText;
-            dgvProductDetail.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            dgvProductDetail.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProductDetail.Size = new Size(1469, 313);
-            dgvProductDetail.TabIndex = 1;
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(1646, 313);
+            dataGridView1.TabIndex = 1;
+            // 
+            // idproduct
+            // 
+            idproduct.HeaderText = "Id product";
+            idproduct.MinimumWidth = 6;
+            idproduct.Name = "idproduct";
+            idproduct.ReadOnly = true;
+            // 
+            // Colorname
+            // 
+            Colorname.HeaderText = "ColorName";
+            Colorname.MinimumWidth = 6;
+            Colorname.Name = "Colorname";
+            Colorname.ReadOnly = true;
+            // 
+            // IdCPU
+            // 
+            IdCPU.HeaderText = "IdCpu";
+            IdCPU.MinimumWidth = 6;
+            IdCPU.Name = "IdCPU";
+            IdCPU.ReadOnly = true;
+            // 
+            // NameCpu
+            // 
+            NameCpu.HeaderText = "NameCpu";
+            NameCpu.MinimumWidth = 6;
+            NameCpu.Name = "NameCpu";
+            NameCpu.ReadOnly = true;
+            // 
+            // ManuFactu
+            // 
+            ManuFactu.HeaderText = "ManuFactu";
+            ManuFactu.MinimumWidth = 6;
+            ManuFactu.Name = "ManuFactu";
+            ManuFactu.ReadOnly = true;
+            // 
+            // IdProductdetal
+            // 
+            IdProductdetal.HeaderText = "IdProDetail";
+            IdProductdetal.MinimumWidth = 6;
+            IdProductdetal.Name = "IdProductdetal";
+            IdProductdetal.ReadOnly = true;
+            // 
+            // IdColor
+            // 
+            IdColor.HeaderText = "IdColor";
+            IdColor.MinimumWidth = 6;
+            IdColor.Name = "IdColor";
+            IdColor.ReadOnly = true;
+            // 
+            // Storage
+            // 
+            Storage.HeaderText = "Storage";
+            Storage.MinimumWidth = 6;
+            Storage.Name = "Storage";
+            Storage.ReadOnly = true;
+            // 
+            // Price
+            // 
+            Price.HeaderText = "Price";
+            Price.MinimumWidth = 6;
+            Price.Name = "Price";
+            Price.ReadOnly = true;
+            // 
+            // IdPromotion
+            // 
+            IdPromotion.HeaderText = "IdPromotion";
+            IdPromotion.MinimumWidth = 6;
+            IdPromotion.Name = "IdPromotion";
+            IdPromotion.ReadOnly = true;
+            // 
+            // WarrantyPe
+            // 
+            WarrantyPe.HeaderText = "WarrantyPe";
+            WarrantyPe.MinimumWidth = 6;
+            WarrantyPe.Name = "WarrantyPe";
+            WarrantyPe.ReadOnly = true;
+            // 
+            // Inventory
+            // 
+            Inventory.HeaderText = "Inventory";
+            Inventory.MinimumWidth = 6;
+            Inventory.Name = "Inventory";
+            Inventory.ReadOnly = true;
+            // 
+            // ImeiNumber
+            // 
+            ImeiNumber.HeaderText = "ImeiNumber";
+            ImeiNumber.MinimumWidth = 6;
+            ImeiNumber.Name = "ImeiNumber";
+            ImeiNumber.ReadOnly = true;
+            // 
+            // PromoName
+            // 
+            PromoName.HeaderText = "PromoName";
+            PromoName.MinimumWidth = 6;
+            PromoName.Name = "PromoName";
+            PromoName.ReadOnly = true;
+            // 
+            // Discount
+            // 
+            Discount.HeaderText = "Discount";
+            Discount.MinimumWidth = 6;
+            Discount.Name = "Discount";
+            Discount.ReadOnly = true;
+            // 
+            // StartTime
+            // 
+            StartTime.HeaderText = "StartTime";
+            StartTime.MinimumWidth = 6;
+            StartTime.Name = "StartTime";
+            StartTime.ReadOnly = true;
+            // 
+            // EndTime
+            // 
+            EndTime.HeaderText = "EndTime";
+            EndTime.MinimumWidth = 6;
+            EndTime.Name = "EndTime";
+            EndTime.ReadOnly = true;
             // 
             // ProductDeltailForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1555, 934);
+            ClientSize = new Size(1665, 934);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "ProductDeltailForm";
@@ -680,7 +800,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvProductDetail).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -688,49 +808,65 @@
 
         private GroupBox groupBox1;
         private CustomButton.VBButton btnExcel;
-        private DateTimePicker dtpEndDate;
-        private DateTimePicker dtpStartDate;
+        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dateTimePicker1;
         private CustomButton.VBButton vbButton2;
+        private CustomButton.VBButton btnXoa;
         private CustomButton.VBButton btnSua;
         private CustomButton.VBButton btnThem;
         private CustomButton.VBButton vbButton1;
         private TextBox textBox7;
         private Label label6;
         private Label label9;
-        private TextBox txtImeiNumber;
+        private TextBox textBox5;
         private Label label27;
         private Label label28;
         private Label label29;
-        private TextBox txtDiscount;
+        private TextBox textBox29;
         private Label label30;
-        private TextBox txtPromotionName;
+        private TextBox textBox4;
         private Label label33;
         private Label label36;
         private Label label43;
-        private TextBox txtManufacturer;
+        private TextBox textBox43;
         private Label label44;
+        private TextBox textBox44;
         private Label label45;
         private Label label50;
-        private ComboBox cbbIdCpu;
-        private ComboBox cbbIdProduct;
+        private ComboBox comboBox3;
+        private ComboBox comboBox1;
         private Label label31;
-        private TextBox txtInventory;
+        private TextBox textBox31;
         private Label label32;
-        private TextBox txtWarrantyPeriod;
+        private TextBox textBox32;
         private Label label34;
-        private TextBox txtPrice;
+        private TextBox textBox34;
         private Label label35;
-        private TextBox txtStorage;
+        private TextBox textBox35;
         private Label label37;
-        private TextBox txtIdProductDetail;
+        private TextBox textBox37;
         private Label label2;
-        private TextBox txtColorName;
+        private TextBox textBox2;
         private GroupBox groupBox2;
-        private DataGridView dgvProductDetail;
-        private ComboBox cbbIdPromotion;
-        private ComboBox cbbIdColor;
-        private Label label1;
-        private TextBox txtIdAccount;
-        private TextBox txtNameCpu;
+        private DataGridView dataGridView1;
+        private ComboBox comboBox4;
+        private ComboBox comboBox2;
+        private DataGridViewTextBoxColumn idproduct;
+        private DataGridViewTextBoxColumn Colorname;
+        private DataGridViewTextBoxColumn IdCPU;
+        private DataGridViewTextBoxColumn NameCpu;
+        private DataGridViewTextBoxColumn ManuFactu;
+        private DataGridViewTextBoxColumn IdProductdetal;
+        private DataGridViewTextBoxColumn IdColor;
+        private DataGridViewTextBoxColumn Storage;
+        private DataGridViewTextBoxColumn Price;
+        private DataGridViewTextBoxColumn IdPromotion;
+        private DataGridViewTextBoxColumn WarrantyPe;
+        private DataGridViewTextBoxColumn Inventory;
+        private DataGridViewTextBoxColumn ImeiNumber;
+        private DataGridViewTextBoxColumn PromoName;
+        private DataGridViewTextBoxColumn Discount;
+        private DataGridViewTextBoxColumn StartTime;
+        private DataGridViewTextBoxColumn EndTime;
     }
 }

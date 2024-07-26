@@ -48,6 +48,20 @@ namespace DuAn1
             dgvListProduct.Columns.Add("ProductStatus", "Product status");
             dgvListProduct.RowTemplate.Height = 100;
         }
+        public string OpenFile(string fillter)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Chọn một file";
+            openFileDialog.Filter = fillter;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+                MessageBox.Show($"Đường dẫn file đã chọn: {filePath}");
+                return filePath;
+            }
+            return null;
+        }
         public bool CheckCbb(params ComboBox[] cbbs)
         {
             foreach (ComboBox cbb in cbbs)
@@ -121,7 +135,7 @@ namespace DuAn1
             txtRam.Clear();
             txtPin.Clear();
             txtRefreshRate.Clear();
-            cbbIDCompany.Text=string.Empty;
+            cbbIDCompany.Text = string.Empty;
             cbbIDCPU.Text = string.Empty;
             txtScreenResolution.Clear();
             txtCameraResolution.Clear();
@@ -133,6 +147,7 @@ namespace DuAn1
         {
             return productBUS.GetProductsByName(name);
         }
+
         private void FormProduct_Load(object sender, EventArgs e)
         {
             txtIdAccount.Text = menu.IdAccountMenu;
@@ -140,6 +155,10 @@ namespace DuAn1
             LoadDataGridView();
             List<Product> products = productBUS.GetAllProduct();
             ShowOnDataGridView(products);
+            List<string> listSearch = new List<string>() { "By name", "By ID", "By ID account", "By account name", "By ID CPU", "By CPU name" };
+            LoadCbbWhenDropDown(cbbTimKiem, listSearch);
+            List<string> listFillter = new List<string>() {"Ram","Pin","Screen size"};
+            LoadCbbWhenDropDown(cbbFillter, listFillter);
         }
         private Form formNow;
         private void LoadForm(Form formnew)
@@ -170,7 +189,7 @@ namespace DuAn1
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (CheckCbb(cbbIDCompany,cbbIDCPU))
+            if (CheckCbb(cbbIDCompany, cbbIDCPU))
             {
                 var productID = txtProductID.Text;
                 var productImage = txtProductImage.Text;
@@ -185,7 +204,7 @@ namespace DuAn1
                 var cameraResolution = txtCameraResolution.Text;
                 var screenSize = txtScreenSize.Text;
                 var status = rdoActivated.Checked ? true : false;
-               
+
                 if (CheckNull(productID, productImage, productName, idCompany, ram, pin, refreshRate, idAccount, idCPU, cameraResolution, screenResolution, screenSize) == false)
                 {
                     var checkNum = CheckIsNumberInProduct(txtRam, txtPin, txtRefreshRate, txtCameraResolution, txtScreenSize);
@@ -214,7 +233,7 @@ namespace DuAn1
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if(CheckCbb(cbbIDCompany, cbbIDCPU))
+            if (CheckCbb(cbbIDCompany, cbbIDCPU))
             {
                 var productID = txtProductID.Text;
                 var productImage = txtProductImage.Text;
@@ -244,7 +263,7 @@ namespace DuAn1
                 }
                 else
                     MessageBox.Show("Nhập đầy đủ thông tin trước khi sửa");
-            }    
+            }
             else
                 MessageBox.Show("Chọn lại giá trị từ các combo box");
             ShowOnDataGridView(productBUS.GetAllProduct());
@@ -261,7 +280,7 @@ namespace DuAn1
 
         private void dgvListProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >=0 && e.RowIndex < productBUS.GetAllProduct().Count)
+            if (e.RowIndex >= 0 && e.RowIndex < productBUS.GetAllProduct().Count)
             {
                 DataGridViewRow row = dgvListProduct.Rows[e.RowIndex];
                 var idProduct = row.Cells[0].Value.ToString();
@@ -300,6 +319,33 @@ namespace DuAn1
         {
             var listProduct = SearchByName(txtTimKiem.Text);
             ShowOnDataGridView(listProduct);
+        }
+
+        private void btnImgLink_Click(object sender, EventArgs e)
+        {
+            txtProductImage.Text = OpenFile("Image Files|*.jpg;*.jpeg;*.png;*.bmp");
+        }
+
+        private void cbbIDCompany_Leave(object sender, EventArgs e)
+        {
+            if (cbbIDCompany.SelectedIndex != -1)
+            {
+                var listProduct = productBUS.GetProducstsByIDProductCompany(cbbIDCompany.SelectedItem.ToString());
+                txtProductID.Text = productCompanyBUS.GetCompanyById(cbbIDCompany.SelectedItem.ToString()).CompanyName + listProduct.Count;
+            }
+        }
+        private void cbbIdCpu_Leave(object sender, EventArgs e)
+        {
+            if (cbbIDCPU.SelectedItem != null)
+            {
+                var id = cbbIDCPU.SelectedItem.ToString();
+                var cpu = cpuBUS.GetCpuById(id);
+                if (cpu != null)
+                {
+                    txtManufacturer.Text = cpu.Manufacturer;
+                    txtNameCpu.Text = cpu.NameCpu;
+                }
+            }
         }
     }
 }

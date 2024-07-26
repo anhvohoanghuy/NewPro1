@@ -82,9 +82,9 @@ namespace BUS.Services
         {
             return productDAL.GetAllProduct().Where(c => c.ProductName.Contains(name)).ToList();
         }
-        public List<Product> GetProducstsByProductCompany(string productCompany)
+        public List<Product> GetProducstsByIDProductCompany(string idCompany)
         {
-            return productDAL.GetAllProduct().Where(c => c.IdcompanyNavigation.CompanyName == productCompany).ToList();
+            return productDAL.GetAllProduct().Where(c => c.Idcompany == idCompany).ToList();
         }
         public List<Product> GetProductsByCPU(string cpu)
         {

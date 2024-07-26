@@ -10,6 +10,7 @@ public partial class Imei
     public string ImeiNumber { get; set; } = null!;
 
     public string Idaccount { get; set; } = null!;
+    public bool? Selled { get; set; }
 
     public virtual Account IdaccountNavigation { get; set; } = null!;
 

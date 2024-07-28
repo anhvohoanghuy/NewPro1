@@ -26,7 +26,7 @@ namespace DuAn1
             if (b=true)
             {
                 this.WindowState = FormWindowState.Maximized;
-                //this.FormBorderStyle = FormBorderStyle.None;    
+                this.FormBorderStyle = FormBorderStyle.None; //   
             }
         }
         private void FormMenu_Load(object sender, EventArgs e)
@@ -177,7 +177,7 @@ namespace DuAn1
 
         private void btnStatistics_Click(object sender, EventArgs e)
         {
-            ThongkeForm a = new ThongkeForm();
+            thongkeeform a = new thongkeeform();
             LoadForm(a);
             ActiveColor(btnStatistics);
         }

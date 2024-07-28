@@ -1,5 +1,6 @@
 ﻿using DAL.Models;
 using DAL.Repositories;
+using DevExpress.Security.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +12,36 @@ namespace BUS.Services
     public class thongkeBLL
     {
         thongkeDAL tkDAL = new thongkeDAL();
-        List<Order> listsO;
+        List<Order> listO;
+        List<OrderDetail> listOD;
+        List<Customer> listC;
+        List<Product> listP;
+        List<ProductDetail> listPD;
         public List<Order> GetListO()
         {
-            listsO = tkDAL.GetListO();
-            return listsO;
+            listO = tkDAL.listO();
+            return listO;
         }
-        List<OrderDetail> listsOD;
+        
         public List<OrderDetail> GetListOD()
         {
-            listsOD = tkDAL.GetListOD();
-            return listsOD;
+            listOD = tkDAL.GetListOD();
+            return listOD;
+        }
+        public List<Customer> GetListC()
+        {
+            listC = tkDAL.GetListC();
+            return listC;
+        }
+        public List<Product> GetListP()
+        {
+            listP = tkDAL.GetListP();
+            return listP;
+        }
+        public List<ProductDetail> GetListPD()
+        {
+            listPD = tkDAL.GetListPD();
+            return listPD;
         }
     }
 }

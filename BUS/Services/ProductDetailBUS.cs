@@ -29,7 +29,7 @@ namespace BUS.Services
                 Idcolor = idColor,
                 Storage = storage,
                 Price = price,
-                Idpromotion = idPromotion,
+                Idpromotion = idPromotion==null?null:idPromotion,
                 WarrantyPeriod = wrrantyPeriod,
                 Inventory = inventory,
                 Idaccount = idAccount

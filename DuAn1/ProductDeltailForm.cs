@@ -22,9 +22,25 @@ namespace DuAn1
         PromotionBUS promotionBUS = new PromotionBUS();
         AccountBUS accountBUS = new AccountBUS();
         FormMenu menu = new FormMenu();
+        string idProduct;
         public ProductDeltailForm()
         {
             InitializeComponent();
+        }
+        public ProductDeltailForm(string currentIdProduct)
+        {
+            this.idProduct = currentIdProduct;
+            InitializeComponent();
+        }
+        public void ChangeIdProductDetail()
+        {
+            string idProduct = cbbIdProduct.SelectedItem.ToString();
+            string colorName="";
+            string storage;
+            if (cbbIdColor.SelectedIndex != -1)
+                colorName = txtColorName.Text;
+            storage = txtStorage.Text;
+            txtIdProductDetail.Text = idProduct+"-"+colorName+"-"+storage;
         }
         public string OpenFile(string fillter)
         {
@@ -39,6 +55,27 @@ namespace DuAn1
                 return filePath;
             }
             return null;
+        }
+        public void ResetTexbox(params TextBox[] textBoxes)
+        {
+            foreach (var textBox in textBoxes)
+            {
+                textBox.Clear();
+            }
+        }
+        public void ResetCombobox(params ComboBox[] comboBoxes)
+        {
+            foreach (var comboBox in comboBoxes)
+            {
+                comboBox.Items.Clear();
+                comboBox.Text = string.Empty;
+            }
+        }
+        public void ResetProductDetailForm()
+        {
+            ResetTexbox(txtIdProductDetail, txtColorName, txtStorage, txtPrice, txtWarrantyPeriod, txtInventory, txtPromotionName, txtDiscount);
+            ResetCombobox(cbbIdProduct, cbbIdColor, cbbIdPromotion);
+            txtIdAccount.Text = menu.IdAccountMenu;
         }
         public bool CheckCbb(params ComboBox[] cbbs)
         {
@@ -109,62 +146,11 @@ namespace DuAn1
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            FormImei formImei = new FormImei();
-            formImei.ShowDialog();
-            if(formImei.Comfirm)
-            {
-                if (CheckCbb(cbbIdProduct, cbbIdColor))
-                {
-                    var idProduct = cbbIdProduct.SelectedItem.ToString();
-                    var idProductDetail = txtIdProductDetail.Text;
-                    var idColor = cbbIdColor.SelectedItem.ToString();
-                    var storage = txtStorage.Text;
-                    var price = txtPrice.Text;
-                    string idPromotion;
-                    if (cbbIdPromotion.SelectedIndex == -1)
-                        idPromotion = null;
-                    else
-                        idPromotion = cbbIdPromotion.SelectedItem.ToString();
-                    var warrantyPeriod = txtWarrantyPeriod.Text;
-                    var inventory = txtInventory.Text;
-                    var idAccount = txtIdAccount.Text;
-                    if (!CheckNullInProductDetail(idProduct, idProductDetail, idColor, storage, price, warrantyPeriod, inventory, idAccount))
-                    {
-                        if (CheckProductDetailIfExists(cbbIdProduct.SelectedItem.ToString()) == false)
-                        {
-                            var check = CheckIsNumberProductDetail(storage, price, warrantyPeriod, inventory);
-                            if (check == null)
-                            {
-                                if (productDetailBUS.AddNewProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod), int.Parse(inventory), idAccount))
-                                {
-                                    MessageBox.Show("Thêm thành công");
-                                }
-                                else
-                                    MessageBox.Show("Thêm thất bại");
-                            }
-                            else
-                                MessageBox.Show(check);
-                        }
-                        else
-                            MessageBox.Show("Product detail này đã tồn tại");
-                    }
-                    else
-                        MessageBox.Show("Nhập đầy đủ thông tin trước khi thêm");
-                }
-                else
-                    MessageBox.Show("Chọn lại giá trị từ các combo box");
-            }
-            else
-                MessageBox.Show("Hãy đầy đủ imei");
-            ShowOnDataGridView(productDetailBUS.GetAllProductDetail());
-        }
-        private void btnSua_Click(object sender, EventArgs e)
-        {
             if (CheckCbb(cbbIdProduct, cbbIdColor))
             {
-                var idProduct = cbbIdProduct.Text;
+                var idProduct = cbbIdProduct.SelectedItem.ToString();
                 var idProductDetail = txtIdProductDetail.Text;
-                var idColor = cbbIdColor.Text;
+                var idColor = cbbIdColor.SelectedItem.ToString();
                 var storage = txtStorage.Text;
                 var price = txtPrice.Text;
                 string idPromotion;
@@ -182,10 +168,27 @@ namespace DuAn1
                         var check = CheckIsNumberProductDetail(storage, price, warrantyPeriod, inventory);
                         if (check == null)
                         {
-                            if (productDetailBUS.UpdateProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod), int.Parse(inventory), idAccount))
-                                MessageBox.Show("Sửa thành công");
+                            if (productDetailBUS.AddNewProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod), int.Parse(inventory), idAccount))
+                            {
+                                var productDetail = productDetailBUS.GetProductDetailByID(txtIdProductDetail.Text);
+                                if (productDetail != null)
+                                {
+                                    FormImei formImei = new FormImei(productDetail, menu.IdAccountMenu);
+                                    formImei.ShowDialog();
+                                    if (formImei.Comfirm)
+                                    {
+                                        MessageBox.Show("Thêm thành công");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Sản phẩm này chưa có Imei nào");
+                                    }
+                                }
+                                else
+                                    MessageBox.Show("Không có id product detail này");
+                            }
                             else
-                                MessageBox.Show("Sửa thất bại");
+                                MessageBox.Show("Thêm thất bại");
                         }
                         else
                             MessageBox.Show(check);
@@ -194,10 +197,60 @@ namespace DuAn1
                         MessageBox.Show("Product detail này đã tồn tại");
                 }
                 else
-                    MessageBox.Show("Nhập đầy đủ thông tin trước khi sửa");
+                    MessageBox.Show("Nhập đầy đủ thông tin trước khi thêm");
             }
             else
                 MessageBox.Show("Chọn lại giá trị từ các combo box");
+            ShowOnDataGridView(productDetailBUS.GetAllProductDetail());
+        }
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            var idProduct = cbbIdProduct.Text;
+            var idProductDetail = txtIdProductDetail.Text;
+            var idColor = cbbIdColor.Text;
+            var storage = txtStorage.Text;
+            var price = txtPrice.Text;
+            string idPromotion;
+            if (cbbIdPromotion.SelectedIndex == -1)
+                idPromotion = null;
+            else
+                idPromotion = cbbIdPromotion.SelectedItem.ToString();
+            var warrantyPeriod = txtWarrantyPeriod.Text;
+            var inventory = txtInventory.Text;
+            var idAccount = txtIdAccount.Text;
+            if (!CheckNullInProductDetail(idProduct, idProductDetail, idColor, storage, price, warrantyPeriod, inventory, idAccount))
+            {
+                if (CheckProductDetailIfExists(cbbIdProduct.Text) == false)
+                {
+                    var check = CheckIsNumberProductDetail(storage, price, warrantyPeriod, inventory);
+                    if (check == null)
+                    {
+                        var productDetail = productDetailBUS.GetProductDetailByID(txtIdProductDetail.Text);
+                        if (productDetail != null)
+                        {
+                            FormImei formImei = new FormImei(productDetail, menu.IdAccountMenu);
+                            formImei.ShowDialog();
+                            if (formImei.Comfirm)
+                            {
+                                if (productDetailBUS.UpdateProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod), int.Parse(inventory), idAccount))
+                                    MessageBox.Show("Sửa thành công");
+                                else
+                                    MessageBox.Show("Sửa thất bại");
+                            }
+                            else
+                                MessageBox.Show("Chưa xác nhận imei");
+                        }
+                        else
+                            MessageBox.Show("Không có ID product detail này");
+                    }
+                    else
+                        MessageBox.Show(check);
+                }
+                else
+                    MessageBox.Show("Product detail này đã tồn tại");
+            }
+            else
+                MessageBox.Show("Nhập đầy đủ thông tin trước khi sửa");
             ShowOnDataGridView(productDetailBUS.GetAllProductDetail());
         }
 
@@ -217,6 +270,7 @@ namespace DuAn1
         private void ProductDeltailForm_Load(object sender, EventArgs e)
         {
             txtIdAccount.Text = menu.IdAccountMenu;
+            cbbIdProduct.Text = idProduct;
             LoadDataGridView();
             ShowOnDataGridView(productDetailBUS.GetAllProductDetail());
             List<string> listSearch = new List<string>() { "By name", "By ID", "By ID account", "By account name", "By ID CPU", "By CPU name" };
@@ -233,6 +287,7 @@ namespace DuAn1
         {
             if (cbbIdColor.SelectedItem != null)
             {
+                ChangeIdProductDetail();
                 var color = colorBUS.GetProductColorById(cbbIdColor.SelectedItem.ToString());
                 if (color != null)
                 {
@@ -257,6 +312,48 @@ namespace DuAn1
                         dtpEndDate.Value = (DateTime)promotion.EndTime;
                 }
             }
+        }
+
+        private void dgvProductDetail_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dgvProductDetail.RowCount - 1)
+            {
+                DataGridViewRow row = dgvProductDetail.Rows[e.RowIndex];
+                var currentProductDetail = productDetailBUS.GetProductDetailByID(row.Cells[1].Value.ToString());
+                cbbIdProduct.Text = currentProductDetail.Idproduct;
+                txtIdProductDetail.Text = currentProductDetail.IdproductDetails;
+                cbbIdColor.Text = currentProductDetail.Idcolor;
+                txtColorName.Text = colorBUS.GetProductColorById(currentProductDetail.Idcolor).ColorName;
+                txtStorage.Text = currentProductDetail.Storage.ToString();
+                txtPrice.Text = currentProductDetail.Price.ToString();
+                txtWarrantyPeriod.Text = currentProductDetail.WarrantyPeriod.ToString();
+                txtInventory.Text = currentProductDetail.Inventory.ToString();
+                txtIdAccount.Text = currentProductDetail.Idaccount;
+                cbbIdPromotion.Text = currentProductDetail.Idpromotion;
+                if (currentProductDetail.Idpromotion != null)
+                {
+                    txtPromotionName.Text = promotionBUS.GetPromotionById(currentProductDetail.Idpromotion).PromotionName;
+                    txtDiscount.Text = promotionBUS.GetPromotionById(currentProductDetail.Idpromotion).Discount.ToString();
+                    dtpStartDate.Value = promotionBUS.GetPromotionById(currentProductDetail.Idpromotion).StartTime;
+                    var endTime = promotionBUS.GetPromotionById(currentProductDetail.Idpromotion).EndTime;
+                    dtpEndDate.Value = endTime != null ? (DateTime)endTime : new DateTime(9999, 12, 31);
+                }
+                else
+                {
+                    txtPromotionName.Clear();
+                    txtDiscount.Clear();
+                }
+
+            }
+        }
+        private void txtStorage_Leave(object sender, EventArgs e)
+        {
+            ChangeIdProductDetail();
+        }
+
+        private void cbbIdProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChangeIdProductDetail();
         }
     }
 }

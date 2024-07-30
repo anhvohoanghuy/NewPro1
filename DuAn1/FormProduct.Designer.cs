@@ -33,6 +33,13 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel2 = new Panel();
+            btnFillter = new CustomButton.VBButton();
+            txtTo = new TextBox();
+            txtFrom = new TextBox();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            cbbFillter = new ComboBox();
             label1 = new Label();
             cbbTimKiem = new ComboBox();
             txtNameCpu = new TextBox();
@@ -77,13 +84,6 @@
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
             dgvListProduct = new DataGridView();
-            btnFillter = new CustomButton.VBButton();
-            txtTo = new TextBox();
-            txtFrom = new TextBox();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            cbbFillter = new ComboBox();
             panel2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -145,6 +145,83 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1427, 373);
             panel2.TabIndex = 63;
+            // 
+            // btnFillter
+            // 
+            btnFillter.Anchor = AnchorStyles.Left;
+            btnFillter.BackColor = Color.MediumSlateBlue;
+            btnFillter.BackgroundColor = Color.MediumSlateBlue;
+            btnFillter.BorderColor = Color.PaleVioletRed;
+            btnFillter.BorderRadius = 20;
+            btnFillter.BorderSize = 0;
+            btnFillter.FlatAppearance.BorderSize = 0;
+            btnFillter.FlatStyle = FlatStyle.Flat;
+            btnFillter.ForeColor = Color.White;
+            btnFillter.Location = new Point(1250, 325);
+            btnFillter.Name = "btnFillter";
+            btnFillter.Size = new Size(128, 35);
+            btnFillter.TabIndex = 174;
+            btnFillter.Text = "Lọc";
+            btnFillter.TextColor = Color.White;
+            btnFillter.UseVisualStyleBackColor = false;
+            btnFillter.Click += btnFillter_Click;
+            // 
+            // txtTo
+            // 
+            txtTo.Anchor = AnchorStyles.Left;
+            txtTo.Location = new Point(1101, 330);
+            txtTo.Name = "txtTo";
+            txtTo.Size = new Size(131, 27);
+            txtTo.TabIndex = 173;
+            // 
+            // txtFrom
+            // 
+            txtFrom.Anchor = AnchorStyles.Left;
+            txtFrom.Location = new Point(927, 329);
+            txtFrom.Name = "txtFrom";
+            txtFrom.Size = new Size(131, 27);
+            txtFrom.TabIndex = 172;
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Left;
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 11F);
+            label4.Location = new Point(1064, 328);
+            label4.Name = "label4";
+            label4.Size = new Size(35, 25);
+            label4.TabIndex = 171;
+            label4.Text = "To:";
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Left;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 11F);
+            label3.Location = new Point(866, 328);
+            label3.Name = "label3";
+            label3.Size = new Size(59, 25);
+            label3.TabIndex = 170;
+            label3.Text = "From:";
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Left;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 11F);
+            label2.Location = new Point(670, 303);
+            label2.Name = "label2";
+            label2.Size = new Size(84, 25);
+            label2.TabIndex = 169;
+            label2.Text = "Lọc theo";
+            // 
+            // cbbFillter
+            // 
+            cbbFillter.FormattingEnabled = true;
+            cbbFillter.Location = new Point(670, 331);
+            cbbFillter.Name = "cbbFillter";
+            cbbFillter.Size = new Size(172, 28);
+            cbbFillter.TabIndex = 168;
             // 
             // label1
             // 
@@ -548,7 +625,7 @@
             labelo.Anchor = AnchorStyles.Left;
             labelo.AutoSize = true;
             labelo.Font = new Font("Segoe UI", 11F);
-            labelo.Location = new Point(232, 104);
+            labelo.Location = new Point(238, 129);
             labelo.Name = "labelo";
             labelo.Size = new Size(49, 25);
             labelo.TabIndex = 21;
@@ -557,7 +634,7 @@
             // txtRam
             // 
             txtRam.Anchor = AnchorStyles.Left;
-            txtRam.Location = new Point(238, 126);
+            txtRam.Location = new Point(244, 151);
             txtRam.Name = "txtRam";
             txtRam.Size = new Size(172, 27);
             txtRam.TabIndex = 20;
@@ -692,82 +769,6 @@
             dgvListProduct.Size = new Size(1469, 235);
             dgvListProduct.TabIndex = 1;
             dgvListProduct.CellClick += dgvListProduct_CellClick;
-            // 
-            // btnFillter
-            // 
-            btnFillter.Anchor = AnchorStyles.Left;
-            btnFillter.BackColor = Color.MediumSlateBlue;
-            btnFillter.BackgroundColor = Color.MediumSlateBlue;
-            btnFillter.BorderColor = Color.PaleVioletRed;
-            btnFillter.BorderRadius = 20;
-            btnFillter.BorderSize = 0;
-            btnFillter.FlatAppearance.BorderSize = 0;
-            btnFillter.FlatStyle = FlatStyle.Flat;
-            btnFillter.ForeColor = Color.White;
-            btnFillter.Location = new Point(1250, 325);
-            btnFillter.Name = "btnFillter";
-            btnFillter.Size = new Size(128, 35);
-            btnFillter.TabIndex = 174;
-            btnFillter.Text = "Lọc";
-            btnFillter.TextColor = Color.White;
-            btnFillter.UseVisualStyleBackColor = false;
-            // 
-            // txtTo
-            // 
-            txtTo.Anchor = AnchorStyles.Left;
-            txtTo.Location = new Point(1101, 330);
-            txtTo.Name = "txtTo";
-            txtTo.Size = new Size(131, 27);
-            txtTo.TabIndex = 173;
-            // 
-            // txtFrom
-            // 
-            txtFrom.Anchor = AnchorStyles.Left;
-            txtFrom.Location = new Point(927, 329);
-            txtFrom.Name = "txtFrom";
-            txtFrom.Size = new Size(131, 27);
-            txtFrom.TabIndex = 172;
-            // 
-            // label4
-            // 
-            label4.Anchor = AnchorStyles.Left;
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 11F);
-            label4.Location = new Point(1064, 328);
-            label4.Name = "label4";
-            label4.Size = new Size(35, 25);
-            label4.TabIndex = 171;
-            label4.Text = "To:";
-            // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.Left;
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11F);
-            label3.Location = new Point(866, 328);
-            label3.Name = "label3";
-            label3.Size = new Size(59, 25);
-            label3.TabIndex = 170;
-            label3.Text = "From:";
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Left;
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 11F);
-            label2.Location = new Point(670, 303);
-            label2.Name = "label2";
-            label2.Size = new Size(84, 25);
-            label2.TabIndex = 169;
-            label2.Text = "Lọc theo";
-            // 
-            // cbbFillter
-            // 
-            cbbFillter.FormattingEnabled = true;
-            cbbFillter.Location = new Point(670, 331);
-            cbbFillter.Name = "cbbFillter";
-            cbbFillter.Size = new Size(172, 28);
-            cbbFillter.TabIndex = 168;
             // 
             // FormProduct
             // 

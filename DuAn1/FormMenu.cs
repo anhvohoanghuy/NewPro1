@@ -26,8 +26,8 @@ namespace DuAn1
         {
             lblDateTime.Text = GetTimeNow();
             lblUserName.Text = DangNhapForm.GetDataUser.acccountname;
-            lblPhanQuyen.Text = DangNhapForm.GetDataUser.accountlevel == 1 ? "Nhân Viên" :
-                    DangNhapForm.GetDataUser.accountlevel == 2 ? "Admin" : "Không xác định";
+            lblPhanQuyen.Text = DangNhapForm.GetDataUser.accountlevel == 2 ? "Nhân Viên" :
+                    DangNhapForm.GetDataUser.accountlevel == 1 ? "Admin" : "Không xác định";
 
             if (lblPhanQuyen.Text == "Nhân Viên")
             {

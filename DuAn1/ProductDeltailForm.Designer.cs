@@ -286,6 +286,7 @@
             cbbIdProduct.Size = new Size(172, 28);
             cbbIdProduct.TabIndex = 140;
             cbbIdProduct.DropDown += cbbIdProduct_DropDown;
+            cbbIdProduct.SelectedIndexChanged += cbbIdProduct_SelectedIndexChanged;
             // 
             // btnExcel
             // 
@@ -393,7 +394,7 @@
             vbButton1.FlatStyle = FlatStyle.Flat;
             vbButton1.ForeColor = Color.White;
             vbButton1.Image = Properties.Resources.search__1_3;
-            vbButton1.Location = new Point(530, 358);
+            vbButton1.Location = new Point(514, 358);
             vbButton1.Name = "vbButton1";
             vbButton1.Size = new Size(72, 29);
             vbButton1.TabIndex = 132;
@@ -570,6 +571,7 @@
             txtStorage.Name = "txtStorage";
             txtStorage.Size = new Size(172, 27);
             txtStorage.TabIndex = 112;
+            txtStorage.Leave += txtStorage_Leave;
             // 
             // label36
             // 
@@ -673,6 +675,7 @@
             dgvProductDetail.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProductDetail.Size = new Size(1469, 313);
             dgvProductDetail.TabIndex = 1;
+            dgvProductDetail.CellClick += dgvProductDetail_CellClick;
             // 
             // ProductDeltailForm
             // 

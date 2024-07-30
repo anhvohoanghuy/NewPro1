@@ -32,20 +32,25 @@
             btnComfirm = new CustomButton.VBButton();
             btnRetry = new CustomButton.VBButton();
             lblImei = new Label();
-            textBox1 = new TextBox();
+            txtImei = new TextBox();
             btnThem = new CustomButton.VBButton();
             btnXoa = new CustomButton.VBButton();
+            grbUpdate = new GroupBox();
+            lblIDProductDetail = new Label();
+            txtIdProductDetail = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvImei).BeginInit();
+            grbUpdate.SuspendLayout();
             SuspendLayout();
             // 
             // dgvImei
             // 
             dgvImei.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvImei.Location = new Point(40, 28);
+            dgvImei.Location = new Point(40, 59);
             dgvImei.Name = "dgvImei";
             dgvImei.RowHeadersWidth = 51;
-            dgvImei.Size = new Size(333, 411);
+            dgvImei.Size = new Size(333, 380);
             dgvImei.TabIndex = 0;
+            dgvImei.CellClick += dgvImei_CellClick;
             // 
             // btnComfirm
             // 
@@ -90,18 +95,18 @@
             // lblImei
             // 
             lblImei.AutoSize = true;
-            lblImei.Location = new Point(409, 44);
+            lblImei.Location = new Point(34, 31);
             lblImei.Name = "lblImei";
             lblImei.Size = new Size(38, 20);
             lblImei.TabIndex = 136;
             lblImei.Text = "Imei";
             // 
-            // textBox1
+            // txtImei
             // 
-            textBox1.Location = new Point(409, 78);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(193, 27);
-            textBox1.TabIndex = 137;
+            txtImei.Location = new Point(34, 65);
+            txtImei.Name = "txtImei";
+            txtImei.Size = new Size(193, 27);
+            txtImei.TabIndex = 137;
             // 
             // btnThem
             // 
@@ -114,13 +119,14 @@
             btnThem.FlatAppearance.BorderSize = 0;
             btnThem.FlatStyle = FlatStyle.Flat;
             btnThem.ForeColor = Color.White;
-            btnThem.Location = new Point(433, 126);
+            btnThem.Location = new Point(58, 97);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(135, 40);
             btnThem.TabIndex = 138;
             btnThem.Text = "Thêm";
             btnThem.TextColor = Color.White;
             btnThem.UseVisualStyleBackColor = false;
+            btnThem.Click += btnThem_Click;
             // 
             // btnXoa
             // 
@@ -133,23 +139,54 @@
             btnXoa.FlatAppearance.BorderSize = 0;
             btnXoa.FlatStyle = FlatStyle.Flat;
             btnXoa.ForeColor = Color.White;
-            btnXoa.Location = new Point(433, 188);
+            btnXoa.Location = new Point(58, 159);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(135, 40);
             btnXoa.TabIndex = 139;
             btnXoa.Text = "Xóa";
             btnXoa.TextColor = Color.White;
             btnXoa.UseVisualStyleBackColor = false;
+            btnXoa.Click += btnXoa_Click;
+            // 
+            // grbUpdate
+            // 
+            grbUpdate.Controls.Add(txtImei);
+            grbUpdate.Controls.Add(btnXoa);
+            grbUpdate.Controls.Add(lblImei);
+            grbUpdate.Controls.Add(btnThem);
+            grbUpdate.Location = new Point(379, 59);
+            grbUpdate.Name = "grbUpdate";
+            grbUpdate.Size = new Size(250, 217);
+            grbUpdate.TabIndex = 140;
+            grbUpdate.TabStop = false;
+            grbUpdate.Text = "Update";
+            // 
+            // lblIDProductDetail
+            // 
+            lblIDProductDetail.AutoSize = true;
+            lblIDProductDetail.Location = new Point(73, 19);
+            lblIDProductDetail.Name = "lblIDProductDetail";
+            lblIDProductDetail.Size = new Size(122, 20);
+            lblIDProductDetail.TabIndex = 141;
+            lblIDProductDetail.Text = "ID product detail";
+            // 
+            // txtIdProductDetail
+            // 
+            txtIdProductDetail.AcceptsReturn = true;
+            txtIdProductDetail.Location = new Point(201, 16);
+            txtIdProductDetail.Name = "txtIdProductDetail";
+            txtIdProductDetail.ReadOnly = true;
+            txtIdProductDetail.Size = new Size(237, 27);
+            txtIdProductDetail.TabIndex = 142;
             // 
             // FormImei
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(639, 547);
-            Controls.Add(btnXoa);
-            Controls.Add(btnThem);
-            Controls.Add(textBox1);
-            Controls.Add(lblImei);
+            Controls.Add(txtIdProductDetail);
+            Controls.Add(lblIDProductDetail);
+            Controls.Add(grbUpdate);
             Controls.Add(btnRetry);
             Controls.Add(btnComfirm);
             Controls.Add(dgvImei);
@@ -157,6 +194,8 @@
             Text = "FormImei";
             Load += FormImei_Load;
             ((System.ComponentModel.ISupportInitialize)dgvImei).EndInit();
+            grbUpdate.ResumeLayout(false);
+            grbUpdate.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -167,8 +206,11 @@
         private CustomButton.VBButton btnComfirm;
         private CustomButton.VBButton btnRetry;
         private Label lblImei;
-        private TextBox textBox1;
+        private TextBox txtImei;
         private CustomButton.VBButton btnThem;
         private CustomButton.VBButton btnXoa;
+        private GroupBox grbUpdate;
+        private Label lblIDProductDetail;
+        private TextBox txtIdProductDetail;
     }
 }

@@ -29,10 +29,10 @@ namespace DAL.Respositories
         {
             try
             {
-                var currentProductDetail=db.ProductDetails.FirstOrDefault(c=>c.IdproductDetails==productDetail.Idproduct);
+                var currentProductDetail=db.ProductDetails.FirstOrDefault(c=>c.IdproductDetails==productDetail.IdproductDetails);
                 if (currentProductDetail != null)
                 {
-                    currentProductDetail.Idproduct=productDetail.IdproductDetails;
+                    currentProductDetail.Idproduct=productDetail.Idproduct;
                     currentProductDetail.Idcolor=productDetail.Idcolor;
                     currentProductDetail.Storage=productDetail.Storage;
                     currentProductDetail.Price=productDetail.Price;

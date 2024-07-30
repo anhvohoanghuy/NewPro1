@@ -1,4 +1,5 @@
-﻿using BUS.Services;
+﻿using BUS;
+using BUS.Services;
 using DAL.Models;
 using OfficeOpenXml;
 using System;
@@ -18,14 +19,18 @@ namespace DuAn1
         List<string> Imeis;
         ProductDetail ThisProductDetail;
         public bool Comfirm = false;
-        
+        ImeiBUS imeiBUS = new ImeiBUS();
+        string Account;
+        Validate validate = new Validate();
         public FormImei()
         {
             InitializeComponent();
         }
-        public FormImei(ProductDetail productDetail)
+        public FormImei(ProductDetail productDetail, string account)
         {
             ThisProductDetail = productDetail;
+            Account = account;
+            InitializeComponent();
         }
         public void LoadDgvImei()
         {
@@ -36,12 +41,14 @@ namespace DuAn1
         {
             dgvImei.Rows.Clear();
             var stt = 0;
-            foreach (string ime in imeis)
+            if (imeis != null)
             {
-                stt++;
-                dgvImei.Rows.Add(stt, ime);
+                foreach (string ime in imeis)
+                {
+                    stt++;
+                    dgvImei.Rows.Add(stt, ime);
+                }
             }
-
         }
         public string OpenFile(string fillter)
         {
@@ -79,32 +86,72 @@ namespace DuAn1
         }
         private void FormImei_Load(object sender, EventArgs e)
         {
-            if (ThisProductDetail == null)
-            {
-                List<string> imeis = OpenExcel();
-                Imeis = imeis;
-                LoadDgvImei();
-                ShowOnDataGridView(Imeis);
-            }
-            else
-            {
-                Imeis = productDetailBUS.
-                LoadDgvImei();
-                ShowOnDataGridView(Imeis);
-            }
+            Imeis = imeiBUS.GetImeiNumberByIDProductDetail(ThisProductDetail.IdproductDetails);
+            string idProductDetail = ThisProductDetail.IdproductDetails;
+            txtIdProductDetail.Text = idProductDetail;
+            LoadDgvImei();
+            ShowOnDataGridView(Imeis);
         }
 
         private void btnRetry_Click(object sender, EventArgs e)
         {
             List<string> imeis = OpenExcel();
-            Imeis = imeis;
-            LoadDgvImei();
+            Imeis.AddRange(imeis);
             ShowOnDataGridView(Imeis);
         }
 
         private void btnComfirm_Click(object sender, EventArgs e)
         {
-            Comfirm = true;
+            if (Imeis != null)
+            {
+                var count = 0;
+                foreach (string ime in Imeis)
+                {
+                    if (!imeiBUS.CheckImeiExists(ime))
+                    {
+                        count++;
+                        imeiBUS.AddNewImei(ThisProductDetail.IdproductDetails, ime, Account, false);
+                    }
+                }
+                MessageBox.Show($"Đã thêm {count} Imei");
+                Comfirm = true;
+                this.Close();
+            }
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtImei.Text))
+            {
+                Imeis.Add(txtImei.Text);
+                ShowOnDataGridView(Imeis);
+            }
+            else
+            {
+                MessageBox.Show("Hãy thêm Imei");
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (txtImei.Text != null)
+            {
+                var check = imeiBUS.RemoveImeiFromList(txtImei.Text, Imeis);
+                MessageBox.Show(check);
+                ShowOnDataGridView(Imeis);
+            }
+            else
+            {
+                MessageBox.Show("Hãy thêm Imei");
+            }
+        }
+
+        private void dgvImei_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0&&e.RowIndex<dgvImei.RowCount-1)
+            {
+                txtImei.Text = dgvImei.Rows[e.RowIndex].Cells[1].Value.ToString();
+            }
         }
     }
 }

@@ -14,6 +14,10 @@ namespace DAL.Respositories
         {
             return db.Imeis.Where(c => c.IdproductDetails == idProductDetail).ToList();
         }
+        public List<Imei> GetAllImei()
+        {
+            return db.Imeis.ToList();
+        }
         public bool AddNewImei(Imei imei)
         {
             try
@@ -48,6 +52,24 @@ namespace DAL.Respositories
                 return false;
             }
         }
-
+        public bool DeleteImei(Imei imei)
+        {
+            try
+            {
+                var current = db.Imeis.FirstOrDefault(c => c.ImeiNumber == imei.ImeiNumber);
+                if (current != null)
+                {
+                    db.Imeis.Remove(current);
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

@@ -133,6 +133,7 @@
             btnOk.TextColor = Color.White;
             btnOk.UseVisualStyleBackColor = false;
             btnOk.Visible = false;
+            btnOk.Click += btnOk_Click;
             // 
             // dtpStartdate
             // 
@@ -314,7 +315,7 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(dgvnbOrder);
-            groupBox3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox3.Location = new Point(64, 173);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(370, 555);
@@ -400,7 +401,6 @@
             // groupBox4
             // 
             groupBox4.Controls.Add(dataGridView1);
-            groupBox4.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox4.Location = new Point(468, 173);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(370, 564);
@@ -529,7 +529,6 @@
             // groupBox6
             // 
             groupBox6.Controls.Add(dataGridView2);
-            groupBox6.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox6.Location = new Point(861, 173);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new Size(370, 564);

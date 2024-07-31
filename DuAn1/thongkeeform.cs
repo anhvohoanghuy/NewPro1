@@ -107,5 +107,10 @@ namespace DuAn1
             dtpEnđate.Enabled = true;
             btnOk.Visible = true;
         }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

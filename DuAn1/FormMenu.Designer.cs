@@ -37,6 +37,7 @@
             panel6 = new Panel();
             panel3 = new Panel();
             panel2 = new Panel();
+            btnKhachHang = new CustomButton.VBButton();
             btnVoucher = new CustomButton.VBButton();
             panel7 = new Panel();
             btnLogOut = new CustomButton.VBButton();
@@ -133,6 +134,7 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panel2.BackColor = Color.MediumSlateBlue;
+            panel2.Controls.Add(btnKhachHang);
             panel2.Controls.Add(btnVoucher);
             panel2.Controls.Add(panel7);
             panel2.Controls.Add(btnLogOut);
@@ -147,9 +149,31 @@
             panel2.Location = new Point(-5, 5);
             panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(235, 700);
+            panel2.Size = new Size(235, 1051);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
+            // 
+            // btnKhachHang
+            // 
+            btnKhachHang.BackColor = Color.MediumSlateBlue;
+            btnKhachHang.BackgroundColor = Color.MediumSlateBlue;
+            btnKhachHang.BorderColor = Color.PaleVioletRed;
+            btnKhachHang.BorderRadius = 20;
+            btnKhachHang.BorderSize = 0;
+            btnKhachHang.FlatAppearance.BorderSize = 0;
+            btnKhachHang.FlatStyle = FlatStyle.Flat;
+            btnKhachHang.Font = new Font("Segoe UI Emoji", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnKhachHang.ForeColor = Color.White;
+            btnKhachHang.Image = (Image)resources.GetObject("btnKhachHang.Image");
+            btnKhachHang.ImageAlign = ContentAlignment.MiddleLeft;
+            btnKhachHang.Location = new Point(17, 450);
+            btnKhachHang.Name = "btnKhachHang";
+            btnKhachHang.Size = new Size(188, 50);
+            btnKhachHang.TabIndex = 22;
+            btnKhachHang.Text = "Khách hàng";
+            btnKhachHang.TextColor = Color.White;
+            btnKhachHang.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnKhachHang.UseVisualStyleBackColor = false;
             // 
             // btnVoucher
             // 
@@ -178,7 +202,7 @@
             // 
             panel7.BackColor = Color.White;
             panel7.BackgroundImageLayout = ImageLayout.None;
-            panel7.Location = new Point(17, 600);
+            panel7.Location = new Point(17, 694);
             panel7.Margin = new Padding(3, 0, 3, 0);
             panel7.Name = "panel7";
             panel7.Size = new Size(192, 3);
@@ -198,9 +222,9 @@
             btnLogOut.ForeColor = Color.White;
             btnLogOut.Image = (Image)resources.GetObject("btnLogOut.Image");
             btnLogOut.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLogOut.Location = new Point(21, 637);
+            btnLogOut.Location = new Point(21, 731);
             btnLogOut.Name = "btnLogOut";
-            btnLogOut.Size = new Size(188, 50);
+            btnLogOut.Size = new Size(188, 307);
             btnLogOut.TabIndex = 20;
             btnLogOut.Text = "Đăng xuất";
             btnLogOut.TextColor = Color.White;
@@ -221,7 +245,7 @@
             btnStatistics.ForeColor = Color.White;
             btnStatistics.Image = (Image)resources.GetObject("btnStatistics.Image");
             btnStatistics.ImageAlign = ContentAlignment.MiddleLeft;
-            btnStatistics.Location = new Point(21, 521);
+            btnStatistics.Location = new Point(17, 593);
             btnStatistics.Name = "btnStatistics";
             btnStatistics.Size = new Size(188, 50);
             btnStatistics.TabIndex = 19;
@@ -244,7 +268,7 @@
             btnEmployee.ForeColor = Color.White;
             btnEmployee.Image = (Image)resources.GetObject("btnEmployee.Image");
             btnEmployee.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmployee.Location = new Point(21, 449);
+            btnEmployee.Location = new Point(17, 524);
             btnEmployee.Name = "btnEmployee";
             btnEmployee.Size = new Size(188, 50);
             btnEmployee.TabIndex = 18;
@@ -275,6 +299,7 @@
             btnOrder.TextColor = Color.White;
             btnOrder.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnOrder.UseVisualStyleBackColor = false;
+            btnOrder.Click += btnOrder_Click;
             // 
             // btnCreateOrder
             // 
@@ -374,7 +399,7 @@
             panel4.BackgroundImage = (Image)resources.GetObject("panel4.BackgroundImage");
             panel4.Location = new Point(230, 64);
             panel4.Name = "panel4";
-            panel4.Size = new Size(990, 638);
+            panel4.Size = new Size(990, 989);
             panel4.TabIndex = 0;
             // 
             // FormMenu
@@ -382,7 +407,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1220, 704);
+            ClientSize = new Size(1220, 1055);
             Controls.Add(panel4);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -421,5 +446,6 @@
         private CustomButton.VBButton btnVoucher;
         private Label lblPhanQuyen;
         private Label label2;
+        private CustomButton.VBButton btnKhachHang;
     }
 }

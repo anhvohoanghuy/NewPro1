@@ -33,6 +33,8 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel2 = new Panel();
+            label5 = new Label();
+            txtCompanyName = new TextBox();
             btnFillter = new CustomButton.VBButton();
             txtTo = new TextBox();
             txtFrom = new TextBox();
@@ -59,7 +61,7 @@
             vbButton2 = new CustomButton.VBButton();
             btnSua = new CustomButton.VBButton();
             btnThem = new CustomButton.VBButton();
-            vbButton1 = new CustomButton.VBButton();
+            btnSearch = new CustomButton.VBButton();
             txtTimKiem = new TextBox();
             label36 = new Label();
             label38 = new Label();
@@ -95,6 +97,8 @@
             // 
             panel2.Anchor = AnchorStyles.Left;
             panel2.BackColor = SystemColors.Control;
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(txtCompanyName);
             panel2.Controls.Add(btnFillter);
             panel2.Controls.Add(txtTo);
             panel2.Controls.Add(txtFrom);
@@ -119,7 +123,7 @@
             panel2.Controls.Add(vbButton2);
             panel2.Controls.Add(btnSua);
             panel2.Controls.Add(btnThem);
-            panel2.Controls.Add(vbButton1);
+            panel2.Controls.Add(btnSearch);
             panel2.Controls.Add(txtTimKiem);
             panel2.Controls.Add(label36);
             panel2.Controls.Add(label38);
@@ -145,6 +149,26 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1427, 373);
             panel2.TabIndex = 63;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Left;
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 11F);
+            label5.Location = new Point(240, 65);
+            label5.Name = "label5";
+            label5.Size = new Size(144, 25);
+            label5.TabIndex = 176;
+            label5.Text = "Company name";
+            // 
+            // txtCompanyName
+            // 
+            txtCompanyName.Anchor = AnchorStyles.Left;
+            txtCompanyName.Location = new Point(238, 93);
+            txtCompanyName.Name = "txtCompanyName";
+            txtCompanyName.ReadOnly = true;
+            txtCompanyName.Size = new Size(172, 27);
+            txtCompanyName.TabIndex = 175;
             // 
             // btnFillter
             // 
@@ -244,7 +268,7 @@
             // 
             // txtNameCpu
             // 
-            txtNameCpu.Location = new Point(750, 133);
+            txtNameCpu.Location = new Point(748, 121);
             txtNameCpu.Name = "txtNameCpu";
             txtNameCpu.ReadOnly = true;
             txtNameCpu.Size = new Size(174, 27);
@@ -255,7 +279,7 @@
             label43.Anchor = AnchorStyles.Left;
             label43.AutoSize = true;
             label43.Font = new Font("Segoe UI", 11F);
-            label43.Location = new Point(750, 184);
+            label43.Location = new Point(750, 171);
             label43.Name = "label43";
             label43.Size = new Size(129, 25);
             label43.TabIndex = 155;
@@ -264,7 +288,7 @@
             // txtManufacturer
             // 
             txtManufacturer.Anchor = AnchorStyles.Left;
-            txtManufacturer.Location = new Point(750, 210);
+            txtManufacturer.Location = new Point(750, 197);
             txtManufacturer.Name = "txtManufacturer";
             txtManufacturer.ReadOnly = true;
             txtManufacturer.Size = new Size(172, 27);
@@ -275,7 +299,7 @@
             label44.Anchor = AnchorStyles.Left;
             label44.AutoSize = true;
             label44.Font = new Font("Segoe UI", 11F);
-            label44.Location = new Point(752, 104);
+            label44.Location = new Point(750, 92);
             label44.Name = "label44";
             label44.Size = new Size(98, 25);
             label44.TabIndex = 156;
@@ -292,7 +316,7 @@
             btnImgLink.FlatAppearance.BorderSize = 0;
             btnImgLink.FlatStyle = FlatStyle.Flat;
             btnImgLink.ForeColor = Color.White;
-            btnImgLink.Location = new Point(28, 243);
+            btnImgLink.Location = new Point(29, 232);
             btnImgLink.Name = "btnImgLink";
             btnImgLink.Size = new Size(135, 40);
             btnImgLink.TabIndex = 91;
@@ -304,7 +328,7 @@
             // txtIdAccount
             // 
             txtIdAccount.Anchor = AnchorStyles.Left;
-            txtIdAccount.Location = new Point(488, 127);
+            txtIdAccount.Location = new Point(493, 121);
             txtIdAccount.Name = "txtIdAccount";
             txtIdAccount.Size = new Size(172, 27);
             txtIdAccount.TabIndex = 90;
@@ -361,6 +385,7 @@
             cbbIDCPU.Size = new Size(172, 28);
             cbbIDCPU.TabIndex = 87;
             cbbIDCPU.DropDown += cbbIDCPU_DropDown;
+            cbbIDCPU.Leave += cbbIdCpu_Leave;
             // 
             // cbbIDCompany
             // 
@@ -471,25 +496,25 @@
             btnThem.UseVisualStyleBackColor = false;
             btnThem.Click += btnThem_Click;
             // 
-            // vbButton1
+            // btnSearch
             // 
-            vbButton1.Anchor = AnchorStyles.Left;
-            vbButton1.BackColor = Color.White;
-            vbButton1.BackgroundColor = Color.White;
-            vbButton1.BorderColor = Color.White;
-            vbButton1.BorderRadius = 0;
-            vbButton1.BorderSize = 0;
-            vbButton1.FlatAppearance.BorderSize = 0;
-            vbButton1.FlatStyle = FlatStyle.Flat;
-            vbButton1.ForeColor = Color.White;
-            vbButton1.Image = Properties.Resources.search__1_3;
-            vbButton1.Location = new Point(518, 328);
-            vbButton1.Name = "vbButton1";
-            vbButton1.Size = new Size(72, 29);
-            vbButton1.TabIndex = 74;
-            vbButton1.TextColor = Color.White;
-            vbButton1.UseVisualStyleBackColor = false;
-            vbButton1.Click += vbButton1_Click;
+            btnSearch.Anchor = AnchorStyles.Left;
+            btnSearch.BackColor = Color.White;
+            btnSearch.BackgroundColor = Color.White;
+            btnSearch.BorderColor = Color.White;
+            btnSearch.BorderRadius = 0;
+            btnSearch.BorderSize = 0;
+            btnSearch.FlatAppearance.BorderSize = 0;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Image = Properties.Resources.search__1_3;
+            btnSearch.Location = new Point(518, 328);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(72, 29);
+            btnSearch.TabIndex = 74;
+            btnSearch.TextColor = Color.White;
+            btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += vbButton1_Click;
             // 
             // txtTimKiem
             // 
@@ -508,7 +533,7 @@
             label36.Anchor = AnchorStyles.Left;
             label36.AutoSize = true;
             label36.Font = new Font("Segoe UI", 11F);
-            label36.Location = new Point(488, 104);
+            label36.Location = new Point(493, 92);
             label36.Name = "label36";
             label36.Size = new Size(97, 25);
             label36.TabIndex = 41;
@@ -538,7 +563,7 @@
             label39.Anchor = AnchorStyles.Left;
             label39.AutoSize = true;
             label39.Font = new Font("Segoe UI", 11F);
-            label39.Location = new Point(488, 184);
+            label39.Location = new Point(493, 171);
             label39.Name = "label39";
             label39.Size = new Size(165, 25);
             label39.TabIndex = 37;
@@ -547,7 +572,7 @@
             // txtCameraResolution
             // 
             txtCameraResolution.Anchor = AnchorStyles.Left;
-            txtCameraResolution.Location = new Point(488, 210);
+            txtCameraResolution.Location = new Point(493, 197);
             txtCameraResolution.Name = "txtCameraResolution";
             txtCameraResolution.Size = new Size(172, 27);
             txtCameraResolution.TabIndex = 35;
@@ -557,7 +582,7 @@
             label40.Anchor = AnchorStyles.Left;
             label40.AutoSize = true;
             label40.Font = new Font("Segoe UI", 11F);
-            label40.Location = new Point(488, 2);
+            label40.Location = new Point(488, 6);
             label40.Name = "label40";
             label40.Size = new Size(111, 25);
             label40.TabIndex = 33;
@@ -614,7 +639,7 @@
             label45.Anchor = AnchorStyles.Left;
             label45.AutoSize = true;
             label45.Font = new Font("Segoe UI", 11F);
-            label45.Location = new Point(750, 2);
+            label45.Location = new Point(748, 6);
             label45.Name = "label45";
             label45.Size = new Size(66, 25);
             label45.TabIndex = 23;
@@ -625,7 +650,7 @@
             labelo.Anchor = AnchorStyles.Left;
             labelo.AutoSize = true;
             labelo.Font = new Font("Segoe UI", 11F);
-            labelo.Location = new Point(238, 129);
+            labelo.Location = new Point(240, 129);
             labelo.Name = "labelo";
             labelo.Size = new Size(49, 25);
             labelo.TabIndex = 21;
@@ -634,7 +659,7 @@
             // txtRam
             // 
             txtRam.Anchor = AnchorStyles.Left;
-            txtRam.Location = new Point(244, 151);
+            txtRam.Location = new Point(238, 157);
             txtRam.Name = "txtRam";
             txtRam.Size = new Size(172, 27);
             txtRam.TabIndex = 20;
@@ -644,7 +669,7 @@
             label47.Anchor = AnchorStyles.Left;
             label47.AutoSize = true;
             label47.Font = new Font("Segoe UI", 11F);
-            label47.Location = new Point(240, 2);
+            label47.Location = new Point(238, 6);
             label47.Name = "label47";
             label47.Size = new Size(110, 25);
             label47.TabIndex = 19;
@@ -655,7 +680,7 @@
             label48.Anchor = AnchorStyles.Left;
             label48.AutoSize = true;
             label48.Font = new Font("Segoe UI", 11F);
-            label48.Location = new Point(16, 104);
+            label48.Location = new Point(18, 92);
             label48.Name = "label48";
             label48.Size = new Size(128, 25);
             label48.TabIndex = 17;
@@ -664,7 +689,7 @@
             // txtProductName
             // 
             txtProductName.Anchor = AnchorStyles.Left;
-            txtProductName.Location = new Point(18, 127);
+            txtProductName.Location = new Point(18, 120);
             txtProductName.Name = "txtProductName";
             txtProductName.Size = new Size(172, 27);
             txtProductName.TabIndex = 16;
@@ -674,7 +699,7 @@
             label49.Anchor = AnchorStyles.Left;
             label49.AutoSize = true;
             label49.Font = new Font("Segoe UI", 11F);
-            label49.Location = new Point(16, 184);
+            label49.Location = new Point(18, 171);
             label49.Name = "label49";
             label49.Size = new Size(130, 25);
             label49.TabIndex = 17;
@@ -683,7 +708,7 @@
             // txtProductImage
             // 
             txtProductImage.Anchor = AnchorStyles.Left;
-            txtProductImage.Location = new Point(18, 210);
+            txtProductImage.Location = new Point(18, 199);
             txtProductImage.Name = "txtProductImage";
             txtProductImage.Size = new Size(172, 27);
             txtProductImage.TabIndex = 16;
@@ -693,7 +718,7 @@
             label50.Anchor = AnchorStyles.Left;
             label50.AutoSize = true;
             label50.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label50.Location = new Point(14, 2);
+            label50.Location = new Point(18, 17);
             label50.Name = "label50";
             label50.Size = new Size(92, 25);
             label50.TabIndex = 6;
@@ -797,7 +822,7 @@
         private CustomButton.VBButton vbButton2;
         private CustomButton.VBButton btnSua;
         private CustomButton.VBButton btnThem;
-        private CustomButton.VBButton vbButton1;
+        private CustomButton.VBButton btnSearch;
         private TextBox txtTimKiem;
         private Label label36;
         private Label label38;
@@ -845,5 +870,7 @@
         private Label label3;
         private Label label2;
         private ComboBox cbbFillter;
+        private Label label5;
+        private TextBox txtCompanyName;
     }
 }

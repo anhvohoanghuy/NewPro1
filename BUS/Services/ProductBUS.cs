@@ -17,7 +17,12 @@ namespace BUS.Services
         ProductColorDAL productColorDAL = new ProductColorDAL();
         public List<Product> GetAllProduct()
         {
-            return productDAL.GetAllProduct();
+            var list= productDAL.GetAllProduct();
+            return list;
+        }
+        public List<Product> SearchByID(string id)
+        {
+            return GetAllProduct().Where(c=>c.Idproduct.Contains(id)).ToList();
         }
         public Product GetProductByID(string id)
         {
@@ -78,25 +83,47 @@ namespace BUS.Services
             else
                 return false;
         }
-        public List<Product> GetProductsByName(string name)
+        public List<Product> GetProductByIdAccount(string idaccount)
         {
-            return productDAL.GetAllProduct().Where(c => c.ProductName.Contains(name)).ToList();
+            return GetAllProduct().Where(c => c.Idaccount== idaccount).ToList();
         }
-        public List<Product> GetProducstsByIDProductCompany(string idCompany)
+        public List<Product> GetProductByName(string name)
+        {
+            return GetAllProduct().Where(c => c.ProductName.ToLower().Contains(name.ToLower().Trim())).ToList();
+        }
+        public List<Product> GetProductByIDProductCompany(string idCompany)
         {
             return productDAL.GetAllProduct().Where(c => c.Idcompany == idCompany).ToList();
         }
-        public List<Product> GetProductsByCPU(string cpu)
+        public List<Product> GetProducstByCompanyName(string companyName)
         {
-            return productDAL.GetAllProduct().Where(c => c.IdcpuNavigation.NameCpu == cpu).ToList();
+            var list = GetAllProduct();
+            var result = list.Where(c => c.IdcompanyNavigation.CompanyName.ToLower().Contains(companyName.ToLower().Trim())).ToList();
+            return result;
         }
-        public List<Product> GetProductByRameSize(int from, int to)
+        public List<Product> GetProductByIdCPU(string idCpu)
+        {
+            return productDAL.GetAllProduct().Where(c => c.Idcpu == idCpu).ToList();
+        }
+        public List<Product> GetProductByCPUName(string Cpu)
+        {
+            return productDAL.GetAllProduct().Where(c => c.IdcpuNavigation.NameCpu.ToLower().Contains(Cpu.ToLower().Trim())).ToList();
+        }
+        public List<Product> GetProductByRameSize(double from, double to)
         {
             return productDAL.GetAllProduct().Where(c => c.Ram <= to && c.Ram >= from).ToList();
         }
-        public List<Product> GetProductByScreenSize(int from, int to)
+        public List<Product> GetProductByScreenSize(double from, double to)
         {
             return productDAL.GetAllProduct().Where(c => c.ScreenSize <= to && c.ScreenSize >= from).ToList();
+        }
+        public List<Product> GetProductByPin(double from, double to)
+        {
+            return productDAL.GetAllProduct().Where(c => c.Pin <= to && c.Pin >= from).ToList();
+        }
+        public List<Product> GetProductByRefreshRate(double from, double to)
+        {
+            return productDAL.GetAllProduct().Where(c => c.RefreshRate <= to && c.RefreshRate >= from).ToList();
         }
         public List<ProductColor> GetAllColorOfProduct(Product current)
         {
@@ -128,6 +155,24 @@ namespace BUS.Services
                 listIDProduct.Add(product.Idproduct);
             }
             return listIDProduct;
+        }
+        public List<Product> FilterProduct(int sw,double from,double to)
+        {
+            var listProduct = GetAllProduct();
+            switch (sw)
+            {
+                case 0:
+                    return GetProductByRameSize(from, to);
+                case 1:
+                    return GetProductByPin(from, to);
+                case 2:
+                    return GetProductByRefreshRate(from, to);
+                case 3:
+                    return GetProductByScreenSize(from, to);
+                default:
+                    return null;
+                    break;
+            }
         }
     }
 }

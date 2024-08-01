@@ -55,7 +55,7 @@
             btnSua = new CustomButton.VBButton();
             btnThem = new CustomButton.VBButton();
             vbButton1 = new CustomButton.VBButton();
-            textBox7 = new TextBox();
+            txtTimKiem = new TextBox();
             label6 = new Label();
             label27 = new Label();
             label28 = new Label();
@@ -107,7 +107,7 @@
             groupBox1.Controls.Add(btnSua);
             groupBox1.Controls.Add(btnThem);
             groupBox1.Controls.Add(vbButton1);
-            groupBox1.Controls.Add(textBox7);
+            groupBox1.Controls.Add(txtTimKiem);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label27);
             groupBox1.Controls.Add(label28);
@@ -152,6 +152,7 @@
             btnFillter.Text = "Lọc";
             btnFillter.TextColor = Color.White;
             btnFillter.UseVisualStyleBackColor = false;
+            btnFillter.Click += btnFillter_Click;
             // 
             // txtTo
             // 
@@ -277,6 +278,7 @@
             txtColorName.ReadOnly = true;
             txtColorName.Size = new Size(172, 27);
             txtColorName.TabIndex = 144;
+            txtColorName.TextChanged += cbbIdColor_Leave;
             // 
             // cbbIdProduct
             // 
@@ -341,6 +343,7 @@
             vbButton2.TabIndex = 136;
             vbButton2.TextColor = Color.White;
             vbButton2.UseVisualStyleBackColor = false;
+            vbButton2.Click += vbButton2_Click;
             // 
             // btnSua
             // 
@@ -402,17 +405,17 @@
             vbButton1.UseVisualStyleBackColor = false;
             vbButton1.Click += vbButton1_Click;
             // 
-            // textBox7
+            // txtTimKiem
             // 
-            textBox7.Anchor = AnchorStyles.Left;
-            textBox7.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox7.ForeColor = Color.Gray;
-            textBox7.Location = new Point(208, 355);
-            textBox7.Multiline = true;
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(378, 36);
-            textBox7.TabIndex = 131;
-            textBox7.Text = "Tìm kiếm";
+            txtTimKiem.Anchor = AnchorStyles.Left;
+            txtTimKiem.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtTimKiem.ForeColor = Color.Gray;
+            txtTimKiem.Location = new Point(208, 355);
+            txtTimKiem.Multiline = true;
+            txtTimKiem.Name = "txtTimKiem";
+            txtTimKiem.Size = new Size(378, 36);
+            txtTimKiem.TabIndex = 131;
+            txtTimKiem.Text = "Tìm kiếm";
             // 
             // label6
             // 
@@ -704,7 +707,7 @@
         private CustomButton.VBButton btnSua;
         private CustomButton.VBButton btnThem;
         private CustomButton.VBButton vbButton1;
-        private TextBox textBox7;
+        private TextBox txtTimKiem;
         private Label label6;
         private Label label27;
         private Label label28;

@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,10 @@ namespace DAL.Respositories
     {
         Pro1QuanLiDienThoaiFinalContext db = new Pro1QuanLiDienThoaiFinalContext();
         public List<ProductDetail> GetAllProductDetail()
-        { return db.ProductDetails.ToList(); }
+        { 
+            var result = db.ProductDetails.Include(c=>c.IdcolorNavigation).ToList();
+            return result; 
+        }
         public bool AddNewProductDetail(ProductDetail productDetail)
         {
             try

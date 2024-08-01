@@ -34,13 +34,13 @@ namespace DuAn1
         }
         public void ChangeIdProductDetail()
         {
-            string idProduct = cbbIdProduct.SelectedItem.ToString();
-            string colorName="";
+            string idProduct = cbbIdProduct.Text;
+            string colorName = "";
             string storage;
             if (cbbIdColor.SelectedIndex != -1)
                 colorName = txtColorName.Text;
             storage = txtStorage.Text;
-            txtIdProductDetail.Text = idProduct+"-"+colorName+"-"+storage;
+            txtIdProductDetail.Text = idProduct + "-" + colorName + "-" + storage;
         }
         public string OpenFile(string fillter)
         {
@@ -114,7 +114,7 @@ namespace DuAn1
                 return true;
             return false;
         }
-        public bool CheckNullInProductDetail(params string[] strings)
+        public bool CheckNull(params string[] strings)
         {
             foreach (string s in strings)
             {
@@ -123,16 +123,41 @@ namespace DuAn1
             }
             return false;
         }
-        public string CheckIsNumberProductDetail(string storage, string price, string warrantyPeriod, string inventory)
+        public string CheckIsDouble(params TextBox[] textBoxs)
         {
-            if (!int.TryParse(storage, out _))
-                return "Storage phải là số nguyên";
-            else if (!decimal.TryParse(price, out _))
-                return "Price phải là số";
-            else if (!int.TryParse(warrantyPeriod, out _))
-                return "Warranty period phải là số nguyên";
-            else if (!int.TryParse(inventory, out _))
-                return "Inventory phải là số nguyên";
+            foreach (var textBox in textBoxs)
+            {
+                if (string.IsNullOrEmpty(textBox.Text))
+                    return null;
+                else if (!double.TryParse(textBox.Text, out _))
+                    return $"{textBox.Name} phải là số";
+                else if (double.Parse(textBox.Text) < 0)
+                    return $"{textBox.Name} phải lớn hơn 0";
+            }
+            return null;
+        }
+        public string CheckIsInt(params TextBox[] textBoxs)
+        {
+            foreach (var textBox in textBoxs)
+            {
+                if (string.IsNullOrEmpty(textBox.Text))
+                    return null;
+                else if (!int.TryParse(textBox.Text, out _))
+                    return $"{textBox.Name} phải là số nguyên";
+                else if (int.Parse(textBox.Text) < 0)
+                    return $"{textBox.Name} phải lớn hơn 0";
+                else if (int.Parse(textBox.Text) != float.Parse(textBox.Text))
+                    return $"{textBox.Name} phải là số nguyên";
+            }
+            return null;
+        }
+        public string CheckIsNumberProductDetail(TextBox storage, TextBox price, TextBox warrantyPeriod, TextBox inventory)
+        {
+            var check = CheckIsInt(storage, warrantyPeriod, inventory);
+            var check2 = CheckIsDouble(price);
+            if (check != null)
+                return check;
+            if (check2 != null) return check2;
             return null;
         }
         public void LoadCbbWhenDropDown(ComboBox currentCbb, List<string> originList)
@@ -161,11 +186,11 @@ namespace DuAn1
                 var warrantyPeriod = txtWarrantyPeriod.Text;
                 var inventory = txtInventory.Text;
                 var idAccount = txtIdAccount.Text;
-                if (!CheckNullInProductDetail(idProduct, idProductDetail, idColor, storage, price, warrantyPeriod, inventory, idAccount))
+                if (!CheckNull(idProduct, idProductDetail, idColor, storage, price, warrantyPeriod, inventory, idAccount))
                 {
                     if (CheckProductDetailIfExists(cbbIdProduct.SelectedItem.ToString()) == false)
                     {
-                        var check = CheckIsNumberProductDetail(storage, price, warrantyPeriod, inventory);
+                        var check = CheckIsNumberProductDetail(txtStorage, txtPrice, txtWarrantyPeriod, txtInventory);
                         if (check == null)
                         {
                             if (productDetailBUS.AddNewProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod), int.Parse(inventory), idAccount))
@@ -218,11 +243,11 @@ namespace DuAn1
             var warrantyPeriod = txtWarrantyPeriod.Text;
             var inventory = txtInventory.Text;
             var idAccount = txtIdAccount.Text;
-            if (!CheckNullInProductDetail(idProduct, idProductDetail, idColor, storage, price, warrantyPeriod, inventory, idAccount))
+            if (!CheckNull(idProduct, idProductDetail, idColor, storage, price, warrantyPeriod, inventory, idAccount))
             {
                 if (CheckProductDetailIfExists(cbbIdProduct.Text) == false)
                 {
-                    var check = CheckIsNumberProductDetail(storage, price, warrantyPeriod, inventory);
+                    var check = CheckIsNumberProductDetail(txtStorage, txtPrice, txtWarrantyPeriod, txtInventory);
                     if (check == null)
                     {
                         var productDetail = productDetailBUS.GetProductDetailByID(txtIdProductDetail.Text);
@@ -273,15 +298,16 @@ namespace DuAn1
             cbbIdProduct.Text = idProduct;
             LoadDataGridView();
             ShowOnDataGridView(productDetailBUS.GetAllProductDetail());
-            List<string> listSearch = new List<string>() { "By name", "By ID", "By ID account", "By account name", "By ID CPU", "By CPU name" };
+            List<string> listSearch = new List<string>() { "By id productdetail", "By id product", "By ID account", "By id color", "By color name", "By id promotion" };
             LoadCbbWhenDropDown(cbbTimKiem, listSearch);
-            List<string> listFillter = new List<string>() { "Ram", "Pin", "Screen size" };
+            List<string> listFillter = new List<string>() { "Storage", "Price", "Warranty period", "Inventory" };
             LoadCbbWhenDropDown(cbbFillter, listFillter);
         }
 
         private void vbButton1_Click(object sender, EventArgs e)
         {
-
+            List<ProductDetail> productDetails = new List<ProductDetail>();
+            productDetails = productDetailBUS.Search(cbbTimKiem.SelectedIndex, txtTimKiem.Text);
         }
         private void cbbIdColor_Leave(object sender, EventArgs e)
         {
@@ -354,6 +380,41 @@ namespace DuAn1
         private void cbbIdProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             ChangeIdProductDetail();
+        }
+
+        private void btnFillter_Click(object sender, EventArgs e)
+        {
+            double from = -1;
+            double to = int.MaxValue;
+            if (CheckNull(txtFrom.Text) && CheckNull(txtTo.Text))
+            {
+                MessageBox.Show("Nhập ít nhất một trong hai giá trị");
+            }
+            else
+            {
+                var check = CheckIsDouble(txtFrom, txtTo);
+                if (check == null)
+                {
+                    if (!CheckNull(txtFrom.Text))
+                        from = double.Parse(txtFrom.Text);
+                    if (!CheckNull(txtTo.Text))
+                        to = double.Parse(txtTo.Text);
+                    if (cbbFillter.SelectedIndex > -1)
+                    {
+                        var result = productDetailBUS.Filter(cbbFillter.SelectedIndex, from, to);
+                        ShowOnDataGridView(result);
+                    }
+                    else
+                        MessageBox.Show("Chọn một giá trị từ combobox filter");
+                }
+                else
+                    MessageBox.Show(check);
+            }
+        }
+
+        private void vbButton2_Click(object sender, EventArgs e)
+        {
+            ResetProductDetailForm();
         }
     }
 }

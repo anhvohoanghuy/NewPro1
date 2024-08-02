@@ -11,6 +11,7 @@ namespace BUS
     {
         ProductBUS productBUS = new ProductBUS();
         ProductCompanyBUS productCompanyBUS = new ProductCompanyBUS();
+        ImeiBUS imeiBUS = new ImeiBUS();
         public bool CheckProductIfExists(string productId)
         {
             var check = productBUS.GetProductByID(productId);

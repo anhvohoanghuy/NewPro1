@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.Contracts;
 
 namespace DAL.Respositories
@@ -12,7 +13,8 @@ namespace DAL.Respositories
         }
         public List<Product> GetAllProduct()
         {
-            return db.Products.ToList();
+            var result = db.Products.Include(c => c.IdcompanyNavigation).Include(c=>c.IdcpuNavigation).ToList();
+            return result;
         }
         public bool AddNewProduct(Product newProduct)
         {
@@ -69,6 +71,5 @@ namespace DAL.Respositories
                 return false;
             }
         }
-        
     }
 }

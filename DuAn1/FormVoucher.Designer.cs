@@ -33,51 +33,49 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
-            vbButton1 = new CustomButton.VBButton();
-            textBox7 = new TextBox();
+            lblIDAccount = new Label();
+            txtIdAccount = new TextBox();
+            btnTimKiem = new CustomButton.VBButton();
+            txtTimKiem = new TextBox();
             vbButton2 = new CustomButton.VBButton();
             btnXoa = new CustomButton.VBButton();
             btnSua = new CustomButton.VBButton();
             btnThem = new CustomButton.VBButton();
-            dateTimePicker2 = new DateTimePicker();
-            dateTimePicker1 = new DateTimePicker();
+            dtpEndTime = new DateTimePicker();
+            dtpStarTime = new DateTimePicker();
             label7 = new Label();
-            textBox5 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            txtIdVoucher = new TextBox();
+            txtDiscount = new TextBox();
+            txtVoucherName = new TextBox();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
-            dataGridView1 = new DataGridView();
-            EmployeeId = new DataGridViewTextBoxColumn();
-            Username = new DataGridViewTextBoxColumn();
-            Password = new DataGridViewTextBoxColumn();
-            name = new DataGridViewTextBoxColumn();
-            HomeTown = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
+            dgvListVoucher = new DataGridView();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvListVoucher).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(vbButton1);
-            panel1.Controls.Add(textBox7);
+            panel1.Controls.Add(lblIDAccount);
+            panel1.Controls.Add(txtIdAccount);
+            panel1.Controls.Add(btnTimKiem);
+            panel1.Controls.Add(txtTimKiem);
             panel1.Controls.Add(vbButton2);
             panel1.Controls.Add(btnXoa);
             panel1.Controls.Add(btnSua);
             panel1.Controls.Add(btnThem);
-            panel1.Controls.Add(dateTimePicker2);
-            panel1.Controls.Add(dateTimePicker1);
+            panel1.Controls.Add(dtpEndTime);
+            panel1.Controls.Add(dtpStarTime);
             panel1.Controls.Add(label7);
-            panel1.Controls.Add(textBox5);
-            panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(txtIdVoucher);
+            panel1.Controls.Add(txtDiscount);
+            panel1.Controls.Add(txtVoucherName);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
@@ -88,36 +86,55 @@
             panel1.Size = new Size(1127, 255);
             panel1.TabIndex = 0;
             // 
-            // vbButton1
+            // lblIDAccount
             // 
-            vbButton1.Anchor = AnchorStyles.Left;
-            vbButton1.BackColor = Color.White;
-            vbButton1.BackgroundColor = Color.White;
-            vbButton1.BorderColor = Color.White;
-            vbButton1.BorderRadius = 0;
-            vbButton1.BorderSize = 0;
-            vbButton1.FlatAppearance.BorderSize = 0;
-            vbButton1.FlatStyle = FlatStyle.Flat;
-            vbButton1.ForeColor = Color.White;
-            vbButton1.Image = Properties.Resources.search__1_3;
-            vbButton1.Location = new Point(355, 196);
-            vbButton1.Name = "vbButton1";
-            vbButton1.Size = new Size(72, 29);
-            vbButton1.TabIndex = 81;
-            vbButton1.TextColor = Color.White;
-            vbButton1.UseVisualStyleBackColor = false;
+            lblIDAccount.AutoSize = true;
+            lblIDAccount.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblIDAccount.Location = new Point(607, 94);
+            lblIDAccount.Name = "lblIDAccount";
+            lblIDAccount.Size = new Size(95, 25);
+            lblIDAccount.TabIndex = 83;
+            lblIDAccount.Text = "Id account";
             // 
-            // textBox7
+            // txtIdAccount
             // 
-            textBox7.Anchor = AnchorStyles.Left;
-            textBox7.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox7.ForeColor = Color.Gray;
-            textBox7.Location = new Point(34, 195);
-            textBox7.Multiline = true;
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(403, 36);
-            textBox7.TabIndex = 80;
-            textBox7.Text = "Tìm kiếm";
+            txtIdAccount.Location = new Point(607, 124);
+            txtIdAccount.Name = "txtIdAccount";
+            txtIdAccount.ReadOnly = true;
+            txtIdAccount.Size = new Size(137, 31);
+            txtIdAccount.TabIndex = 82;
+            // 
+            // btnTimKiem
+            // 
+            btnTimKiem.Anchor = AnchorStyles.Left;
+            btnTimKiem.BackColor = Color.White;
+            btnTimKiem.BackgroundColor = Color.White;
+            btnTimKiem.BorderColor = Color.White;
+            btnTimKiem.BorderRadius = 0;
+            btnTimKiem.BorderSize = 0;
+            btnTimKiem.FlatAppearance.BorderSize = 0;
+            btnTimKiem.FlatStyle = FlatStyle.Flat;
+            btnTimKiem.ForeColor = Color.White;
+            btnTimKiem.Image = Properties.Resources.search__1_3;
+            btnTimKiem.Location = new Point(355, 196);
+            btnTimKiem.Name = "btnTimKiem";
+            btnTimKiem.Size = new Size(72, 29);
+            btnTimKiem.TabIndex = 81;
+            btnTimKiem.TextColor = Color.White;
+            btnTimKiem.UseVisualStyleBackColor = false;
+            btnTimKiem.Click += btnTimKiem_Click;
+            // 
+            // txtTimKiem
+            // 
+            txtTimKiem.Anchor = AnchorStyles.Left;
+            txtTimKiem.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtTimKiem.ForeColor = Color.Gray;
+            txtTimKiem.Location = new Point(34, 195);
+            txtTimKiem.Multiline = true;
+            txtTimKiem.Name = "txtTimKiem";
+            txtTimKiem.Size = new Size(403, 36);
+            txtTimKiem.TabIndex = 80;
+            txtTimKiem.Text = "Tìm kiếm";
             // 
             // vbButton2
             // 
@@ -130,12 +147,13 @@
             vbButton2.FlatStyle = FlatStyle.Flat;
             vbButton2.ForeColor = Color.White;
             vbButton2.Image = Properties.Resources.reset__1_;
-            vbButton2.Location = new Point(837, 185);
+            vbButton2.Location = new Point(947, 185);
             vbButton2.Name = "vbButton2";
             vbButton2.Size = new Size(131, 40);
             vbButton2.TabIndex = 79;
             vbButton2.TextColor = Color.White;
             vbButton2.UseVisualStyleBackColor = false;
+            vbButton2.Click += vbButton2_Click;
             // 
             // btnXoa
             // 
@@ -147,7 +165,7 @@
             btnXoa.FlatAppearance.BorderSize = 0;
             btnXoa.FlatStyle = FlatStyle.Flat;
             btnXoa.ForeColor = Color.White;
-            btnXoa.Location = new Point(837, 124);
+            btnXoa.Location = new Point(947, 124);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(131, 40);
             btnXoa.TabIndex = 78;
@@ -165,13 +183,14 @@
             btnSua.FlatAppearance.BorderSize = 0;
             btnSua.FlatStyle = FlatStyle.Flat;
             btnSua.ForeColor = Color.White;
-            btnSua.Location = new Point(837, 70);
+            btnSua.Location = new Point(947, 70);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(131, 40);
             btnSua.TabIndex = 77;
             btnSua.Text = "Sửa";
             btnSua.TextColor = Color.White;
             btnSua.UseVisualStyleBackColor = false;
+            btnSua.Click += btnSua_Click;
             // 
             // btnThem
             // 
@@ -183,27 +202,28 @@
             btnThem.FlatAppearance.BorderSize = 0;
             btnThem.FlatStyle = FlatStyle.Flat;
             btnThem.ForeColor = Color.White;
-            btnThem.Location = new Point(837, 14);
+            btnThem.Location = new Point(947, 14);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(131, 40);
             btnThem.TabIndex = 76;
             btnThem.Text = "Thêm";
             btnThem.TextColor = Color.White;
             btnThem.UseVisualStyleBackColor = false;
+            btnThem.Click += btnThem_Click;
             // 
-            // dateTimePicker2
+            // dtpEndTime
             // 
-            dateTimePicker2.Location = new Point(280, 127);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(250, 31);
-            dateTimePicker2.TabIndex = 15;
+            dtpEndTime.Location = new Point(280, 127);
+            dtpEndTime.Name = "dtpEndTime";
+            dtpEndTime.Size = new Size(250, 31);
+            dtpEndTime.TabIndex = 15;
             // 
-            // dateTimePicker1
+            // dtpStarTime
             // 
-            dateTimePicker1.Location = new Point(280, 50);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(250, 31);
-            dateTimePicker1.TabIndex = 14;
+            dtpStarTime.Location = new Point(280, 50);
+            dtpStarTime.Name = "dtpStarTime";
+            dtpStarTime.Size = new Size(250, 31);
+            dtpStarTime.TabIndex = 14;
             // 
             // label7
             // 
@@ -215,26 +235,26 @@
             label7.TabIndex = 13;
             label7.Text = "Id voucher";
             // 
-            // textBox5
+            // txtIdVoucher
             // 
-            textBox5.Location = new Point(607, 52);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(137, 31);
-            textBox5.TabIndex = 10;
+            txtIdVoucher.Location = new Point(607, 52);
+            txtIdVoucher.Name = "txtIdVoucher";
+            txtIdVoucher.Size = new Size(137, 31);
+            txtIdVoucher.TabIndex = 10;
             // 
-            // textBox2
+            // txtDiscount
             // 
-            textBox2.Location = new Point(34, 127);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(158, 31);
-            textBox2.TabIndex = 7;
+            txtDiscount.Location = new Point(34, 127);
+            txtDiscount.Name = "txtDiscount";
+            txtDiscount.Size = new Size(158, 31);
+            txtDiscount.TabIndex = 7;
             // 
-            // textBox1
+            // txtVoucherName
             // 
-            textBox1.Location = new Point(34, 50);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(158, 31);
-            textBox1.TabIndex = 6;
+            txtVoucherName.Location = new Point(34, 50);
+            txtVoucherName.Name = "txtVoucherName";
+            txtVoucherName.Size = new Size(158, 31);
+            txtVoucherName.TabIndex = 6;
             // 
             // label4
             // 
@@ -286,7 +306,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(dataGridView1);
+            groupBox2.Controls.Add(dgvListVoucher);
             groupBox2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(179, 398);
             groupBox2.Name = "groupBox2";
@@ -295,13 +315,13 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách Voucher";
             // 
-            // dataGridView1
+            // dgvListVoucher
             // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = SystemColors.ButtonFace;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvListVoucher.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvListVoucher.BackgroundColor = SystemColors.ButtonFace;
+            dgvListVoucher.BorderStyle = BorderStyle.None;
+            dgvListVoucher.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            dgvListVoucher.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.MediumSlateBlue;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -309,9 +329,8 @@
             dataGridViewCellStyle1.SelectionBackColor = Color.MediumPurple;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { EmployeeId, Username, Password, name, HomeTown, Email });
+            dgvListVoucher.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvListVoucher.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -319,13 +338,13 @@
             dataGridViewCellStyle2.SelectionBackColor = Color.MediumPurple;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.GridColor = Color.MediumSlateBlue;
-            dataGridView1.Location = new Point(3, 27);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
+            dgvListVoucher.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvListVoucher.Dock = DockStyle.Fill;
+            dgvListVoucher.EnableHeadersVisualStyles = false;
+            dgvListVoucher.GridColor = Color.MediumSlateBlue;
+            dgvListVoucher.Location = new Point(3, 27);
+            dgvListVoucher.Name = "dgvListVoucher";
+            dgvListVoucher.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -333,57 +352,16 @@
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 62;
+            dgvListVoucher.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvListVoucher.RowHeadersVisible = false;
+            dgvListVoucher.RowHeadersWidth = 62;
             dataGridViewCellStyle4.ForeColor = Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = SystemColors.HighlightText;
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1175, 320);
-            dataGridView1.TabIndex = 1;
-            // 
-            // EmployeeId
-            // 
-            EmployeeId.HeaderText = "Employee Id";
-            EmployeeId.MinimumWidth = 6;
-            EmployeeId.Name = "EmployeeId";
-            EmployeeId.ReadOnly = true;
-            // 
-            // Username
-            // 
-            Username.HeaderText = "Username";
-            Username.MinimumWidth = 6;
-            Username.Name = "Username";
-            Username.ReadOnly = true;
-            // 
-            // Password
-            // 
-            Password.HeaderText = "Password";
-            Password.MinimumWidth = 6;
-            Password.Name = "Password";
-            Password.ReadOnly = true;
-            // 
-            // name
-            // 
-            name.HeaderText = "Employee name";
-            name.MinimumWidth = 6;
-            name.Name = "name";
-            name.ReadOnly = true;
-            // 
-            // HomeTown
-            // 
-            HomeTown.HeaderText = "hometown";
-            HomeTown.MinimumWidth = 6;
-            HomeTown.Name = "HomeTown";
-            HomeTown.ReadOnly = true;
-            // 
-            // Email
-            // 
-            Email.HeaderText = "Email";
-            Email.MinimumWidth = 6;
-            Email.Name = "Email";
-            Email.ReadOnly = true;
+            dgvListVoucher.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dgvListVoucher.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvListVoucher.Size = new Size(1175, 320);
+            dgvListVoucher.TabIndex = 1;
+            dgvListVoucher.CellClick += dgvListVoucher_CellClick;
             // 
             // FormVoucher
             // 
@@ -394,26 +372,27 @@
             Controls.Add(groupBox1);
             Name = "FormVoucher";
             Text = "FormVoucher";
+            Load += FormVoucher_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvListVoucher).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private TextBox textBox5;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txtIdVoucher;
+        private TextBox txtDiscount;
+        private TextBox txtVoucherName;
         private Label label4;
         private Label label3;
         private Label label2;
         private Label label1;
-        private DateTimePicker dateTimePicker2;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtpEndTime;
+        private DateTimePicker dtpStarTime;
         private Label label7;
         private CustomButton.VBButton btnThem;
         private CustomButton.VBButton btnSua;
@@ -421,14 +400,10 @@
         private CustomButton.VBButton vbButton2;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private TextBox textBox7;
-        private CustomButton.VBButton vbButton1;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn EmployeeId;
-        private DataGridViewTextBoxColumn Username;
-        private DataGridViewTextBoxColumn Password;
-        private DataGridViewTextBoxColumn name;
-        private DataGridViewTextBoxColumn HomeTown;
-        private DataGridViewTextBoxColumn Email;
+        private TextBox txtTimKiem;
+        private CustomButton.VBButton btnTimKiem;
+        private DataGridView dgvListVoucher;
+        private Label lblIDAccount;
+        private TextBox txtIdAccount;
     }
 }

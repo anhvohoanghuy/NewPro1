@@ -25,6 +25,10 @@ namespace BUS.Services
             }
             return listIDAccount;
         }
+        public bool CheckAccountExist(string idAccount)
+        {
+            return GetAllIDAccount().Contains(idAccount);
+        }
         public bool AddNewAccount(string idAccount, string passAccount, string accountName, string email, int accountLevel, bool accountStaus)
         {
             Account account = new Account()

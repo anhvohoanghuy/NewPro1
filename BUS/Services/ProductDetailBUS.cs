@@ -29,7 +29,7 @@ namespace BUS.Services
                 Idcolor = idColor,
                 Storage = storage,
                 Price = price,
-                Idpromotion = idPromotion,
+                Idpromotion = idPromotion==null?null:idPromotion,
                 WarrantyPeriod = wrrantyPeriod,
                 Inventory = inventory,
                 Idaccount = idAccount
@@ -58,9 +58,9 @@ namespace BUS.Services
             else
                 return false;
         }
-        public ProductDetail GetProductDetailByIdProductStorageColor(string IdProduct, int storage,string IdColor)
+        public List<ProductDetail> GetProductDetailByIdColor(string IdColor)
         {
-            return productDetailDAL.GetAllProductDetail().FirstOrDefault(c => c.Idproduct == IdProduct && c.Storage == storage && c.Idcolor == IdColor);
+            return productDetailDAL.GetAllProductDetail().Where(c => c.Idcolor.ToLower().Contains(IdColor.ToLower())).ToList();
         }
         public int GetInventoryOfProductDetail(ProductDetail productDetail)
         {
@@ -77,6 +77,72 @@ namespace BUS.Services
         public ProductDetail GetProductDetailByID(string idProductDetail)
         {
             return GetAllProductDetail().FirstOrDefault(c => c.IdproductDetails == idProductDetail);
+        }
+        public List<ProductDetail> SearchByIdProductDetail(string id)
+        {
+            return GetAllProductDetail().Where(c => c.IdproductDetails.ToLower().Contains(id.ToLower())).ToList();
+        }
+        public List<ProductDetail> SearchByIDProduct(string id)
+        {
+            return GetAllProductDetail().Where(c => c.Idproduct.ToLower().Contains(id.ToLower())).ToList();
+        }
+        public List<ProductDetail> SearchByColorName(string colorName)
+        {
+            return GetAllProductDetail().Where(c => c.IdcolorNavigation.ColorName.ToLower().Contains(colorName.ToLower())).ToList();
+        }
+        public List<ProductDetail> SearchByIdPromotion(string idPromotion)
+        {
+            return GetAllProductDetail().Where(c => c.Idpromotion.ToLower().Contains(idPromotion.ToLower())).ToList();
+        }
+        public List<ProductDetail> FillterByStorage(double from, double to)
+        {
+            return GetAllProductDetail().Where(c => c.Storage >= from && c.Storage <= to).ToList();
+        }
+        public List<ProductDetail> FillterByPrice(double from, double to)
+        {
+            return GetAllProductDetail().Where(c => c.Price >= (decimal)from && c.Price <= (decimal)to).ToList();
+        }
+        public List<ProductDetail> FillterByWarrantyPeriod(double from, double to)
+        {
+            return GetAllProductDetail().Where(c => c.WarrantyPeriod >= from && c.WarrantyPeriod <= to).ToList();
+        }
+        public List<ProductDetail> FillterByInventory(double from, double to)
+        {
+            return GetAllProductDetail().Where(c => c.Inventory >= from && c.Inventory <= to).ToList();
+        }
+        public List<ProductDetail> Search(int sw, string key)
+        {
+            switch (sw)
+            {
+                case 0:
+                    return SearchByIdProductDetail(key);
+                case 1:
+                    return SearchByIDProduct(key);
+                case 2:
+                    return GetProductDetailByIdColor(key);
+                case 3:
+                    return SearchByColorName(key);
+                case 4:
+                    return SearchByIdPromotion(key);
+                default:
+                    return null;
+            }
+        }
+        public List<ProductDetail> Filter(int sw,double from,double to)
+        {
+            switch (sw)
+            {
+                case 0:
+                    return FillterByStorage(from, to);
+                case 1:
+                    return FillterByPrice(from, to);
+                case 2:
+                    return FillterByWarrantyPeriod(from, to);
+                case 3:
+                    return FillterByInventory(from, to);
+                default:
+                    return null;
+            }
         }
     }
 }

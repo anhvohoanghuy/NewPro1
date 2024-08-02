@@ -48,6 +48,20 @@ namespace DuAn1
             dgvListProduct.Columns.Add("ProductStatus", "Product status");
             dgvListProduct.RowTemplate.Height = 100;
         }
+        public string OpenFile(string fillter)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Chọn một file";
+            openFileDialog.Filter = fillter;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+                MessageBox.Show($"Đường dẫn file đã chọn: {filePath}");
+                return filePath;
+            }
+            return null;
+        }
         public bool CheckCbb(params ComboBox[] cbbs)
         {
             foreach (ComboBox cbb in cbbs)
@@ -72,11 +86,17 @@ namespace DuAn1
                 }
                 catch (Exception)
                 {
-                    System.Net.WebRequest request = System.Net.WebRequest.Create("https://cdn2.fptshop.com.vn/unsafe/180x0/filters:quality(60)/2023_10_30_638342502751589917_ip-15-pro-max-dd-bh-2-nam.jpg");
-                    System.Net.WebResponse response = request.GetResponse();
-                    System.IO.Stream responseStream = response.GetResponseStream();
-                    Bitmap img = new Bitmap(responseStream);
-                    dgvListProduct.Rows.Add(product.Idproduct, img, product.ProductName, product.Idcompany, product.Ram, product.Idcpu, product.ScreenSize, product.ScreenResolution, product.RefreshRate, product.CameraResolution, product.Pin, product.Idaccount, product.ProductStatus);
+                    try
+                    {
+                        Bitmap img = new Bitmap(product.ProductImage);
+                        dgvListProduct.Rows.Add(product.Idproduct, img, product.ProductName, product.Idcompany, product.Ram, product.Idcpu, product.ScreenSize, product.ScreenResolution, product.RefreshRate, product.CameraResolution, product.Pin, product.Idaccount, product.ProductStatus);
+                    }
+                    catch (Exception)
+                    {
+                        var defaultImg = "C:\\Users\\chinh\\Downloads\\fpt.jpg";
+                        Bitmap img = new Bitmap(defaultImg);
+                        dgvListProduct.Rows.Add(product.Idproduct, img, product.ProductName, product.Idcompany, product.Ram, product.Idcpu, product.ScreenSize, product.ScreenResolution, product.RefreshRate, product.CameraResolution, product.Pin, product.Idaccount, product.ProductStatus);
+                    }
                 }
 
             }
@@ -98,41 +118,72 @@ namespace DuAn1
             }
             return false;
         }
+        public string CheckIsInt(params TextBox[] textBoxs)
+        {
+            foreach (var textBox in textBoxs)
+            {
+                if (string.IsNullOrEmpty(textBox.Text))
+                    return null;
+                else if (!int.TryParse(textBox.Text, out _))
+                    return $"{textBox.Name} phải là số nguyên";
+                else if (int.Parse(textBox.Text) < 0)
+                    return $"{textBox.Name} phải lớn hơn 0";
+                else if (int.Parse(textBox.Text) != float.Parse(textBox.Text))
+                    return $"{textBox.Name} phải là số nguyên";
+            }
+            return null;
+        }
+        public string CheckIsDouble(params TextBox[] textBoxs)
+        {
+            foreach (var textBox in textBoxs)
+            {
+                if (string.IsNullOrEmpty(textBox.Text))
+                    return null;
+                else if (!double.TryParse(textBox.Text, out _))
+                    return $"{textBox.Name} phải là số";
+                else if (double.Parse(textBox.Text) < 0)
+                    return $"{textBox.Name} phải lớn hơn 0";
+            }
+            return null;
+        }
         public string CheckIsNumberInProduct(TextBox ram, TextBox pin, TextBox refreshRate, TextBox cameraResolution, TextBox screenSize)
         {
-            if (!int.TryParse(ram.Text, out _))
-                return "Ram phải là số nguyên";
-            else if (!int.TryParse(pin.Text, out _))
-                return "Pin phải là số nguyên tính theo mAh";
-            else if (!int.TryParse(refreshRate.Text, out _))
-                return "Refresh rate phải là số nguyên";
-            else if (!double.TryParse(cameraResolution.Text, out _))
-                return "Camera resolution phải là số";
-            else if (!double.TryParse(screenSize.Text, out _))
-                return "Screen size phải là số";
+            var check = CheckIsInt(ram, pin, refreshRate);
+            var check2 = CheckIsDouble(cameraResolution, screenSize);
+            if (check != null)
+                return check;
+            else if (check2 != null)
+                return check2;
             return null;
+        }
+        public void ResetTexbox(params TextBox[] textBoxes)
+        {
+            foreach (var textBox in textBoxes)
+            {
+                textBox.Clear();
+            }
+        }
+        public void ResetCombobox(params ComboBox[] comboBoxes)
+        {
+            foreach (var comboBox in comboBoxes)
+            {
+                comboBox.Items.Clear();
+                comboBox.Text = string.Empty;
+            }
         }
         public void ResetFormProduct()
         {
-            txtProductID.Text = string.Empty;
-            txtProductImage.Clear();
-            txtProductName.Clear();
-            txtIdAccount.Clear();
-            txtRam.Clear();
-            txtPin.Clear();
-            txtRefreshRate.Clear();
-            cbbIDCompany.Text=string.Empty;
-            cbbIDCPU.Text = string.Empty;
-            txtScreenResolution.Clear();
-            txtCameraResolution.Clear();
-            txtScreenSize.Clear();
+            ResetTexbox(txtProductID, txtProductImage, txtProductName, txtRam, txtPin, txtRefreshRate, txtScreenResolution, txtCameraResolution, txtScreenSize);
+            txtIdAccount.Text = menu.IdAccountMenu;
+            ResetCombobox(cbbIDCompany, cbbIDCPU);
             rdoActivated.Checked = true;
             rdoUnActivated.Checked = false;
         }
         public List<Product> SearchByName(string name)
         {
-            return productBUS.GetProductsByName(name);
+            return productBUS.GetProductByName(name);
         }
+
         private void FormProduct_Load(object sender, EventArgs e)
         {
             txtIdAccount.Text = menu.IdAccountMenu;
@@ -140,6 +191,12 @@ namespace DuAn1
             LoadDataGridView();
             List<Product> products = productBUS.GetAllProduct();
             ShowOnDataGridView(products);
+            string[] listSearch = ["By name", "By ID", "By id company", "By company name", "By ID account", "By ID CPU", "By CPU name"];
+            cbbTimKiem.Items.AddRange(listSearch);
+            List<string> listFillter = new List<string>() { "Ram", "Pin", "Refresh rate", "Screen size" };
+            LoadCbbWhenDropDown(cbbFillter, listFillter);
+            cbbTimKiem.SelectedIndex = 0;
+            cbbFillter.SelectedIndex = 0;
         }
         private Form formNow;
         private void LoadForm(Form formnew)
@@ -162,15 +219,21 @@ namespace DuAn1
         private Button ButtonNow;
         private void btnProductDetail_Click(object sender, EventArgs e)
         {
-
-            ProductDeltailForm a = new ProductDeltailForm();
-            a.Show();
-
+            if (string.IsNullOrEmpty(txtProductID.Text))
+            {
+                ProductDeltailForm a = new ProductDeltailForm();
+                a.Show();
+            }
+            else
+            {
+                ProductDeltailForm a = new ProductDeltailForm(txtProductID.Text);
+                a.Show();
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (CheckCbb(cbbIDCompany,cbbIDCPU))
+            if (CheckCbb(cbbIDCompany, cbbIDCPU))
             {
                 var productID = txtProductID.Text;
                 var productImage = txtProductImage.Text;
@@ -185,7 +248,7 @@ namespace DuAn1
                 var cameraResolution = txtCameraResolution.Text;
                 var screenSize = txtScreenSize.Text;
                 var status = rdoActivated.Checked ? true : false;
-               
+
                 if (CheckNull(productID, productImage, productName, idCompany, ram, pin, refreshRate, idAccount, idCPU, cameraResolution, screenResolution, screenSize) == false)
                 {
                     var checkNum = CheckIsNumberInProduct(txtRam, txtPin, txtRefreshRate, txtCameraResolution, txtScreenSize);
@@ -209,43 +272,40 @@ namespace DuAn1
             }
             else
                 MessageBox.Show("Chọn lại giá trị từ các combo box");
+            ShowOnDataGridView(productBUS.GetAllProduct());
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if(CheckCbb(cbbIDCompany, cbbIDCPU))
+            var productID = txtProductID.Text;
+            var productImage = txtProductImage.Text;
+            var productName = txtProductName.Text;
+            var idCompany = cbbIDCompany.Text;
+            var ram = txtRam.Text;
+            var pin = txtPin.Text;
+            var refreshRate = txtRefreshRate.Text;
+            var idAccount = txtIdAccount.Text;
+            var idCPU = cbbIDCPU.Text;
+            var screenResolution = txtScreenResolution.Text;
+            var cameraResolution = txtCameraResolution.Text;
+            var screenSize = txtScreenSize.Text;
+            var status = rdoActivated.Checked ? true : false;
+            if (CheckNull(productID, productImage, productName, idCompany, ram, pin, refreshRate, idAccount, idCPU, cameraResolution, screenResolution, screenSize) == false)
             {
-                var productID = txtProductID.Text;
-                var productImage = txtProductImage.Text;
-                var productName = txtProductName.Text;
-                var idCompany = cbbIDCompany.Text;
-                var ram = txtRam.Text;
-                var pin = txtPin.Text;
-                var refreshRate = txtRefreshRate.Text;
-                var idAccount = txtIdAccount.Text;
-                var idCPU = cbbIDCPU.Text;
-                var screenResolution = txtScreenResolution.Text;
-                var cameraResolution = txtCameraResolution.Text;
-                var screenSize = txtScreenSize.Text;
-                var status = rdoActivated.Checked ? true : false;
-                if (CheckNull(productID, productImage, productName, idCompany, ram, pin, refreshRate, idAccount, idCPU, cameraResolution, screenResolution, screenSize) == false)
+                var checkNum = CheckIsNumberInProduct(txtRam, txtPin, txtRefreshRate, txtCameraResolution, txtScreenSize);
+                if (checkNum == null)
                 {
-                    var checkNum = CheckIsNumberInProduct(txtRam, txtPin, txtRefreshRate, txtCameraResolution, txtScreenSize);
-                    if (checkNum != null)
-                    {
-                        if (productBUS.UpdateProduct(productID, productImage, productName, idCompany, int.Parse(ram), idCPU, double.Parse(screenSize), screenResolution, int.Parse(refreshRate), double.Parse(cameraResolution), int.Parse(pin), idAccount, status))
-                            MessageBox.Show("Sửa thành công");
-                        else
-                            MessageBox.Show("Sửa thất bại");
-                    }
+                    if (productBUS.UpdateProduct(productID, productImage, productName, idCompany, int.Parse(ram), idCPU, double.Parse(screenSize), screenResolution, int.Parse(refreshRate), double.Parse(cameraResolution), int.Parse(pin), idAccount, status))
+                        MessageBox.Show("Sửa thành công");
                     else
-                        MessageBox.Show(checkNum);
+                        MessageBox.Show("Sửa thất bại");
                 }
                 else
-                    MessageBox.Show("Nhập đầy đủ thông tin trước khi sửa");
-            }    
+                    MessageBox.Show(checkNum);
+            }
             else
-                MessageBox.Show("Chọn lại giá trị từ các combo box");
+                MessageBox.Show("Nhập đầy đủ thông tin trước khi sửa");
+            ShowOnDataGridView(productBUS.GetAllProduct());
         }
 
         private void cbbIDCompany_DropDown(object sender, EventArgs e)
@@ -259,7 +319,7 @@ namespace DuAn1
 
         private void dgvListProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >=0 && e.RowIndex < productBUS.GetAllProduct().Count)
+            if (e.RowIndex >= 0 && e.RowIndex < dgvListProduct.RowCount - 1)
             {
                 DataGridViewRow row = dgvListProduct.Rows[e.RowIndex];
                 var idProduct = row.Cells[0].Value.ToString();
@@ -296,8 +356,95 @@ namespace DuAn1
 
         private void vbButton1_Click(object sender, EventArgs e)
         {
-            var listProduct = SearchByName(txtTimKiem.Text);
-            ShowOnDataGridView(listProduct);
+            List<Product> products = new List<Product>();
+            switch (cbbTimKiem.SelectedIndex)
+            {
+                case 0:
+                    products = productBUS.GetProductByName(txtTimKiem.Text);
+                    break;
+                case 1:
+                    products = productBUS.SearchByID(txtTimKiem.Text);
+                    break;
+                case 2:
+                    products = productBUS.GetProductByIDProductCompany(txtTimKiem.Text);
+                    break;
+                case 3:
+                    products = productBUS.GetProducstByCompanyName(txtTimKiem.Text);
+                    break;
+                case 4:
+                    products = productBUS.GetProductByIdAccount(txtTimKiem.Text);
+                    break;
+                case 5:
+                    products = productBUS.GetProductByIdCPU(txtTimKiem.Text);
+                    break;
+                case 6:
+                    products = productBUS.GetProductByCPUName(txtTimKiem.Text);
+                    break;
+                default:
+                    products = productBUS.GetAllProduct();
+                    break;
+            }
+            ShowOnDataGridView(products);
+        }
+
+        private void btnImgLink_Click(object sender, EventArgs e)
+        {
+            txtProductImage.Text = OpenFile("Image Files|*.jpg;*.jpeg;*.png;*.bmp");
+        }
+
+        private void cbbIDCompany_Leave(object sender, EventArgs e)
+        {
+            if (cbbIDCompany.SelectedIndex != -1)
+            {
+                var listProduct = productBUS.GetProductByIDProductCompany(cbbIDCompany.SelectedItem.ToString());
+                txtProductID.Text = productCompanyBUS.GetCompanyById(cbbIDCompany.SelectedItem.ToString()).CompanyName + listProduct.Count;
+                txtCompanyName.Text = productCompanyBUS.GetCompanyById(cbbIDCompany.SelectedItem.ToString()).CompanyName;
+            }
+        }
+        private void cbbIdCpu_Leave(object sender, EventArgs e)
+        {
+            if (cbbIDCPU.SelectedItem != null)
+            {
+                var id = cbbIDCPU.SelectedItem.ToString();
+                var cpu = cpuBUS.GetCpuById(id);
+                if (cpu != null)
+                {
+                    txtManufacturer.Text = cpu.Manufacturer;
+                    txtNameCpu.Text = cpu.NameCpu;
+                }
+            }
+        }
+
+        private void btnFillter_Click(object sender, EventArgs e)
+        {
+            
+            double from = -1;
+            double to = int.MaxValue;
+            if (CheckNull(txtFrom.Text) && CheckNull(txtTo.Text))
+            {
+                MessageBox.Show("Nhập ít nhất một trong hai giá trị");
+            }
+            else
+            {
+                var check = CheckIsDouble(txtFrom, txtTo);
+                if (check == null)
+                {
+                    if (!CheckNull(txtFrom.Text))
+                        from = double.Parse(txtFrom.Text);
+                    if (!CheckNull(txtTo.Text))
+                        to = double.Parse(txtTo.Text);
+                    if (cbbFillter.SelectedIndex > -1)
+                    {
+                        var result = productBUS.FilterProduct(cbbFillter.SelectedIndex, from, to);
+                        ShowOnDataGridView(result);
+                    }
+                    else
+                        MessageBox.Show("Chọn một giá trị từ combobox filter");
+                }    
+                else
+                    MessageBox.Show(check);
+            }    
+                
         }
     }
 }

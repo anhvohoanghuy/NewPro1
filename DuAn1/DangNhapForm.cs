@@ -16,6 +16,7 @@ namespace DuAn1
             static public string acccountname;
             static public string idaccount;
             static public int accountlevel;
+            static public bool accStatus;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -57,7 +58,7 @@ namespace DuAn1
                 {
                     LoginBLL ql = new LoginBLL();
                     Account tg = ql.TimkiemTK(txtUserName.Text);
-                    if (tg != null)
+                    if (tg != null && tg.AccountStatus==true)
                     {
                         if (tg.PassAccount == txtPass.Text)
                         {
@@ -78,7 +79,7 @@ namespace DuAn1
                     }
                     else
                     {
-                        MessageBox.Show("Hiện không có tài khoản nào giống như quý khách đã cung cấp !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("Hiện không có tài khoản nào giống như quý khách đã cung cấp hoặc tài khoản không họat động !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                 }
             }
@@ -96,6 +97,11 @@ namespace DuAn1
         {
             txtUserName.Padding = new Padding(10);
             txtPass.Padding = new Padding(10);
+        }
+
+        private void DangNhapForm_KeyDown(object sender, KeyEventArgs e)
+        {
+
         }
     }
 }

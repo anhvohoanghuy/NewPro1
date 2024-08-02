@@ -50,6 +50,7 @@
             panel5 = new Panel();
             label1 = new Label();
             panel4 = new Panel();
+            btnPromotion = new CustomButton.VBButton();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -134,6 +135,7 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panel2.BackColor = Color.MediumSlateBlue;
+            panel2.Controls.Add(btnPromotion);
             panel2.Controls.Add(btnKhachHang);
             panel2.Controls.Add(btnVoucher);
             panel2.Controls.Add(panel7);
@@ -166,7 +168,7 @@
             btnKhachHang.ForeColor = Color.White;
             btnKhachHang.Image = (Image)resources.GetObject("btnKhachHang.Image");
             btnKhachHang.ImageAlign = ContentAlignment.MiddleLeft;
-            btnKhachHang.Location = new Point(17, 450);
+            btnKhachHang.Location = new Point(17, 521);
             btnKhachHang.Name = "btnKhachHang";
             btnKhachHang.Size = new Size(188, 50);
             btnKhachHang.TabIndex = 22;
@@ -202,7 +204,7 @@
             // 
             panel7.BackColor = Color.White;
             panel7.BackgroundImageLayout = ImageLayout.None;
-            panel7.Location = new Point(17, 694);
+            panel7.Location = new Point(17, 764);
             panel7.Margin = new Padding(3, 0, 3, 0);
             panel7.Name = "panel7";
             panel7.Size = new Size(192, 3);
@@ -245,7 +247,7 @@
             btnStatistics.ForeColor = Color.White;
             btnStatistics.Image = (Image)resources.GetObject("btnStatistics.Image");
             btnStatistics.ImageAlign = ContentAlignment.MiddleLeft;
-            btnStatistics.Location = new Point(17, 593);
+            btnStatistics.Location = new Point(21, 665);
             btnStatistics.Name = "btnStatistics";
             btnStatistics.Size = new Size(188, 50);
             btnStatistics.TabIndex = 19;
@@ -268,7 +270,7 @@
             btnEmployee.ForeColor = Color.White;
             btnEmployee.Image = (Image)resources.GetObject("btnEmployee.Image");
             btnEmployee.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmployee.Location = new Point(17, 524);
+            btnEmployee.Location = new Point(21, 597);
             btnEmployee.Name = "btnEmployee";
             btnEmployee.Size = new Size(188, 50);
             btnEmployee.TabIndex = 18;
@@ -402,6 +404,28 @@
             panel4.Size = new Size(990, 989);
             panel4.TabIndex = 0;
             // 
+            // btnPromotion
+            // 
+            btnPromotion.BackColor = Color.MediumSlateBlue;
+            btnPromotion.BackgroundColor = Color.MediumSlateBlue;
+            btnPromotion.BorderColor = Color.PaleVioletRed;
+            btnPromotion.BorderRadius = 20;
+            btnPromotion.BorderSize = 0;
+            btnPromotion.FlatAppearance.BorderSize = 0;
+            btnPromotion.FlatStyle = FlatStyle.Flat;
+            btnPromotion.Font = new Font("Segoe UI Emoji", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPromotion.ForeColor = Color.White;
+            btnPromotion.Image = (Image)resources.GetObject("btnPromotion.Image");
+            btnPromotion.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPromotion.Location = new Point(17, 454);
+            btnPromotion.Name = "btnPromotion";
+            btnPromotion.Size = new Size(188, 50);
+            btnPromotion.TabIndex = 23;
+            btnPromotion.Text = "Khuyến mãi";
+            btnPromotion.TextColor = Color.White;
+            btnPromotion.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnPromotion.UseVisualStyleBackColor = false;
+            // 
             // FormMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -447,5 +471,6 @@
         private Label lblPhanQuyen;
         private Label label2;
         private CustomButton.VBButton btnKhachHang;
+        private CustomButton.VBButton btnPromotion;
     }
 }

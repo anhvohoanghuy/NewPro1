@@ -1,27 +1,28 @@
-﻿using DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace DuAn1
+﻿namespace DuAn1
 {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+
     public partial class CreateOrderForm : Form
     {
-        
+
         private Order selectedOrder;
         private List<Order> orderQueue = new List<Order>();
 
         public CreateOrderForm()
         {
+            InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
+        }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                InitializeComponent(); this.WindowState = FormWindowState.Maximized; this.FormBorderStyle = FormBorderStyle.None; 
+        public void LoadForm()
+        {
+
+        }
+
+        public Order GetDataOrder()
+        {
+            Order order = new Order();
+            order.Idorder =
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

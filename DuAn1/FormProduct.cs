@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace DuAn1
+﻿namespace DuAn1
 {
     public partial class FormProduct : Form
     {
@@ -29,7 +19,6 @@ namespace DuAn1
 
         private void FormProduct_Load(object sender, EventArgs e)
         {
-
         }
         private Form formNow;
         private void LoadForm(Form formnew)
@@ -44,7 +33,7 @@ namespace DuAn1
             formnew.Dock = DockStyle.Fill;
 
             // Thêm form mới vào Panel (giả sử bạn có Panel tên là panelContainer)
-            
+
 
             formnew.BringToFront();
             formnew.Show();
@@ -53,9 +42,9 @@ namespace DuAn1
         private void btnProductDetail_Click(object sender, EventArgs e)
         {
 
-           ProductDeltailForm a = new ProductDeltailForm();
+            ProductDeltailForm a = new ProductDeltailForm();
             a.Show();
-            
+
         }
     }
 }

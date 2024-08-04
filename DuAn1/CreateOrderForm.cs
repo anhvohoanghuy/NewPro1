@@ -22,8 +22,25 @@
         public Order GetDataOrder()
         {
             Order order = new Order();
-            order.Idorder =
+            order.OrderId = txtId.Text;
+            order.CustomerId = txtIdcus.Text;
+            order.CustomerName = txtName.Text;
+            order.PhoneNumber = txtphone.Text;
+            order.Address = txtaddres.Text;
+            order.Date = DateTime.Now;
+            return order;
         }
+
+        public void SetDataOrder(Order order)
+        {
+            txtId.Text = order.OrderId;
+            txtIdcus.Text = order.CustomerId;
+            txtName.Text = order.CustomerName;
+            txtphone.Text = order.PhoneNumber;
+            txtaddres.Text = order.Address;
+        }
+
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {

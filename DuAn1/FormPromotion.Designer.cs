@@ -37,7 +37,6 @@
             label6 = new Label();
             cbbTimKiem = new ComboBox();
             btnSearch = new CustomButton.VBButton();
-            txtTimKiem = new TextBox();
             btnExcel = new CustomButton.VBButton();
             label5 = new Label();
             txtDiscount = new TextBox();
@@ -65,7 +64,7 @@
             label7 = new Label();
             dtpStartTime = new DateTimePicker();
             btnTimKiem = new CustomButton.VBButton();
-            textBox1 = new TextBox();
+            txtTimKiem = new TextBox();
             groupBox1 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dgvListPromotion).BeginInit();
             grbListCustomer.SuspendLayout();
@@ -107,8 +106,8 @@
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.Desktop;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvListPromotion.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvListPromotion.RowHeadersVisible = false;
@@ -119,6 +118,7 @@
             dgvListPromotion.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvListPromotion.Size = new Size(1209, 320);
             dgvListPromotion.TabIndex = 0;
+            dgvListPromotion.CellClick += dgvListPromotion_CellClick;
             // 
             // grbListCustomer
             // 
@@ -168,18 +168,6 @@
             btnSearch.TabIndex = 162;
             btnSearch.TextColor = Color.White;
             btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // txtTimKiem
-            // 
-            txtTimKiem.Anchor = AnchorStyles.Left;
-            txtTimKiem.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTimKiem.ForeColor = Color.Gray;
-            txtTimKiem.Location = new Point(212, 308);
-            txtTimKiem.Multiline = true;
-            txtTimKiem.Name = "txtTimKiem";
-            txtTimKiem.Size = new Size(403, 36);
-            txtTimKiem.TabIndex = 161;
-            txtTimKiem.Text = "Tìm kiếm";
             // 
             // btnExcel
             // 
@@ -380,11 +368,9 @@
             panel1.Controls.Add(label7);
             panel1.Controls.Add(dtpStartTime);
             panel1.Controls.Add(btnTimKiem);
-            panel1.Controls.Add(textBox1);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(cbbTimKiem);
             panel1.Controls.Add(btnSearch);
-            panel1.Controls.Add(txtTimKiem);
             panel1.Controls.Add(btnExcel);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(txtDiscount);
@@ -400,6 +386,7 @@
             panel1.Controls.Add(txtIdPromotion);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
+            panel1.Controls.Add(txtTimKiem);
             panel1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel1.Location = new Point(57, 26);
             panel1.Name = "panel1";
@@ -523,17 +510,17 @@
             btnTimKiem.UseVisualStyleBackColor = false;
             btnTimKiem.Click += btnTimKiem_Click;
             // 
-            // textBox1
+            // txtTimKiem
             // 
-            textBox1.Anchor = AnchorStyles.Left;
-            textBox1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.ForeColor = Color.Gray;
-            textBox1.Location = new Point(188, 219);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(369, 36);
-            textBox1.TabIndex = 165;
-            textBox1.Text = "Tìm kiếm";
+            txtTimKiem.Anchor = AnchorStyles.Left;
+            txtTimKiem.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtTimKiem.ForeColor = Color.Gray;
+            txtTimKiem.Location = new Point(188, 219);
+            txtTimKiem.Multiline = true;
+            txtTimKiem.Name = "txtTimKiem";
+            txtTimKiem.Size = new Size(369, 36);
+            txtTimKiem.TabIndex = 165;
+            txtTimKiem.Text = "Tìm kiếm";
             // 
             // groupBox1
             // 
@@ -569,7 +556,6 @@
         private Label label6;
         private ComboBox cbbTimKiem;
         private CustomButton.VBButton btnSearch;
-        private TextBox txtTimKiem;
         private CustomButton.VBButton btnExcel;
         private Label label5;
         private TextBox txtDiscount;
@@ -588,7 +574,7 @@
         private Panel panel1;
         private GroupBox groupBox1;
         private CustomButton.VBButton btnTimKiem;
-        private TextBox textBox1;
+        private TextBox txtTimKiem;
         private DateTimePicker dtpEndTime;
         private Label label7;
         private DateTimePicker dtpStartTime;

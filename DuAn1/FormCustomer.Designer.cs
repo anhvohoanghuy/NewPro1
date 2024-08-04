@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
             panel1 = new Panel();
             label6 = new Label();
@@ -288,6 +288,7 @@
             btnSua.Text = "Sửa";
             btnSua.TextColor = Color.White;
             btnSua.UseVisualStyleBackColor = false;
+            btnSua.Click += btnSua_Click;
             // 
             // btnThem
             // 
@@ -306,6 +307,7 @@
             btnThem.Text = "Thêm";
             btnThem.TextColor = Color.White;
             btnThem.UseVisualStyleBackColor = false;
+            btnThem.Click += btnThem_Click;
             // 
             // txtCustomerName
             // 
@@ -360,42 +362,42 @@
             dgvListCustomer.BorderStyle = BorderStyle.None;
             dgvListCustomer.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dgvListCustomer.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.MediumPurple;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvListCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.MediumSlateBlue;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.MediumPurple;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvListCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvListCustomer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.MediumPurple;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvListCustomer.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.MediumPurple;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvListCustomer.DefaultCellStyle = dataGridViewCellStyle2;
             dgvListCustomer.Dock = DockStyle.Fill;
             dgvListCustomer.EnableHeadersVisualStyles = false;
             dgvListCustomer.GridColor = Color.MediumSlateBlue;
             dgvListCustomer.Location = new Point(3, 27);
             dgvListCustomer.Name = "dgvListCustomer";
             dgvListCustomer.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Control;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgvListCustomer.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvListCustomer.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvListCustomer.RowHeadersVisible = false;
             dgvListCustomer.RowHeadersWidth = 62;
-            dataGridViewCellStyle8.ForeColor = Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.HighlightText;
-            dgvListCustomer.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.HighlightText;
+            dgvListCustomer.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvListCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvListCustomer.Size = new Size(1209, 320);
             dgvListCustomer.TabIndex = 0;

@@ -15,6 +15,8 @@ public partial class Customer
 
     public string Idaccount { get; set; } = null!;
 
+    public DateTime DateAdded { get; set; }
+
     public virtual Account IdaccountNavigation { get; set; } = null!;
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();

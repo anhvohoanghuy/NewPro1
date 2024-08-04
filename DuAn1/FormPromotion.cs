@@ -88,9 +88,13 @@ namespace DuAn1
         }
         public void ShowOnDataGridView(List<Promotion> list)
         {
-            foreach (var promotion in list)
+            dgvListPromotion.Rows.Clear();
+            if (list != null)
             {
-                dgvListPromotion.Rows.Add(promotion.Idpromotion, promotion.PromotionName, promotion.Discount, promotion.StartTime, promotion.EndTime, promotion.Idaccount);
+                foreach (var promotion in list)
+                {
+                    dgvListPromotion.Rows.Add(promotion.Idpromotion, promotion.PromotionName, promotion.Discount, promotion.StartTime, promotion.EndTime, promotion.Idaccount);
+                }
             }
         }
         private void FormPromotion_Load(object sender, EventArgs e)
@@ -99,6 +103,7 @@ namespace DuAn1
             cbbFillter.Items.AddRange(["By discount", "Time"]);
             dtpStartTime.Value = DateTime.Now;
             dtpEndTime.Value = new DateTime(2100, 12, 31);
+            txtIdAccount.Text = IDAccount;
             LoadDataGridView();
             ShowOnDataGridView(promotionBUS.GetAllPromotion());
         }
@@ -118,7 +123,9 @@ namespace DuAn1
                 else
                     MessageBox.Show(check);
             }
-            MessageBox.Show("Điền đầy đủ thông tin");
+            else
+                MessageBox.Show("Điền đầy đủ thông tin");
+            ShowOnDataGridView(promotionBUS.GetAllPromotion());
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -141,7 +148,9 @@ namespace DuAn1
                 else
                     MessageBox.Show("Không có ID này");
             }
-            MessageBox.Show("Điền đầy đủ thông tin");
+            else
+                MessageBox.Show("Điền đầy đủ thông tin");
+            ShowOnDataGridView(promotionBUS.GetAllPromotion());
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -155,7 +164,13 @@ namespace DuAn1
             List<Promotion> result = new List<Promotion>();
             if (cbbFillter.SelectedIndex == 0)
             {
-                result = promotionBUS.FillterByDiscount(txtFrom.Text, txtTo.Text);
+                var check = CheckIsDouble(txtFrom, txtTo);
+                if (check == null)
+                {
+                    result = promotionBUS.FillterByDiscount(txtFrom.Text, txtTo.Text);
+                }
+                else
+                    MessageBox.Show(check);
             }
             else if (cbbFillter.SelectedIndex == 1)
             {
@@ -177,6 +192,19 @@ namespace DuAn1
         private void vbButton2_Click(object sender, EventArgs e)
         {
             ResetForm();
+        }
+
+        private void dgvListPromotion_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex>-1&&e.RowIndex<dgvListPromotion.RowCount-1)
+            {
+                var current = promotionBUS.GetPromotionById(dgvListPromotion.Rows[e.RowIndex].Cells[0].Value.ToString());
+                txtIdPromotion.Text = current.Idpromotion;
+                txtPromotionName.Text = current.PromotionName;
+                txtDiscount.Text = current.Discount.ToString();
+                dtpStartTime.Value = current.StartTime;
+                dtpEndTime.Value= (DateTime)current.EndTime;
+            }    
         }
     }
 }

@@ -33,10 +33,13 @@ namespace DuAn1
         public void ShowOnDataGridView(List<Voucher> vouchers)
         {
             dgvListVoucher.Rows.Clear();
-            foreach (Voucher voucher in vouchers)
+            if(vouchers!=null)
             {
-                dgvListVoucher.Rows.Add(voucher.Idvoucher, voucher.VoucherName, voucher.Discount, voucher.StartTime, voucher.EndTime, voucher.Idaccount);
-            }
+                foreach (Voucher voucher in vouchers)
+                {
+                    dgvListVoucher.Rows.Add(voucher.Idvoucher, voucher.VoucherName, voucher.Discount, voucher.StartTime, voucher.EndTime, voucher.Idaccount);
+                }
+            }    
         }
         public void ResetTexbox(params TextBox[] textBoxes)
         {

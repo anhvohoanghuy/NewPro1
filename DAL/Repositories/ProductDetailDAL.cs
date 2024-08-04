@@ -13,7 +13,7 @@ namespace DAL.Respositories
         Pro1QuanLiDienThoaiFinalContext db = new Pro1QuanLiDienThoaiFinalContext();
         public List<ProductDetail> GetAllProductDetail()
         { 
-            var result = db.ProductDetails.Include(c=>c.IdcolorNavigation).ToList();
+            var result = db.ProductDetails.Include(c=>c.IdcolorNavigation).Include(c=>c.IdproductNavigation).ToList();
             return result; 
         }
         public bool AddNewProductDetail(ProductDetail productDetail)

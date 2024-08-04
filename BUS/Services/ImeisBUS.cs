@@ -11,6 +11,10 @@ namespace BUS.Services
     public class ImeiBUS
     {
         ImeiDAL imeisDAL = new ImeiDAL();
+        public List<Imei> GetAllImei()
+        {
+            return imeisDAL.GetAllImei();
+        }
         public List<Imei> GetImeiByIdProductDetail(string idProductDetail)
         {
             return imeisDAL.GetImeiByProductDetailID(idProductDetail);
@@ -55,7 +59,8 @@ namespace BUS.Services
                 IdproductDetails = idProductDetail,
                 ImeiNumber = imeiNumber,
                 Idaccount = idAccount,
-                Selled = selled
+                Selled = selled,
+                DateAdded = DateTime.Now,
             };
             return imeisDAL.AddNewImei(imei);
         }
@@ -85,6 +90,15 @@ namespace BUS.Services
             else if(imei.Selled==true)
                 return false;
             return imeisDAL.DeleteImei(imei);
+        }
+        public List<Imei> GetImeiByTime(DateTime from, DateTime to)
+        {
+            return GetAllImei().Where(c => c.DateAdded <= to && c.DateAdded >= from).ToList();
+        }
+        public int GetAmountNewProduct(DateTime from, DateTime to)
+        {
+            var newProducts= GetImeiByTime(from, to);
+            return newProducts.Count;
         }
     }
 }

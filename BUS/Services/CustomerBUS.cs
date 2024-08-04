@@ -32,7 +32,8 @@ namespace BUS.Services
                 CustomerName=customerName,
                 PhoneNumber=phoneNumber,
                 CustomerAddress=customerAddress,
-                Idaccount=idAccount
+                Idaccount=idAccount,
+                DateAdded=DateTime.Now
             };
             return customerDAL.AddNewCustomer(customer);
         }

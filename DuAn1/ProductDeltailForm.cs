@@ -103,10 +103,13 @@ namespace DuAn1
         public void ShowOnDataGridView(List<ProductDetail> productDetails)
         {
             dgvProductDetail.Rows.Clear();
-            foreach (ProductDetail productDetail in productDetails)
+            if(productDetails!=null)
             {
-                dgvProductDetail.Rows.Add(productDetail.Idproduct, productDetail.IdproductDetails, productDetail.Idcolor, productDetail.Storage, productDetail.Price, productDetail.Idpromotion, productDetail.WarrantyPeriod, productDetail.Inventory, productDetail.Idaccount);
-            }
+                foreach (ProductDetail productDetail in productDetails)
+                {
+                    dgvProductDetail.Rows.Add(productDetail.Idproduct, productDetail.IdproductDetails, productDetail.Idcolor, productDetail.Storage, productDetail.Price, productDetail.Idpromotion, productDetail.WarrantyPeriod, productDetail.Inventory, productDetail.Idaccount);
+                }
+            }    
         }
         public bool CheckProductDetailIfExists(string idProductDetail)
         {

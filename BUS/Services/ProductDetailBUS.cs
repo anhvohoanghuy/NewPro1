@@ -12,6 +12,7 @@ namespace BUS.Services
     {
         ProductDetailDAL productDetailDAL = new ProductDetailDAL();
         PromotionDAL promotionDAL = new PromotionDAL();
+        ImeiBUS imeiBUS = new ImeiBUS();
         public List<ProductDetail> GetAllProductDetail()
         {
             return productDetailDAL.GetAllProductDetail();
@@ -143,6 +144,17 @@ namespace BUS.Services
                 default:
                     return null;
             }
+        }
+        public Dictionary<string,int> GetNewProductDetailByTime(DateTime from, DateTime to)
+        {
+            List<Imei> imeis = imeiBUS.GetImeiByTime(from, to);
+            List<string> idproductDetails = new List<string>();
+            foreach (Imei imei in imeis)
+            {
+                idproductDetails.Add(imei.IdproductDetails);
+            }
+            var resul = idproductDetails.GroupBy(x=>x).ToDictionary(g=>g.Key,g=>g.Count());
+            return resul;
         }
     }
 }

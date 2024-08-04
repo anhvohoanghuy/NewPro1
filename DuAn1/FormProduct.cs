@@ -74,31 +74,33 @@ namespace DuAn1
         public void ShowOnDataGridView(List<Product> products)
         {
             dgvListProduct.Rows.Clear();
-            foreach (Product product in products)
+            if (products != null)
             {
-                try
-                {
-                    System.Net.WebRequest request = System.Net.WebRequest.Create(product.ProductImage);
-                    System.Net.WebResponse response = request.GetResponse();
-                    System.IO.Stream responseStream = response.GetResponseStream();
-                    Bitmap img = new Bitmap(responseStream);
-                    dgvListProduct.Rows.Add(product.Idproduct, img, product.ProductName, product.Idcompany, product.Ram, product.Idcpu, product.ScreenSize, product.ScreenResolution, product.RefreshRate, product.CameraResolution, product.Pin, product.Idaccount, product.ProductStatus);
-                }
-                catch (Exception)
+                foreach (Product product in products)
                 {
                     try
                     {
-                        Bitmap img = new Bitmap(product.ProductImage);
+                        System.Net.WebRequest request = System.Net.WebRequest.Create(product.ProductImage);
+                        System.Net.WebResponse response = request.GetResponse();
+                        System.IO.Stream responseStream = response.GetResponseStream();
+                        Bitmap img = new Bitmap(responseStream);
                         dgvListProduct.Rows.Add(product.Idproduct, img, product.ProductName, product.Idcompany, product.Ram, product.Idcpu, product.ScreenSize, product.ScreenResolution, product.RefreshRate, product.CameraResolution, product.Pin, product.Idaccount, product.ProductStatus);
                     }
                     catch (Exception)
                     {
-                        var defaultImg = "C:\\Users\\chinh\\Downloads\\fpt.jpg";
-                        Bitmap img = new Bitmap(defaultImg);
-                        dgvListProduct.Rows.Add(product.Idproduct, img, product.ProductName, product.Idcompany, product.Ram, product.Idcpu, product.ScreenSize, product.ScreenResolution, product.RefreshRate, product.CameraResolution, product.Pin, product.Idaccount, product.ProductStatus);
+                        try
+                        {
+                            Bitmap img = new Bitmap(product.ProductImage);
+                            dgvListProduct.Rows.Add(product.Idproduct, img, product.ProductName, product.Idcompany, product.Ram, product.Idcpu, product.ScreenSize, product.ScreenResolution, product.RefreshRate, product.CameraResolution, product.Pin, product.Idaccount, product.ProductStatus);
+                        }
+                        catch (Exception)
+                        {
+                            var defaultImg = "C:\\Users\\chinh\\Downloads\\fpt.jpg";
+                            Bitmap img = new Bitmap(defaultImg);
+                            dgvListProduct.Rows.Add(product.Idproduct, img, product.ProductName, product.Idcompany, product.Ram, product.Idcpu, product.ScreenSize, product.ScreenResolution, product.RefreshRate, product.CameraResolution, product.Pin, product.Idaccount, product.ProductStatus);
+                        }
                     }
                 }
-
             }
         }
         public void LoadCbbWhenDropDown(ComboBox currentCbb, List<string> originList)

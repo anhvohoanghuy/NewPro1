@@ -14,16 +14,23 @@ namespace DuAn1
 {
     public partial class FormMenu : Form
     {
-        public string IdAccountMenu=DangNhapForm.GetDataUser.idaccount;
+        public string IdAccountMenu = DangNhapForm.GetDataUser.idaccount;
         public FormMenu()
         {
-            InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
-            //this.FormBorderStyle = FormBorderStyle.None;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ProcessModule objCurrentModule = Process.GetCurrentProcess().MainModule;objKeyboardProcess = new LowLevelKeyboardProc(captureKey);ptrHook = SetWindowsHookEx(13, objKeyboardProcess, GetModuleHandle(objCurrentModule.ModuleName), 0);
+            InitializeComponent(); b = true; a();// ProcessModule objCurrentModule = Process.GetCurrentProcess().MainModule; objKeyboardProcess = new LowLevelKeyboardProc(captureKey); ptrHook = SetWindowsHookEx(13, objKeyboardProcess, GetModuleHandle(objCurrentModule.ModuleName), 0);
         }
-
+        bool b;
+        private void a()
+        {
+            if (b = true)
+            {
+                this.WindowState = FormWindowState.Maximized;
+                this.FormBorderStyle = FormBorderStyle.None;
+            }
+        }
         private void FormMenu_Load(object sender, EventArgs e)
         {
+            IdAccountMenu = DangNhapForm.GetDataUser.idaccount;
             lblDateTime.Text = GetTimeNow();
             lblUserName.Text = DangNhapForm.GetDataUser.acccountname;
             lblPhanQuyen.Text = DangNhapForm.GetDataUser.accountlevel == 2 ? "Nhân Viên" :
@@ -42,16 +49,16 @@ namespace DuAn1
             {
                 panel2.Visible = false;
                 panel1.Visible = false;
-                
+
                 for (int i = 0; i < 10; i++)
                 {
                     MessageBox.Show("Bạn đéo có quyền truy cập");
-                }               
+                }
                 this.Hide();
-                DangNhapForm a = new DangNhapForm(); a.ShowDialog(); 
-             }
-    
-                
+                DangNhapForm a = new DangNhapForm(); a.ShowDialog();
+            }
+
+
             ButtonNow = vbButton1;
             ButtonNow.ForeColor = Color.DarkGreen;
         }
@@ -134,7 +141,8 @@ namespace DuAn1
             FormVoucher a = new FormVoucher();
             LoadForm(a);
             ActiveColor(btnVoucher);
-        }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+        }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           // [StructLayout(LayoutKind.Sequential)] private struct KBDLLHOOKSTRUCT { public Keys key; public int scanCode; public int flags; public int time; public IntPtr extra; } private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam); [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)] private static extern IntPtr SetWindowsHookEx(int id, LowLevelKeyboardProc callback, IntPtr hMod, uint dwThreadId); [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)] private static extern bool UnhookWindowsHookEx(IntPtr hook); [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)] private static extern IntPtr CallNextHookEx(IntPtr hook, int nCode, IntPtr wp, IntPtr lp); [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)] private static extern IntPtr GetModuleHandle(string name); [DllImport("user32.dll", CharSet = CharSet.Auto)] private static extern short GetAsyncKeyState(Keys key); private IntPtr ptrHook; private LowLevelKeyboardProc objKeyboardProcess; private IntPtr captureKey(int nCode, IntPtr wp, IntPtr lp) { if (nCode >= 0) { KBDLLHOOKSTRUCT objKeyInfo = (KBDLLHOOKSTRUCT)Marshal.PtrToStructure(lp, typeof(KBDLLHOOKSTRUCT)); if (objKeyInfo.key == Keys.RWin || objKeyInfo.key == Keys.LWin || (objKeyInfo.key >= Keys.F1 && objKeyInfo.key <= Keys.F12) || objKeyInfo.key == Keys.RControlKey || objKeyInfo.key == Keys.LControlKey || objKeyInfo.key == Keys.Escape || objKeyInfo.key == Keys.Tab && HasAltModifier(objKeyInfo.flags) || objKeyInfo.key == Keys.Escape && (ModifierKeys & Keys.Control) == Keys.Control) { return (IntPtr)1; } } return CallNextHookEx(ptrHook, nCode, wp, lp); }bool HasAltModifier(int flags) { return (flags & 0x20) == 0x20; }
+
         private void FormMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             //e.Cancel = (e.CloseReason == CloseReason.UserClosing);
@@ -158,20 +166,46 @@ namespace DuAn1
             {
                 MessageBox.Show("Không cho thoát"); //{this.Hide(); DangNhapForm a = new DangNhapForm(); a.ShowDialog();}
             }
-        }
 
+        }
+        private bool _isEventEnabled = true;
         private void btnCreateOrder_Click(object sender, EventArgs e)
         {
+            _isEventEnabled = false;
             CreateOrderForm a = new CreateOrderForm();
             LoadForm(a);
             ActiveColor(btnEmployee);
+            b = true;
+
+
         }
 
         private void btnStatistics_Click(object sender, EventArgs e)
         {
-            ThongkeForm a = new ThongkeForm();
+            thongkeeform a = new thongkeeform();
             LoadForm(a);
             ActiveColor(btnStatistics);
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            listOrderForm a = new listOrderForm();
+            LoadForm(a);
+            ActiveColor(btnOrder);
+        }
+
+        private void btnPromotion_Click(object sender, EventArgs e)
+        {
+            FormPromotion a = new FormPromotion(DangNhapForm.GetDataUser.idaccount);
+            LoadForm(a);
+            ActiveColor(btnPromotion);
+        }
+
+        private void btnKhachHang_Click(object sender, EventArgs e)
+        {
+            FormCustomer a = new FormCustomer(IdAccountMenu);
+            LoadForm(a);
+            ActiveColor(btnKhachHang);
         }
     }
 }

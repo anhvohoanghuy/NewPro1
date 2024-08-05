@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DAL.Models;
+﻿namespace DAL.Models;
 
 public partial class Imei
 {
@@ -10,6 +7,7 @@ public partial class Imei
     public string ImeiNumber { get; set; } = null!;
 
     public string Idaccount { get; set; } = null!;
+    public bool? Selled { get; set; }
 
     public virtual Account IdaccountNavigation { get; set; } = null!;
 

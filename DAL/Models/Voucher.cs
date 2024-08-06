@@ -15,6 +15,8 @@ public partial class Voucher
 
     public DateTime? EndTime { get; set; }
 
+    public int UsageCount { get; set; }
+
     public string Idaccount { get; set; } = null!;
 
     public virtual Account IdaccountNavigation { get; set; } = null!;

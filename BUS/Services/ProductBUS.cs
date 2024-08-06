@@ -227,5 +227,23 @@ namespace BUS.Services
             }
             return products;
         }
+        public List<Product> GetProductForSale(List<Product> products)
+        {
+            List<Product> resut = new List<Product>();
+            foreach (Product product in products)
+            {
+                List<ProductDetail> productDetails = productDetailBUS.GetProductDetailByIdProduct(product.Idproduct);
+                var total = 0;
+                foreach (ProductDetail detail in productDetails)
+                {
+                    total += detail.Inventory;
+                }
+                if (total > 0)
+                {
+                    resut.Add(product);
+                }
+            }    
+            return resut;
+        }
     }
 }

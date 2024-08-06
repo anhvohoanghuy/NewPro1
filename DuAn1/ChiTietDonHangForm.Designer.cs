@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -48,19 +44,12 @@
             label14 = new Label();
             label15 = new Label();
             label16 = new Label();
-            dataGridView1 = new DataGridView();
-            IdProd = new DataGridViewTextBoxColumn();
-            TotalCost = new DataGridViewTextBoxColumn();
-            Name = new DataGridViewTextBoxColumn();
-            Brand = new DataGridViewTextBoxColumn();
-            Ram = new DataGridViewTextBoxColumn();
-            Quantity = new DataGridViewTextBoxColumn();
-            Voucher = new DataGridViewTextBoxColumn();
-            PromotionalPrice = new DataGridViewTextBoxColumn();
-            TotalDiscount = new DataGridViewTextBoxColumn();
             label17 = new Label();
             label18 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            label19 = new Label();
+            label20 = new Label();
+            label21 = new Label();
+            label22 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -223,124 +212,11 @@
             label16.TabIndex = 14;
             label16.Text = "Date           :";
             // 
-            // dataGridView1
-            // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.Desktop;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.ColumnHeadersHeight = 29;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { IdProd, TotalCost, Name, Brand, Ram, Quantity, Voucher, PromotionalPrice, TotalDiscount });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.GridColor = SystemColors.InactiveCaptionText;
-            dataGridView1.Location = new Point(12, 296);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.Desktop;
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(842, 166);
-            dataGridView1.TabIndex = 0;
-            dataGridView1.DataBindingComplete += dataGridView1_DataBindingComplete;
-            // 
-            // IdProd
-            // 
-            IdProd.HeaderText = "Id prod";
-            IdProd.MinimumWidth = 6;
-            IdProd.Name = "IdProd";
-            IdProd.ReadOnly = true;
-            // 
-            // TotalCost
-            // 
-            TotalCost.HeaderText = "Total Cost";
-            TotalCost.MinimumWidth = 6;
-            TotalCost.Name = "TotalCost";
-            TotalCost.ReadOnly = true;
-            // 
-            // Name
-            // 
-            Name.HeaderText = "Name";
-            Name.MinimumWidth = 6;
-            Name.Name = "Name";
-            Name.ReadOnly = true;
-            // 
-            // Brand
-            // 
-            Brand.HeaderText = "Image";
-            Brand.MinimumWidth = 6;
-            Brand.Name = "Brand";
-            Brand.ReadOnly = true;
-            // 
-            // Ram
-            // 
-            Ram.HeaderText = "Storage";
-            Ram.MinimumWidth = 6;
-            Ram.Name = "Ram";
-            Ram.ReadOnly = true;
-            // 
-            // Quantity
-            // 
-            Quantity.HeaderText = "Quantity";
-            Quantity.MinimumWidth = 6;
-            Quantity.Name = "Quantity";
-            Quantity.ReadOnly = true;
-            // 
-            // Voucher
-            // 
-            Voucher.HeaderText = "Voucher";
-            Voucher.MinimumWidth = 6;
-            Voucher.Name = "Voucher";
-            Voucher.ReadOnly = true;
-            // 
-            // PromotionalPrice
-            // 
-            PromotionalPrice.HeaderText = "Promotional Price";
-            PromotionalPrice.MinimumWidth = 6;
-            PromotionalPrice.Name = "PromotionalPrice";
-            PromotionalPrice.ReadOnly = true;
-            // 
-            // TotalDiscount
-            // 
-            TotalDiscount.HeaderText = "TotalDiscount";
-            TotalDiscount.MinimumWidth = 6;
-            TotalDiscount.Name = "TotalDiscount";
-            TotalDiscount.ReadOnly = true;
-            // 
             // label17
             // 
             label17.AutoSize = true;
             label17.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label17.Location = new Point(381, 132);
+            label17.Location = new Point(414, 257);
             label17.Name = "label17";
             label17.Size = new Size(135, 25);
             label17.TabIndex = 16;
@@ -350,20 +226,63 @@
             // 
             label18.AutoSize = true;
             label18.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label18.Location = new Point(522, 132);
+            label18.Location = new Point(555, 257);
             label18.Name = "label18";
             label18.Size = new Size(58, 25);
             label18.TabIndex = 17;
             label18.Text = "value";
             // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label19.Location = new Point(555, 222);
+            label19.Name = "label19";
+            label19.Size = new Size(58, 25);
+            label19.TabIndex = 19;
+            label19.Text = "value";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label20.Location = new Point(393, 222);
+            label20.Name = "label20";
+            label20.Size = new Size(156, 25);
+            label20.TabIndex = 18;
+            label20.Text = "Reduce amount: ";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label21.Location = new Point(555, 188);
+            label21.Name = "label21";
+            label21.Size = new Size(58, 25);
+            label21.TabIndex = 21;
+            label21.Text = "value";
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label22.Location = new Point(458, 188);
+            label22.Name = "label22";
+            label22.Size = new Size(91, 25);
+            label22.TabIndex = 20;
+            label22.Text = "Amount: ";
+            // 
             // ChiTietDonHangForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(889, 574);
+            ClientSize = new Size(889, 388);
+            Controls.Add(label21);
+            Controls.Add(label22);
+            Controls.Add(label19);
+            Controls.Add(label20);
             Controls.Add(label18);
             Controls.Add(label17);
-            Controls.Add(dataGridView1);
             Controls.Add(label15);
             Controls.Add(label16);
             Controls.Add(label13);
@@ -380,8 +299,8 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Name = "ChiTietDonHangForm";
             Load += ChiTietDonHangForm_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -404,17 +323,11 @@
         private Label label14;
         private Label label15;
         private Label label16;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn IdProd;
-        private DataGridViewTextBoxColumn TotalCost;
-        private DataGridViewTextBoxColumn Name;
-        private DataGridViewTextBoxColumn Brand;
-        private DataGridViewTextBoxColumn Ram;
-        private DataGridViewTextBoxColumn Quantity;
-        private DataGridViewTextBoxColumn Voucher;
-        private DataGridViewTextBoxColumn PromotionalPrice;
-        private DataGridViewTextBoxColumn TotalDiscount;
         private Label label17;
         private Label label18;
+        private Label label19;
+        private Label label20;
+        private Label label21;
+        private Label label22;
     }
 }

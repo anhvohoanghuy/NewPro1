@@ -15,7 +15,6 @@ namespace DuAn1
         public ChiTietDonHangForm()
         {
             InitializeComponent();
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
             this.MinimizeBox = false;
             this.MaximizeBox = false;
         }
@@ -27,7 +26,6 @@ namespace DuAn1
 
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            dataGridView1.CurrentCell = null;
         }
     }
 }

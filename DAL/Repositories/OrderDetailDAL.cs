@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace DAL.Repositories
         Pro1QuanLiDienThoaiFinalContext _context = new Pro1QuanLiDienThoaiFinalContext();
         public List<OrderDetail> GetAllOrderDetail()
         {
-            return _context.OrderDetails.ToList();
+            return _context.OrderDetails.Include(c=>c.IdproductDetailsNavigation).ToList();
         }
         public bool AddNewOrderDetail(OrderDetail orderDetail)
         {

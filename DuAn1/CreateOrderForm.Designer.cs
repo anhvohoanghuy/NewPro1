@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
             panel1 = new Panel();
             cbbIdCustomer = new ComboBox();
@@ -86,7 +86,6 @@
             btnReset = new CustomButton.VBButton();
             btninfoOrder = new CustomButton.VBButton();
             btnTaoDon = new CustomButton.VBButton();
-            btnRefesh = new CustomButton.VBButton();
             btnDeleteOrder = new CustomButton.VBButton();
             groupBox5 = new GroupBox();
             txtFinalAmount = new TextBox();
@@ -101,7 +100,7 @@
             label8 = new Label();
             label18 = new Label();
             groupBox8 = new GroupBox();
-            txtVoucherName = new TextBox();
+            txtVoucherDiscount = new TextBox();
             label15 = new Label();
             label2 = new Label();
             cbbVoucher = new ComboBox();
@@ -537,42 +536,42 @@
             dgvProduct.BorderStyle = BorderStyle.None;
             dgvProduct.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dgvProduct.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.MediumPurple;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = Color.MediumSlateBlue;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.SelectionBackColor = Color.MediumPurple;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.MediumPurple;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvProduct.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle10.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = Color.MediumPurple;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
+            dgvProduct.DefaultCellStyle = dataGridViewCellStyle10;
             dgvProduct.Dock = DockStyle.Fill;
             dgvProduct.EnableHeadersVisualStyles = false;
             dgvProduct.GridColor = Color.MediumSlateBlue;
             dgvProduct.Location = new Point(0, 0);
             dgvProduct.Name = "dgvProduct";
             dgvProduct.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvProduct.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = SystemColors.Control;
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle11.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
+            dgvProduct.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             dgvProduct.RowHeadersVisible = false;
             dgvProduct.RowHeadersWidth = 62;
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.HighlightText;
-            dgvProduct.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.ForeColor = Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.HighlightText;
+            dgvProduct.RowsDefaultCellStyle = dataGridViewCellStyle12;
             dgvProduct.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProduct.Size = new Size(674, 292);
             dgvProduct.TabIndex = 2;
@@ -693,42 +692,42 @@
             dgvOrderDetails.BorderStyle = BorderStyle.None;
             dgvOrderDetails.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dgvOrderDetails.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.MediumPurple;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvOrderDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = Color.MediumSlateBlue;
+            dataGridViewCellStyle13.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle13.ForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle13.SelectionBackColor = Color.MediumPurple;
+            dataGridViewCellStyle13.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
+            dgvOrderDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             dgvOrderDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.MediumPurple;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvOrderDetails.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle14.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle14.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = Color.MediumPurple;
+            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.False;
+            dgvOrderDetails.DefaultCellStyle = dataGridViewCellStyle14;
             dgvOrderDetails.Dock = DockStyle.Fill;
             dgvOrderDetails.EnableHeadersVisualStyles = false;
             dgvOrderDetails.GridColor = Color.MediumSlateBlue;
             dgvOrderDetails.Location = new Point(3, 27);
             dgvOrderDetails.Name = "dgvOrderDetails";
             dgvOrderDetails.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Control;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgvOrderDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = SystemColors.Control;
+            dataGridViewCellStyle15.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle15.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.True;
+            dgvOrderDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             dgvOrderDetails.RowHeadersVisible = false;
             dgvOrderDetails.RowHeadersWidth = 62;
-            dataGridViewCellStyle8.ForeColor = Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.HighlightText;
-            dgvOrderDetails.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.ForeColor = Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = SystemColors.HighlightText;
+            dgvOrderDetails.RowsDefaultCellStyle = dataGridViewCellStyle16;
             dgvOrderDetails.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvOrderDetails.Size = new Size(629, 292);
             dgvOrderDetails.TabIndex = 1;
@@ -739,7 +738,6 @@
             groupBox4.Controls.Add(btnReset);
             groupBox4.Controls.Add(btninfoOrder);
             groupBox4.Controls.Add(btnTaoDon);
-            groupBox4.Controls.Add(btnRefesh);
             groupBox4.Location = new Point(30, 289);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(635, 83);
@@ -756,13 +754,14 @@
             btnReset.FlatAppearance.BorderSize = 0;
             btnReset.FlatStyle = FlatStyle.Flat;
             btnReset.ForeColor = Color.White;
-            btnReset.Location = new Point(167, 25);
+            btnReset.Location = new Point(234, 26);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(119, 40);
             btnReset.TabIndex = 103;
             btnReset.Text = "Reset";
             btnReset.TextColor = Color.White;
             btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += btnReset_Click;
             // 
             // btninfoOrder
             // 
@@ -774,7 +773,7 @@
             btninfoOrder.FlatAppearance.BorderSize = 0;
             btninfoOrder.FlatStyle = FlatStyle.Flat;
             btninfoOrder.ForeColor = Color.White;
-            btninfoOrder.Location = new Point(302, 25);
+            btninfoOrder.Location = new Point(428, 26);
             btninfoOrder.Name = "btninfoOrder";
             btninfoOrder.Size = new Size(168, 40);
             btninfoOrder.TabIndex = 104;
@@ -800,24 +799,6 @@
             btnTaoDon.TextColor = Color.White;
             btnTaoDon.UseVisualStyleBackColor = false;
             btnTaoDon.Click += btnTaoDon_Click;
-            // 
-            // btnRefesh
-            // 
-            btnRefesh.BackColor = Color.MediumSlateBlue;
-            btnRefesh.BackgroundColor = Color.MediumSlateBlue;
-            btnRefesh.BorderColor = Color.PaleVioletRed;
-            btnRefesh.BorderRadius = 20;
-            btnRefesh.BorderSize = 0;
-            btnRefesh.FlatAppearance.BorderSize = 0;
-            btnRefesh.FlatStyle = FlatStyle.Flat;
-            btnRefesh.ForeColor = Color.White;
-            btnRefesh.Location = new Point(486, 25);
-            btnRefesh.Name = "btnRefesh";
-            btnRefesh.Size = new Size(131, 40);
-            btnRefesh.TabIndex = 101;
-            btnRefesh.Text = "Refesh";
-            btnRefesh.TextColor = Color.White;
-            btnRefesh.UseVisualStyleBackColor = false;
             // 
             // btnDeleteOrder
             // 
@@ -873,6 +854,7 @@
             cbbOrderQueue.Name = "cbbOrderQueue";
             cbbOrderQueue.Size = new Size(199, 28);
             cbbOrderQueue.TabIndex = 12;
+            cbbOrderQueue.DropDown += cbbOrderQueue_DropDown;
             // 
             // btnSaveChanges
             // 
@@ -967,7 +949,7 @@
             // 
             // groupBox8
             // 
-            groupBox8.Controls.Add(txtVoucherName);
+            groupBox8.Controls.Add(txtVoucherDiscount);
             groupBox8.Controls.Add(label15);
             groupBox8.Controls.Add(label2);
             groupBox8.Controls.Add(cbbVoucher);
@@ -978,12 +960,13 @@
             groupBox8.TabStop = false;
             groupBox8.Text = "Voucher";
             // 
-            // txtVoucherName
+            // txtVoucherDiscount
             // 
-            txtVoucherName.Location = new Point(6, 110);
-            txtVoucherName.Name = "txtVoucherName";
-            txtVoucherName.Size = new Size(204, 27);
-            txtVoucherName.TabIndex = 19;
+            txtVoucherDiscount.Location = new Point(6, 110);
+            txtVoucherDiscount.Name = "txtVoucherDiscount";
+            txtVoucherDiscount.ReadOnly = true;
+            txtVoucherDiscount.Size = new Size(204, 27);
+            txtVoucherDiscount.TabIndex = 19;
             // 
             // label15
             // 
@@ -991,9 +974,9 @@
             label15.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label15.Location = new Point(6, 82);
             label15.Name = "label15";
-            label15.Size = new Size(125, 25);
+            label15.Size = new Size(149, 25);
             label15.TabIndex = 100;
-            label15.Text = "Voucher name";
+            label15.Text = "Voucher discount";
             // 
             // label2
             // 
@@ -1009,11 +992,13 @@
             // 
             cbbVoucher.DropDownStyle = ComboBoxStyle.DropDownList;
             cbbVoucher.FormattingEnabled = true;
-            cbbVoucher.Items.AddRange(new object[] { "1", "2" });
             cbbVoucher.Location = new Point(6, 51);
             cbbVoucher.Name = "cbbVoucher";
             cbbVoucher.Size = new Size(204, 28);
             cbbVoucher.TabIndex = 98;
+            cbbVoucher.DropDown += cbbVoucher_DropDown;
+            cbbVoucher.SelectedIndexChanged += cbbVoucher_SelectedIndexChanged;
+            cbbVoucher.DragLeave += cbbVoucher_DragLeave;
             // 
             // groupBox9
             // 
@@ -1209,6 +1194,7 @@
             btnThanhToans.Text = "Thanh toán";
             btnThanhToans.TextColor = Color.White;
             btnThanhToans.UseVisualStyleBackColor = false;
+            btnThanhToans.Click += btnThanhToans_Click;
             // 
             // txtIdProductDetaiOrderDetail
             // 
@@ -1290,7 +1276,6 @@
         private CustomButton.VBButton btninfoOrder;
         private CustomButton.VBButton btnTaoDon;
         private CustomButton.VBButton btnDeleteOrder;
-        private CustomButton.VBButton btnRefesh;
         private GroupBox groupBox5;
         private ComboBox cbbOrderQueue;
         private CustomButton.VBButton btnSaveChanges;
@@ -1312,7 +1297,7 @@
         private Label label13;
         private TextBox txtIdProduct;
         private CustomButton.VBButton btnReset;
-        private TextBox txtVoucherName;
+        private TextBox txtVoucherDiscount;
         private Label label15;
         private Label label2;
         private Label lblInventoty;

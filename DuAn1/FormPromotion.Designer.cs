@@ -113,7 +113,8 @@
             dgvListPromotion.RowHeadersVisible = false;
             dgvListPromotion.RowHeadersWidth = 62;
             dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
             dgvListPromotion.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvListPromotion.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvListPromotion.Size = new Size(1209, 320);

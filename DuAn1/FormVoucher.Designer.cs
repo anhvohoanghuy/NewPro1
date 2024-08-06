@@ -33,6 +33,8 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            label5 = new Label();
+            txtUsageCount = new TextBox();
             lblIDAccount = new Label();
             txtIdAccount = new TextBox();
             btnTimKiem = new CustomButton.VBButton();
@@ -62,6 +64,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(txtUsageCount);
             panel1.Controls.Add(lblIDAccount);
             panel1.Controls.Add(txtIdAccount);
             panel1.Controls.Add(btnTimKiem);
@@ -85,6 +89,23 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1127, 255);
             panel1.TabIndex = 0;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(785, 22);
+            label5.Name = "label5";
+            label5.Size = new Size(111, 25);
+            label5.TabIndex = 85;
+            label5.Text = "Usage count";
+            // 
+            // txtUsageCount
+            // 
+            txtUsageCount.Location = new Point(785, 52);
+            txtUsageCount.Name = "txtUsageCount";
+            txtUsageCount.Size = new Size(137, 31);
+            txtUsageCount.TabIndex = 84;
             // 
             // lblIDAccount
             // 
@@ -356,7 +377,8 @@
             dgvListVoucher.RowHeadersVisible = false;
             dgvListVoucher.RowHeadersWidth = 62;
             dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
             dgvListVoucher.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvListVoucher.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvListVoucher.Size = new Size(1175, 320);
@@ -405,5 +427,7 @@
         private DataGridView dgvListVoucher;
         private Label lblIDAccount;
         private TextBox txtIdAccount;
+        private Label label5;
+        private TextBox txtUsageCount;
     }
 }

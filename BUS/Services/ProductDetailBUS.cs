@@ -156,6 +156,10 @@ namespace BUS.Services
         {
             return GetAllProductDetail().FirstOrDefault(c => c.Idproduct == idProduct && c.Idcolor == idColor && c.Storage == storage);
         }
+        public List<ProductDetail> GetProductDetailByIdProduct(string idProduct)
+        {
+            return GetAllProductDetail().Where(c => c.Idproduct == idProduct).ToList();
+        }
        
     }
 }

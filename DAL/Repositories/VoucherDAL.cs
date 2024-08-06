@@ -37,6 +37,7 @@ namespace DAL.Respositories
                 current.Idaccount= voucher.Idaccount;
                 current.StartTime= voucher.StartTime;
                 current.EndTime= voucher.EndTime;
+                current.UsageCount= voucher.UsageCount;
                 db.SaveChanges();
                 return true;
             }

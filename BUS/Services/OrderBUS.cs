@@ -65,5 +65,15 @@ namespace BUS.Services
             }
             return listID;
         }
+        public List<string> GetAllIDWaitingOrder(string idOrder)
+        {
+            var list = GetAllOrder().Where(c => c.OrderStatus == 0&&c.Idorder.Contains(idOrder)).ToList();
+            var listID = new List<String>();
+            foreach (var order in list)
+            {
+                listID.Add(order.Idorder);
+            }
+            return listID;
+        }
     }
 }

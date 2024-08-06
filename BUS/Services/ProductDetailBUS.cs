@@ -156,5 +156,9 @@ namespace BUS.Services
             var resul = idproductDetails.GroupBy(x=>x).ToDictionary(g=>g.Key,g=>g.Count());
             return resul;
         }
+        public ProductDetail GetProductDetailForOrder(string idProduct,string idColor,int storage)
+        {
+            return GetAllProductDetail().FirstOrDefault(c => c.Idproduct == idProduct && c.Idcolor == idColor && c.Storage == storage);
+        }
     }
 }

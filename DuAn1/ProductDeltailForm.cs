@@ -309,8 +309,12 @@ namespace DuAn1
 
         private void vbButton1_Click(object sender, EventArgs e)
         {
-            List<ProductDetail> productDetails = new List<ProductDetail>();
-            productDetails = productDetailBUS.Search(cbbTimKiem.SelectedIndex, txtTimKiem.Text);
+            if (cbbTimKiem.SelectedIndex > -1)
+            {
+                List<ProductDetail> productDetails = new List<ProductDetail>();
+                productDetails = productDetailBUS.Search(cbbTimKiem.SelectedIndex, txtTimKiem.Text);
+                ShowOnDataGridView(productDetails);
+            }
         }
         private void cbbIdColor_Leave(object sender, EventArgs e)
         {

@@ -34,7 +34,7 @@ namespace DAL.Repositories
                             EstablishedDate = order.EstablishedDate,
                             TotalAmount = order.TotalAmount,
                             IdVoucher = order.Idvoucher,
-                            Paid = order.Paid,
+                            OrderStatus = order.OrderStatus,
                             IdProductDetail = orderDetail.IdproductDetails,
                             Quantity = orderDetail.Quantity,
                             Amount = orderDetail.Amount,
@@ -54,7 +54,7 @@ namespace DAL.Repositories
                                          x.EstablishedDate.ToString().Contains(searchCriteria) ||
                                          x.TotalAmount.ToString().Contains(searchCriteria) ||
                                          x.IdVoucher.ToString().Contains(searchCriteria) ||
-                                         x.Paid.ToString().Contains(searchCriteria) ||
+                                         x.OrderStatus.ToString().Contains(searchCriteria) ||
                                          x.IdProductDetail.ToString().Contains(searchCriteria) ||
                                          x.Quantity.ToString().Contains(searchCriteria) ||
                                          x.Amount.ToString().Contains(searchCriteria) ||

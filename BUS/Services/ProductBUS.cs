@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 using DAL;
 using DAL.Respositories;
 using DAL.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace BUS.Services
 {
     public class ProductBUS
     {
         ProductDAL productDAL = new ProductDAL();
-        ProductDetailDAL productDetailDAL = new DAL.Respositories.ProductDetailDAL();
-        ProductColorDAL productColorDAL = new ProductColorDAL();
+        ProductDetailBUS productDetailBUS = new ProductDetailBUS();
+        ProductColorBUS productColorBUS = new ProductColorBUS();
         public List<Product> GetAllProduct()
         {
             var list= productDAL.GetAllProduct();
@@ -125,19 +126,19 @@ namespace BUS.Services
         {
             return productDAL.GetAllProduct().Where(c => c.RefreshRate <= to && c.RefreshRate >= from).ToList();
         }
-        public List<ProductColor> GetAllColorOfProduct(Product current)
+        public List<string> GetAllColorNameOfProduct(Product current)
         {
-            List<ProductDetail> listProductDetail = productDetailDAL.GetAllProductDetail().Where(c => c.Idproduct == current.Idproduct).ToList();
-            List<DAL.Models.ProductColor> listColor = new List<DAL.Models.ProductColor>();
+            List<ProductDetail> listProductDetail = productDetailBUS.GetAllProductDetail().Where(c => c.Idproduct == current.Idproduct).ToList();
+            List<string> listColorName = new List<string>();
             foreach (var productDetail in listProductDetail)
             {
-                listColor.Add(productColorDAL.GetAllColor().FirstOrDefault(c => c.Idcolor == productDetail.Idcolor));
+                listColorName.Add(productColorBUS.GetAllColor().FirstOrDefault(c => c.Idcolor == productDetail.Idcolor).ColorName);
             }
-            return listColor.Distinct().ToList();
+            return listColorName.Distinct().ToList();
         }
         public List<int> GetAllStorageOfProduct(Product current)
         {
-            List<ProductDetail> listProductDetail = productDetailDAL.GetAllProductDetail().Where(c => c.Idproduct == current.Idproduct).ToList();
+            List<ProductDetail> listProductDetail = productDetailBUS.GetAllProductDetail().Where(c => c.Idproduct == current.Idproduct).ToList();
             List<int> listStorage = new List<int>();
             foreach (var productDetail in listProductDetail)
             {
@@ -173,6 +174,38 @@ namespace BUS.Services
                     return null;
                     break;
             }
+        }
+        public List<Product> SearchProduct(int sw, string key)
+        {
+            List<Product> products = new List<Product>();
+            switch (sw)
+            {
+                case 0:
+                    products = GetProductByName(key);
+                    break;
+                case 1:
+                    products = SearchByID(key);
+                    break;
+                case 2:
+                    products = GetProductByIDProductCompany(key);
+                    break;
+                case 3:
+                    products = GetProducstByCompanyName(key);
+                    break;
+                case 4:
+                    products = GetProductByIdAccount(key);
+                    break;
+                case 5:
+                    products = GetProductByIdCPU(key);
+                    break;
+                case 6:
+                    products = GetProductByCPUName(key);
+                    break;
+                default:
+                    products = GetAllProduct();
+                    break;
+            }
+            return products;
         }
     }
 }

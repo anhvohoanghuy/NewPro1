@@ -18,4 +18,6 @@ public partial class Imei
     public virtual Account IdaccountNavigation { get; set; } = null!;
 
     public virtual ProductDetail IdproductDetailsNavigation { get; set; } = null!;
+
+    public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 }

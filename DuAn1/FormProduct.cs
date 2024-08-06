@@ -358,35 +358,13 @@ namespace DuAn1
 
         private void vbButton1_Click(object sender, EventArgs e)
         {
-            List<Product> products = new List<Product>();
-            switch (cbbTimKiem.SelectedIndex)
+            if (cbbTimKiem.SelectedIndex > -1)
             {
-                case 0:
-                    products = productBUS.GetProductByName(txtTimKiem.Text);
-                    break;
-                case 1:
-                    products = productBUS.SearchByID(txtTimKiem.Text);
-                    break;
-                case 2:
-                    products = productBUS.GetProductByIDProductCompany(txtTimKiem.Text);
-                    break;
-                case 3:
-                    products = productBUS.GetProducstByCompanyName(txtTimKiem.Text);
-                    break;
-                case 4:
-                    products = productBUS.GetProductByIdAccount(txtTimKiem.Text);
-                    break;
-                case 5:
-                    products = productBUS.GetProductByIdCPU(txtTimKiem.Text);
-                    break;
-                case 6:
-                    products = productBUS.GetProductByCPUName(txtTimKiem.Text);
-                    break;
-                default:
-                    products = productBUS.GetAllProduct();
-                    break;
+                List<Product> products = productBUS.SearchProduct(cbbTimKiem.SelectedIndex, txtTimKiem.Text);
+                ShowOnDataGridView(products);
             }
-            ShowOnDataGridView(products);
+            else
+                MessageBox.Show("Chọn danh mục tìm kiếm");
         }
 
         private void btnImgLink_Click(object sender, EventArgs e)

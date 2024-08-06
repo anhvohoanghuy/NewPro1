@@ -36,6 +36,7 @@ namespace DuAn1
         {
             dgvImei.Columns.Add("STT", "STT");
             dgvImei.Columns.Add("Imei", "Imei");
+            dgvImei.Columns.Add("Selled", "Selled");
         }
         public void ShowOnDataGridView(List<string> imeis)
         {
@@ -46,7 +47,12 @@ namespace DuAn1
                 foreach (string ime in imeis)
                 {
                     stt++;
-                    dgvImei.Rows.Add(stt, ime);
+
+                    var imei = imeiBUS.GetImeiByID(ime);
+                    if (imei != null)
+                        dgvImei.Rows.Add(stt, ime, imei.Selled);
+                    else
+                        dgvImei.Rows.Add(stt, ime);
                 }
             }
         }

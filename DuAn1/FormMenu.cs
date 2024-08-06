@@ -172,7 +172,7 @@ namespace DuAn1
         private void btnCreateOrder_Click(object sender, EventArgs e)
         {
             _isEventEnabled = false;
-            CreateOrderForm a = new CreateOrderForm();
+            CreateOrderForm a = new CreateOrderForm(IdAccountMenu);
             LoadForm(a);
             ActiveColor(btnEmployee);
             b = true;

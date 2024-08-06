@@ -185,6 +185,7 @@
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(248, 31);
             txtPhoneNumber.TabIndex = 86;
+            txtPhoneNumber.Leave += txtPhoneNumber_Leave;
             // 
             // label4
             // 
@@ -389,18 +390,20 @@
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.ControlText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvListCustomer.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvListCustomer.RowHeadersVisible = false;
             dgvListCustomer.RowHeadersWidth = 62;
             dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
             dgvListCustomer.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvListCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvListCustomer.Size = new Size(1209, 320);
             dgvListCustomer.TabIndex = 0;
+            dgvListCustomer.CellClick += dgvListCustomer_CellClick;
             // 
             // FormCustomer
             // 

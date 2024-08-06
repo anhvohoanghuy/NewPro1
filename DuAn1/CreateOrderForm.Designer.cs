@@ -59,8 +59,8 @@
             label17 = new Label();
             cbbFillter = new ComboBox();
             cbbTimKiem = new ComboBox();
-            txtInventoty = new Label();
-            textBox2 = new TextBox();
+            lblInventoty = new Label();
+            txtInventory = new TextBox();
             txtBrandName = new TextBox();
             label14 = new Label();
             cbbStorage = new ComboBox();
@@ -89,38 +89,40 @@
             btnRefesh = new CustomButton.VBButton();
             btnDeleteOrder = new CustomButton.VBButton();
             groupBox5 = new GroupBox();
-            txtTotalCost = new Label();
+            txtFinalAmount = new TextBox();
             label10 = new Label();
-            btnAddToOrderQueue = new CustomButton.VBButton();
-            cmbOrderQueue = new ComboBox();
+            cbbOrderQueue = new ComboBox();
             btnSaveChanges = new CustomButton.VBButton();
             groupBox6 = new GroupBox();
-            textBox4 = new TextBox();
+            txtTotalAmountQuese = new TextBox();
             groupBox7 = new GroupBox();
             label19 = new Label();
-            textBox3 = new TextBox();
+            txtIdCustomerQueue = new TextBox();
             label8 = new Label();
             label18 = new Label();
             groupBox8 = new GroupBox();
-            textBox1 = new TextBox();
+            txtVoucherName = new TextBox();
             label15 = new Label();
             label2 = new Label();
             cbbVoucher = new ComboBox();
             groupBox9 = new GroupBox();
             groupBox11 = new GroupBox();
-            textBox11 = new TextBox();
+            label25 = new Label();
+            txtInvetoryOrderDetail = new TextBox();
+            txtQuantityOrderDetail = new TextBox();
             label24 = new Label();
             btnUpdateOrderDetail = new CustomButton.VBButton();
             btnXoa = new CustomButton.VBButton();
-            textBox10 = new TextBox();
-            textBox9 = new TextBox();
+            txtStorageOrderDetail = new TextBox();
+            txtColorOrderDetail = new TextBox();
             label22 = new Label();
             label23 = new Label();
-            textBox5 = new TextBox();
+            txtProductNameOrderDetail = new TextBox();
             label20 = new Label();
-            textBox6 = new TextBox();
+            txtIdProductOrderDetail = new TextBox();
             label21 = new Label();
             btnThanhToans = new CustomButton.VBButton();
+            txtIdProductDetaiOrderDetail = new TextBox();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -310,8 +312,8 @@
             panel2.Controls.Add(label17);
             panel2.Controls.Add(cbbFillter);
             panel2.Controls.Add(cbbTimKiem);
-            panel2.Controls.Add(txtInventoty);
-            panel2.Controls.Add(textBox2);
+            panel2.Controls.Add(lblInventoty);
+            panel2.Controls.Add(txtInventory);
             panel2.Controls.Add(txtBrandName);
             panel2.Controls.Add(label14);
             panel2.Controls.Add(cbbStorage);
@@ -409,23 +411,23 @@
             cbbTimKiem.Size = new Size(172, 33);
             cbbTimKiem.TabIndex = 161;
             // 
-            // txtInventoty
+            // lblInventoty
             // 
-            txtInventoty.AutoSize = true;
-            txtInventoty.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtInventoty.Location = new Point(486, 91);
-            txtInventoty.Name = "txtInventoty";
-            txtInventoty.Size = new Size(87, 25);
-            txtInventoty.TabIndex = 115;
-            txtInventoty.Text = "Inventory";
+            lblInventoty.AutoSize = true;
+            lblInventoty.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblInventoty.Location = new Point(486, 91);
+            lblInventoty.Name = "lblInventoty";
+            lblInventoty.Size = new Size(87, 25);
+            lblInventoty.TabIndex = 115;
+            lblInventoty.Text = "Inventory";
             // 
-            // textBox2
+            // txtInventory
             // 
-            textBox2.Location = new Point(480, 122);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(155, 31);
-            textBox2.TabIndex = 114;
+            txtInventory.Location = new Point(480, 122);
+            txtInventory.Name = "txtInventory";
+            txtInventory.ReadOnly = true;
+            txtInventory.Size = new Size(155, 31);
+            txtInventory.TabIndex = 114;
             // 
             // txtBrandName
             // 
@@ -452,6 +454,7 @@
             cbbStorage.Name = "cbbStorage";
             cbbStorage.Size = new Size(168, 33);
             cbbStorage.TabIndex = 111;
+            cbbStorage.SelectedIndexChanged += cbbStorage_SelectedIndexChanged;
             // 
             // cbbColor
             // 
@@ -460,6 +463,7 @@
             cbbColor.Name = "cbbColor";
             cbbColor.Size = new Size(168, 33);
             cbbColor.TabIndex = 110;
+            cbbColor.SelectedIndexChanged += cbbColor_SelectedIndexChanged;
             // 
             // txtProductName
             // 
@@ -629,7 +633,6 @@
             txtQuantity.Name = "txtQuantity";
             txtQuantity.Size = new Size(168, 31);
             txtQuantity.TabIndex = 90;
-            txtQuantity.TextChanged += txtQuantity_TextChanged;
             // 
             // label11
             // 
@@ -729,6 +732,7 @@
             dgvOrderDetails.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvOrderDetails.Size = new Size(629, 292);
             dgvOrderDetails.TabIndex = 1;
+            dgvOrderDetails.CellClick += dgvOrderDetails_CellClick;
             // 
             // groupBox4
             // 
@@ -752,9 +756,9 @@
             btnReset.FlatAppearance.BorderSize = 0;
             btnReset.FlatStyle = FlatStyle.Flat;
             btnReset.ForeColor = Color.White;
-            btnReset.Location = new Point(153, 25);
+            btnReset.Location = new Point(167, 25);
             btnReset.Name = "btnReset";
-            btnReset.Size = new Size(133, 40);
+            btnReset.Size = new Size(119, 40);
             btnReset.TabIndex = 103;
             btnReset.Text = "Reset";
             btnReset.TextColor = Color.White;
@@ -790,11 +794,12 @@
             btnTaoDon.ForeColor = Color.White;
             btnTaoDon.Location = new Point(7, 25);
             btnTaoDon.Name = "btnTaoDon";
-            btnTaoDon.Size = new Size(131, 40);
+            btnTaoDon.Size = new Size(144, 40);
             btnTaoDon.TabIndex = 103;
-            btnTaoDon.Text = "Tạo đơn hàng";
+            btnTaoDon.Text = "Tạo đơn hàng mới";
             btnTaoDon.TextColor = Color.White;
             btnTaoDon.UseVisualStyleBackColor = false;
+            btnTaoDon.Click += btnTaoDon_Click;
             // 
             // btnRefesh
             // 
@@ -824,17 +829,18 @@
             btnDeleteOrder.FlatAppearance.BorderSize = 0;
             btnDeleteOrder.FlatStyle = FlatStyle.Flat;
             btnDeleteOrder.ForeColor = Color.White;
-            btnDeleteOrder.Location = new Point(44, 26);
+            btnDeleteOrder.Location = new Point(44, 46);
             btnDeleteOrder.Name = "btnDeleteOrder";
-            btnDeleteOrder.Size = new Size(143, 40);
+            btnDeleteOrder.Size = new Size(147, 45);
             btnDeleteOrder.TabIndex = 102;
             btnDeleteOrder.Text = "Hủy đơn hàng";
             btnDeleteOrder.TextColor = Color.White;
             btnDeleteOrder.UseVisualStyleBackColor = false;
+            btnDeleteOrder.Click += btnDeleteOrder_Click;
             // 
             // groupBox5
             // 
-            groupBox5.Controls.Add(txtTotalCost);
+            groupBox5.Controls.Add(txtFinalAmount);
             groupBox5.Controls.Add(label10);
             groupBox5.Location = new Point(780, 758);
             groupBox5.Name = "groupBox5";
@@ -842,16 +848,13 @@
             groupBox5.TabIndex = 10;
             groupBox5.TabStop = false;
             // 
-            // txtTotalCost
+            // txtFinalAmount
             // 
-            txtTotalCost.AutoSize = true;
-            txtTotalCost.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtTotalCost.ForeColor = Color.Red;
-            txtTotalCost.Location = new Point(23, 82);
-            txtTotalCost.Name = "txtTotalCost";
-            txtTotalCost.Size = new Size(33, 38);
-            txtTotalCost.TabIndex = 1;
-            txtTotalCost.Text = "0";
+            txtFinalAmount.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtFinalAmount.Location = new Point(15, 83);
+            txtFinalAmount.Name = "txtFinalAmount";
+            txtFinalAmount.Size = new Size(189, 47);
+            txtFinalAmount.TabIndex = 91;
             // 
             // label10
             // 
@@ -863,31 +866,13 @@
             label10.TabIndex = 0;
             label10.Text = "Tổng tiền";
             // 
-            // btnAddToOrderQueue
+            // cbbOrderQueue
             // 
-            btnAddToOrderQueue.BackColor = Color.MediumSlateBlue;
-            btnAddToOrderQueue.BackgroundColor = Color.MediumSlateBlue;
-            btnAddToOrderQueue.BorderColor = Color.PaleVioletRed;
-            btnAddToOrderQueue.BorderRadius = 20;
-            btnAddToOrderQueue.BorderSize = 0;
-            btnAddToOrderQueue.FlatAppearance.BorderSize = 0;
-            btnAddToOrderQueue.FlatStyle = FlatStyle.Flat;
-            btnAddToOrderQueue.ForeColor = Color.White;
-            btnAddToOrderQueue.Location = new Point(44, 72);
-            btnAddToOrderQueue.Name = "btnAddToOrderQueue";
-            btnAddToOrderQueue.Size = new Size(147, 42);
-            btnAddToOrderQueue.TabIndex = 11;
-            btnAddToOrderQueue.Text = "thêm vào hàng chờ";
-            btnAddToOrderQueue.TextColor = Color.White;
-            btnAddToOrderQueue.UseVisualStyleBackColor = false;
-            // 
-            // cmbOrderQueue
-            // 
-            cmbOrderQueue.FormattingEnabled = true;
-            cmbOrderQueue.Location = new Point(16, 61);
-            cmbOrderQueue.Name = "cmbOrderQueue";
-            cmbOrderQueue.Size = new Size(199, 28);
-            cmbOrderQueue.TabIndex = 12;
+            cbbOrderQueue.FormattingEnabled = true;
+            cbbOrderQueue.Location = new Point(16, 61);
+            cbbOrderQueue.Name = "cbbOrderQueue";
+            cbbOrderQueue.Size = new Size(199, 28);
+            cbbOrderQueue.TabIndex = 12;
             // 
             // btnSaveChanges
             // 
@@ -899,23 +884,24 @@
             btnSaveChanges.FlatAppearance.BorderSize = 0;
             btnSaveChanges.FlatStyle = FlatStyle.Flat;
             btnSaveChanges.ForeColor = Color.White;
-            btnSaveChanges.Location = new Point(44, 120);
+            btnSaveChanges.Location = new Point(44, 111);
             btnSaveChanges.Name = "btnSaveChanges";
             btnSaveChanges.Size = new Size(147, 42);
             btnSaveChanges.TabIndex = 13;
             btnSaveChanges.Text = "cập nhật hàng chờ";
             btnSaveChanges.TextColor = Color.White;
             btnSaveChanges.UseVisualStyleBackColor = false;
+            btnSaveChanges.Click += btnSaveChanges_Click;
             // 
             // groupBox6
             // 
-            groupBox6.Controls.Add(textBox4);
+            groupBox6.Controls.Add(txtTotalAmountQuese);
             groupBox6.Controls.Add(groupBox7);
             groupBox6.Controls.Add(label19);
-            groupBox6.Controls.Add(textBox3);
+            groupBox6.Controls.Add(txtIdCustomerQueue);
             groupBox6.Controls.Add(label8);
             groupBox6.Controls.Add(label18);
-            groupBox6.Controls.Add(cmbOrderQueue);
+            groupBox6.Controls.Add(cbbOrderQueue);
             groupBox6.Location = new Point(6, 25);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new Size(238, 454);
@@ -923,17 +909,16 @@
             groupBox6.TabStop = false;
             groupBox6.Text = "hàng chờ";
             // 
-            // textBox4
+            // txtTotalAmountQuese
             // 
-            textBox4.Location = new Point(22, 200);
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new Size(196, 27);
-            textBox4.TabIndex = 184;
+            txtTotalAmountQuese.Location = new Point(22, 200);
+            txtTotalAmountQuese.Name = "txtTotalAmountQuese";
+            txtTotalAmountQuese.ReadOnly = true;
+            txtTotalAmountQuese.Size = new Size(196, 27);
+            txtTotalAmountQuese.TabIndex = 184;
             // 
             // groupBox7
             // 
-            groupBox7.Controls.Add(btnAddToOrderQueue);
             groupBox7.Controls.Add(btnSaveChanges);
             groupBox7.Controls.Add(btnDeleteOrder);
             groupBox7.Location = new Point(6, 263);
@@ -948,17 +933,17 @@
             label19.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label19.Location = new Point(19, 172);
             label19.Name = "label19";
-            label19.Size = new Size(87, 25);
+            label19.Size = new Size(116, 25);
             label19.TabIndex = 183;
-            label19.Text = "Total cost";
+            label19.Text = "Total amount";
             // 
-            // textBox3
+            // txtIdCustomerQueue
             // 
-            textBox3.Location = new Point(19, 130);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(196, 27);
-            textBox3.TabIndex = 182;
+            txtIdCustomerQueue.Location = new Point(19, 130);
+            txtIdCustomerQueue.Name = "txtIdCustomerQueue";
+            txtIdCustomerQueue.ReadOnly = true;
+            txtIdCustomerQueue.Size = new Size(196, 27);
+            txtIdCustomerQueue.TabIndex = 182;
             // 
             // label8
             // 
@@ -982,7 +967,7 @@
             // 
             // groupBox8
             // 
-            groupBox8.Controls.Add(textBox1);
+            groupBox8.Controls.Add(txtVoucherName);
             groupBox8.Controls.Add(label15);
             groupBox8.Controls.Add(label2);
             groupBox8.Controls.Add(cbbVoucher);
@@ -993,12 +978,12 @@
             groupBox8.TabStop = false;
             groupBox8.Text = "Voucher";
             // 
-            // textBox1
+            // txtVoucherName
             // 
-            textBox1.Location = new Point(6, 110);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(204, 27);
-            textBox1.TabIndex = 19;
+            txtVoucherName.Location = new Point(6, 110);
+            txtVoucherName.Name = "txtVoucherName";
+            txtVoucherName.Size = new Size(204, 27);
+            txtVoucherName.TabIndex = 19;
             // 
             // label15
             // 
@@ -1041,17 +1026,19 @@
             // 
             // groupBox11
             // 
-            groupBox11.Controls.Add(textBox11);
+            groupBox11.Controls.Add(label25);
+            groupBox11.Controls.Add(txtInvetoryOrderDetail);
+            groupBox11.Controls.Add(txtQuantityOrderDetail);
             groupBox11.Controls.Add(label24);
             groupBox11.Controls.Add(btnUpdateOrderDetail);
             groupBox11.Controls.Add(btnXoa);
-            groupBox11.Controls.Add(textBox10);
-            groupBox11.Controls.Add(textBox9);
+            groupBox11.Controls.Add(txtStorageOrderDetail);
+            groupBox11.Controls.Add(txtColorOrderDetail);
             groupBox11.Controls.Add(label22);
             groupBox11.Controls.Add(label23);
-            groupBox11.Controls.Add(textBox5);
+            groupBox11.Controls.Add(txtProductNameOrderDetail);
             groupBox11.Controls.Add(label20);
-            groupBox11.Controls.Add(textBox6);
+            groupBox11.Controls.Add(txtIdProductOrderDetail);
             groupBox11.Controls.Add(label21);
             groupBox11.Location = new Point(37, 727);
             groupBox11.Name = "groupBox11";
@@ -1060,12 +1047,30 @@
             groupBox11.TabStop = false;
             groupBox11.Text = "Selected Item";
             // 
-            // textBox11
+            // label25
             // 
-            textBox11.Location = new Point(15, 135);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(129, 27);
-            textBox11.TabIndex = 120;
+            label25.AutoSize = true;
+            label25.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label25.Location = new Point(160, 104);
+            label25.Name = "label25";
+            label25.Size = new Size(87, 25);
+            label25.TabIndex = 122;
+            label25.Text = "Inventory";
+            // 
+            // txtInvetoryOrderDetail
+            // 
+            txtInvetoryOrderDetail.Location = new Point(160, 132);
+            txtInvetoryOrderDetail.Name = "txtInvetoryOrderDetail";
+            txtInvetoryOrderDetail.ReadOnly = true;
+            txtInvetoryOrderDetail.Size = new Size(126, 27);
+            txtInvetoryOrderDetail.TabIndex = 121;
+            // 
+            // txtQuantityOrderDetail
+            // 
+            txtQuantityOrderDetail.Location = new Point(15, 135);
+            txtQuantityOrderDetail.Name = "txtQuantityOrderDetail";
+            txtQuantityOrderDetail.Size = new Size(129, 27);
+            txtQuantityOrderDetail.TabIndex = 120;
             // 
             // label24
             // 
@@ -1094,6 +1099,7 @@
             btnUpdateOrderDetail.Text = "Sửa số lượng";
             btnUpdateOrderDetail.TextColor = Color.White;
             btnUpdateOrderDetail.UseVisualStyleBackColor = false;
+            btnUpdateOrderDetail.Click += btnUpdateOrderDetail_Click;
             // 
             // btnXoa
             // 
@@ -1112,22 +1118,23 @@
             btnXoa.Text = "Xóa";
             btnXoa.TextColor = Color.White;
             btnXoa.UseVisualStyleBackColor = false;
+            btnXoa.Click += btnXoa_Click;
             // 
-            // textBox10
+            // txtStorageOrderDetail
             // 
-            textBox10.Location = new Point(505, 60);
-            textBox10.Name = "textBox10";
-            textBox10.ReadOnly = true;
-            textBox10.Size = new Size(113, 27);
-            textBox10.TabIndex = 116;
+            txtStorageOrderDetail.Location = new Point(505, 60);
+            txtStorageOrderDetail.Name = "txtStorageOrderDetail";
+            txtStorageOrderDetail.ReadOnly = true;
+            txtStorageOrderDetail.Size = new Size(113, 27);
+            txtStorageOrderDetail.TabIndex = 116;
             // 
-            // textBox9
+            // txtColorOrderDetail
             // 
-            textBox9.Location = new Point(372, 61);
-            textBox9.Name = "textBox9";
-            textBox9.ReadOnly = true;
-            textBox9.Size = new Size(113, 27);
-            textBox9.TabIndex = 115;
+            txtColorOrderDetail.Location = new Point(372, 61);
+            txtColorOrderDetail.Name = "txtColorOrderDetail";
+            txtColorOrderDetail.ReadOnly = true;
+            txtColorOrderDetail.Size = new Size(113, 27);
+            txtColorOrderDetail.TabIndex = 115;
             // 
             // label22
             // 
@@ -1149,13 +1156,13 @@
             label23.TabIndex = 113;
             label23.Text = "Color";
             // 
-            // textBox5
+            // txtProductNameOrderDetail
             // 
-            textBox5.Location = new Point(194, 61);
-            textBox5.Name = "textBox5";
-            textBox5.ReadOnly = true;
-            textBox5.Size = new Size(161, 27);
-            textBox5.TabIndex = 112;
+            txtProductNameOrderDetail.Location = new Point(194, 61);
+            txtProductNameOrderDetail.Name = "txtProductNameOrderDetail";
+            txtProductNameOrderDetail.ReadOnly = true;
+            txtProductNameOrderDetail.Size = new Size(161, 27);
+            txtProductNameOrderDetail.TabIndex = 112;
             // 
             // label20
             // 
@@ -1167,13 +1174,13 @@
             label20.TabIndex = 111;
             label20.Text = "Product name";
             // 
-            // textBox6
+            // txtIdProductOrderDetail
             // 
-            textBox6.Location = new Point(17, 61);
-            textBox6.Name = "textBox6";
-            textBox6.ReadOnly = true;
-            textBox6.Size = new Size(160, 27);
-            textBox6.TabIndex = 110;
+            txtIdProductOrderDetail.Location = new Point(17, 61);
+            txtIdProductOrderDetail.Name = "txtIdProductOrderDetail";
+            txtIdProductOrderDetail.ReadOnly = true;
+            txtIdProductOrderDetail.Size = new Size(160, 27);
+            txtIdProductOrderDetail.TabIndex = 110;
             // 
             // label21
             // 
@@ -1203,11 +1210,20 @@
             btnThanhToans.TextColor = Color.White;
             btnThanhToans.UseVisualStyleBackColor = false;
             // 
+            // txtIdProductDetaiOrderDetail
+            // 
+            txtIdProductDetaiOrderDetail.Location = new Point(50, 922);
+            txtIdProductDetaiOrderDetail.Name = "txtIdProductDetaiOrderDetail";
+            txtIdProductDetaiOrderDetail.ReadOnly = true;
+            txtIdProductDetaiOrderDetail.Size = new Size(160, 27);
+            txtIdProductDetaiOrderDetail.TabIndex = 123;
+            // 
             // CreateOrderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1693, 971);
+            Controls.Add(txtIdProductDetaiOrderDetail);
             Controls.Add(groupBox11);
             Controls.Add(btnThanhToans);
             Controls.Add(groupBox9);
@@ -1242,6 +1258,7 @@
             groupBox11.ResumeLayout(false);
             groupBox11.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -1275,8 +1292,7 @@
         private CustomButton.VBButton btnDeleteOrder;
         private CustomButton.VBButton btnRefesh;
         private GroupBox groupBox5;
-        private CustomButton.VBButton btnAddToOrderQueue;
-        private ComboBox cmbOrderQueue;
+        private ComboBox cbbOrderQueue;
         private CustomButton.VBButton btnSaveChanges;
         private GroupBox groupBox6;
         private Panel panel3;
@@ -1296,11 +1312,11 @@
         private Label label13;
         private TextBox txtIdProduct;
         private CustomButton.VBButton btnReset;
-        private TextBox textBox1;
+        private TextBox txtVoucherName;
         private Label label15;
         private Label label2;
-        private Label txtInventoty;
-        private TextBox textBox2;
+        private Label lblInventoty;
+        private TextBox txtInventory;
         private ComboBox cbbTimKiem;
         private CustomButton.VBButton btnFillter;
         private TextBox txtTo;
@@ -1308,28 +1324,31 @@
         private Label label16;
         private Label label17;
         private ComboBox cbbFillter;
-        private TextBox textBox4;
+        private TextBox txtTotalAmountQuese;
         private Label label19;
-        private TextBox textBox3;
+        private TextBox txtIdCustomerQueue;
         private Label label8;
         private Label label18;
         private GroupBox groupBox11;
         private CustomButton.VBButton btnXoa;
-        private TextBox textBox10;
-        private TextBox textBox9;
+        private TextBox txtStorageOrderDetail;
+        private TextBox txtColorOrderDetail;
         private Label label22;
         private Label label23;
-        private TextBox textBox5;
+        private TextBox txtProductNameOrderDetail;
         private Label label20;
-        private TextBox textBox6;
+        private TextBox txtIdProductOrderDetail;
         private Label label21;
         private CustomButton.VBButton btnThanhToans;
-        private Label txtTotalCost;
         private Label label10;
-        private TextBox textBox11;
+        private TextBox txtQuantityOrderDetail;
         private Label label24;
         private CustomButton.VBButton btnUpdateOrderDetail;
         private ComboBox cbbIdCustomer;
         private DataGridView dgvProduct;
+        private Label label25;
+        private TextBox txtInvetoryOrderDetail;
+        private TextBox txtFinalAmount;
+        private TextBox txtIdProductDetaiOrderDetail;
     }
 }

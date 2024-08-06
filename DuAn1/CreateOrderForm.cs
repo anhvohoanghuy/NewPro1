@@ -85,6 +85,20 @@ namespace DuAn1
                 comboBox.Text = string.Empty;
             }
         }
+        public decimal FinalAmount(string idOrder)
+        {
+            var listOrderDetail = orderDetailBUS.GetOrderDetailsByOrderId(idOrder);
+            if(listOrderDetail != null)
+            {
+                decimal totalAmount = 0;
+                foreach(var item in listOrderDetail)
+                {
+                    totalAmount += (item.Amount-item.ReducedAmount);
+                }
+                return totalAmount;
+            }
+            return 0;
+        }
         public void LoadDataGridView()
         {
             dgvProduct.Columns.Add("IdProDuct", "ID product");
@@ -96,10 +110,13 @@ namespace DuAn1
             dgvProduct.Columns.Add("CameraResolution", "Camera resolution");
             dgvProduct.Columns.Add("Pin", "Pin");
             //
-            dgvOrderDetails.Columns.Add("productName","Product name");
-            dgvOrderDetails.Columns.Add("idProductDetail","ID product detail");
+            dgvOrderDetails.Columns.Add("idProduct", "ID product");
+            dgvOrderDetails.Columns.Add("productName", "Product name");
+            dgvOrderDetails.Columns.Add("idProductDetail", "ID product detail");
             dgvOrderDetails.Columns.Add("Color", "Color");
             dgvOrderDetails.Columns.Add("Storage", "Storage");
+            dgvOrderDetails.Columns.Add("Price", "Price");
+            dgvOrderDetails.Columns.Add("Promotion", "Promotion");
             dgvOrderDetails.Columns.Add("Quantity", "Quantity");
         }
         public void ShowOnDgvProduct(List<Product> products)
@@ -112,6 +129,19 @@ namespace DuAn1
                 }
             }
         }
+        public void ShowOnDgvOrderDetail(string idOrder)
+        {
+            var listOrderDetails = orderDetailBUS.GetOrderDetailsByOrderId(idOrder);
+            if (listOrderDetails != null)
+            {
+                foreach (var item in listOrderDetails)
+                {
+                    var productDetail = productDetailBUS.GetProductDetailByID(item.IdproductDetails);
+                    var productName = productDetail.IdproductNavigation.ProductName;
+                    dgvOrderDetails.Rows.Add(productDetail.Idproduct, productName, productDetail.IdproductDetails, productDetail.IdcolorNavigation.ColorName, productDetail.Storage, productDetail.Price, productDetail.IdpromotionNavigation==null?0: productDetail.IdpromotionNavigation.Discount, item.Quantity);
+                }
+            }
+        }
         private void CreateOrderForm_Load(object sender, EventArgs e)
         {
             LoadDataGridView();
@@ -121,17 +151,18 @@ namespace DuAn1
             List<string> listFillter = new List<string>() { "Ram", "Pin", "Refresh rate", "Screen size" };
             LoadCbbWhenDropDown(cbbFillter, listFillter);
             LoadCbbWhenDropDown(cbbIdCustomer, customerBUS.GetAllIdCustomer());
+            LoadCbbWhenDropDown(cbbOrderQueue, orderBUS.GetAllIDWaitingOrder());
         }
 
         private void cbbIdCustomer_DropDown(object sender, EventArgs e)
         {
             var customers = customerBUS.SearchCustomerByIdCustomer(cbbIdCustomer.Text);
-            if (customers!=null)
+            if (customers != null)
             {
                 List<string> list = new List<string>();
-                foreach(Customer customer in customers)
+                foreach (Customer customer in customers)
                 {
-                    list.Add(customer.Idaccount);
+                    list.Add(customer.Idcustomer);
                 }
                 LoadCbbWhenDropDown(cbbIdCustomer, list);
             }
@@ -148,6 +179,7 @@ namespace DuAn1
                 var product = ProductBUS.GetProductByID(txtIdProduct.Text);
                 LoadCbbWhenDropDown(cbbColor, ProductBUS.GetAllColorNameOfProduct(product));
                 var storages = ProductBUS.GetAllStorageOfProduct(product);
+                cbbStorage.Items.Clear();
                 foreach (var storage in storages)
                 {
                     cbbStorage.Items.Add(storage);
@@ -169,20 +201,11 @@ namespace DuAn1
                     txtIdOrder.Text = $"{cbbIdCustomer.Text.Substring(cbbIdCustomer.Text.Length - 4)}Ord{listOrder.Count()}";
                 }
                 else
+                {
                     MessageBox.Show("Không có id khách hàng này");
+                    ResetTexbox(txtIdOrder, txtphone, txtName, txtaddres);
+                }
             }
-        }
-
-        private void txtQuantity_TextChanged(object sender, EventArgs e)
-        {
-            if (!CheckNull(txtIdProduct.Text, cbbColor.Text, cbbStorage.Text))
-            {
-                var idColor = colorBUS.GetProductColorByName(cbbColor.Text).Idcolor;
-                var productDetail = productDetailBUS.GetProductDetailForOrder(txtIdProduct.Text, idColor, int.Parse(cbbStorage.Text));
-                txtInventoty.Text = productDetail.Inventory.ToString();
-            }
-            else
-                MessageBox.Show("Chọn một sản phẩm và chọn tiếp color và storage");
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -197,18 +220,58 @@ namespace DuAn1
                         var checkOrder = orderBUS.GetOrderById(txtIdOrder.Text);
                         if (checkOrder != null)
                         {
-                            if(int.Parse(txtQuantity.Text)<=int.Parse(txtInventoty.Text))
+                            if (int.Parse(txtQuantity.Text) <= int.Parse(txtInventory.Text))
                             {
                                 var idColor = colorBUS.GetProductColorByName(cbbColor.Text).Idcolor;
                                 var productDetail = productDetailBUS.GetProductDetailForOrder(txtIdProduct.Text, idColor, int.Parse(cbbStorage.Text));
-                                orderDetailBUS.AddNewOrderDetail(txtIdOrder.Text, productDetail.IdproductDetails, int.Parse(txtQuantity.Text), productDetail.Price, productDetail.IdpromotionNavigation.Discount);
+                                var orderDetail = orderDetailBUS.GetOrderDetailByKey(txtIdOrder.Text, productDetail.IdproductDetails);
+                                if (orderDetail == null)
+                                {
+                                    if (orderDetailBUS.AddNewOrderDetail(txtIdOrder.Text, productDetail.IdproductDetails, int.Parse(txtQuantity.Text), productDetail.Price, productDetail.IdpromotionNavigation==null?0:productDetail.IdpromotionNavigation.Discount))
+                                    {
+                                        ShowOnDgvOrderDetail(txtIdOrder.Text);
+                                        ResetCombobox(cbbColor, cbbStorage);
+                                        ResetTexbox(txtIdProduct, txtBrandName, txtInventory, txtProductName, txtQuantity);
+                                        txtFinalAmount.Text=FinalAmount(txtIdOrder.Text).ToString();
+                                    }
+                                    else
+                                        MessageBox.Show("Thêm sản phẩm thất bại");
+                                }
+                                else
+                                {
+                                    if (int.Parse(txtQuantity.Text) + orderDetail.Quantity <= int.Parse(txtInventory.Text))
+                                    {
+                                        if (!orderDetailBUS.UpdateOrderDetail(orderDetail.Idorder, orderDetail.IdproductDetails, orderDetail.Quantity + int.Parse(txtQuantity.Text), orderDetail.Amount, orderDetail.ReducedAmount))
+                                            MessageBox.Show("Thêm sản phẩm thất bại");
+                                        else
+                                        {
+                                            ShowOnDgvOrderDetail(txtIdOrder.Text);
+                                        }
+                                    }
+                                    else
+                                        MessageBox.Show("Quantity vượt quá inventory");
+                                }
                             }
                             else
                                 MessageBox.Show("Quantity phải nhỏ hơn inventory");
                         }
                         else
                         {
-
+                            var idColor = colorBUS.GetProductColorByName(cbbColor.Text).Idcolor;
+                            var productDetail = productDetailBUS.GetProductDetailForOrder(txtIdProduct.Text, idColor, int.Parse(cbbStorage.Text));
+                            if (orderBUS.AddNewOrder(txtIdOrder.Text, IdAccount, cbbIdCustomer.Text, DateTime.Now, productDetail.Price - productDetail.IdpromotionNavigation.Discount, null, 0))
+                            {
+                                if (orderDetailBUS.AddNewOrderDetail(txtIdOrder.Text, productDetail.IdproductDetails, int.Parse(txtQuantity.Text), productDetail.Price, productDetail.IdpromotionNavigation.Discount))
+                                {
+                                    ShowOnDgvOrderDetail(txtIdOrder.Text);
+                                    ResetCombobox(cbbColor, cbbStorage);
+                                    ResetTexbox(txtIdProduct, txtBrandName, txtInventory, txtProductName, txtQuantity);
+                                }
+                                else
+                                    MessageBox.Show("Thêm sản phẩm thất bại");
+                            }
+                            else
+                                MessageBox.Show("Thêm order thất bại");
                         }
                     }
                     else
@@ -219,6 +282,182 @@ namespace DuAn1
             }
             else
                 MessageBox.Show("Nhập quantity");
+            LoadCbbWhenDropDown(cbbOrderQueue, orderBUS.GetAllIDWaitingOrder());
+        }
+
+        private void cbbColor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbbColor.SelectedIndex > -1)
+            {
+
+                if (string.IsNullOrEmpty(cbbStorage.Text))
+                {
+                    cbbStorage.Items.Clear();
+                    List<int> storages = ProductBUS.GetStorageWithColor(txtIdProduct.Text, cbbColor.SelectedItem.ToString());
+                    foreach (int storage in storages)
+                    {
+                        cbbStorage.Items.Add(storage);
+                    }
+                }
+                else
+                {
+                    var productDetail = productDetailBUS.GetProductDetailForOrder(txtIdProduct.Text, colorBUS.GetProductColorByName(cbbColor.SelectedItem.ToString()).Idcolor, int.Parse(cbbStorage.Text));
+                    if (productDetail != null)
+                        txtInventory.Text = productDetail.Inventory.ToString();
+                    else
+                    {
+                        cbbStorage.Text= string.Empty;
+                        cbbStorage.Items.Clear();
+                        List<int> storages = ProductBUS.GetStorageWithColor(txtIdProduct.Text, cbbColor.SelectedItem.ToString());
+                        foreach (int storage in storages)
+                        {
+                            cbbStorage.Items.Add(storage);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void cbbStorage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbbStorage.SelectedIndex > -1)
+            {
+                if (string.IsNullOrEmpty(cbbColor.Text))
+                {
+                    cbbColor.Items.Clear();
+                    List<string> colors = ProductBUS.GetColorWithStorage(txtIdProduct.Text, int.Parse(cbbStorage.Text));
+                    foreach (string color in colors)
+                    {
+                        cbbColor.Items.Add(color);
+                    }
+                }
+                else
+                {
+                    var productDetail = productDetailBUS.GetProductDetailForOrder(txtIdProduct.Text, colorBUS.GetProductColorByName(cbbColor.SelectedItem.ToString()).Idcolor, int.Parse(cbbStorage.Text));
+                    if(productDetail!=null)
+                        txtInventory.Text = productDetail.Inventory.ToString();
+                    else
+                    {
+                        cbbColor.Text = string.Empty;
+                        cbbColor.Items.Clear();
+                        List<string> colors = ProductBUS.GetColorWithStorage(txtIdProduct.Text, int.Parse(cbbStorage.Text));
+                        foreach (string color in colors)
+                        {
+                            cbbColor.Items.Add(color);
+                        }
+                    }    
+                }
+            }
+        }
+        private void btnTaoDon_Click(object sender, EventArgs e)
+        {
+            ResetTexbox(txtIdProductDetaiOrderDetail, txtIdOrder, txtphone, txtName, txtaddres, txtIdProduct, txtProductName, txtBrandName, txtInventory, txtQuantity, txtFrom, txtTo, txtSearch, txtIdCustomerQueue, txtTotalAmountQuese, txtVoucherName, txtFinalAmount);
+            ResetCombobox();
+            LoadCbbWhenDropDown(cbbOrderQueue, orderBUS.GetAllIDWaitingOrder());
+        }
+
+        private void dgvOrderDetails_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < dgvOrderDetails.RowCount - 1)
+            {
+                var row = dgvOrderDetails.Rows[e.RowIndex];
+                txtIdProductOrderDetail.Text = row.Cells[0].Value.ToString();
+                txtProductNameOrderDetail.Text = row.Cells[1].Value.ToString();
+                txtIdProductDetaiOrderDetail.Text = row.Cells[2].Value.ToString();
+                txtColorOrderDetail.Text = row.Cells[3].Value.ToString();
+                txtStorageOrderDetail.Text = row.Cells[4].Value.ToString();
+                txtQuantityOrderDetail.Text = row.Cells[7].Value.ToString();
+                var productDetail = productDetailBUS.GetProductDetailByID(txtIdProductDetaiOrderDetail.Text);
+                txtInvetoryOrderDetail.Text = productDetail.Inventory.ToString();
+            }
+        }
+
+        private void btnUpdateOrderDetail_Click(object sender, EventArgs e)
+        {
+            if (!CheckNull(txtIdProductOrderDetail.Text, txtQuantityOrderDetail.Text))
+            {
+                var check = CheckIsInt(txtQuantity);
+                if (check == null)
+                {
+                    var orderDetail = orderDetailBUS.GetOrderDetailByKey(txtIdOrder.Text, txtIdProductDetaiOrderDetail.Text);
+                    if (orderDetail != null)
+                    {
+                        if (int.Parse(txtQuantityOrderDetail.Text) <= int.Parse(txtInvetoryOrderDetail.Text))
+                        {
+                            if (orderDetailBUS.UpdateOrderDetail(txtIdOrder.Text, txtIdProductDetaiOrderDetail.Text, orderDetail.Quantity, orderDetail.Amount, orderDetail.ReducedAmount))
+                            {
+                                MessageBox.Show("Sửa thành công");
+                            }
+                            else
+                                MessageBox.Show("Sửa thất bại");
+                        }
+                        else
+                            MessageBox.Show("Quantity không vượt quá inventory");
+                    }
+                    else
+                        MessageBox.Show("Không tìm được order detail này");
+                }
+                else
+                    MessageBox.Show(check);
+            }
+            else
+                MessageBox.Show("Chọn một sản phảm và nhập quantity");
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            var orderDetail = orderDetailBUS.GetOrderDetailByKey(txtIdOrder.Text, txtIdProductDetaiOrderDetail.Text);
+            if (orderDetail != null)
+            {
+                if (orderDetailBUS.DeleteOrderDetail(orderDetail.Idorder, orderDetail.IdproductDetails))
+                {
+                    MessageBox.Show("Xóa thành công");
+                }
+                else
+                    MessageBox.Show("Xóa thất bại");
+            }
+        }
+
+        private void btnDeleteOrder_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(cbbOrderQueue.Text))
+            {
+                var order = orderBUS.GetOrderById(cbbOrderQueue.Text);
+                if (order != null)
+                {
+                    if (orderBUS.UpdateOrder(order.Idorder, order.Idaccount, order.Idcustomer, order.EstablishedDate, order.TotalAmount, order.Idvoucher, 2))
+                        MessageBox.Show("Hủy thành công");
+                    else
+                        MessageBox.Show("Hủy thất bại");
+                }
+                else
+                    MessageBox.Show("Hủy thất bại");
+            }
+            else
+                MessageBox.Show("Chọn một order từ combo box");
+            LoadCbbWhenDropDown(cbbOrderQueue, orderBUS.GetAllIDWaitingOrder());
+        }
+
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(cbbOrderQueue.Text))
+            {
+                var order = orderBUS.GetOrderById(cbbOrderQueue.Text);
+                if (order != null)
+                {
+                    txtIdOrder.Text = order.Idorder.ToString();
+                    cbbIdCustomer.Text = order.Idcustomer.ToString();
+                    var customer= customerBUS.GetCustomerByID(cbbIdCustomer.Text);
+                    txtphone.Text=customer.PhoneNumber;
+                    txtName.Text=customer.CustomerName;
+                    txtaddres.Text=customer.CustomerAddress;
+                    ShowOnDgvOrderDetail(txtIdOrder.Text);
+                }
+                else
+                    MessageBox.Show("Không tìm thấy order này");
+            }
+            else
+                MessageBox.Show("Chọn một order từ combo box");
         }
     }
 }

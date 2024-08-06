@@ -63,10 +63,6 @@ namespace BUS.Services
         {
             return productDetailDAL.GetAllProductDetail().Where(c => c.Idcolor.ToLower().Contains(IdColor.ToLower())).ToList();
         }
-        public int GetInventoryOfProductDetail(ProductDetail productDetail)
-        {
-            return productDetail.Inventory;
-        }
         public decimal GetDiscountOfProductDetail(ProductDetail productDetail)
         {
             return promotionDAL.GetAllPromotion().FirstOrDefault(c => c.Idpromotion == productDetail.Idpromotion).Discount;
@@ -160,5 +156,6 @@ namespace BUS.Services
         {
             return GetAllProductDetail().FirstOrDefault(c => c.Idproduct == idProduct && c.Idcolor == idColor && c.Storage == storage);
         }
+       
     }
 }

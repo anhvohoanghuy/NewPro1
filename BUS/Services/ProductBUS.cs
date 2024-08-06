@@ -147,6 +147,26 @@ namespace BUS.Services
             listStorage.Sort();
             return listStorage.Distinct().ToList();
         }
+        public List<int> GetStorageWithColor(string idProduct, string colorName)
+        {
+            List<int> storages = new List<int>();
+            var listProductDetail = productDetailBUS.GetAllProductDetail().Where(c => c.Idproduct == idProduct && c.IdcolorNavigation.ColorName == colorName);
+            foreach (var item in listProductDetail)
+            {
+                storages.Add(item.Storage);
+            }
+            return storages.Distinct().ToList();
+        }
+        public List<string> GetColorWithStorage(string idProduct, int storage)
+        {
+            List<string> colors = new List<string>();
+            var listProductDetail = productDetailBUS.GetAllProductDetail().Where(c => c.Idproduct == idProduct && c.Storage == storage);
+            foreach (var item in listProductDetail)
+            {
+                colors.Add(item.IdcolorNavigation.ColorName);
+            }
+            return colors.Distinct().ToList();
+        }
         public List<string> GetAllIDProduct()
         {
             var listProduct= GetAllProduct();

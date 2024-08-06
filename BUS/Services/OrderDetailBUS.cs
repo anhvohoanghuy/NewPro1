@@ -11,7 +11,7 @@ namespace BUS.Services
     public class OrderDetailBUS
     {
         OrderDetailDAL orderDetailDAL= new OrderDetailDAL();
-        public List<OrderDetail> GetOrderDetails()
+        public List<OrderDetail> GetAllOrderDetails()
         {
             return orderDetailDAL.GetAllOrderDetail();
         }
@@ -27,16 +27,9 @@ namespace BUS.Services
             };
             return orderDetailDAL.AddNewOrderDetail(orderDetail);
         }
-        public bool DeleteOrderDetail(string idOrder, string idProductDetail, int quantity, decimal amount, decimal reduceAmount)
+        public bool DeleteOrderDetail(string idOrder, string idProductDetail)
         {
-            var orderDetail = new OrderDetail()
-            {
-                Idorder = idOrder,
-                IdproductDetails = idProductDetail,
-                Quantity = quantity,
-                Amount = amount,
-                ReducedAmount = reduceAmount
-            };
+            var orderDetail = GetOrderDetailByKey(idOrder, idProductDetail);
             return orderDetailDAL.DeleteOrderDetail(orderDetail);
         }
         public bool UpdateOrderDetail(string idOrder, string idProductDetail, int quantity, decimal amount, decimal reduceAmount)
@@ -50,6 +43,14 @@ namespace BUS.Services
                 ReducedAmount = reduceAmount
             };
             return orderDetailDAL.UpdateOrderDetail(orderDetail);
+        }
+        public List<OrderDetail> GetOrderDetailsByOrderId(string idOrder)
+        {
+            return GetAllOrderDetails().Where(c => c.Idorder == idOrder).ToList();
+        }
+        public OrderDetail GetOrderDetailByKey(string idOrder, string idProductDetail)
+        {
+            return GetAllOrderDetails().FirstOrDefault(c => c.IdproductDetails == idProductDetail && c.Idorder == idOrder);
         }
     }
 }

@@ -162,11 +162,11 @@ namespace DuAn1
             if (e.RowIndex > -1 && e.RowIndex < dgvListCustomer.RowCount-1)
             {
                 var row= dgvListCustomer.Rows[e.RowIndex];
-                txtIdCustomer.Text = row.Cells[0].ToString();
-                txtCustomerName.Text = row.Cells[1].ToString();
-                txtPhoneNumber.Text = row.Cells[2].ToString();
-                txtAddress.Text = row.Cells[3].ToString();
-                txtIdAccount.Text = row.Cells[4].ToString();
+                txtIdCustomer.Text = row.Cells[0].Value.ToString();
+                txtCustomerName.Text = row.Cells[1].Value.ToString();
+                txtPhoneNumber.Text = row.Cells[2].Value.ToString();
+                txtAddress.Text = row.Cells[3].Value.ToString();
+                txtIdAccount.Text = row.Cells[4].Value.ToString();
             }
         }
     }

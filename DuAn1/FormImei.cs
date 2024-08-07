@@ -19,6 +19,7 @@ namespace DuAn1
         List<string> Imeis;
         ProductDetail ThisProductDetail;
         public bool Comfirm = false;
+        public int inventory;
         ImeiBUS imeiBUS = new ImeiBUS();
         string Account;
         Validate validate = new Validate();
@@ -120,6 +121,8 @@ namespace DuAn1
                     }
                 }
                 MessageBox.Show($"Đã thêm {count} Imei");
+                var listImei = imeiBUS.GetImeiByIdProductDetail(ThisProductDetail.IdproductDetails);
+                inventory = listImei.Where(c=>c.Selled==false).Count();
                 Comfirm = true;
                 this.Close();
             }

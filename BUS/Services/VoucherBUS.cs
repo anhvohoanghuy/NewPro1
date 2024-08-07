@@ -87,7 +87,7 @@ namespace BUS.Services
         }
         public List<string> GetAllIdVoucherForSale(string idVoucher)
         {
-            var listVoucher = GetAllVoucher().Where(c => c.EndTime > DateTime.Now && c.UsageCount > 0&&c.Idvoucher.Contains(idVoucher)).ToList();
+            var listVoucher = GetAllVoucher().Where(c => c.EndTime > DateTime.Now && c.UsageCount > 0&&c.Idvoucher.ToLower().Contains(idVoucher.ToLower().Trim())).ToList();
             if (listVoucher != null)
             {
                 var listIdVoucher = new List<string>();

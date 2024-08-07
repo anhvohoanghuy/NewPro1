@@ -59,10 +59,6 @@ namespace BUS.Services
             else
                 return false;
         }
-        public List<ProductDetail> GetProductDetailByIdColor(string IdColor)
-        {
-            return productDetailDAL.GetAllProductDetail().Where(c => c.Idcolor.ToLower().Contains(IdColor.ToLower())).ToList();
-        }
         public decimal GetDiscountOfProductDetail(ProductDetail productDetail)
         {
             return promotionDAL.GetAllPromotion().FirstOrDefault(c => c.Idpromotion == productDetail.Idpromotion).Discount;
@@ -82,6 +78,14 @@ namespace BUS.Services
         public List<ProductDetail> SearchByIDProduct(string id)
         {
             return GetAllProductDetail().Where(c => c.Idproduct.ToLower().Contains(id.ToLower())).ToList();
+        }
+        public List<ProductDetail> SearchByIdAccount(string idAccount)
+        {
+            return GetAllProductDetail().Where(c => c.Idaccount.ToLower().Contains(idAccount.ToLower())).ToList();
+        }
+        public List<ProductDetail> SearchByIdColor(string idColor)
+        {
+            return GetAllProductDetail().Where(c => c.Idcolor.ToLower().Contains(idColor.ToLower())).ToList();
         }
         public List<ProductDetail> SearchByColorName(string colorName)
         {
@@ -116,10 +120,12 @@ namespace BUS.Services
                 case 1:
                     return SearchByIDProduct(key);
                 case 2:
-                    return GetProductDetailByIdColor(key);
+                    return SearchByIdAccount(key);
                 case 3:
-                    return SearchByColorName(key);
+                    return SearchByIdColor(key);
                 case 4:
+                    return SearchByIdColor(key);
+                case 5:
                     return SearchByIdPromotion(key);
                 default:
                     return null;

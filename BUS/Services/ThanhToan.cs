@@ -8,36 +8,34 @@ namespace BUS.Services
 {
     public class ThanhToan
     {
-        OrderDetailBUS detailBUS=new OrderDetailBUS();
         ImeiBUS meiBUS=new ImeiBUS();
-        public string CheckThanhToan(string idOrder)
+        OrderDetailBUS orderDetailBUS = new OrderDetailBUS();
+        
+        public bool ComfirmThanhToan(string idOrder)
         {
-            string result = "Thanh toán thành công";
-            var orderDetails = detailBUS.GetOrderDetailsByOrderId(idOrder);
+            var result = false;
+            var orderDetails = orderDetailBUS.GetOrderDetailsByOrderId(idOrder);
             if (orderDetails != null)
             {
-                foreach (var item in orderDetails)
+                foreach(var item in orderDetails)
                 {
-                    var productDetail = item.IdproductDetailsNavigation;
-                    for (var i = 0; i < item.Quantity; i++)
+                    var listImei= item.ImeiNumbers;
+                    foreach(var imei in listImei)
                     {
-                        var imei = productDetail.Imeis.FirstOrDefault(c => c.Selled == false);
-                        if (imei != null)
+                        if (imei.Selled ==true)
                         {
                             if (meiBUS.UpdateImei(imei.IdproductDetails, imei.ImeiNumber, imei.Idaccount, true))
-                            {
-                                continue;
-                            }
+                                result = true;
                             else
-                                return "Thanh toán không thành công";
+                                return false;
                         }
                         else
-                            return "Không có imei nào trong product detail này";
+                            return false;
                     }
                 }
             }
             else
-                return "Không có sản phẩm nào trong order";
+                return false;
             return result;
         }
     }

@@ -52,6 +52,8 @@
             label1 = new Label();
             groupBox2 = new GroupBox();
             panel2 = new Panel();
+            cbbImei = new ComboBox();
+            label26 = new Label();
             btnFillter = new CustomButton.VBButton();
             txtTo = new TextBox();
             txtFrom = new TextBox();
@@ -75,8 +77,6 @@
             btnThem = new CustomButton.VBButton();
             label4 = new Label();
             label12 = new Label();
-            label9 = new Label();
-            txtQuantity = new TextBox();
             label11 = new Label();
             vbButton2 = new CustomButton.VBButton();
             textBox8 = new TextBox();
@@ -106,6 +106,10 @@
             cbbVoucher = new ComboBox();
             groupBox9 = new GroupBox();
             groupBox11 = new GroupBox();
+            cbbImeiOrderDetail = new ComboBox();
+            label27 = new Label();
+            label9 = new Label();
+            txtIdProductDetaiOrderDetail = new TextBox();
             label25 = new Label();
             txtInvetoryOrderDetail = new TextBox();
             txtQuantityOrderDetail = new TextBox();
@@ -121,7 +125,6 @@
             txtIdProductOrderDetail = new TextBox();
             label21 = new Label();
             btnThanhToans = new CustomButton.VBButton();
-            txtIdProductDetaiOrderDetail = new TextBox();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -304,6 +307,8 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(cbbImei);
+            panel2.Controls.Add(label26);
             panel2.Controls.Add(btnFillter);
             panel2.Controls.Add(txtTo);
             panel2.Controls.Add(txtFrom);
@@ -326,8 +331,6 @@
             panel2.Controls.Add(btnThem);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label12);
-            panel2.Controls.Add(label9);
-            panel2.Controls.Add(txtQuantity);
             panel2.Controls.Add(label11);
             panel2.Controls.Add(vbButton2);
             panel2.Controls.Add(textBox8);
@@ -336,6 +339,24 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(680, 652);
             panel2.TabIndex = 0;
+            // 
+            // cbbImei
+            // 
+            cbbImei.FormattingEnabled = true;
+            cbbImei.Location = new Point(33, 200);
+            cbbImei.Name = "cbbImei";
+            cbbImei.Size = new Size(383, 33);
+            cbbImei.TabIndex = 182;
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label26.Location = new Point(33, 172);
+            label26.Name = "label26";
+            label26.Size = new Size(46, 25);
+            label26.TabIndex = 181;
+            label26.Text = "Imei";
             // 
             // btnFillter
             // 
@@ -355,6 +376,7 @@
             btnFillter.Text = "Lọc";
             btnFillter.TextColor = Color.White;
             btnFillter.UseVisualStyleBackColor = false;
+            btnFillter.Click += btnFillter_Click;
             // 
             // txtTo
             // 
@@ -508,6 +530,7 @@
             vbtnSearch.TabIndex = 104;
             vbtnSearch.TextColor = Color.White;
             vbtnSearch.UseVisualStyleBackColor = false;
+            vbtnSearch.Click += vbtnSearch_Click;
             // 
             // txtSearch
             // 
@@ -570,12 +593,14 @@
             dgvProduct.RowHeadersVisible = false;
             dgvProduct.RowHeadersWidth = 62;
             dataGridViewCellStyle12.ForeColor = Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
             dgvProduct.RowsDefaultCellStyle = dataGridViewCellStyle12;
             dgvProduct.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProduct.Size = new Size(674, 292);
             dgvProduct.TabIndex = 2;
             dgvProduct.CellClick += dgvProduct_CellClick;
+            dgvProduct.CellContentClick += dgvProduct_CellContentClick;
             // 
             // btnThem
             // 
@@ -587,7 +612,7 @@
             btnThem.FlatAppearance.BorderSize = 0;
             btnThem.FlatStyle = FlatStyle.Flat;
             btnThem.ForeColor = Color.White;
-            btnThem.Location = new Point(486, 185);
+            btnThem.Location = new Point(492, 195);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(149, 40);
             btnThem.TabIndex = 100;
@@ -615,23 +640,6 @@
             label12.Size = new Size(55, 25);
             label12.TabIndex = 94;
             label12.Text = "Color";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(33, 172);
-            label9.Name = "label9";
-            label9.Size = new Size(80, 25);
-            label9.TabIndex = 91;
-            label9.Text = "Quantity";
-            // 
-            // txtQuantity
-            // 
-            txtQuantity.Location = new Point(33, 200);
-            txtQuantity.Name = "txtQuantity";
-            txtQuantity.Size = new Size(168, 31);
-            txtQuantity.TabIndex = 90;
             // 
             // label11
             // 
@@ -726,7 +734,8 @@
             dgvOrderDetails.RowHeadersVisible = false;
             dgvOrderDetails.RowHeadersWidth = 62;
             dataGridViewCellStyle16.ForeColor = Color.Black;
-            dataGridViewCellStyle16.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle16.SelectionBackColor = SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle16.SelectionForeColor = Color.Black;
             dgvOrderDetails.RowsDefaultCellStyle = dataGridViewCellStyle16;
             dgvOrderDetails.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvOrderDetails.Size = new Size(629, 292);
@@ -998,7 +1007,7 @@
             cbbVoucher.TabIndex = 98;
             cbbVoucher.DropDown += cbbVoucher_DropDown;
             cbbVoucher.SelectedIndexChanged += cbbVoucher_SelectedIndexChanged;
-            cbbVoucher.DragLeave += cbbVoucher_DragLeave;
+            cbbVoucher.Leave += cbbVoucher_Leave;
             // 
             // groupBox9
             // 
@@ -1011,6 +1020,10 @@
             // 
             // groupBox11
             // 
+            groupBox11.Controls.Add(cbbImeiOrderDetail);
+            groupBox11.Controls.Add(label27);
+            groupBox11.Controls.Add(label9);
+            groupBox11.Controls.Add(txtIdProductDetaiOrderDetail);
             groupBox11.Controls.Add(label25);
             groupBox11.Controls.Add(txtInvetoryOrderDetail);
             groupBox11.Controls.Add(txtQuantityOrderDetail);
@@ -1027,10 +1040,46 @@
             groupBox11.Controls.Add(label21);
             groupBox11.Location = new Point(37, 727);
             groupBox11.Name = "groupBox11";
-            groupBox11.Size = new Size(632, 189);
+            groupBox11.Size = new Size(632, 232);
             groupBox11.TabIndex = 103;
             groupBox11.TabStop = false;
             groupBox11.Text = "Selected Item";
+            // 
+            // cbbImeiOrderDetail
+            // 
+            cbbImeiOrderDetail.FormattingEnabled = true;
+            cbbImeiOrderDetail.Location = new Point(17, 193);
+            cbbImeiOrderDetail.Name = "cbbImeiOrderDetail";
+            cbbImeiOrderDetail.Size = new Size(250, 28);
+            cbbImeiOrderDetail.TabIndex = 184;
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label27.Location = new Point(17, 165);
+            label27.Name = "label27";
+            label27.Size = new Size(46, 25);
+            label27.TabIndex = 183;
+            label27.Text = "Imei";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Location = new Point(325, 103);
+            label9.Name = "label9";
+            label9.Size = new Size(146, 25);
+            label9.TabIndex = 124;
+            label9.Text = "ID product detail";
+            // 
+            // txtIdProductDetaiOrderDetail
+            // 
+            txtIdProductDetaiOrderDetail.Location = new Point(325, 131);
+            txtIdProductDetaiOrderDetail.Name = "txtIdProductDetaiOrderDetail";
+            txtIdProductDetaiOrderDetail.ReadOnly = true;
+            txtIdProductDetaiOrderDetail.Size = new Size(194, 27);
+            txtIdProductDetaiOrderDetail.TabIndex = 123;
             // 
             // label25
             // 
@@ -1054,6 +1103,7 @@
             // 
             txtQuantityOrderDetail.Location = new Point(15, 135);
             txtQuantityOrderDetail.Name = "txtQuantityOrderDetail";
+            txtQuantityOrderDetail.ReadOnly = true;
             txtQuantityOrderDetail.Size = new Size(129, 27);
             txtQuantityOrderDetail.TabIndex = 120;
             // 
@@ -1077,7 +1127,7 @@
             btnUpdateOrderDetail.FlatAppearance.BorderSize = 0;
             btnUpdateOrderDetail.FlatStyle = FlatStyle.Flat;
             btnUpdateOrderDetail.ForeColor = Color.White;
-            btnUpdateOrderDetail.Location = new Point(338, 122);
+            btnUpdateOrderDetail.Location = new Point(342, 177);
             btnUpdateOrderDetail.Name = "btnUpdateOrderDetail";
             btnUpdateOrderDetail.Size = new Size(129, 40);
             btnUpdateOrderDetail.TabIndex = 118;
@@ -1096,7 +1146,7 @@
             btnXoa.FlatAppearance.BorderSize = 0;
             btnXoa.FlatStyle = FlatStyle.Flat;
             btnXoa.ForeColor = Color.White;
-            btnXoa.Location = new Point(499, 122);
+            btnXoa.Location = new Point(503, 177);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(115, 40);
             btnXoa.TabIndex = 117;
@@ -1196,20 +1246,11 @@
             btnThanhToans.UseVisualStyleBackColor = false;
             btnThanhToans.Click += btnThanhToans_Click;
             // 
-            // txtIdProductDetaiOrderDetail
-            // 
-            txtIdProductDetaiOrderDetail.Location = new Point(50, 922);
-            txtIdProductDetaiOrderDetail.Name = "txtIdProductDetaiOrderDetail";
-            txtIdProductDetaiOrderDetail.ReadOnly = true;
-            txtIdProductDetaiOrderDetail.Size = new Size(160, 27);
-            txtIdProductDetaiOrderDetail.TabIndex = 123;
-            // 
             // CreateOrderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1693, 971);
-            Controls.Add(txtIdProductDetaiOrderDetail);
             Controls.Add(groupBox11);
             Controls.Add(btnThanhToans);
             Controls.Add(groupBox9);
@@ -1244,7 +1285,6 @@
             groupBox11.ResumeLayout(false);
             groupBox11.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -1264,7 +1304,6 @@
         private TextBox txtphone;
         private GroupBox groupBox2;
         private Panel panel2;
-        private TextBox txtQuantity;
         private Label label11;
         private CustomButton.VBButton vbButton2;
         private TextBox textBox8;
@@ -1287,7 +1326,6 @@
         private GroupBox groupBox8;
         private ComboBox cbbVoucher;
         private Label label4;
-        private Label label9;
         private GroupBox groupBox9;
         private TextBox txtBrandName;
         private Label label14;
@@ -1335,5 +1373,10 @@
         private TextBox txtInvetoryOrderDetail;
         private TextBox txtFinalAmount;
         private TextBox txtIdProductDetaiOrderDetail;
+        private ComboBox cbbImei;
+        private Label label26;
+        private ComboBox cbbImeiOrderDetail;
+        private Label label27;
+        private Label label9;
     }
 }

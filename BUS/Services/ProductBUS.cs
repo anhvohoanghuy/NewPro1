@@ -88,13 +88,21 @@ namespace BUS.Services
         {
             return GetAllProduct().Where(c => c.Idaccount== idaccount).ToList();
         }
+        public List<Product> SearchProductByIdAccount(string idaccount)
+        {
+            return GetAllProduct().Where(c => c.Idaccount.ToLower().Contains(idaccount.ToLower())).ToList();
+        }
         public List<Product> GetProductByName(string name)
         {
             return GetAllProduct().Where(c => c.ProductName.ToLower().Contains(name.ToLower().Trim())).ToList();
         }
         public List<Product> GetProductByIDProductCompany(string idCompany)
         {
-            return productDAL.GetAllProduct().Where(c => c.Idcompany == idCompany).ToList();
+            return productDAL.GetAllProduct().Where(c => c.Idcompany==idCompany).ToList();
+        }
+        public List<Product> SearchProductByIDProductCompany(string idCompany)
+        {
+            return productDAL.GetAllProduct().Where(c => c.Idcompany.ToLower().Contains(idCompany.ToLower())).ToList();
         }
         public List<Product> GetProducstByCompanyName(string companyName)
         {
@@ -105,6 +113,10 @@ namespace BUS.Services
         public List<Product> GetProductByIdCPU(string idCpu)
         {
             return productDAL.GetAllProduct().Where(c => c.Idcpu == idCpu).ToList();
+        }
+        public List<Product> SearchProductByIdCPU(string idCpu)
+        {
+            return productDAL.GetAllProduct().Where(c => c.Idcpu.ToLower().Contains(idCpu.ToLower())).ToList();
         }
         public List<Product> GetProductByCPUName(string Cpu)
         {
@@ -207,16 +219,16 @@ namespace BUS.Services
                     products = SearchByID(key);
                     break;
                 case 2:
-                    products = GetProductByIDProductCompany(key);
+                    products = SearchProductByIDProductCompany(key);
                     break;
                 case 3:
                     products = GetProducstByCompanyName(key);
                     break;
                 case 4:
-                    products = GetProductByIdAccount(key);
+                    products = SearchProductByIdAccount(key);
                     break;
                 case 5:
-                    products = GetProductByIdCPU(key);
+                    products = SearchProductByIdCPU(key);
                     break;
                 case 6:
                     products = GetProductByCPUName(key);

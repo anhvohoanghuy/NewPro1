@@ -19,6 +19,10 @@ namespace BUS.Services
         {
             return imeisDAL.GetImeiByProductDetailID(idProductDetail);
         }
+        public List<Imei> GetImeiByIdProductDetailForSale(string idProductDetail)
+        {
+            return imeisDAL.GetImeiByProductDetailID(idProductDetail).Where(c=>c.Selled==false).ToList();
+        }
         public Imei GetImeiByID(string imei)
         {
             return imeisDAL.GetAllImei().FirstOrDefault(c => c.ImeiNumber == imei);

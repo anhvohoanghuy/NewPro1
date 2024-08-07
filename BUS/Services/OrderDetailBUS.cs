@@ -40,9 +40,14 @@ namespace BUS.Services
                 IdproductDetails = idProductDetail,
                 Quantity = quantity,
                 Amount = amount,
-                ReducedAmount = reduceAmount
+                ReducedAmount = reduceAmount,
+                ImeiNumbers = new List<Imei>()
             };
             return orderDetailDAL.UpdateOrderDetail(orderDetail);
+        }
+        public void AddImeiToOrderDetail(OrderDetail orderDetail,Imei imei)
+        {
+            orderDetailDAL.AddImeiToOrderDetail(orderDetail, imei);
         }
         public List<OrderDetail> GetOrderDetailsByOrderId(string idOrder)
         {

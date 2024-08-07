@@ -1,5 +1,6 @@
 ﻿using DAL.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace DAL.Repositories
         Pro1QuanLiDienThoaiFinalContext _context = new Pro1QuanLiDienThoaiFinalContext();
         public List<OrderDetail> GetAllOrderDetail()
         {
-            return _context.OrderDetails.Include(c=>c.IdproductDetailsNavigation).ToList();
+            return _context.OrderDetails.Include(c=>c.IdproductDetailsNavigation).Include(c=>c.ImeiNumbers).ToList();
         }
         public bool AddNewOrderDetail(OrderDetail orderDetail)
         {
@@ -50,6 +51,13 @@ namespace DAL.Repositories
             {
                 return false ;
             }
+        }
+        public void AddImeiToOrderDetail(OrderDetail orderDetail, Imei imei)
+        {
+            var thisImei = _context.Imeis.FirstOrDefault(c => c.ImeiNumber == imei.ImeiNumber);
+            var current = GetAllOrderDetail().FirstOrDefault(c => c.Idorder == orderDetail.Idorder && c.IdproductDetails == orderDetail.IdproductDetails);
+            current.ImeiNumbers.Add(thisImei);
+            _context.SaveChanges();
         }
         public bool DeleteOrderDetail(OrderDetail orderDetail)
         {

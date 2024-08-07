@@ -76,6 +76,11 @@ namespace DuAn1
                         {
                             MessageBox.Show("Mật khẩu không chính xác hãy nhập lại !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
+                       
+                    }
+                    else if (tg.AccountStatus == false)
+                    {
+                        MessageBox.Show("Tài khoản ngừng hoạt động!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     else
                     {

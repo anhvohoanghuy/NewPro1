@@ -12,19 +12,7 @@ namespace BUS.Services
     {
         LoginDAL account = new LoginDAL();
         
-        public bool KiemTraTKMK(string Tentk, string mk)
-        {
-            Account tg = account.TimkiemTK(Tentk);
-            if (tg != null)
-            {
-                if (tg.PassAccount == mk)
-                {
-                    return true;
-                }
-                return false;
-            }
-            return false;
-        }
+       
         public Account TimkiemTK(string tentk)
         {
             return account.TimkiemTK(tentk);

@@ -32,7 +32,7 @@ namespace DuAn1
         public dynamic GetListAccount()
         {
             listAC = ac.getListAccount().ToList();
-            var TG = ac.getListAccount().Select(s => new { s.Idaccount, s.PassAccount, s.AccountLevel, s.AccountName, s.Email }).ToList();
+            var TG = ac.getListAccount().Select(s => new { s.Idaccount, s.PassAccount, s.AccountLevel, s.AccountName, s.Email,s.AccountStatus }).ToList();
             return TG;
         }
         public void LoadDataGridView()
@@ -74,7 +74,7 @@ namespace DuAn1
                 txtName.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
                 txtPass.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 cbbLevel.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-
+                cbStatus.Checked = Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells[5].Value);
                 originalId = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
             }
             catch
@@ -166,6 +166,7 @@ namespace DuAn1
             txtEmail.Text = "";
             txtPass.Text = "";
             cbbLevel.SelectedIndex = -1;
+            cbStatus.Checked = false;
             LoadDataGridView();
         }
         public Account ObjectNV()
@@ -178,7 +179,8 @@ namespace DuAn1
                     PassAccount = txtPass.Text,
                     AccountName = txtName.Text,
                     Email = txtEmail.Text,
-                    AccountLevel = int.Parse(cbbLevel.Text)
+                    AccountLevel = int.Parse(cbbLevel.Text),
+                    AccountStatus= cbStatus.Checked
                 };
                 return nv;
             }
@@ -269,7 +271,7 @@ namespace DuAn1
         private void btnExcel_Click(object sender, EventArgs e)
         {
             XuatExcel xuatExcel = new XuatExcel();
-            string[] tieudecolumn = { "Id Account", "PassWord", "Level", "Name", "Email" };
+            string[] tieudecolumn = { "Id Account", "PassWord", "Level", "Name", "Email","Status" };
             xuatExcel.ExportToExcel(dataGridView1, "Danh Sách Account", tieudecolumn, "danhsachAccount.xlsx");
         }
     }

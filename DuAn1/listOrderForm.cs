@@ -1,4 +1,5 @@
 ﻿using BUS.Services;
+using DoAn1_QuanLyPhanMemBanPKDT;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,7 +55,8 @@ namespace DuAn1
         private void btnToday_Click(object sender, EventArgs e)
         {
             var today = DateTime.Today;
-            LoadDataGridView(null, today, today);
+            var endOfToday = today.AddDays(1).AddTicks(-1); // Lấy thời điểm cuối cùng của ngày hôm nay
+            LoadDataGridView(null, today, endOfToday);
             DisableCustomDates();
         }
 
@@ -106,6 +108,13 @@ namespace DuAn1
         private void txtTImKiem_Click(object sender, EventArgs e)
         {
             txtTImKiem.Text = "";
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            XuatExcel xuatExcel = new XuatExcel();
+            string[] tieudecolumn = { "Id Order", "Id Account", "Id customer", "Established date", "Total amount", "Id voucher", "Order status", "Id Product detail", "Quantity", "Amount", "Reduce Amount" };
+            xuatExcel.ExportToExcel(dataGridView1, "Danh Sách Order", tieudecolumn, "danhsachOrder.xlsx");
         }
     }
 }

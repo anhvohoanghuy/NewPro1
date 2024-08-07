@@ -95,7 +95,7 @@ namespace DuAn1
                         }
                         catch (Exception)
                         {
-                            var defaultImg = "C:\\Users\\chinh\\Downloads\\fpt.jpg";
+                            var defaultImg = "D:\\Image\\1.png";
                             Bitmap img = new Bitmap(defaultImg);
                             dgvListProduct.Rows.Add(product.Idproduct, img, product.ProductName, product.Idcompany, product.Ram, product.Idcpu, product.ScreenSize, product.ScreenResolution, product.RefreshRate, product.CameraResolution, product.Pin, product.Idaccount, product.ProductStatus);
                         }

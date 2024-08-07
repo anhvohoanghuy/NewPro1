@@ -17,17 +17,12 @@ namespace DuAn1
         public string IdAccountMenu = DangNhapForm.GetDataUser.idaccount;
         public FormMenu()
         {
-            InitializeComponent(); b = true; a();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ProcessModule objCurrentModule = Process.GetCurrentProcess().MainModule; objKeyboardProcess = new LowLevelKeyboardProc(captureKey); ptrHook = SetWindowsHookEx(13, objKeyboardProcess, GetModuleHandle(objCurrentModule.ModuleName), 0);
+            InitializeComponent();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ProcessModule objCurrentModule = Process.GetCurrentProcess().MainModule; objKeyboardProcess = new LowLevelKeyboardProc(captureKey); ptrHook = SetWindowsHookEx(13, objKeyboardProcess, GetModuleHandle(objCurrentModule.ModuleName), 0);
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
         }
-        bool b;
-        private void a()
-        {
-            if (b = true)
-            {
-                this.WindowState = FormWindowState.Maximized;
-                this.FormBorderStyle = FormBorderStyle.None;
-            }
-        }
+        
+       
         private void FormMenu_Load(object sender, EventArgs e)
         {
             IdAccountMenu = DangNhapForm.GetDataUser.idaccount;
@@ -158,13 +153,13 @@ namespace DuAn1
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất tài khoản không  ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
+            if (result == DialogResult.No)
             {
-                this.Close();
+                this.Hide();
             }
             else
             {
-                MessageBox.Show("Không cho thoát");                                                                                                                                                                {this.Hide(); DangNhapForm a = new DangNhapForm(); a.ShowDialog();}
+                MessageBox.Show("Không cho thoát");                                                                                                                                                                
             }
 
         }
@@ -175,7 +170,7 @@ namespace DuAn1
             CreateOrderForm a = new CreateOrderForm(IdAccountMenu);
             LoadForm(a);
             ActiveColor(btnEmployee);
-            b = true;
+           
 
 
         }
@@ -207,5 +202,6 @@ namespace DuAn1
             LoadForm(a);
             ActiveColor(btnKhachHang);
         }
+
     }
 }

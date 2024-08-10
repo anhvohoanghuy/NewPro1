@@ -111,7 +111,7 @@ namespace DuAn1
                     var check2 = CheckIsInt(txtUsageCount);
                     if (check2 == null)
                     {
-                        if (dtpEndTime.Value < dtpStarTime.Value)
+                        if (dtpEndTime.Value > dtpStarTime.Value)
                         {
                             if (voucherBUS.AddNewVoucher(txtIdVoucher.Text, txtVoucherName.Text, decimal.Parse(txtDiscount.Text), dtpStarTime.Value, dtpEndTime.Value, int.Parse(txtUsageCount.Text), txtIdAccount.Text))
                                 MessageBox.Show("Thêm thành công");
@@ -142,7 +142,7 @@ namespace DuAn1
                     var check2 = CheckIsInt(txtUsageCount);
                     if (check2 == null)
                     {
-                        if (dtpEndTime.Value < dtpStarTime.Value)
+                        if (dtpEndTime.Value > dtpStarTime.Value)
                         {
                             if (voucherBUS.UpdateVoucher(txtIdVoucher.Text, txtVoucherName.Text, decimal.Parse(txtDiscount.Text), dtpStarTime.Value, dtpEndTime.Value, int.Parse(txtUsageCount.Text), txtIdAccount.Text))
                                 MessageBox.Show("Sửa thành công");

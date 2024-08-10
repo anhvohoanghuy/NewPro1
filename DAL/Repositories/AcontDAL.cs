@@ -40,6 +40,7 @@ namespace DAL.Repositories
                 nvTG.AccountName = nvNew.AccountName;
                 nvTG.Email = nvNew.Email;
                 nvTG.AccountLevel = nvNew.AccountLevel;
+                nvTG.AccountStatus = nvNew.AccountStatus;
                 db.SaveChanges();
             }
         }

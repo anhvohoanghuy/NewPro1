@@ -10,16 +10,16 @@ namespace BUS.Services
 {
     public class OrderBUS
     {
-        OrderDAL orderDAL= new OrderDAL();
+        OrderDAL orderDAL = new OrderDAL();
         public List<Order> GetAllOrder()
         {
             return orderDAL.GetAllOrder();
         }
         public List<Order> GetAllOrderByIdCustomer(string idCustomer)
         {
-            return orderDAL.GetAllOrder().Where(c=>c.Idcustomer==idCustomer).ToList();
+            return orderDAL.GetAllOrder().Where(c => c.Idcustomer == idCustomer).ToList();
         }
-        public bool AddNewOrder(string idOrder, string idAccount,string idCustomer, DateTime establishedDate, decimal totalAmount, string idVorcher, int orderStatus)
+        public bool AddNewOrder(string idOrder, string idAccount, string idCustomer, DateTime establishedDate, decimal totalAmount, string idVorcher, int orderStatus)
         {
             Order order = new Order()
             {
@@ -53,7 +53,7 @@ namespace BUS.Services
         }
         public List<Order> GetAllWaitingOrder()
         {
-            return GetAllOrder().Where(c=>c.OrderStatus==0).ToList();
+            return GetAllOrder().Where(c => c.OrderStatus == 0).ToList();
         }
         public List<string> GetAllIDWaitingOrder()
         {
@@ -67,13 +67,37 @@ namespace BUS.Services
         }
         public List<string> GetAllIDWaitingOrder(string idOrder)
         {
-            var list = GetAllOrder().Where(c => c.OrderStatus == 0&&c.Idorder.Contains(idOrder)).ToList();
+            var list = GetAllOrder().Where(c => c.OrderStatus == 0 && c.Idorder.Contains(idOrder)).ToList();
             var listID = new List<String>();
             foreach (var order in list)
             {
                 listID.Add(order.Idorder);
             }
             return listID;
+        }
+        public decimal GetAmountOfOrder(Order order)
+        {
+            var listOrderDetail = order.OrderDetails;
+            decimal amount = 0;
+            foreach (var orderDetail in listOrderDetail)
+            {
+                amount += (orderDetail.Amount - orderDetail.ReducedAmount);
+            }
+            return amount;
+        }
+        public decimal GetPrmotionDiscountOfOrder(Order order)
+        {
+            var listOrderDetail = order.OrderDetails;
+            decimal discount = 0;
+            foreach (var orderDetail in listOrderDetail)
+            {
+                discount += orderDetail.ReducedAmount;
+            }
+            return discount;
+        }
+        public List<Order> GetOrderByTime(DateTime from, DateTime to)
+        {
+            return GetAllOrder().Where(c=>c.OrderStatus==1&&c.EstablishedDate>=from&&c.EstablishedDate<=to).ToList();
         }
     }
 }

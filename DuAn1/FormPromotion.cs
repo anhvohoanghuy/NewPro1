@@ -112,7 +112,7 @@ namespace DuAn1
         {
             if (!CheckNull(txtIdPromotion, txtPromotionName, txtDiscount))
             {
-                if (dtpStartTime.Value > dtpEndTime.Value)
+                if (dtpStartTime.Value < dtpEndTime.Value)
                 {
                     var check = CheckIsDouble(txtDiscount);
                     if (check == null)
@@ -139,7 +139,7 @@ namespace DuAn1
             {
                 if (promotionBUS.CheckPromotionExist(txtIdPromotion.Text))
                 {
-                    if (dtpStartTime.Value > dtpEndTime.Value)
+                    if (dtpStartTime.Value < dtpEndTime.Value)
                     {
                         var check = CheckIsDouble(txtDiscount);
                         if (check == null)

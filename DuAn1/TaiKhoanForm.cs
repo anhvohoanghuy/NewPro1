@@ -32,7 +32,7 @@ namespace DuAn1
         public dynamic GetListAccount()
         {
             listAC = ac.getListAccount().ToList();
-            var TG = ac.getListAccount().Select(s => new { s.Idaccount, s.PassAccount, s.AccountLevel, s.AccountName, s.Email }).ToList();
+            var TG = ac.getListAccount().Select(s => new { s.Idaccount, s.PassAccount, s.AccountLevel, s.AccountName, s.Email ,s.AccountStatus}).ToList();
             return TG;
         }
         public void LoadDataGridView()
@@ -43,6 +43,7 @@ namespace DuAn1
         private void TaiKhoanForm_Load(object sender, EventArgs e)
         {
             LoadDataGridView();
+            rdoActivate.Checked = true;
         }
 
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -69,13 +70,26 @@ namespace DuAn1
         {
             try
             {
-                txtEmail.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                txtId.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                txtName.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                txtPass.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                cbbLevel.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                if (e.RowIndex > -1 && e.RowIndex < dataGridView1.Rows.Count-1) 
+                {
+                    txtName.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    txtId.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    txtPass.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    cbbLevel.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    txtEmail.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
 
-                originalId = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    originalId = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    if ((bool)dataGridView1.Rows[e.RowIndex].Cells[6].Value)
+                    {
+                        rdoActivate.Checked = true;
+                        rdoUnActivate.Checked = false;
+                    }
+                    else
+                    {
+                        rdoActivate.Checked = false;
+                        rdoUnActivate.Checked = true;
+                    }
+                }
             }
             catch
             {
@@ -178,13 +192,14 @@ namespace DuAn1
                     PassAccount = txtPass.Text,
                     AccountName = txtName.Text,
                     Email = txtEmail.Text,
-                    AccountLevel = int.Parse(cbbLevel.Text)
+                    AccountLevel = int.Parse(cbbLevel.Text),
+                    AccountStatus=rdoActivate.Checked
                 };
                 return nv;
             }
             return null;
-        
-    }
+
+        }
         private void btnThem_Click(object sender, EventArgs e)
         {
             var newAccount = ObjectNV();
@@ -210,7 +225,7 @@ namespace DuAn1
             }
             else
             {
-                
+
             }
         }
 
@@ -262,7 +277,7 @@ namespace DuAn1
             }
             else
             {
-               
+
             }
         }
 
@@ -271,6 +286,11 @@ namespace DuAn1
             XuatExcel xuatExcel = new XuatExcel();
             string[] tieudecolumn = { "Id Account", "PassWord", "Level", "Name", "Email" };
             xuatExcel.ExportToExcel(dataGridView1, "Danh Sách Account", tieudecolumn, "danhsachAccount.xlsx");
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -37,7 +37,7 @@ namespace DuAn1
             decimal discount = 0;
             if (productDetail.Idpromotion != null)
             {
-                var promotion= promotionBUS.GetPromotionById(productDetail.Idpromotion);
+                var promotion = promotionBUS.GetPromotionById(productDetail.Idpromotion);
                 if (promotion != null)
                 {
                     if (promotion.EndTime > DateTime.Now)
@@ -151,7 +151,7 @@ namespace DuAn1
         public void UpdateProductDetail(Imei imei, int x)
         {
             var productDetail = productDetailBUS.GetProductDetailByID(imei.IdproductDetails);
-            productDetailBUS.UpdateProductDetail(productDetail.Idproduct, productDetail.IdproductDetails, productDetail.Idcolor, productDetail.Storage, productDetail.Price, productDetail.Idproduct, productDetail.WarrantyPeriod, productDetail.Inventory + x, productDetail.Idproduct);
+            productDetailBUS.UpdateProductDetail(productDetail.Idproduct, productDetail.IdproductDetails, productDetail.Idcolor, productDetail.Storage, productDetail.Price, productDetail.Idpromotion, productDetail.WarrantyPeriod, productDetail.Inventory + x, productDetail.Idaccount);
         }
         public void ShowOnDgvOrderDetail(string idOrder)
         {
@@ -679,6 +679,7 @@ namespace DuAn1
                                 MessageBox.Show("Thanh toán thành công");
                                 ResetTexbox(txtIdProductDetaiOrderDetail, txtIdOrder, txtphone, txtName, txtaddres, txtIdProduct, txtProductName, txtBrandName, txtInventory, txtFrom, txtTo, txtSearch, txtIdCustomerQueue, txtTotalAmountQuese, txtVoucherDiscount, txtFinalAmount);
                                 ResetCombobox(cbbColor, cbbStorage, cbbVoucher, cbbVoucher);
+                                dgvOrderDetails.Rows.Clear();
                             }
                             else
                                 MessageBox.Show("Update Voucher thất bại");
@@ -701,11 +702,13 @@ namespace DuAn1
                             MessageBox.Show("Thanh toán thành công");
                             ResetTexbox(txtIdProductDetaiOrderDetail, txtIdOrder, txtphone, txtName, txtaddres, txtIdProduct, txtProductName, txtBrandName, txtInventory, txtFrom, txtTo, txtSearch, txtIdCustomerQueue, txtTotalAmountQuese, txtVoucherDiscount, txtFinalAmount);
                             ResetCombobox(cbbColor, cbbStorage, cbbVoucher, cbbImei);
+                            dgvOrderDetails.Rows.Clear();
                         }
                         else
                             MessageBox.Show("Thanh toán thất bại");
                     }
-                    MessageBox.Show("Chưa thanh toán");
+                    else
+                        MessageBox.Show("Chưa thanh toán");
                 }
             }
             else
@@ -779,18 +782,18 @@ namespace DuAn1
         {
             if (!string.IsNullOrEmpty(txtScan.Text))
             {
-                var imei= imeiBUS.GetImeiByID(txtScan.Text);
+                var imei = imeiBUS.GetImeiByID(txtScan.Text);
                 if (imei != null)
                 {
                     cbbImei.Text = imei.ImeiNumber;
-                    var productDetail= productDetailBUS.GetProductDetailByID(imei.IdproductDetails);
+                    var productDetail = productDetailBUS.GetProductDetailByID(imei.IdproductDetails);
                     if (productDetail != null)
                     {
                         var company = productCompanyBUS.GetCompanyById(productDetail.IdproductNavigation.Idcompany);
                         txtIdProduct.Text = productDetail.Idproduct;
-                        txtProductName.Text=productDetail.IdproductNavigation.ProductName;
-                        txtBrandName.Text= company.CompanyName;
-                        cbbColor.Text=productDetail.IdcolorNavigation.ColorName;
+                        txtProductName.Text = productDetail.IdproductNavigation.ProductName;
+                        txtBrandName.Text = company.CompanyName;
+                        cbbColor.Text = productDetail.IdcolorNavigation.ColorName;
                         cbbStorage.Text = productDetail.Storage.ToString();
                     }
                     else
@@ -799,6 +802,20 @@ namespace DuAn1
             }
             else
                 MessageBox.Show("Không để trống scan");
+        }
+
+        private void btninfoOrder_Click_1(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(cbbVoucher.Text))
+            {
+                ChiTietDonHangForm a = new ChiTietDonHangForm(txtIdOrder.Text);
+                a.ShowDialog();
+            }
+            else
+            {
+                ChiTietDonHangForm a = new ChiTietDonHangForm(txtIdOrder.Text,cbbVoucher.Text);
+                a.ShowDialog();
+            }
         }
     }
 }

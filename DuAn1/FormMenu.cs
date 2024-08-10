@@ -39,7 +39,7 @@ namespace DuAn1
 
             if (lblPhanQuyen.Text == "Nhân Viên")
             {
-                btnEmployee.Visible = false;
+                btnAccount.Visible = false;
                 btnStatistics.Visible = false;
             }
             else if (lblPhanQuyen.Text == "Admin")
@@ -101,7 +101,6 @@ namespace DuAn1
                 ButtonNow.ForeColor = Color.White;
                 ButtonNow = ButtonNew;
                 ButtonNew.ForeColor = Color.DarkGreen;
-
             }
         }
 
@@ -175,7 +174,7 @@ namespace DuAn1
             _isEventEnabled = false;
             CreateOrderForm a = new CreateOrderForm(IdAccountMenu);
             LoadForm(a);
-            ActiveColor(btnEmployee);
+            ActiveColor(btnCreateOrder);
             b = true;
 
 
@@ -221,6 +220,13 @@ namespace DuAn1
             FormCPU CPU = new FormCPU(IdAccountMenu);
             LoadForm(CPU);
             ActiveColor(btnCpu);
+        }
+
+        private void vbButton2_Click(object sender, EventArgs e)
+        {
+            TaiKhoanForm a = new TaiKhoanForm();
+            LoadForm(a);
+            ActiveColor(btnAccount);
         }
     }
 }

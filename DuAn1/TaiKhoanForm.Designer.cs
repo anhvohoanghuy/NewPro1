@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             groupBox2 = new GroupBox();
             dataGridView1 = new DataGridView();
             IdAcount = new DataGridViewTextBoxColumn();
-            Password = new DataGridViewTextBoxColumn();
-            level = new DataGridViewTextBoxColumn();
             NameAcount = new DataGridViewTextBoxColumn();
+            Password = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
+            level = new DataGridViewTextBoxColumn();
+            Status = new DataGridViewTextBoxColumn();
             label4 = new Label();
             label3 = new Label();
             txtEmail = new TextBox();
@@ -60,10 +61,14 @@
             btnSua = new CustomButton.VBButton();
             btnThem = new CustomButton.VBButton();
             groupBox1 = new GroupBox();
+            groupBox3 = new GroupBox();
+            rdoActivate = new RadioButton();
+            rdoUnActivate = new RadioButton();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox2
@@ -88,46 +93,46 @@
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridView1.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.Control;
-            dataGridViewCellStyle1.SelectionBackColor = Color.MediumPurple;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.Control;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.MediumSlateBlue;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = SystemColors.Control;
+            dataGridViewCellStyle5.SelectionBackColor = Color.MediumPurple;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.Control;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridView1.ColumnHeadersHeight = 29;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { IdAcount, Password, level, NameAcount, Email });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.MediumPurple;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { IdAcount, NameAcount, Password, Email, level, Status });
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.MediumPurple;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.MediumSlateBlue;
             dataGridView1.Location = new Point(3, 27);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Control;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.Control;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.Control;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 62;
-            dataGridViewCellStyle4.BackColor = SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.BackColor = SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(1209, 320);
             dataGridView1.TabIndex = 0;
@@ -143,6 +148,14 @@
             IdAcount.Name = "IdAcount";
             IdAcount.ReadOnly = true;
             // 
+            // NameAcount
+            // 
+            NameAcount.DataPropertyName = "AccountName";
+            NameAcount.HeaderText = "Name";
+            NameAcount.MinimumWidth = 6;
+            NameAcount.Name = "NameAcount";
+            NameAcount.ReadOnly = true;
+            // 
             // Password
             // 
             Password.DataPropertyName = "PassAccount";
@@ -150,6 +163,14 @@
             Password.MinimumWidth = 6;
             Password.Name = "Password";
             Password.ReadOnly = true;
+            // 
+            // Email
+            // 
+            Email.DataPropertyName = "Email";
+            Email.HeaderText = "Email";
+            Email.MinimumWidth = 6;
+            Email.Name = "Email";
+            Email.ReadOnly = true;
             // 
             // level
             // 
@@ -159,21 +180,12 @@
             level.Name = "level";
             level.ReadOnly = true;
             // 
-            // NameAcount
+            // Status
             // 
-            NameAcount.DataPropertyName = "AccountName";
-            NameAcount.HeaderText = "Name";
-            NameAcount.MinimumWidth = 6;
-            NameAcount.Name = "NameAcount";
-            NameAcount.ReadOnly = true;
-            // 
-            // Email
-            // 
-            Email.DataPropertyName = "Email";
-            Email.HeaderText = "Email";
-            Email.MinimumWidth = 6;
-            Email.Name = "Email";
-            Email.ReadOnly = true;
+            Status.HeaderText = "Status";
+            Status.MinimumWidth = 6;
+            Status.Name = "Status";
+            Status.ReadOnly = true;
             // 
             // label4
             // 
@@ -238,6 +250,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(groupBox3);
             panel1.Controls.Add(btnExcel);
             panel1.Controls.Add(vbButton3);
             panel1.Controls.Add(txtTImKiem);
@@ -274,7 +287,7 @@
             btnExcel.FlatAppearance.BorderSize = 0;
             btnExcel.FlatStyle = FlatStyle.Flat;
             btnExcel.ForeColor = Color.White;
-            btnExcel.Location = new Point(837, 238);
+            btnExcel.Location = new Point(928, 238);
             btnExcel.Name = "btnExcel";
             btnExcel.Size = new Size(135, 40);
             btnExcel.TabIndex = 91;
@@ -385,7 +398,7 @@
             btnresset.FlatStyle = FlatStyle.Flat;
             btnresset.ForeColor = Color.White;
             btnresset.Image = Properties.Resources.reset__1_;
-            btnresset.Location = new Point(837, 185);
+            btnresset.Location = new Point(928, 185);
             btnresset.Name = "btnresset";
             btnresset.Size = new Size(131, 40);
             btnresset.TabIndex = 79;
@@ -403,7 +416,7 @@
             btnXoa.FlatAppearance.BorderSize = 0;
             btnXoa.FlatStyle = FlatStyle.Flat;
             btnXoa.ForeColor = Color.White;
-            btnXoa.Location = new Point(837, 124);
+            btnXoa.Location = new Point(928, 124);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(131, 40);
             btnXoa.TabIndex = 78;
@@ -422,7 +435,7 @@
             btnSua.FlatAppearance.BorderSize = 0;
             btnSua.FlatStyle = FlatStyle.Flat;
             btnSua.ForeColor = Color.White;
-            btnSua.Location = new Point(837, 70);
+            btnSua.Location = new Point(928, 70);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(131, 40);
             btnSua.TabIndex = 77;
@@ -441,7 +454,7 @@
             btnThem.FlatAppearance.BorderSize = 0;
             btnThem.FlatStyle = FlatStyle.Flat;
             btnThem.ForeColor = Color.White;
-            btnThem.Location = new Point(837, 14);
+            btnThem.Location = new Point(928, 14);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(131, 40);
             btnThem.TabIndex = 76;
@@ -459,6 +472,40 @@
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(rdoUnActivate);
+            groupBox3.Controls.Add(rdoActivate);
+            groupBox3.Location = new Point(625, 130);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(265, 79);
+            groupBox3.TabIndex = 92;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Status";
+            groupBox3.Enter += groupBox3_Enter;
+            // 
+            // rdoActivate
+            // 
+            rdoActivate.AutoSize = true;
+            rdoActivate.Location = new Point(6, 39);
+            rdoActivate.Name = "rdoActivate";
+            rdoActivate.Size = new Size(96, 29);
+            rdoActivate.TabIndex = 0;
+            rdoActivate.TabStop = true;
+            rdoActivate.Text = "Activate";
+            rdoActivate.UseVisualStyleBackColor = true;
+            // 
+            // rdoUnActivate
+            // 
+            rdoUnActivate.AutoSize = true;
+            rdoUnActivate.Location = new Point(136, 39);
+            rdoUnActivate.Name = "rdoUnActivate";
+            rdoUnActivate.Size = new Size(118, 29);
+            rdoUnActivate.TabIndex = 1;
+            rdoUnActivate.TabStop = true;
+            rdoUnActivate.Text = "UnActivate";
+            rdoUnActivate.UseVisualStyleBackColor = true;
+            // 
             // TaiKhoanForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -475,6 +522,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             groupBox1.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -502,11 +551,15 @@
         private Label label5;
         private CustomButton.VBButton vbButton3;
         private TextBox txtTImKiem;
-        private DataGridViewTextBoxColumn IdAcount;
-        private DataGridViewTextBoxColumn Password;
-        private DataGridViewTextBoxColumn level;
-        private DataGridViewTextBoxColumn NameAcount;
-        private DataGridViewTextBoxColumn Email;
         private CustomButton.VBButton btnExcel;
+        private DataGridViewTextBoxColumn IdAcount;
+        private DataGridViewTextBoxColumn NameAcount;
+        private DataGridViewTextBoxColumn Password;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn level;
+        private DataGridViewTextBoxColumn Status;
+        private GroupBox groupBox3;
+        private RadioButton rdoUnActivate;
+        private RadioButton rdoActivate;
     }
 }

@@ -29,27 +29,28 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            label2 = new Label();
+            txtIdOrder = new Label();
             label3 = new Label();
-            label4 = new Label();
+            txtAccountName = new Label();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
+            txtIdCustomer = new Label();
             label8 = new Label();
-            label9 = new Label();
+            txtCustomerName = new Label();
             label10 = new Label();
-            label11 = new Label();
+            txtPhone = new Label();
             label12 = new Label();
-            label13 = new Label();
+            txtAddress = new Label();
             label14 = new Label();
-            label15 = new Label();
+            txtDate = new Label();
             label16 = new Label();
-            label17 = new Label();
-            label18 = new Label();
-            label19 = new Label();
-            label20 = new Label();
-            label21 = new Label();
+            lblTotal = new Label();
+            txtTotal = new Label();
+            txtAmount = new Label();
             label22 = new Label();
+            btnOkScan = new CustomButton.VBButton();
+            txtVoucher = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -62,15 +63,15 @@
             label1.TabIndex = 0;
             label1.Text = "ID order: ";
             // 
-            // label2
+            // txtIdOrder
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(175, 89);
-            label2.Name = "label2";
-            label2.Size = new Size(50, 23);
-            label2.TabIndex = 1;
-            label2.Text = "value";
+            txtIdOrder.AutoSize = true;
+            txtIdOrder.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtIdOrder.Location = new Point(175, 89);
+            txtIdOrder.Name = "txtIdOrder";
+            txtIdOrder.Size = new Size(50, 23);
+            txtIdOrder.TabIndex = 1;
+            txtIdOrder.Text = "value";
             // 
             // label3
             // 
@@ -82,15 +83,15 @@
             label3.TabIndex = 2;
             label3.Text = "Receiving staff name:";
             // 
-            // label4
+            // txtAccountName
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(516, 86);
-            label4.Name = "label4";
-            label4.Size = new Size(50, 23);
-            label4.TabIndex = 3;
-            label4.Text = "value";
+            txtAccountName.AutoSize = true;
+            txtAccountName.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtAccountName.Location = new Point(516, 86);
+            txtAccountName.Name = "txtAccountName";
+            txtAccountName.Size = new Size(50, 23);
+            txtAccountName.TabIndex = 3;
+            txtAccountName.Text = "value";
             // 
             // label5
             // 
@@ -112,15 +113,15 @@
             label6.TabIndex = 5;
             label6.Text = "Info Customer";
             // 
-            // label7
+            // txtIdCustomer
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(205, 167);
-            label7.Name = "label7";
-            label7.Size = new Size(50, 23);
-            label7.TabIndex = 7;
-            label7.Text = "value";
+            txtIdCustomer.AutoSize = true;
+            txtIdCustomer.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtIdCustomer.Location = new Point(205, 167);
+            txtIdCustomer.Name = "txtIdCustomer";
+            txtIdCustomer.Size = new Size(50, 23);
+            txtIdCustomer.TabIndex = 7;
+            txtIdCustomer.Text = "value";
             // 
             // label8
             // 
@@ -132,15 +133,15 @@
             label8.TabIndex = 6;
             label8.Text = "ID customer: ";
             // 
-            // label9
+            // txtCustomerName
             // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(205, 190);
-            label9.Name = "label9";
-            label9.Size = new Size(50, 23);
-            label9.TabIndex = 9;
-            label9.Text = "value";
+            txtCustomerName.AutoSize = true;
+            txtCustomerName.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtCustomerName.Location = new Point(205, 190);
+            txtCustomerName.Name = "txtCustomerName";
+            txtCustomerName.Size = new Size(50, 23);
+            txtCustomerName.TabIndex = 9;
+            txtCustomerName.Text = "value";
             // 
             // label10
             // 
@@ -152,15 +153,15 @@
             label10.TabIndex = 8;
             label10.Text = "Name         :";
             // 
-            // label11
+            // txtPhone
             // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(205, 213);
-            label11.Name = "label11";
-            label11.Size = new Size(50, 23);
-            label11.TabIndex = 11;
-            label11.Text = "value";
+            txtPhone.AutoSize = true;
+            txtPhone.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPhone.Location = new Point(205, 213);
+            txtPhone.Name = "txtPhone";
+            txtPhone.Size = new Size(50, 23);
+            txtPhone.TabIndex = 11;
+            txtPhone.Text = "value";
             // 
             // label12
             // 
@@ -172,15 +173,15 @@
             label12.TabIndex = 10;
             label12.Text = "Phone        :";
             // 
-            // label13
+            // txtAddress
             // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label13.Location = new Point(205, 236);
-            label13.Name = "label13";
-            label13.Size = new Size(50, 23);
-            label13.TabIndex = 13;
-            label13.Text = "value";
+            txtAddress.AutoSize = true;
+            txtAddress.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtAddress.Location = new Point(205, 236);
+            txtAddress.Name = "txtAddress";
+            txtAddress.Size = new Size(50, 23);
+            txtAddress.TabIndex = 13;
+            txtAddress.Text = "value";
             // 
             // label14
             // 
@@ -192,15 +193,15 @@
             label14.TabIndex = 12;
             label14.Text = "Address      :";
             // 
-            // label15
+            // txtDate
             // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label15.Location = new Point(205, 259);
-            label15.Name = "label15";
-            label15.Size = new Size(50, 23);
-            label15.TabIndex = 15;
-            label15.Text = "value";
+            txtDate.AutoSize = true;
+            txtDate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtDate.Location = new Point(205, 259);
+            txtDate.Name = "txtDate";
+            txtDate.Size = new Size(50, 23);
+            txtDate.TabIndex = 15;
+            txtDate.Text = "value";
             // 
             // label16
             // 
@@ -212,92 +213,112 @@
             label16.TabIndex = 14;
             label16.Text = "Date           :";
             // 
-            // label17
+            // lblTotal
             // 
-            label17.AutoSize = true;
-            label17.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label17.Location = new Point(414, 257);
-            label17.Name = "label17";
-            label17.Size = new Size(135, 25);
-            label17.TabIndex = 16;
-            label17.Text = "Total amount: ";
+            lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTotal.Location = new Point(414, 259);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(135, 25);
+            lblTotal.TabIndex = 16;
+            lblTotal.Text = "Total amount: ";
             // 
-            // label18
+            // txtTotal
             // 
-            label18.AutoSize = true;
-            label18.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label18.Location = new Point(555, 257);
-            label18.Name = "label18";
-            label18.Size = new Size(58, 25);
-            label18.TabIndex = 17;
-            label18.Text = "value";
+            txtTotal.AutoSize = true;
+            txtTotal.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtTotal.Location = new Point(555, 259);
+            txtTotal.Name = "txtTotal";
+            txtTotal.Size = new Size(58, 25);
+            txtTotal.TabIndex = 17;
+            txtTotal.Text = "value";
             // 
-            // label19
+            // txtAmount
             // 
-            label19.AutoSize = true;
-            label19.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label19.Location = new Point(555, 222);
-            label19.Name = "label19";
-            label19.Size = new Size(58, 25);
-            label19.TabIndex = 19;
-            label19.Text = "value";
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label20.Location = new Point(393, 222);
-            label20.Name = "label20";
-            label20.Size = new Size(156, 25);
-            label20.TabIndex = 18;
-            label20.Text = "Reduce amount: ";
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label21.Location = new Point(555, 188);
-            label21.Name = "label21";
-            label21.Size = new Size(58, 25);
-            label21.TabIndex = 21;
-            label21.Text = "value";
+            txtAmount.AutoSize = true;
+            txtAmount.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtAmount.Location = new Point(555, 209);
+            txtAmount.Name = "txtAmount";
+            txtAmount.Size = new Size(58, 25);
+            txtAmount.TabIndex = 21;
+            txtAmount.Text = "value";
             // 
             // label22
             // 
             label22.AutoSize = true;
             label22.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label22.Location = new Point(458, 188);
+            label22.Location = new Point(458, 209);
             label22.Name = "label22";
             label22.Size = new Size(91, 25);
             label22.TabIndex = 20;
             label22.Text = "Amount: ";
+            // 
+            // btnOkScan
+            // 
+            btnOkScan.BackColor = Color.MediumSlateBlue;
+            btnOkScan.BackgroundColor = Color.MediumSlateBlue;
+            btnOkScan.BorderColor = Color.PaleVioletRed;
+            btnOkScan.BorderRadius = 20;
+            btnOkScan.BorderSize = 0;
+            btnOkScan.FlatAppearance.BorderSize = 0;
+            btnOkScan.FlatStyle = FlatStyle.Flat;
+            btnOkScan.ForeColor = Color.White;
+            btnOkScan.Location = new Point(316, 312);
+            btnOkScan.Name = "btnOkScan";
+            btnOkScan.Size = new Size(147, 45);
+            btnOkScan.TabIndex = 104;
+            btnOkScan.Text = "OK";
+            btnOkScan.TextColor = Color.White;
+            btnOkScan.UseVisualStyleBackColor = false;
+            btnOkScan.Click += btnOkScan_Click;
+            // 
+            // txtVoucher
+            // 
+            txtVoucher.AutoSize = true;
+            txtVoucher.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtVoucher.Location = new Point(555, 232);
+            txtVoucher.Name = "txtVoucher";
+            txtVoucher.Size = new Size(58, 25);
+            txtVoucher.TabIndex = 106;
+            txtVoucher.Text = "value";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(456, 234);
+            label4.Name = "label4";
+            label4.Size = new Size(93, 25);
+            label4.TabIndex = 105;
+            label4.Text = "Voucher: ";
             // 
             // ChiTietDonHangForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(889, 388);
-            Controls.Add(label21);
+            Controls.Add(txtVoucher);
+            Controls.Add(label4);
+            Controls.Add(btnOkScan);
+            Controls.Add(txtAmount);
             Controls.Add(label22);
-            Controls.Add(label19);
-            Controls.Add(label20);
-            Controls.Add(label18);
-            Controls.Add(label17);
-            Controls.Add(label15);
+            Controls.Add(txtTotal);
+            Controls.Add(lblTotal);
+            Controls.Add(txtDate);
             Controls.Add(label16);
-            Controls.Add(label13);
+            Controls.Add(txtAddress);
             Controls.Add(label14);
-            Controls.Add(label11);
+            Controls.Add(txtPhone);
             Controls.Add(label12);
-            Controls.Add(label9);
+            Controls.Add(txtCustomerName);
             Controls.Add(label10);
-            Controls.Add(label7);
+            Controls.Add(txtIdCustomer);
             Controls.Add(label8);
             Controls.Add(label6);
             Controls.Add(label5);
-            Controls.Add(label4);
+            Controls.Add(txtAccountName);
             Controls.Add(label3);
-            Controls.Add(label2);
+            Controls.Add(txtIdOrder);
             Controls.Add(label1);
             Name = "ChiTietDonHangForm";
             Load += ChiTietDonHangForm_Load;
@@ -308,26 +329,27 @@
         #endregion
 
         private Label label1;
-        private Label label2;
+        private Label txtIdOrder;
         private Label label3;
-        private Label label4;
+        private Label txtAccountName;
         private Label label5;
         private Label label6;
-        private Label label7;
+        private Label txtIdCustomer;
         private Label label8;
-        private Label label9;
+        private Label txtCustomerName;
         private Label label10;
-        private Label label11;
+        private Label txtPhone;
         private Label label12;
-        private Label label13;
+        private Label txtAddress;
         private Label label14;
-        private Label label15;
+        private Label txtDate;
         private Label label16;
-        private Label label17;
-        private Label label18;
-        private Label label19;
-        private Label label20;
-        private Label label21;
+        private Label lblTotal;
+        private Label txtTotal;
+        private Label txtAmount;
         private Label label22;
+        private CustomButton.VBButton btnOkScan;
+        private Label txtVoucher;
+        private Label label4;
     }
 }

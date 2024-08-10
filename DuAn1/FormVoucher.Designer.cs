@@ -234,6 +234,7 @@
             // 
             // dtpEndTime
             // 
+            dtpEndTime.Format = DateTimePickerFormat.Short;
             dtpEndTime.Location = new Point(280, 127);
             dtpEndTime.Name = "dtpEndTime";
             dtpEndTime.Size = new Size(250, 31);
@@ -241,6 +242,7 @@
             // 
             // dtpStarTime
             // 
+            dtpStarTime.Format = DateTimePickerFormat.Short;
             dtpStarTime.Location = new Point(280, 50);
             dtpStarTime.Name = "dtpStarTime";
             dtpStarTime.Size = new Size(250, 31);

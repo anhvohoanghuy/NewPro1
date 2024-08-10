@@ -13,7 +13,7 @@ namespace DAL.Repositories
         Pro1QuanLiDienThoaiFinalContext db= new Pro1QuanLiDienThoaiFinalContext();
         public List<Order> GetAllOrder()
         {
-            return db.Orders.Include(c=>c.IdcustomerNavigation).Include(c=>c.IdaccountNavigation).ToList();
+            return db.Orders.Include(c=>c.IdcustomerNavigation).Include(c=>c.IdaccountNavigation).Include(c=>c.OrderDetails).ToList();
         }
         public bool AddNewOrder(Order order)
         {

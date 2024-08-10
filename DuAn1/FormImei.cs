@@ -77,11 +77,12 @@ namespace DuAn1
             if (excel != null)
             {
                 FileInfo file = new FileInfo(excel);
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
                 using (ExcelPackage package = new ExcelPackage(file))
                 {
                     List<string> imeis = new List<string>();
                     ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
-                    for (int i = 0; i < worksheet.Dimension.End.Row; i++)
+                    for (int i = 1; i <= worksheet.Dimension.End.Row; i++)
                     {
                         imeis.Add(worksheet.Cells[i, 2].Text);
                     }

@@ -14,7 +14,7 @@ namespace DAL.Repositories
         Pro1QuanLiDienThoaiFinalContext _context = new Pro1QuanLiDienThoaiFinalContext();
         public List<OrderDetail> GetAllOrderDetail()
         {
-            return _context.OrderDetails.Include(c=>c.IdproductDetailsNavigation).Include(c=>c.ImeiNumbers).ToList();
+            return _context.OrderDetails.Include(c=>c.IdproductDetailsNavigation).Include(c=>c.ImeiNumbers).Include(c=>c.IdorderNavigation).ToList();
         }
         public bool AddNewOrderDetail(OrderDetail orderDetail)
         {

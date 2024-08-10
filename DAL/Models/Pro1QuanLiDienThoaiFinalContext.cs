@@ -41,13 +41,13 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=LOVESONGPC;Database=pro1QuanLiDienThoaiFinal;Trusted_Connection=True;TrustServerCertificate=true;");
+        => optionsBuilder.UseSqlServer("Server=DYLISSS;Database=pro1QuanLiDienThoaiFinal;Trusted_Connection=True;TrustServerCertificate=true;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Account>(entity =>
         {
-            entity.HasKey(e => e.Idaccount).HasName("PK__Accounts__1D323F907BE9E976");
+            entity.HasKey(e => e.Idaccount).HasName("PK__Accounts__1D323F90DC2CC370");
 
             entity.Property(e => e.Idaccount)
                 .HasMaxLength(25)
@@ -66,7 +66,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<Cpu>(entity =>
         {
-            entity.HasKey(e => e.Idcpu).HasName("PK__CPUs__91A9763021297D3F");
+            entity.HasKey(e => e.Idcpu).HasName("PK__CPUs__91A97630EB83D18A");
 
             entity.ToTable("CPUs");
 
@@ -94,14 +94,15 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<Customer>(entity =>
         {
-            entity.HasKey(e => e.Idcustomer).HasName("PK__Customer__701C9C3C3853D219");
+            entity.HasKey(e => e.Idcustomer).HasName("PK__Customer__701C9C3C1881278A");
 
             entity.Property(e => e.Idcustomer)
-                .HasMaxLength(9)
+                .HasMaxLength(12)
                 .IsUnicode(false)
                 .HasColumnName("IDCustomer");
             entity.Property(e => e.CustomerAddress).HasMaxLength(50);
             entity.Property(e => e.CustomerName).HasMaxLength(30);
+            entity.Property(e => e.DateAdded).HasColumnType("datetime");
             entity.Property(e => e.Idaccount)
                 .HasMaxLength(25)
                 .IsUnicode(false)
@@ -118,11 +119,12 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<Imei>(entity =>
         {
-            entity.HasKey(e => e.ImeiNumber).HasName("PK__Imeis__8D582410C74F2BF4");
+            entity.HasKey(e => e.ImeiNumber).HasName("PK__Imeis__8D582410E719BA2B");
 
             entity.Property(e => e.ImeiNumber)
                 .HasMaxLength(15)
                 .IsUnicode(false);
+            entity.Property(e => e.DateAdded).HasColumnType("datetime");
             entity.Property(e => e.Idaccount)
                 .HasMaxLength(25)
                 .IsUnicode(false)
@@ -145,7 +147,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.Idorder).HasName("PK__Orders__5CBBCADB43597EB5");
+            entity.HasKey(e => e.Idorder).HasName("PK__Orders__5CBBCADBD1C24C6E");
 
             entity.Property(e => e.Idorder)
                 .HasMaxLength(9)
@@ -157,7 +159,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("IDAccount");
             entity.Property(e => e.Idcustomer)
-                .HasMaxLength(9)
+                .HasMaxLength(12)
                 .IsUnicode(false)
                 .HasColumnName("IDCustomer");
             entity.Property(e => e.Idvoucher)
@@ -182,7 +184,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => new { e.Idorder, e.IdproductDetails }).HasName("PK__OrderDet__7B133CF7FBAEF255");
+            entity.HasKey(e => new { e.Idorder, e.IdproductDetails }).HasName("PK__OrderDet__7B133CF7A2E3168D");
 
             entity.Property(e => e.Idorder)
                 .HasMaxLength(9)
@@ -204,11 +206,39 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
                 .HasForeignKey(d => d.IdproductDetails)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__OrderDeta__IDPro__5DCAEF64");
+
+            entity.HasMany(d => d.ImeiNumbers).WithMany(p => p.OrderDetails)
+                .UsingEntity<Dictionary<string, object>>(
+                    "ImeiInOrderDetail",
+                    r => r.HasOne<Imei>().WithMany()
+                        .HasForeignKey("ImeiNumber")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK__ImeiInOrd__ImeiN__628FA481"),
+                    l => l.HasOne<OrderDetail>().WithMany()
+                        .HasForeignKey("Idorder", "IdproductDetails")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK__ImeiInOrderDetai__619B8048"),
+                    j =>
+                    {
+                        j.HasKey("Idorder", "IdproductDetails", "ImeiNumber").HasName("PK__ImeiInOr__6A9E64D35AB1EB88");
+                        j.ToTable("ImeiInOrderDetails");
+                        j.IndexerProperty<string>("Idorder")
+                            .HasMaxLength(9)
+                            .IsUnicode(false)
+                            .HasColumnName("IDOrder");
+                        j.IndexerProperty<string>("IdproductDetails")
+                            .HasMaxLength(15)
+                            .IsUnicode(false)
+                            .HasColumnName("IDProductDetails");
+                        j.IndexerProperty<string>("ImeiNumber")
+                            .HasMaxLength(15)
+                            .IsUnicode(false);
+                    });
         });
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.Idproduct).HasName("PK__Products__4290D179D32E809D");
+            entity.HasKey(e => e.Idproduct).HasName("PK__Products__4290D179A5623A2A");
 
             entity.Property(e => e.Idproduct)
                 .HasMaxLength(9)
@@ -253,7 +283,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<ProductColor>(entity =>
         {
-            entity.HasKey(e => e.Idcolor).HasName("PK__ProductC__E424D93679C97A38");
+            entity.HasKey(e => e.Idcolor).HasName("PK__ProductC__E424D93604883C5E");
 
             entity.Property(e => e.Idcolor)
                 .HasMaxLength(8)
@@ -273,7 +303,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<ProductCompany>(entity =>
         {
-            entity.HasKey(e => e.Idcompany).HasName("PK__ProductC__9A030B76FB29E550");
+            entity.HasKey(e => e.Idcompany).HasName("PK__ProductC__9A030B7670542988");
 
             entity.Property(e => e.Idcompany)
                 .HasMaxLength(9)
@@ -293,7 +323,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<ProductDetail>(entity =>
         {
-            entity.HasKey(e => e.IdproductDetails).HasName("PK__ProductD__7A8F62C3E68C370B");
+            entity.HasKey(e => e.IdproductDetails).HasName("PK__ProductD__7A8F62C3FE3DF2DD");
 
             entity.Property(e => e.IdproductDetails)
                 .HasMaxLength(15)
@@ -340,7 +370,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<Promotion>(entity =>
         {
-            entity.HasKey(e => e.Idpromotion).HasName("PK__Promotio__C76CC0D83A83F18A");
+            entity.HasKey(e => e.Idpromotion).HasName("PK__Promotio__C76CC0D8CE9C333C");
 
             entity.Property(e => e.Idpromotion)
                 .HasMaxLength(9)
@@ -363,7 +393,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<Voucher>(entity =>
         {
-            entity.HasKey(e => e.Idvoucher).HasName("PK__Vouchers__50249A27B8D75CBD");
+            entity.HasKey(e => e.Idvoucher).HasName("PK__Vouchers__50249A278EA488B8");
 
             entity.Property(e => e.Idvoucher)
                 .HasMaxLength(9)

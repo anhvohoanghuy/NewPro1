@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +13,22 @@ namespace DAL.Respositories
         Pro1QuanLiDienThoaiFinalContext db= new Pro1QuanLiDienThoaiFinalContext();
         public List<ProductColor> GetAllColor()
         {
-            return db.ProductColors.ToList();
+            return db.ProductColors.AsNoTracking().ToList();
         }
         public bool AddNewColor(ProductColor productColor)
         {
             try
             {
+                if (db.ProductColors.Local.Any(c => c.Idcolor == productColor.Idcolor))
+                {
+                    return false;
+                }
+
                 db.ProductColors.Add(productColor);
                 db.SaveChanges();
                 return true;
             }
-            catch 
+            catch
             {
                 return false;
             }
@@ -31,16 +37,21 @@ namespace DAL.Respositories
         {
             try
             {
-                var current= db.ProductColors.FirstOrDefault(c=>c.Idcolor==productColor.Idcolor);
-                if (current != null) 
+                // Find the existing entity in the context
+                var existingColor = db.ProductColors.Local.FirstOrDefault(c => c.Idcolor == productColor.Idcolor);
+
+                if (existingColor != null)
                 {
-                    current.ColorName=productColor.ColorName;
-                    current.Idaccount=productColor.Idaccount;
-                    db.SaveChanges();
-                    return true;
+                    // Detach the existing entity if it's being tracked
+                    db.Entry(existingColor).State = EntityState.Detached;
                 }
-                else
-                    return false;
+
+                // Attach and update the entity
+                db.ProductColors.Attach(productColor);
+                db.Entry(productColor).State = EntityState.Modified;
+
+                db.SaveChanges();
+                return true;
             }
             catch
             {

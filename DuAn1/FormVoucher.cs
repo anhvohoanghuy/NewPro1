@@ -28,15 +28,34 @@ namespace DuAn1
             dgvListVoucher.Columns.Add("DisCount", "Discount");
             dgvListVoucher.Columns.Add("StartTime", "Start time");
             dgvListVoucher.Columns.Add("EndTime", "End time");
+            dgvListVoucher.Columns.Add("usageCount", "Usage count");
             dgvListVoucher.Columns.Add("IdAccount", "ID account");
         }
         public void ShowOnDataGridView(List<Voucher> vouchers)
         {
             dgvListVoucher.Rows.Clear();
-            foreach (Voucher voucher in vouchers)
+            if (vouchers != null)
             {
-                dgvListVoucher.Rows.Add(voucher.Idvoucher, voucher.VoucherName, voucher.Discount, voucher.StartTime, voucher.EndTime, voucher.Idaccount);
+                foreach (Voucher voucher in vouchers)
+                {
+                    dgvListVoucher.Rows.Add(voucher.Idvoucher, voucher.VoucherName, voucher.Discount, voucher.StartTime, voucher.EndTime, voucher.UsageCount, voucher.Idaccount);
+                }
             }
+        }
+        public string CheckIsInt(params TextBox[] textBoxs)
+        {
+            foreach (var textBox in textBoxs)
+            {
+                if (string.IsNullOrEmpty(textBox.Text))
+                    return null;
+                else if (!int.TryParse(textBox.Text, out _))
+                    return $"{textBox.Name} phải là số nguyên";
+                else if (int.Parse(textBox.Text) < 0)
+                    return $"{textBox.Name} phải lớn hơn 0";
+                else if (int.Parse(textBox.Text) != float.Parse(textBox.Text))
+                    return $"{textBox.Name} phải là số nguyên";
+            }
+            return null;
         }
         public void ResetTexbox(params TextBox[] textBoxes)
         {
@@ -83,15 +102,21 @@ namespace DuAn1
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (!CheckNull(txtIdVoucher, txtVoucherName, txtDiscount, txtIdAccount))
+            if (!CheckNull(txtIdVoucher, txtVoucherName, txtDiscount, txtIdAccount, txtUsageCount))
             {
                 var check = CheckIsDouble(txtDiscount);
                 if (check == null)
                 {
-                    if (voucherBUS.AddNewVoucher(txtIdVoucher.Text, txtVoucherName.Text, decimal.Parse(txtDiscount.Text), dtpStarTime.Value, dtpEndTime.Value, txtIdAccount.Text))
-                        MessageBox.Show("Thêm thành công");
+                    var check2 = CheckIsInt(txtUsageCount);
+                    if (check2 == null)
+                    {
+                        if (voucherBUS.AddNewVoucher(txtIdVoucher.Text, txtVoucherName.Text, decimal.Parse(txtDiscount.Text), dtpStarTime.Value, dtpEndTime.Value, int.Parse(txtUsageCount.Text),txtIdAccount.Text))
+                            MessageBox.Show("Thêm thành công");
+                        else
+                            MessageBox.Show("Thêm thất bại");
+                    }
                     else
-                        MessageBox.Show("Thêm thất bại");
+                        MessageBox.Show(check2);
                 }
                 else
                     MessageBox.Show(check);
@@ -108,10 +133,16 @@ namespace DuAn1
                 var check = CheckIsDouble(txtDiscount);
                 if (check == null)
                 {
-                    if (voucherBUS.UpdateVoucher(txtIdVoucher.Text, txtVoucherName.Text, decimal.Parse(txtDiscount.Text), dtpStarTime.Value, dtpEndTime.Value, txtIdAccount.Text))
-                        MessageBox.Show("Sửa thành công");
+                    var check2 = CheckIsInt(txtUsageCount);
+                    if (check2 == null)
+                    {
+                        if (voucherBUS.UpdateVoucher(txtIdVoucher.Text, txtVoucherName.Text, decimal.Parse(txtDiscount.Text), dtpStarTime.Value, dtpEndTime.Value,int.Parse(txtUsageCount.Text), txtIdAccount.Text))
+                            MessageBox.Show("Sửa thành công");
+                        else
+                            MessageBox.Show("Sửa thất bại");
+                    }
                     else
-                        MessageBox.Show("Sửa thất bại");
+                        MessageBox.Show(check2);
                 }
                 else
                     MessageBox.Show(check);
@@ -137,13 +168,14 @@ namespace DuAn1
         {
             if (e.RowIndex > -1 && e.RowIndex < dgvListVoucher.RowCount - 1)
             {
-                var row= dgvListVoucher.Rows[e.RowIndex];
-                txtIdVoucher.Text=row.Cells[0].Value.ToString();
-                txtVoucherName.Text=row.Cells[1].Value.ToString();
-                txtDiscount.Text=row.Cells[2].Value.ToString();
-                dtpStarTime.Value=DateTime.Parse(row.Cells[3].Value.ToString());
+                var row = dgvListVoucher.Rows[e.RowIndex];
+                txtIdVoucher.Text = row.Cells[0].Value.ToString();
+                txtVoucherName.Text = row.Cells[1].Value.ToString();
+                txtDiscount.Text = row.Cells[2].Value.ToString();
+                dtpStarTime.Value = DateTime.Parse(row.Cells[3].Value.ToString());
                 dtpEndTime.Value = DateTime.Parse(row.Cells[4].Value.ToString());
-                txtIdAccount.Text=row.Cells[5].Value.ToString();
+                txtUsageCount.Text = row.Cells[5].Value.ToString();
+                txtIdAccount.Text = row.Cells[6].Value.ToString();
             }
         }
     }

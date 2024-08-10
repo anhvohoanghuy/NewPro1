@@ -12,8 +12,18 @@ namespace BUS.Services
     {
         CustomerDAL customerDAL= new CustomerDAL();
         public List<Customer> GetAllCustomer()
-        {
+        { 
             return customerDAL.GetAllCustomer();
+        }
+        public List<string> GetAllIdCustomer()
+        {
+            var customers = GetAllCustomer();
+            List<string> ids = new List<string>();
+            foreach (var item in customers)
+            {
+                ids.Add(item.Idcustomer);
+            }
+            return ids;
         }
         public Customer GetCustomerByID(string idCustomer)
         {
@@ -32,7 +42,8 @@ namespace BUS.Services
                 CustomerName=customerName,
                 PhoneNumber=phoneNumber,
                 CustomerAddress=customerAddress,
-                Idaccount=idAccount
+                Idaccount=idAccount,
+                DateAdded=DateTime.Now
             };
             return customerDAL.AddNewCustomer(customer);
         }
@@ -50,11 +61,11 @@ namespace BUS.Services
         }
         public List<Customer> SearchCustomerByIdCustomer(string idCustomer)
         {
-            return GetAllCustomer().Where(c=>c.Idcustomer.Contains(idCustomer)).ToList();
+            return GetAllCustomer().Where(c=>c.Idcustomer.ToLower().Contains(idCustomer.ToLower())).ToList();
         }
         public List<Customer> SearchCustomerByName(string name)
         {
-            return GetAllCustomer().Where(c => c.CustomerName.Contains(name)).ToList();
+            return GetAllCustomer().Where(c => c.CustomerName.ToLower().Contains(name.ToLower())).ToList();
         }
         public List<Customer> SearchCustomerByPhoneNumber(string phoneNumber)
         {
@@ -62,7 +73,7 @@ namespace BUS.Services
         }
         public List<Customer> SearchCustomerByAddress(string address)
         {
-            return GetAllCustomer().Where(c => c.CustomerAddress.Contains(address)).ToList();
+            return GetAllCustomer().Where(c => c.CustomerAddress.ToLower().Contains(address.ToLower())).ToList();
         }
         public List<Customer> SearchCustomerByIdAccount(string idAccount)
         {

@@ -17,7 +17,7 @@ public partial class Order
 
     public string? Idvoucher { get; set; }
 
-    public bool? Paid { get; set; }
+    public int OrderStatus { get; set; }
 
     public virtual Account? IdaccountNavigation { get; set; }
 

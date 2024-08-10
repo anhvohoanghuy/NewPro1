@@ -31,7 +31,7 @@ namespace BUS.Services
             else
                 return false;
         }
-        public bool AddNewVoucher(string idVoucher,string voucherName, decimal discount, DateTime startTime,DateTime endTime,string idAccount)
+        public bool AddNewVoucher(string idVoucher,string voucherName, decimal discount, DateTime startTime,DateTime endTime, int usageCount, string idAccount)
         {
             if (!CheckVoucherExist(idVoucher))
             {
@@ -42,6 +42,7 @@ namespace BUS.Services
                     Discount = discount,
                     StartTime = startTime,
                     EndTime = endTime,
+                    UsageCount = usageCount,
                     Idaccount = idAccount
                 };
                 return voucherDAL.AddNewVoucher(voucher);
@@ -49,7 +50,7 @@ namespace BUS.Services
             else
                 return false;
         }
-        public bool UpdateVoucher(string idVoucher, string voucherName, decimal discount, DateTime startTime, DateTime endTime, string idAccount)
+        public bool UpdateVoucher(string idVoucher, string voucherName, decimal discount, DateTime startTime, DateTime endTime,int usageCount ,string idAccount)
         {
             if (CheckVoucherExist(idVoucher))
             {
@@ -60,12 +61,44 @@ namespace BUS.Services
                     Discount = discount,
                     StartTime = startTime,
                     EndTime = endTime,
+                    UsageCount=usageCount,
                     Idaccount = idAccount
                 };
                 return voucherDAL.UpdateVoucher(voucher);
             }
             else
                 return false;
+        }
+        public List<string> GetAllIdVoucherForSale()
+        {
+            var allVoucher = GetAllVoucher();
+            var listVoucher = allVoucher.Where(c=>c.EndTime>DateTime.Now&&c.UsageCount>0).ToList();
+            if (listVoucher != null)
+            {
+                var listIdVoucher = new List<string>();
+                foreach (var voucher in listVoucher)
+                {
+                    listIdVoucher.Add(voucher.Idvoucher);
+                }
+                return listIdVoucher;
+            }
+            else
+                return null;
+        }
+        public List<string> GetAllIdVoucherForSale(string idVoucher)
+        {
+            var listVoucher = GetAllVoucher().Where(c => c.EndTime > DateTime.Now && c.UsageCount > 0&&c.Idvoucher.Contains(idVoucher)).ToList();
+            if (listVoucher != null)
+            {
+                var listIdVoucher = new List<string>();
+                foreach (var voucher in listVoucher)
+                {
+                    listIdVoucher.Add(voucher.Idvoucher);
+                }
+                return listIdVoucher;
+            }
+            else
+                return null;
         }
     }
 }

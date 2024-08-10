@@ -19,6 +19,7 @@ namespace DAL.Respositories
             try
             {
                 db.Promotions.Add(promotion);
+                db.SaveChanges();
                 return true;
             }
             catch

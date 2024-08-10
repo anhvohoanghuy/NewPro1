@@ -36,9 +36,12 @@ namespace DuAn1
         public void ShowOnDataGridView(List<Customer> list)
         {
             dgvListCustomer.Rows.Clear();
-            foreach (Customer customer in list)
+            if (list != null)
             {
-                dgvListCustomer.Rows.Add(customer.Idcustomer, customer.CustomerName, customer.PhoneNumber, customer.CustomerAddress, customer.Idaccount);
+                foreach (Customer customer in list)
+                {
+                    dgvListCustomer.Rows.Add(customer.Idcustomer, customer.CustomerName, customer.PhoneNumber, customer.CustomerAddress, customer.Idaccount);
+                }
             }
         }
         public void ResetTexbox(params TextBox[] textBoxes)
@@ -61,11 +64,11 @@ namespace DuAn1
             ResetTexbox(txtIdCustomer, txtCustomerName, txtPhoneNumber, txtAddress, txtIdAccount);
             txtIdAccount.Text = IDAccount;
         }
-        public bool CheckNull(params string[] strings)
+        public bool CheckNull(params TextBox[] textBoxes)
         {
-            foreach (var item in strings)
+            foreach (var item in textBoxes)
             {
-                if (string.IsNullOrEmpty(item))
+                if (string.IsNullOrEmpty(item.Text))
                     return true;
             }
             return false;
@@ -90,6 +93,7 @@ namespace DuAn1
             cbbTimKiem.Items.AddRange(["By id customer", "By name", "By phone number", "By id account"]);
             LoadDataGridView();
             ShowOnDataGridView(customerBUS.GetAllCustomer());
+            txtIdAccount.Text = IDAccount;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -101,6 +105,69 @@ namespace DuAn1
         private void vbButton2_Click(object sender, EventArgs e)
         {
             ResetForm();
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            if (!CheckNull(txtIdCustomer, txtCustomerName, txtPhoneNumber))
+            {
+                var check = CheckIsInt(txtPhoneNumber);
+                if (check == null)
+                {
+                    if (customerBUS.AddNewCustomer(txtIdCustomer.Text, txtCustomerName.Text, txtPhoneNumber.Text, txtAddress.Text, txtIdAccount.Text))
+                        MessageBox.Show("Thêm thành công");
+                    else
+                        MessageBox.Show("Thêm thất bại");
+                }
+                else
+                    MessageBox.Show(check);
+            }
+            else
+                MessageBox.Show("Nhập đầy đủ thông tin");
+            ShowOnDataGridView(customerBUS.GetAllCustomer());
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if (!CheckNull(txtIdCustomer, txtCustomerName, txtPhoneNumber))
+            {
+                if (customerBUS.CheckCustomerExsit(txtIdCustomer.Text))
+                {
+                    var check = CheckIsInt(txtPhoneNumber);
+                    if (check == null)
+                    {
+                        if (customerBUS.UpdateCustomer(txtIdCustomer.Text, txtCustomerName.Text, txtPhoneNumber.Text, txtAddress.Text, txtIdAccount.Text))
+                            MessageBox.Show("Sửa thành công");
+                        else
+                            MessageBox.Show("Sửa thất bại");
+                    }
+                    else
+                        MessageBox.Show(check);
+                }
+                else
+                    MessageBox.Show("Không có id khác hàng này");
+            }
+            else
+                MessageBox.Show("Nhập đầy đủ thông tin");
+            ShowOnDataGridView(customerBUS.GetAllCustomer());
+        }
+
+        private void txtPhoneNumber_Leave(object sender, EventArgs e)
+        {
+            txtIdCustomer.Text = txtPhoneNumber.Text;
+        }
+
+        private void dgvListCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < dgvListCustomer.RowCount-1)
+            {
+                var row= dgvListCustomer.Rows[e.RowIndex];
+                txtIdCustomer.Text = row.Cells[0].Value.ToString();
+                txtCustomerName.Text = row.Cells[1].Value.ToString();
+                txtPhoneNumber.Text = row.Cells[2].Value.ToString();
+                txtAddress.Text = row.Cells[3].Value.ToString();
+                txtIdAccount.Text = row.Cells[4].Value.ToString();
+            }
         }
     }
 }

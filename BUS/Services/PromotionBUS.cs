@@ -74,6 +74,10 @@ namespace BUS.Services
         {
             return GetAllPromotion().Where(c => c.PromotionName.Contains(name)).ToList();
         }
+        public List<Promotion> SearchByIdAccount(string name)
+        {
+            return GetAllPromotion().Where(c => c.Idaccount.Contains(name)).ToList();
+        }
         public List<Promotion> FillterByDiscount(string from, string to)
         {
             decimal from1;
@@ -100,6 +104,8 @@ namespace BUS.Services
                     return SearchByIdPromotion(key);
                 case 1:
                     return SearchByPromotionName(key);
+                case 2:
+                    return SearchByIdAccount(key);
                 default:
                     return null;
                     break;

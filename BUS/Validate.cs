@@ -32,12 +32,16 @@ namespace BUS
                 return true;
             return false;
         }
-        public bool CheckIsFloat(string idNumber)
+        public bool CheckNull(params string[] strings)
         {
-            if (float.TryParse(idNumber, out _))
-                return true;
+            foreach (var item in strings)
+            {
+                if (string.IsNullOrEmpty(item))
+                    return true;
+            }
             return false;
         }
+
         public bool CheckIsDecimal(string idNumber)
         {
             if (float.TryParse(idNumber, out _))

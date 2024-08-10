@@ -103,10 +103,13 @@ namespace DuAn1
         public void ShowOnDataGridView(List<ProductDetail> productDetails)
         {
             dgvProductDetail.Rows.Clear();
-            foreach (ProductDetail productDetail in productDetails)
+            if(productDetails!=null)
             {
-                dgvProductDetail.Rows.Add(productDetail.Idproduct, productDetail.IdproductDetails, productDetail.Idcolor, productDetail.Storage, productDetail.Price, productDetail.Idpromotion, productDetail.WarrantyPeriod, productDetail.Inventory, productDetail.Idaccount);
-            }
+                foreach (ProductDetail productDetail in productDetails)
+                {
+                    dgvProductDetail.Rows.Add(productDetail.Idproduct, productDetail.IdproductDetails, productDetail.Idcolor, productDetail.Storage, productDetail.Price, productDetail.Idpromotion, productDetail.WarrantyPeriod, productDetail.Inventory, productDetail.Idaccount);
+                }
+            }    
         }
         public bool CheckProductDetailIfExists(string idProductDetail)
         {
@@ -184,16 +187,15 @@ namespace DuAn1
                 else
                     idPromotion = cbbIdPromotion.SelectedItem.ToString();
                 var warrantyPeriod = txtWarrantyPeriod.Text;
-                var inventory = txtInventory.Text;
                 var idAccount = txtIdAccount.Text;
-                if (!CheckNull(idProduct, idProductDetail, idColor, storage, price, warrantyPeriod, inventory, idAccount))
+                if (!CheckNull(idProduct, idProductDetail, idColor, storage, price, warrantyPeriod, idAccount))
                 {
                     if (CheckProductDetailIfExists(cbbIdProduct.SelectedItem.ToString()) == false)
                     {
                         var check = CheckIsNumberProductDetail(txtStorage, txtPrice, txtWarrantyPeriod, txtInventory);
                         if (check == null)
                         {
-                            if (productDetailBUS.AddNewProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod), int.Parse(inventory), idAccount))
+                            if (productDetailBUS.AddNewProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod), 0, idAccount))
                             {
                                 var productDetail = productDetailBUS.GetProductDetailByID(txtIdProductDetail.Text);
                                 if (productDetail != null)
@@ -202,7 +204,10 @@ namespace DuAn1
                                     formImei.ShowDialog();
                                     if (formImei.Comfirm)
                                     {
-                                        MessageBox.Show("Thêm thành công");
+                                        if (productDetailBUS.UpdateProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod),formImei.inventory , idAccount))
+                                            MessageBox.Show("Thêm thành công");
+                                        else
+                                            MessageBox.Show("Thêm thất bại");
                                     }
                                     else
                                     {
@@ -241,9 +246,8 @@ namespace DuAn1
             else
                 idPromotion = cbbIdPromotion.SelectedItem.ToString();
             var warrantyPeriod = txtWarrantyPeriod.Text;
-            var inventory = txtInventory.Text;
             var idAccount = txtIdAccount.Text;
-            if (!CheckNull(idProduct, idProductDetail, idColor, storage, price, warrantyPeriod, inventory, idAccount))
+            if (!CheckNull(idProduct, idProductDetail, idColor, storage, price, warrantyPeriod, idAccount))
             {
                 if (CheckProductDetailIfExists(cbbIdProduct.Text) == false)
                 {
@@ -257,7 +261,7 @@ namespace DuAn1
                             formImei.ShowDialog();
                             if (formImei.Comfirm)
                             {
-                                if (productDetailBUS.UpdateProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod), int.Parse(inventory), idAccount))
+                                if (productDetailBUS.UpdateProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod),formImei.inventory , idAccount))
                                     MessageBox.Show("Sửa thành công");
                                 else
                                     MessageBox.Show("Sửa thất bại");
@@ -306,8 +310,12 @@ namespace DuAn1
 
         private void vbButton1_Click(object sender, EventArgs e)
         {
-            List<ProductDetail> productDetails = new List<ProductDetail>();
-            productDetails = productDetailBUS.Search(cbbTimKiem.SelectedIndex, txtTimKiem.Text);
+            if (cbbTimKiem.SelectedIndex > -1)
+            {
+                List<ProductDetail> productDetails = new List<ProductDetail>();
+                productDetails = productDetailBUS.Search(cbbTimKiem.SelectedIndex, txtTimKiem.Text);
+                ShowOnDataGridView(productDetails);
+            }
         }
         private void cbbIdColor_Leave(object sender, EventArgs e)
         {

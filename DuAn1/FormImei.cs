@@ -19,6 +19,7 @@ namespace DuAn1
         List<string> Imeis;
         ProductDetail ThisProductDetail;
         public bool Comfirm = false;
+        public int inventory;
         ImeiBUS imeiBUS = new ImeiBUS();
         string Account;
         Validate validate = new Validate();
@@ -36,6 +37,7 @@ namespace DuAn1
         {
             dgvImei.Columns.Add("STT", "STT");
             dgvImei.Columns.Add("Imei", "Imei");
+            dgvImei.Columns.Add("Selled", "Selled");
         }
         public void ShowOnDataGridView(List<string> imeis)
         {
@@ -46,7 +48,12 @@ namespace DuAn1
                 foreach (string ime in imeis)
                 {
                     stt++;
-                    dgvImei.Rows.Add(stt, ime);
+
+                    var imei = imeiBUS.GetImeiByID(ime);
+                    if (imei != null)
+                        dgvImei.Rows.Add(stt, ime, imei.Selled);
+                    else
+                        dgvImei.Rows.Add(stt, ime);
                 }
             }
         }
@@ -114,6 +121,8 @@ namespace DuAn1
                     }
                 }
                 MessageBox.Show($"Đã thêm {count} Imei");
+                var listImei = imeiBUS.GetImeiByIdProductDetail(ThisProductDetail.IdproductDetails);
+                inventory = listImei.Where(c=>c.Selled==false).Count();
                 Comfirm = true;
                 this.Close();
             }

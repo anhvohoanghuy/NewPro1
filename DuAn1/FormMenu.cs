@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -206,6 +207,20 @@ namespace DuAn1
             FormCustomer a = new FormCustomer(IdAccountMenu);
             LoadForm(a);
             ActiveColor(btnKhachHang);
+        }
+
+        private void btnColor_Click(object sender, EventArgs e)
+        {
+            FormProductColor color = new FormProductColor(IdAccountMenu);
+            LoadForm(color);
+            ActiveColor(btnColor);
+        }
+
+        private void btnCpu_Click(object sender, EventArgs e)
+        {
+            FormCPU CPU = new FormCPU(IdAccountMenu);
+            LoadForm(CPU);
+            ActiveColor(btnCpu);
         }
     }
 }

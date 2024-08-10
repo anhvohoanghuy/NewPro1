@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,35 +13,47 @@ namespace DAL.Respositories
         Pro1QuanLiDienThoaiFinalContext db = new Pro1QuanLiDienThoaiFinalContext();
         public List<Cpu> GetAllCPU()
         {
-            return db.Cpus.ToList();
+            return db.Cpus.AsNoTracking().ToList();
         }
         public bool AddNewCPU(Cpu cpu)
         {
             try
             {
+                if (db.Cpus.Any(c => c.Idcpu == cpu.Idcpu))
+                {
+                    return false;
+                }
+
                 db.Cpus.Add(cpu);
+                db.SaveChanges();
                 return true;
             }
             catch { return false; }
         }
-        public bool UpdateCPU(Cpu cpu)
+        public bool UpdateCPU(Cpu newCpu)
         {
-            try
-            {
-                var current= GetAllCPU().FirstOrDefault(c=>c.Idcpu==cpu.Idcpu);
-                if (current != null)
+             try
                 {
-                    current.NameCpu=cpu.NameCpu;
-                    current.Idcpu = cpu.Manufacturer;
-                    current.Idaccount = cpu.Idaccount;
-                    db.SaveChanges();
-                    return true;
+                // Find the existing entity in the context
+                var existingCpu = db.Cpus.Local.FirstOrDefault(c => c.Idcpu == newCpu.Idcpu);
+
+                if (existingCpu != null)
+                {
+                    // Detach the existing entity if it's already being tracked
+                    db.Entry(existingCpu).State = EntityState.Detached;
                 }
-                else
-                    return false;
+
+                // Attach the updated entity and mark it as modified
+                db.Cpus.Attach(newCpu);
+                db.Entry(newCpu).State = EntityState.Modified;
+
+                db.SaveChanges();
+                return true;
             }
-            catch
-            { return false; }
+            catch (Exception ex)
+                {
+                    return false;
+                }
         }
     }
 }

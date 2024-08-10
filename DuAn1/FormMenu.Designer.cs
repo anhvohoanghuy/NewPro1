@@ -37,13 +37,15 @@
             panel6 = new Panel();
             panel3 = new Panel();
             panel2 = new Panel();
+            btnColor = new CustomButton.VBButton();
+            vbButton2 = new CustomButton.VBButton();
             btnPromotion = new CustomButton.VBButton();
             btnKhachHang = new CustomButton.VBButton();
             btnVoucher = new CustomButton.VBButton();
             panel7 = new Panel();
             btnLogOut = new CustomButton.VBButton();
             btnStatistics = new CustomButton.VBButton();
-            btnEmployee = new CustomButton.VBButton();
+            btnCpu = new CustomButton.VBButton();
             btnOrder = new CustomButton.VBButton();
             btnCreateOrder = new CustomButton.VBButton();
             btnProduct = new CustomButton.VBButton();
@@ -65,9 +67,10 @@
             panel1.Controls.Add(lblUserName);
             panel1.Controls.Add(panel6);
             panel1.Controls.Add(panel3);
-            panel1.Location = new Point(227, 5);
+            panel1.Location = new Point(199, 4);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(993, 62);
+            panel1.Size = new Size(869, 46);
             panel1.TabIndex = 0;
             // 
             // lblPhanQuyen
@@ -75,9 +78,9 @@
             lblPhanQuyen.AutoSize = true;
             lblPhanQuyen.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPhanQuyen.ForeColor = SystemColors.ButtonHighlight;
-            lblPhanQuyen.Location = new Point(384, 19);
+            lblPhanQuyen.Location = new Point(336, 14);
             lblPhanQuyen.Name = "lblPhanQuyen";
-            lblPhanQuyen.Size = new Size(41, 23);
+            lblPhanQuyen.Size = new Size(33, 19);
             lblPhanQuyen.TabIndex = 7;
             lblPhanQuyen.Text = "Null";
             // 
@@ -86,9 +89,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(292, 19);
+            label2.Location = new Point(256, 14);
             label2.Name = "label2";
-            label2.Size = new Size(86, 23);
+            label2.Size = new Size(70, 19);
             label2.TabIndex = 6;
             label2.Text = "Chức vụ : ";
             // 
@@ -98,9 +101,9 @@
             lblDateTime.AutoSize = true;
             lblDateTime.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDateTime.ForeColor = SystemColors.ButtonHighlight;
-            lblDateTime.Location = new Point(592, 17);
+            lblDateTime.Location = new Point(518, 13);
             lblDateTime.Name = "lblDateTime";
-            lblDateTime.Size = new Size(109, 25);
+            lblDateTime.Size = new Size(88, 20);
             lblDateTime.TabIndex = 5;
             lblDateTime.Text = "ddd/mm/yy";
             // 
@@ -109,9 +112,9 @@
             lblUserName.AutoSize = true;
             lblUserName.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblUserName.ForeColor = SystemColors.ButtonHighlight;
-            lblUserName.Location = new Point(159, 19);
+            lblUserName.Location = new Point(139, 14);
             lblUserName.Name = "lblUserName";
-            lblUserName.Size = new Size(41, 23);
+            lblUserName.Size = new Size(33, 19);
             lblUserName.TabIndex = 4;
             lblUserName.Text = "Null";
             // 
@@ -119,41 +122,92 @@
             // 
             panel6.BackgroundImage = Properties.Resources.add_user;
             panel6.BackgroundImageLayout = ImageLayout.Stretch;
-            panel6.Location = new Point(124, 12);
+            panel6.Location = new Point(108, 9);
+            panel6.Margin = new Padding(3, 2, 3, 2);
             panel6.Name = "panel6";
-            panel6.Size = new Size(29, 38);
+            panel6.Size = new Size(25, 28);
             panel6.TabIndex = 3;
             // 
             // panel3
             // 
-            panel3.Location = new Point(3, 59);
+            panel3.Location = new Point(3, 44);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1093, 638);
+            panel3.Size = new Size(956, 478);
             panel3.TabIndex = 2;
             // 
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panel2.BackColor = Color.MediumSlateBlue;
+            panel2.Controls.Add(btnColor);
+            panel2.Controls.Add(vbButton2);
             panel2.Controls.Add(btnPromotion);
             panel2.Controls.Add(btnKhachHang);
             panel2.Controls.Add(btnVoucher);
             panel2.Controls.Add(panel7);
             panel2.Controls.Add(btnLogOut);
             panel2.Controls.Add(btnStatistics);
-            panel2.Controls.Add(btnEmployee);
+            panel2.Controls.Add(btnCpu);
             panel2.Controls.Add(btnOrder);
             panel2.Controls.Add(btnCreateOrder);
             panel2.Controls.Add(btnProduct);
             panel2.Controls.Add(vbButton1);
             panel2.Controls.Add(panel5);
             panel2.Controls.Add(label1);
-            panel2.Location = new Point(-5, 5);
+            panel2.Location = new Point(-7, 2);
             panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(235, 1051);
+            panel2.Size = new Size(206, 788);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
+            // 
+            // btnColor
+            // 
+            btnColor.BackColor = Color.MediumSlateBlue;
+            btnColor.BackgroundColor = Color.MediumSlateBlue;
+            btnColor.BorderColor = Color.PaleVioletRed;
+            btnColor.BorderRadius = 20;
+            btnColor.BorderSize = 0;
+            btnColor.FlatAppearance.BorderSize = 0;
+            btnColor.FlatStyle = FlatStyle.Flat;
+            btnColor.Font = new Font("Segoe UI Emoji", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnColor.ForeColor = Color.White;
+            btnColor.Image = (Image)resources.GetObject("btnColor.Image");
+            btnColor.ImageAlign = ContentAlignment.MiddleLeft;
+            btnColor.Location = new Point(21, 521);
+            btnColor.Margin = new Padding(3, 2, 3, 2);
+            btnColor.Name = "btnColor";
+            btnColor.Size = new Size(164, 38);
+            btnColor.TabIndex = 25;
+            btnColor.Text = "Color";
+            btnColor.TextColor = Color.White;
+            btnColor.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnColor.UseVisualStyleBackColor = false;
+            btnColor.Click += btnColor_Click;
+            // 
+            // vbButton2
+            // 
+            vbButton2.BackColor = Color.MediumSlateBlue;
+            vbButton2.BackgroundColor = Color.MediumSlateBlue;
+            vbButton2.BorderColor = Color.PaleVioletRed;
+            vbButton2.BorderRadius = 20;
+            vbButton2.BorderSize = 0;
+            vbButton2.FlatAppearance.BorderSize = 0;
+            vbButton2.FlatStyle = FlatStyle.Flat;
+            vbButton2.Font = new Font("Segoe UI Emoji", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            vbButton2.ForeColor = Color.White;
+            vbButton2.Image = (Image)resources.GetObject("vbButton2.Image");
+            vbButton2.ImageAlign = ContentAlignment.MiddleLeft;
+            vbButton2.Location = new Point(21, 375);
+            vbButton2.Margin = new Padding(3, 2, 3, 2);
+            vbButton2.Name = "vbButton2";
+            vbButton2.Size = new Size(164, 38);
+            vbButton2.TabIndex = 24;
+            vbButton2.Text = "Tài khoản";
+            vbButton2.TextColor = Color.White;
+            vbButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
+            vbButton2.UseVisualStyleBackColor = false;
             // 
             // btnPromotion
             // 
@@ -168,9 +222,10 @@
             btnPromotion.ForeColor = Color.White;
             btnPromotion.Image = (Image)resources.GetObject("btnPromotion.Image");
             btnPromotion.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPromotion.Location = new Point(17, 454);
+            btnPromotion.Location = new Point(15, 340);
+            btnPromotion.Margin = new Padding(3, 2, 3, 2);
             btnPromotion.Name = "btnPromotion";
-            btnPromotion.Size = new Size(188, 50);
+            btnPromotion.Size = new Size(164, 38);
             btnPromotion.TabIndex = 23;
             btnPromotion.Text = "Khuyến mãi";
             btnPromotion.TextColor = Color.White;
@@ -191,9 +246,10 @@
             btnKhachHang.ForeColor = Color.White;
             btnKhachHang.Image = (Image)resources.GetObject("btnKhachHang.Image");
             btnKhachHang.ImageAlign = ContentAlignment.MiddleLeft;
-            btnKhachHang.Location = new Point(17, 521);
+            btnKhachHang.Location = new Point(18, 417);
+            btnKhachHang.Margin = new Padding(3, 2, 3, 2);
             btnKhachHang.Name = "btnKhachHang";
-            btnKhachHang.Size = new Size(188, 50);
+            btnKhachHang.Size = new Size(164, 38);
             btnKhachHang.TabIndex = 22;
             btnKhachHang.Text = "Khách hàng";
             btnKhachHang.TextColor = Color.White;
@@ -214,9 +270,10 @@
             btnVoucher.ForeColor = Color.White;
             btnVoucher.Image = (Image)resources.GetObject("btnVoucher.Image");
             btnVoucher.ImageAlign = ContentAlignment.MiddleLeft;
-            btnVoucher.Location = new Point(21, 379);
+            btnVoucher.Location = new Point(18, 284);
+            btnVoucher.Margin = new Padding(3, 2, 3, 2);
             btnVoucher.Name = "btnVoucher";
-            btnVoucher.Size = new Size(188, 50);
+            btnVoucher.Size = new Size(164, 38);
             btnVoucher.TabIndex = 21;
             btnVoucher.Text = "Voucher";
             btnVoucher.TextColor = Color.White;
@@ -228,10 +285,10 @@
             // 
             panel7.BackColor = Color.White;
             panel7.BackgroundImageLayout = ImageLayout.None;
-            panel7.Location = new Point(17, 764);
+            panel7.Location = new Point(15, 573);
             panel7.Margin = new Padding(3, 0, 3, 0);
             panel7.Name = "panel7";
-            panel7.Size = new Size(192, 3);
+            panel7.Size = new Size(168, 2);
             panel7.TabIndex = 14;
             // 
             // btnLogOut
@@ -248,9 +305,10 @@
             btnLogOut.ForeColor = Color.White;
             btnLogOut.Image = (Image)resources.GetObject("btnLogOut.Image");
             btnLogOut.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLogOut.Location = new Point(21, 731);
+            btnLogOut.Location = new Point(18, 724);
+            btnLogOut.Margin = new Padding(3, 2, 3, 2);
             btnLogOut.Name = "btnLogOut";
-            btnLogOut.Size = new Size(188, 307);
+            btnLogOut.Size = new Size(164, 54);
             btnLogOut.TabIndex = 20;
             btnLogOut.Text = "Đăng xuất";
             btnLogOut.TextColor = Color.White;
@@ -271,9 +329,10 @@
             btnStatistics.ForeColor = Color.White;
             btnStatistics.Image = (Image)resources.GetObject("btnStatistics.Image");
             btnStatistics.ImageAlign = ContentAlignment.MiddleLeft;
-            btnStatistics.Location = new Point(21, 665);
+            btnStatistics.Location = new Point(18, 591);
+            btnStatistics.Margin = new Padding(3, 2, 3, 2);
             btnStatistics.Name = "btnStatistics";
-            btnStatistics.Size = new Size(188, 50);
+            btnStatistics.Size = new Size(164, 38);
             btnStatistics.TabIndex = 19;
             btnStatistics.Text = "Thống kê";
             btnStatistics.TextColor = Color.White;
@@ -281,28 +340,29 @@
             btnStatistics.UseVisualStyleBackColor = false;
             btnStatistics.Click += btnStatistics_Click;
             // 
-            // btnEmployee
+            // btnCpu
             // 
-            btnEmployee.BackColor = Color.MediumSlateBlue;
-            btnEmployee.BackgroundColor = Color.MediumSlateBlue;
-            btnEmployee.BorderColor = Color.PaleVioletRed;
-            btnEmployee.BorderRadius = 20;
-            btnEmployee.BorderSize = 0;
-            btnEmployee.FlatAppearance.BorderSize = 0;
-            btnEmployee.FlatStyle = FlatStyle.Flat;
-            btnEmployee.Font = new Font("Segoe UI Emoji", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEmployee.ForeColor = Color.White;
-            btnEmployee.Image = (Image)resources.GetObject("btnEmployee.Image");
-            btnEmployee.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmployee.Location = new Point(21, 597);
-            btnEmployee.Name = "btnEmployee";
-            btnEmployee.Size = new Size(188, 50);
-            btnEmployee.TabIndex = 18;
-            btnEmployee.Text = "Tài khoản";
-            btnEmployee.TextColor = Color.White;
-            btnEmployee.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnEmployee.UseVisualStyleBackColor = false;
-            btnEmployee.Click += btnEmployee_Click;
+            btnCpu.BackColor = Color.MediumSlateBlue;
+            btnCpu.BackgroundColor = Color.MediumSlateBlue;
+            btnCpu.BorderColor = Color.PaleVioletRed;
+            btnCpu.BorderRadius = 20;
+            btnCpu.BorderSize = 0;
+            btnCpu.FlatAppearance.BorderSize = 0;
+            btnCpu.FlatStyle = FlatStyle.Flat;
+            btnCpu.Font = new Font("Segoe UI Emoji", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCpu.ForeColor = Color.White;
+            btnCpu.Image = (Image)resources.GetObject("btnCpu.Image");
+            btnCpu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCpu.Location = new Point(21, 468);
+            btnCpu.Margin = new Padding(3, 2, 3, 2);
+            btnCpu.Name = "btnCpu";
+            btnCpu.Size = new Size(164, 38);
+            btnCpu.TabIndex = 18;
+            btnCpu.Text = "CPU";
+            btnCpu.TextColor = Color.White;
+            btnCpu.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCpu.UseVisualStyleBackColor = false;
+            btnCpu.Click += btnCpu_Click;
             // 
             // btnOrder
             // 
@@ -317,9 +377,10 @@
             btnOrder.ForeColor = Color.White;
             btnOrder.Image = (Image)resources.GetObject("btnOrder.Image");
             btnOrder.ImageAlign = ContentAlignment.MiddleLeft;
-            btnOrder.Location = new Point(17, 238);
+            btnOrder.Location = new Point(15, 178);
+            btnOrder.Margin = new Padding(3, 2, 3, 2);
             btnOrder.Name = "btnOrder";
-            btnOrder.Size = new Size(188, 50);
+            btnOrder.Size = new Size(164, 38);
             btnOrder.TabIndex = 17;
             btnOrder.Text = "Đơn hàng";
             btnOrder.TextColor = Color.White;
@@ -340,9 +401,10 @@
             btnCreateOrder.ForeColor = Color.White;
             btnCreateOrder.Image = (Image)resources.GetObject("btnCreateOrder.Image");
             btnCreateOrder.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCreateOrder.Location = new Point(17, 159);
+            btnCreateOrder.Location = new Point(15, 119);
+            btnCreateOrder.Margin = new Padding(3, 2, 3, 2);
             btnCreateOrder.Name = "btnCreateOrder";
-            btnCreateOrder.Size = new Size(211, 50);
+            btnCreateOrder.Size = new Size(185, 38);
             btnCreateOrder.TabIndex = 16;
             btnCreateOrder.Text = "Tạo đơn hàng";
             btnCreateOrder.TextColor = Color.White;
@@ -363,9 +425,10 @@
             btnProduct.ForeColor = Color.White;
             btnProduct.Image = (Image)resources.GetObject("btnProduct.Image");
             btnProduct.ImageAlign = ContentAlignment.MiddleLeft;
-            btnProduct.Location = new Point(17, 313);
+            btnProduct.Location = new Point(15, 235);
+            btnProduct.Margin = new Padding(3, 2, 3, 2);
             btnProduct.Name = "btnProduct";
-            btnProduct.Size = new Size(188, 50);
+            btnProduct.Size = new Size(164, 38);
             btnProduct.TabIndex = 15;
             btnProduct.Text = "Sản Phẩm";
             btnProduct.TextColor = Color.White;
@@ -387,9 +450,10 @@
             vbButton1.ForeColor = Color.White;
             vbButton1.Image = Properties.Resources._25694__2_;
             vbButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            vbButton1.Location = new Point(17, 86);
+            vbButton1.Location = new Point(15, 64);
+            vbButton1.Margin = new Padding(3, 2, 3, 2);
             vbButton1.Name = "vbButton1";
-            vbButton1.Size = new Size(188, 50);
+            vbButton1.Size = new Size(164, 38);
             vbButton1.TabIndex = 14;
             vbButton1.Text = "Trang chủ";
             vbButton1.TextColor = Color.White;
@@ -401,10 +465,10 @@
             // 
             panel5.BackColor = Color.White;
             panel5.BackgroundImageLayout = ImageLayout.None;
-            panel5.Location = new Point(17, 57);
+            panel5.Location = new Point(15, 43);
             panel5.Margin = new Padding(3, 0, 3, 0);
             panel5.Name = "panel5";
-            panel5.Size = new Size(192, 3);
+            panel5.Size = new Size(168, 2);
             panel5.TabIndex = 13;
             // 
             // label1
@@ -412,9 +476,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Malgun Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(34, 4);
+            label1.Location = new Point(30, 3);
             label1.Name = "label1";
-            label1.Size = new Size(161, 46);
+            label1.Size = new Size(128, 37);
             label1.TabIndex = 0;
             label1.Text = "Xin chào";
             // 
@@ -423,20 +487,22 @@
             panel4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel4.AutoSize = true;
             panel4.BackgroundImage = (Image)resources.GetObject("panel4.BackgroundImage");
-            panel4.Location = new Point(230, 64);
+            panel4.Location = new Point(201, 48);
+            panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(990, 989);
+            panel4.Size = new Size(866, 742);
             panel4.TabIndex = 0;
             // 
             // FormMenu
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1220, 1055);
+            ClientSize = new Size(1068, 791);
             Controls.Add(panel4);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormMenu";
             Text = "FormMenu";
             FormClosing += FormMenu_FormClosing;
@@ -474,5 +540,9 @@
         private Label label2;
         private CustomButton.VBButton btnKhachHang;
         private CustomButton.VBButton btnPromotion;
+        private CustomButton.VBButton vbButton3;
+        private CustomButton.VBButton vbButton2;
+        private CustomButton.VBButton btnCpu;
+        private CustomButton.VBButton btnColor;
     }
 }

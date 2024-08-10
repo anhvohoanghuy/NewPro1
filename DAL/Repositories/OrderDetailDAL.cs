@@ -59,6 +59,13 @@ namespace DAL.Repositories
             current.ImeiNumbers.Add(thisImei);
             _context.SaveChanges();
         }
+        public void RemoveImeiToOrderDetail(OrderDetail orderDetail, Imei imei)
+        {
+            var thisImei = _context.Imeis.FirstOrDefault(c => c.ImeiNumber == imei.ImeiNumber);
+            var current = GetAllOrderDetail().FirstOrDefault(c => c.Idorder == orderDetail.Idorder && c.IdproductDetails == orderDetail.IdproductDetails);
+            current.ImeiNumbers.Remove(thisImei);
+            _context.SaveChanges();
+        }
         public bool DeleteOrderDetail(OrderDetail orderDetail)
         {
             try

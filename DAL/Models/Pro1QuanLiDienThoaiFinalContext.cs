@@ -47,7 +47,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
     {
         modelBuilder.Entity<Account>(entity =>
         {
-            entity.HasKey(e => e.Idaccount).HasName("PK__Accounts__1D323F9070467203");
+            entity.HasKey(e => e.Idaccount).HasName("PK__Accounts__1D323F90697F0631");
 
             entity.Property(e => e.Idaccount)
                 .HasMaxLength(25)
@@ -66,7 +66,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<Cpu>(entity =>
         {
-            entity.HasKey(e => e.Idcpu).HasName("PK__CPUs__91A97630D40677BA");
+            entity.HasKey(e => e.Idcpu).HasName("PK__CPUs__91A97630F7AC48F0");
 
             entity.ToTable("CPUs");
 
@@ -94,7 +94,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<Customer>(entity =>
         {
-            entity.HasKey(e => e.Idcustomer).HasName("PK__Customer__701C9C3CE10DE8F2");
+            entity.HasKey(e => e.Idcustomer).HasName("PK__Customer__701C9C3C64260076");
 
             entity.Property(e => e.Idcustomer)
                 .HasMaxLength(12)
@@ -119,7 +119,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<Imei>(entity =>
         {
-            entity.HasKey(e => e.ImeiNumber).HasName("PK__Imeis__8D582410591880CA");
+            entity.HasKey(e => e.ImeiNumber).HasName("PK__Imeis__8D5824101D5DE54C");
 
             entity.Property(e => e.ImeiNumber)
                 .HasMaxLength(15)
@@ -130,7 +130,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("IDAccount");
             entity.Property(e => e.IdproductDetails)
-                .HasMaxLength(15)
+                .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("IDProductDetails");
 
@@ -147,7 +147,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.Idorder).HasName("PK__Orders__5CBBCADB13445F60");
+            entity.HasKey(e => e.Idorder).HasName("PK__Orders__5CBBCADBD652F08A");
 
             entity.Property(e => e.Idorder)
                 .HasMaxLength(9)
@@ -163,7 +163,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("IDCustomer");
             entity.Property(e => e.Idvoucher)
-                .HasMaxLength(9)
+                .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("IDVoucher");
             entity.Property(e => e.TotalAmount).HasColumnType("money");
@@ -184,14 +184,14 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => new { e.Idorder, e.IdproductDetails }).HasName("PK__OrderDet__7B133CF7E01890AB");
+            entity.HasKey(e => new { e.Idorder, e.IdproductDetails }).HasName("PK__OrderDet__7B133CF7B903E474");
 
             entity.Property(e => e.Idorder)
                 .HasMaxLength(9)
                 .IsUnicode(false)
                 .HasColumnName("IDOrder");
             entity.Property(e => e.IdproductDetails)
-                .HasMaxLength(15)
+                .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("IDProductDetails");
             entity.Property(e => e.Amount).HasColumnType("money");
@@ -220,14 +220,14 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
                         .HasConstraintName("FK__ImeiInOrderDetai__619B8048"),
                     j =>
                     {
-                        j.HasKey("Idorder", "IdproductDetails", "ImeiNumber").HasName("PK__ImeiInOr__6A9E64D3FC373B64");
+                        j.HasKey("Idorder", "IdproductDetails", "ImeiNumber").HasName("PK__ImeiInOr__6A9E64D381A33539");
                         j.ToTable("ImeiInOrderDetails");
                         j.IndexerProperty<string>("Idorder")
                             .HasMaxLength(9)
                             .IsUnicode(false)
                             .HasColumnName("IDOrder");
                         j.IndexerProperty<string>("IdproductDetails")
-                            .HasMaxLength(15)
+                            .HasMaxLength(20)
                             .IsUnicode(false)
                             .HasColumnName("IDProductDetails");
                         j.IndexerProperty<string>("ImeiNumber")
@@ -238,10 +238,10 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.Idproduct).HasName("PK__Products__4290D179746797F6");
+            entity.HasKey(e => e.Idproduct).HasName("PK__Products__4290D1798E513D04");
 
             entity.Property(e => e.Idproduct)
-                .HasMaxLength(9)
+                .HasMaxLength(15)
                 .IsUnicode(false)
                 .HasColumnName("IDProduct");
             entity.Property(e => e.Idaccount)
@@ -249,7 +249,7 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("IDAccount");
             entity.Property(e => e.Idcompany)
-                .HasMaxLength(9)
+                .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("IDCompany");
             entity.Property(e => e.Idcpu)
@@ -283,10 +283,10 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<ProductColor>(entity =>
         {
-            entity.HasKey(e => e.Idcolor).HasName("PK__ProductC__E424D9367E1C8925");
+            entity.HasKey(e => e.Idcolor).HasName("PK__ProductC__E424D936B23B7181");
 
             entity.Property(e => e.Idcolor)
-                .HasMaxLength(8)
+                .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("IDColor");
             entity.Property(e => e.ColorName).HasMaxLength(20);
@@ -303,10 +303,10 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<ProductCompany>(entity =>
         {
-            entity.HasKey(e => e.Idcompany).HasName("PK__ProductC__9A030B76B88238A2");
+            entity.HasKey(e => e.Idcompany).HasName("PK__ProductC__9A030B76E4089696");
 
             entity.Property(e => e.Idcompany)
-                .HasMaxLength(9)
+                .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("IDCompany");
             entity.Property(e => e.CompanyName).HasMaxLength(30);
@@ -323,10 +323,10 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<ProductDetail>(entity =>
         {
-            entity.HasKey(e => e.IdproductDetails).HasName("PK__ProductD__7A8F62C38C0A2BCF");
+            entity.HasKey(e => e.IdproductDetails).HasName("PK__ProductD__7A8F62C344BD25F0");
 
             entity.Property(e => e.IdproductDetails)
-                .HasMaxLength(15)
+                .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("IDProductDetails");
             entity.Property(e => e.Idaccount)
@@ -334,15 +334,15 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("IDAccount");
             entity.Property(e => e.Idcolor)
-                .HasMaxLength(8)
+                .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("IDColor");
             entity.Property(e => e.Idproduct)
-                .HasMaxLength(9)
+                .HasMaxLength(15)
                 .IsUnicode(false)
                 .HasColumnName("IDProduct");
             entity.Property(e => e.Idpromotion)
-                .HasMaxLength(9)
+                .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("IDPromotion");
             entity.Property(e => e.Inventory).HasColumnName("inventory");
@@ -370,10 +370,10 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<Promotion>(entity =>
         {
-            entity.HasKey(e => e.Idpromotion).HasName("PK__Promotio__C76CC0D8281733F3");
+            entity.HasKey(e => e.Idpromotion).HasName("PK__Promotio__C76CC0D8D75D5B05");
 
             entity.Property(e => e.Idpromotion)
-                .HasMaxLength(9)
+                .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("IDPromotion");
             entity.Property(e => e.Discount).HasColumnType("money");
@@ -393,10 +393,10 @@ public partial class Pro1QuanLiDienThoaiFinalContext : DbContext
 
         modelBuilder.Entity<Voucher>(entity =>
         {
-            entity.HasKey(e => e.Idvoucher).HasName("PK__Vouchers__50249A27DF222046");
+            entity.HasKey(e => e.Idvoucher).HasName("PK__Vouchers__50249A27F6A80E92");
 
             entity.Property(e => e.Idvoucher)
-                .HasMaxLength(9)
+                .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("IDVoucher");
             entity.Property(e => e.Discount).HasColumnType("money");

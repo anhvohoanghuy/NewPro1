@@ -114,7 +114,7 @@
             txtInvetoryOrderDetail = new TextBox();
             txtQuantityOrderDetail = new TextBox();
             label24 = new Label();
-            btnUpdateOrderDetail = new CustomButton.VBButton();
+            btnXoaOderDetail = new CustomButton.VBButton();
             btnXoa = new CustomButton.VBButton();
             txtStorageOrderDetail = new TextBox();
             txtColorOrderDetail = new TextBox();
@@ -125,6 +125,9 @@
             txtIdProductOrderDetail = new TextBox();
             label21 = new Label();
             btnThanhToans = new CustomButton.VBButton();
+            groupBox10 = new GroupBox();
+            btnOkScan = new CustomButton.VBButton();
+            txtScan = new TextBox();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -140,6 +143,7 @@
             groupBox8.SuspendLayout();
             groupBox9.SuspendLayout();
             groupBox11.SuspendLayout();
+            groupBox10.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -1028,7 +1032,7 @@
             groupBox11.Controls.Add(txtInvetoryOrderDetail);
             groupBox11.Controls.Add(txtQuantityOrderDetail);
             groupBox11.Controls.Add(label24);
-            groupBox11.Controls.Add(btnUpdateOrderDetail);
+            groupBox11.Controls.Add(btnXoaOderDetail);
             groupBox11.Controls.Add(btnXoa);
             groupBox11.Controls.Add(txtStorageOrderDetail);
             groupBox11.Controls.Add(txtColorOrderDetail);
@@ -1117,24 +1121,24 @@
             label24.TabIndex = 119;
             label24.Text = "Quantity";
             // 
-            // btnUpdateOrderDetail
+            // btnXoaOderDetail
             // 
-            btnUpdateOrderDetail.BackColor = Color.MediumSlateBlue;
-            btnUpdateOrderDetail.BackgroundColor = Color.MediumSlateBlue;
-            btnUpdateOrderDetail.BorderColor = Color.PaleVioletRed;
-            btnUpdateOrderDetail.BorderRadius = 20;
-            btnUpdateOrderDetail.BorderSize = 0;
-            btnUpdateOrderDetail.FlatAppearance.BorderSize = 0;
-            btnUpdateOrderDetail.FlatStyle = FlatStyle.Flat;
-            btnUpdateOrderDetail.ForeColor = Color.White;
-            btnUpdateOrderDetail.Location = new Point(342, 177);
-            btnUpdateOrderDetail.Name = "btnUpdateOrderDetail";
-            btnUpdateOrderDetail.Size = new Size(129, 40);
-            btnUpdateOrderDetail.TabIndex = 118;
-            btnUpdateOrderDetail.Text = "Sửa số lượng";
-            btnUpdateOrderDetail.TextColor = Color.White;
-            btnUpdateOrderDetail.UseVisualStyleBackColor = false;
-            btnUpdateOrderDetail.Click += btnUpdateOrderDetail_Click;
+            btnXoaOderDetail.BackColor = Color.MediumSlateBlue;
+            btnXoaOderDetail.BackgroundColor = Color.MediumSlateBlue;
+            btnXoaOderDetail.BorderColor = Color.PaleVioletRed;
+            btnXoaOderDetail.BorderRadius = 20;
+            btnXoaOderDetail.BorderSize = 0;
+            btnXoaOderDetail.FlatAppearance.BorderSize = 0;
+            btnXoaOderDetail.FlatStyle = FlatStyle.Flat;
+            btnXoaOderDetail.ForeColor = Color.White;
+            btnXoaOderDetail.Location = new Point(311, 177);
+            btnXoaOderDetail.Name = "btnXoaOderDetail";
+            btnXoaOderDetail.Size = new Size(160, 40);
+            btnXoaOderDetail.TabIndex = 118;
+            btnXoaOderDetail.Text = "Xóa hết sản phẩm";
+            btnXoaOderDetail.TextColor = Color.White;
+            btnXoaOderDetail.UseVisualStyleBackColor = false;
+            btnXoaOderDetail.Click += btnUpdateOrderDetail_Click;
             // 
             // btnXoa
             // 
@@ -1150,7 +1154,7 @@
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(115, 40);
             btnXoa.TabIndex = 117;
-            btnXoa.Text = "Xóa";
+            btnXoa.Text = "Xóa một";
             btnXoa.TextColor = Color.White;
             btnXoa.UseVisualStyleBackColor = false;
             btnXoa.Click += btnXoa_Click;
@@ -1246,11 +1250,49 @@
             btnThanhToans.UseVisualStyleBackColor = false;
             btnThanhToans.Click += btnThanhToans_Click;
             // 
+            // groupBox10
+            // 
+            groupBox10.Controls.Add(txtScan);
+            groupBox10.Controls.Add(btnOkScan);
+            groupBox10.Location = new Point(1422, 547);
+            groupBox10.Name = "groupBox10";
+            groupBox10.Size = new Size(250, 160);
+            groupBox10.TabIndex = 119;
+            groupBox10.TabStop = false;
+            groupBox10.Text = "Scan";
+            // 
+            // btnOkScan
+            // 
+            btnOkScan.BackColor = Color.MediumSlateBlue;
+            btnOkScan.BackgroundColor = Color.MediumSlateBlue;
+            btnOkScan.BorderColor = Color.PaleVioletRed;
+            btnOkScan.BorderRadius = 20;
+            btnOkScan.BorderSize = 0;
+            btnOkScan.FlatAppearance.BorderSize = 0;
+            btnOkScan.FlatStyle = FlatStyle.Flat;
+            btnOkScan.ForeColor = Color.White;
+            btnOkScan.Location = new Point(56, 86);
+            btnOkScan.Name = "btnOkScan";
+            btnOkScan.Size = new Size(147, 45);
+            btnOkScan.TabIndex = 103;
+            btnOkScan.Text = "OK";
+            btnOkScan.TextColor = Color.White;
+            btnOkScan.UseVisualStyleBackColor = false;
+            btnOkScan.Click += btnOkScan_Click;
+            // 
+            // txtScan
+            // 
+            txtScan.Location = new Point(12, 42);
+            txtScan.Name = "txtScan";
+            txtScan.Size = new Size(232, 27);
+            txtScan.TabIndex = 104;
+            // 
             // CreateOrderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1693, 971);
+            Controls.Add(groupBox10);
             Controls.Add(groupBox11);
             Controls.Add(btnThanhToans);
             Controls.Add(groupBox9);
@@ -1284,6 +1326,8 @@
             groupBox9.ResumeLayout(false);
             groupBox11.ResumeLayout(false);
             groupBox11.PerformLayout();
+            groupBox10.ResumeLayout(false);
+            groupBox10.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1366,7 +1410,7 @@
         private Label label10;
         private TextBox txtQuantityOrderDetail;
         private Label label24;
-        private CustomButton.VBButton btnUpdateOrderDetail;
+        private CustomButton.VBButton btnXoaOderDetail;
         private ComboBox cbbIdCustomer;
         private DataGridView dgvProduct;
         private Label label25;
@@ -1378,5 +1422,8 @@
         private ComboBox cbbImeiOrderDetail;
         private Label label27;
         private Label label9;
+        private GroupBox groupBox10;
+        private TextBox txtScan;
+        private CustomButton.VBButton btnOkScan;
     }
 }

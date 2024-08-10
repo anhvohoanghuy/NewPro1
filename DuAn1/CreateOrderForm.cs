@@ -17,6 +17,8 @@ namespace DuAn1
         ProductColorBUS colorBUS = new ProductColorBUS();
         VoucherBUS voucherBUS = new VoucherBUS();
         ImeiBUS imeiBUS = new ImeiBUS();
+        ProductCompanyBUS productCompanyBUS = new ProductCompanyBUS();
+        PromotionBUS promotionBUS = new PromotionBUS();
         public CreateOrderForm()
         {
             InitializeComponent();
@@ -29,6 +31,20 @@ namespace DuAn1
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None;
+        }
+        public decimal GetDiscount(ProductDetail productDetail)
+        {
+            decimal discount = 0;
+            if (productDetail.Idpromotion != null)
+            {
+                var promotion= promotionBUS.GetPromotionById(productDetail.Idpromotion);
+                if (promotion != null)
+                {
+                    if (promotion.EndTime > DateTime.Now)
+                        discount = promotion.Discount;
+                }
+            }
+            return discount;
         }
         public void LoadCbbWhenDropDown(ComboBox currentCbb, List<string> originList)
         {
@@ -147,7 +163,8 @@ namespace DuAn1
                 {
                     var productDetail = productDetailBUS.GetProductDetailByID(item.IdproductDetails);
                     var productName = productDetail.IdproductNavigation.ProductName;
-                    dgvOrderDetails.Rows.Add(productDetail.Idproduct, productName, productDetail.IdproductDetails, productDetail.IdcolorNavigation.ColorName, productDetail.Storage, productDetail.Price, productDetail.IdpromotionNavigation == null ? 0 : productDetail.IdpromotionNavigation.Discount, item.Quantity);
+                    decimal discount = 0;
+                    dgvOrderDetails.Rows.Add(productDetail.Idproduct, productName, productDetail.IdproductDetails, productDetail.IdcolorNavigation.ColorName, productDetail.Storage, productDetail.Price, item.ReducedAmount, item.Quantity);
                 }
             }
         }
@@ -275,7 +292,8 @@ namespace DuAn1
                             var orderDetail = orderDetailBUS.GetOrderDetailByKey(txtIdOrder.Text, productDetail.IdproductDetails);
                             if (orderDetail == null)
                             {
-                                if (orderDetailBUS.AddNewOrderDetail(txtIdOrder.Text, productDetail.IdproductDetails, 1, productDetail.Price, productDetail.IdpromotionNavigation == null ? 0 : productDetail.IdpromotionNavigation.Discount))
+                                decimal discount = GetDiscount(productDetail);
+                                if (orderDetailBUS.AddNewOrderDetail(txtIdOrder.Text, productDetail.IdproductDetails, 1, productDetail.Price, discount))
                                 {
                                     orderDetail = orderDetailBUS.GetOrderDetailByKey(txtIdOrder.Text, productDetail.IdproductDetails);
                                     AddImeiToOrderDetail(orderDetail);
@@ -285,7 +303,8 @@ namespace DuAn1
                             }
                             else
                             {
-                                if (orderDetailBUS.UpdateOrderDetail(orderDetail.Idorder, orderDetail.IdproductDetails, orderDetail.Quantity + 1, orderDetail.Amount, orderDetail.ReducedAmount))
+                                decimal discount = GetDiscount(productDetail);
+                                if (orderDetailBUS.UpdateOrderDetail(orderDetail.Idorder, orderDetail.IdproductDetails, orderDetail.Quantity + 1, orderDetail.Amount + productDetail.Price, orderDetail.ReducedAmount + discount))
                                 {
                                     orderDetail = orderDetailBUS.GetOrderDetailByKey(txtIdOrder.Text, productDetail.IdproductDetails);
                                     AddImeiToOrderDetail(orderDetail);
@@ -307,7 +326,8 @@ namespace DuAn1
                         {
                             if (orderBUS.AddNewOrder(txtIdOrder.Text, IdAccount, cbbIdCustomer.Text, DateTime.Now, 0, null, 0))
                             {
-                                if (orderDetailBUS.AddNewOrderDetail(txtIdOrder.Text, productDetail.IdproductDetails, 1, productDetail.Price, productDetail.IdpromotionNavigation == null ? 0 : productDetail.IdpromotionNavigation.Discount))
+                                decimal discount = GetDiscount(productDetail);
+                                if (orderDetailBUS.AddNewOrderDetail(txtIdOrder.Text, productDetail.IdproductDetails, 1, productDetail.Price, discount))
                                 {
                                     var orderDetail = orderDetailBUS.GetOrderDetailByKey(txtIdOrder.Text, productDetail.IdproductDetails);
                                     AddImeiToOrderDetail(orderDetail);
@@ -448,7 +468,39 @@ namespace DuAn1
 
         private void btnUpdateOrderDetail_Click(object sender, EventArgs e)
         {
-
+            if (!CheckNull(txtIdProductDetaiOrderDetail.Text, txtIdOrder.Text))
+            {
+                var orderDetail = orderDetailBUS.GetOrderDetailByKey(txtIdOrder.Text, txtIdProductDetaiOrderDetail.Text);
+                if (orderDetail != null)
+                {
+                    var listImei = orderDetail.ImeiNumbers;
+                    List<Imei> copy = new List<Imei>();
+                    copy.AddRange(listImei);
+                    foreach (var imei in copy)
+                    {
+                        if (imeiBUS.UpdateImei(imei.IdproductDetails, imei.ImeiNumber, imei.Idaccount, false))
+                        {
+                            UpdateProductDetail(imei, +1);
+                            orderDetailBUS.RemoveImeiToOrderDetail(orderDetail, imei);
+                            ResetTexbox(txtIdProductOrderDetail, txtIdProductDetaiOrderDetail, txtProductNameOrderDetail, txtColorOrderDetail, txtStorageOrderDetail, txtQuantityOrderDetail, txtInvetoryOrderDetail);
+                            ResetCombobox(cbbImeiOrderDetail);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sửa imei thất bại");
+                            break;
+                        }
+                    }
+                    if (orderDetailBUS.DeleteOrderDetail(orderDetail.Idorder, orderDetail.IdproductDetails))
+                    {
+                        MessageBox.Show("Xóa thành công");
+                    }
+                    else
+                        MessageBox.Show("Xóa thất bại");
+                }
+                else
+                    MessageBox.Show("Không có order detail này");
+            }
             ShowOnDgvOrderDetail(txtIdOrder.Text);
             txtFinalAmount.Text = FinalAmount(txtIdOrder.Text).ToString();
         }
@@ -458,13 +510,59 @@ namespace DuAn1
             var orderDetail = orderDetailBUS.GetOrderDetailByKey(txtIdOrder.Text, txtIdProductDetaiOrderDetail.Text);
             if (orderDetail != null)
             {
-                if (orderDetailBUS.DeleteOrderDetail(orderDetail.Idorder, orderDetail.IdproductDetails))
+                if (!string.IsNullOrEmpty(cbbImeiOrderDetail.Text))
                 {
-                    MessageBox.Show("Xóa thành công");
+                    if (orderDetail.Quantity > 1)
+                    {
+                        var imei = imeiBUS.GetImeiByID(cbbImeiOrderDetail.Text);
+                        if (imei != null)
+                        {
+                            if (imeiBUS.UpdateImei(imei.IdproductDetails, imei.ImeiNumber, imei.Idaccount, false))
+                            {
+                                orderDetailBUS.RemoveImeiToOrderDetail(orderDetail, imei);
+                                UpdateProductDetail(imei, +1);
+                                decimal amount = orderDetail.Amount * (orderDetail.Quantity - 1) / orderDetail.Quantity;
+                                decimal reduce = orderDetail.ReducedAmount * (orderDetail.Quantity - 1) / orderDetail.Quantity;
+                                if (orderDetailBUS.UpdateOrderDetail(orderDetail.Idorder, orderDetail.IdproductDetails, orderDetail.Quantity - 1, amount, reduce))
+                                {
+                                    ResetTexbox(txtIdProductOrderDetail, txtIdProductDetaiOrderDetail, txtProductNameOrderDetail, txtColorOrderDetail, txtStorageOrderDetail, txtQuantityOrderDetail, txtInvetoryOrderDetail);
+                                    ResetCombobox(cbbImeiOrderDetail);
+                                    MessageBox.Show("Xóa thành công");
+                                }
+                                else
+                                    MessageBox.Show("Xóa thất bại");
+                            }
+                            else
+                                MessageBox.Show("Update Imei thất bại");
+                        }
+                        else
+                            MessageBox.Show("Không có imei này");
+                    }
+                    else
+                    {
+                        var imei = imeiBUS.GetImeiByID(cbbImeiOrderDetail.Text);
+                        if (imeiBUS.UpdateImei(imei.IdproductDetails, imei.ImeiNumber, imei.Idaccount, false))
+                        {
+                            UpdateProductDetail(imei, +1);
+                            orderDetailBUS.RemoveImeiToOrderDetail(orderDetail, imei);
+                            if (orderDetailBUS.DeleteOrderDetail(orderDetail.Idorder, orderDetail.IdproductDetails))
+                            {
+                                ResetTexbox(txtIdProductOrderDetail, txtIdProductDetaiOrderDetail, txtProductNameOrderDetail, txtColorOrderDetail, txtStorageOrderDetail, txtQuantityOrderDetail, txtInvetoryOrderDetail);
+                                ResetCombobox(cbbImeiOrderDetail);
+                                MessageBox.Show("Xóa thành công");
+                            }
+                            else
+                                MessageBox.Show("Xóa thất bại");
+                        }
+                        else
+                            MessageBox.Show("Sửa imei thất bại");
+                    }
                 }
                 else
-                    MessageBox.Show("Xóa thất bại");
+                    MessageBox.Show("Chọn một imei");
             }
+            else
+                MessageBox.Show("Không có orderDetail này");
             ShowOnDgvOrderDetail(txtIdOrder.Text);
             txtFinalAmount.Text = FinalAmount(txtIdOrder.Text).ToString();
         }
@@ -534,6 +632,8 @@ namespace DuAn1
         {
             ResetTexbox(txtIdProductDetaiOrderDetail, txtIdOrder, txtphone, txtName, txtaddres, txtIdProduct, txtProductName, txtBrandName, txtInventory, txtFrom, txtTo, txtSearch, txtIdCustomerQueue, txtTotalAmountQuese, txtVoucherDiscount, txtFinalAmount);
             ResetCombobox(cbbColor, cbbStorage, cbbVoucher, cbbImei);
+            dgvOrderDetails.Rows.Clear();
+            ShowOnDgvProduct(ProductBUS.GetProductForSale(ProductBUS.GetAllProduct()));
         }
 
         private void cbbOrderQueue_DropDown(object sender, EventArgs e)
@@ -668,6 +768,37 @@ namespace DuAn1
             }
             else
                 MessageBox.Show("Chọn danh mục tìm kiếm");
+        }
+
+        private void btninfoOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOkScan_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtScan.Text))
+            {
+                var imei= imeiBUS.GetImeiByID(txtScan.Text);
+                if (imei != null)
+                {
+                    cbbImei.Text = imei.ImeiNumber;
+                    var productDetail= productDetailBUS.GetProductDetailByID(imei.IdproductDetails);
+                    if (productDetail != null)
+                    {
+                        var company = productCompanyBUS.GetCompanyById(productDetail.IdproductNavigation.Idcompany);
+                        txtIdProduct.Text = productDetail.Idproduct;
+                        txtProductName.Text=productDetail.IdproductNavigation.ProductName;
+                        txtBrandName.Text= company.CompanyName;
+                        cbbColor.Text=productDetail.IdcolorNavigation.ColorName;
+                        cbbStorage.Text = productDetail.Storage.ToString();
+                    }
+                    else
+                        MessageBox.Show("Không tìm thầy product detail");
+                }
+            }
+            else
+                MessageBox.Show("Không để trống scan");
         }
     }
 }

@@ -13,7 +13,8 @@ namespace BUS.Services
         PromotionDAL promotionDAL = new PromotionDAL();
         public List<Promotion> GetAllPromotion()
         {
-            return promotionDAL.GetAllPromotion();
+            var resul = promotionDAL.GetAllPromotion();
+            return resul;
         }
         public bool CheckPromotionExist(string id)
         {

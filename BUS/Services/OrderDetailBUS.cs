@@ -49,6 +49,10 @@ namespace BUS.Services
         {
             orderDetailDAL.AddImeiToOrderDetail(orderDetail, imei);
         }
+        public void RemoveImeiToOrderDetail(OrderDetail orderDetail, Imei imei)
+        {
+            orderDetailDAL.RemoveImeiToOrderDetail(orderDetail, imei);
+        }
         public List<OrderDetail> GetOrderDetailsByOrderId(string idOrder)
         {
             return GetAllOrderDetails().Where(c => c.Idorder == idOrder).ToList();

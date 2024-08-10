@@ -70,6 +70,7 @@ namespace DuAn1
             txtIdAccount.Text = menu.IdAccountMenu;
             dtpStarTime.Value = DateTime.Now;
             dtpEndTime.Value = new DateTime(2100, 12, 31);
+            ShowOnDataGridView(voucherBUS.GetAllVoucher());
         }
         public string CheckIsDouble(params TextBox[] textBoxs)
         {
@@ -110,10 +111,15 @@ namespace DuAn1
                     var check2 = CheckIsInt(txtUsageCount);
                     if (check2 == null)
                     {
-                        if (voucherBUS.AddNewVoucher(txtIdVoucher.Text, txtVoucherName.Text, decimal.Parse(txtDiscount.Text), dtpStarTime.Value, dtpEndTime.Value, int.Parse(txtUsageCount.Text),txtIdAccount.Text))
-                            MessageBox.Show("Thêm thành công");
+                        if (dtpEndTime.Value < dtpStarTime.Value)
+                        {
+                            if (voucherBUS.AddNewVoucher(txtIdVoucher.Text, txtVoucherName.Text, decimal.Parse(txtDiscount.Text), dtpStarTime.Value, dtpEndTime.Value, int.Parse(txtUsageCount.Text), txtIdAccount.Text))
+                                MessageBox.Show("Thêm thành công");
+                            else
+                                MessageBox.Show("Thêm thất bại");
+                        }
                         else
-                            MessageBox.Show("Thêm thất bại");
+                            MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc");
                     }
                     else
                         MessageBox.Show(check2);
@@ -136,10 +142,15 @@ namespace DuAn1
                     var check2 = CheckIsInt(txtUsageCount);
                     if (check2 == null)
                     {
-                        if (voucherBUS.UpdateVoucher(txtIdVoucher.Text, txtVoucherName.Text, decimal.Parse(txtDiscount.Text), dtpStarTime.Value, dtpEndTime.Value,int.Parse(txtUsageCount.Text), txtIdAccount.Text))
-                            MessageBox.Show("Sửa thành công");
+                        if (dtpEndTime.Value < dtpStarTime.Value)
+                        {
+                            if (voucherBUS.UpdateVoucher(txtIdVoucher.Text, txtVoucherName.Text, decimal.Parse(txtDiscount.Text), dtpStarTime.Value, dtpEndTime.Value, int.Parse(txtUsageCount.Text), txtIdAccount.Text))
+                                MessageBox.Show("Sửa thành công");
+                            else
+                                MessageBox.Show("Sửa thất bại");
+                        }
                         else
-                            MessageBox.Show("Sửa thất bại");
+                            MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc");
                     }
                     else
                         MessageBox.Show(check2);

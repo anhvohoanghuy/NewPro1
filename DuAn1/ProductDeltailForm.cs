@@ -76,6 +76,7 @@ namespace DuAn1
             ResetTexbox(txtIdProductDetail, txtColorName, txtStorage, txtPrice, txtWarrantyPeriod, txtInventory, txtPromotionName, txtDiscount);
             ResetCombobox(cbbIdProduct, cbbIdColor, cbbIdPromotion);
             txtIdAccount.Text = menu.IdAccountMenu;
+            ShowOnDataGridView(productDetailBUS.GetAllProductDetail());
         }
         public bool CheckCbb(params ComboBox[] cbbs)
         {

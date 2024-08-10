@@ -112,16 +112,21 @@ namespace DuAn1
         {
             if (!CheckNull(txtIdPromotion, txtPromotionName, txtDiscount))
             {
-                var check = CheckIsDouble(txtDiscount);
-                if (check == null)
+                if (dtpStartTime.Value > dtpEndTime.Value)
                 {
-                    if (promotionBUS.AddNewPromotion(txtIdPromotion.Text, txtPromotionName.Text, decimal.Parse(txtDiscount.Text), dtpStartTime.Value, dtpEndTime.Value, txtIdAccount.Text))
-                        MessageBox.Show("Thêm thành công");
+                    var check = CheckIsDouble(txtDiscount);
+                    if (check == null)
+                    {
+                        if (promotionBUS.AddNewPromotion(txtIdPromotion.Text, txtPromotionName.Text, decimal.Parse(txtDiscount.Text), dtpStartTime.Value, dtpEndTime.Value, txtIdAccount.Text))
+                            MessageBox.Show("Thêm thành công");
+                        else
+                            MessageBox.Show("Thêm thất bại");
+                    }
                     else
-                        MessageBox.Show("Thêm thất bại");
+                        MessageBox.Show(check);
                 }
                 else
-                    MessageBox.Show(check);
+                    MessageBox.Show("Ngày kết thúc phải lớn hơn ngày bắt đầu");
             }
             else
                 MessageBox.Show("Điền đầy đủ thông tin");
@@ -134,16 +139,21 @@ namespace DuAn1
             {
                 if (promotionBUS.CheckPromotionExist(txtIdPromotion.Text))
                 {
-                    var check = CheckIsDouble(txtDiscount);
-                    if (check == null)
+                    if (dtpStartTime.Value > dtpEndTime.Value)
                     {
-                        if (promotionBUS.UpdatePromotion(txtIdPromotion.Text, txtPromotionName.Text, decimal.Parse(txtDiscount.Text), dtpStartTime.Value, dtpEndTime.Value, txtIdAccount.Text))
-                            MessageBox.Show("Sửa thành công");
+                        var check = CheckIsDouble(txtDiscount);
+                        if (check == null)
+                        {
+                            if (promotionBUS.UpdatePromotion(txtIdPromotion.Text, txtPromotionName.Text, decimal.Parse(txtDiscount.Text), dtpStartTime.Value, dtpEndTime.Value, txtIdAccount.Text))
+                                MessageBox.Show("Sửa thành công");
+                            else
+                                MessageBox.Show("Sửa thất bại");
+                        }
                         else
-                            MessageBox.Show("Sửa thất bại");
+                            MessageBox.Show(check);
                     }
                     else
-                        MessageBox.Show(check);
+                        MessageBox.Show("Ngày kết thúc phải lớn hơn ngày bắt đầu");
                 }
                 else
                     MessageBox.Show("Không có ID này");
@@ -196,15 +206,15 @@ namespace DuAn1
 
         private void dgvListPromotion_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex>-1&&e.RowIndex<dgvListPromotion.RowCount-1)
+            if (e.RowIndex > -1 && e.RowIndex < dgvListPromotion.RowCount - 1)
             {
                 var current = promotionBUS.GetPromotionById(dgvListPromotion.Rows[e.RowIndex].Cells[0].Value.ToString());
                 txtIdPromotion.Text = current.Idpromotion;
                 txtPromotionName.Text = current.PromotionName;
                 txtDiscount.Text = current.Discount.ToString();
                 dtpStartTime.Value = current.StartTime;
-                dtpEndTime.Value= (DateTime)current.EndTime;
-            }    
+                dtpEndTime.Value = (DateTime)current.EndTime;
+            }
         }
     }
 }

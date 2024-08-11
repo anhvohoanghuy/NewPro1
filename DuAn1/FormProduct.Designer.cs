@@ -435,6 +435,7 @@
             btnExcel.Text = "Xuất excel";
             btnExcel.TextColor = Color.White;
             btnExcel.UseVisualStyleBackColor = false;
+            btnExcel.Click += btnExcel_Click;
             // 
             // vbButton2
             // 

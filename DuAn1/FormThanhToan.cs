@@ -14,6 +14,7 @@ namespace DuAn1
     {
         decimal TongTien;
         public bool XacNhan = false;
+        public decimal Get;
         public FormThanhToan()
         {
             InitializeComponent();
@@ -63,6 +64,7 @@ namespace DuAn1
                     if (decimal.Parse(txtTienTra.Text) >= 0)
                     {
                         XacNhan = true;
+                        Get=decimal.Parse(txtTienNhan.Text);
                         this.Close();
                     }
                     else

@@ -32,6 +32,41 @@ namespace DuAn1
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None;
         }
+        public void CreateBill(string idOrder,string idVoucher, decimal get)
+        {
+            var order= orderBUS.GetOrderById(idOrder);
+            if (order != null)
+            {
+                string currentDirectory = "D:\\KhongPhaiWin\\Pro1\\New folder\\WinFormsApp1\\order";
+                string fileName = $"{idOrder}.txt";
+                string filePath = Path.Combine(currentDirectory, fileName);
+                if (!File.Exists(filePath))
+                {
+                    File.WriteAllText(filePath, $"Hóa đơn {idOrder}\nID customer: {order.Idcustomer}\nHóa đơn chi tiết\n");
+                    var listOrderDetail = orderDetailBUS.GetOrderDetailsByOrderId(idOrder);
+                    foreach ( var item in listOrderDetail )
+                    {
+                        var productDetail = productDetailBUS.GetProductDetailByID(item.IdproductDetails);
+                        File.AppendAllText(filePath, $"Tên: {productDetail.IdproductNavigation.ProductName}\nSố lượng: {item.Quantity}\nSố tiền: {item.Amount}\nKhuyến mãi: {item.ReducedAmount}\n");
+                    }
+                    File.AppendAllText(filePath, $"Tổng tiền: {order.TotalAmount}\n");
+                    if (!string.IsNullOrEmpty(idVoucher))
+                    {
+                        var voucher= voucherBUS.GetVoucherById(idVoucher);
+                        if(voucher!=null)
+                            File.AppendAllText(filePath, $"Voucher: {voucher.Discount}\n");
+                    }
+                    File.AppendAllText(filePath, $"Tiền nhận: {get}\n");
+                    File.AppendAllText(filePath, $"Tiền trả: {get - order.TotalAmount}\n");
+                }
+                else
+                {
+                    MessageBox.Show("File đã tồn tại");
+                }
+            }
+            else
+                MessageBox.Show("ID order không tồn tại");
+        }
         public decimal GetDiscount(ProductDetail productDetail)
         {
             decimal discount = 0;
@@ -677,9 +712,11 @@ namespace DuAn1
                             if (voucherBUS.UpdateVoucher(voucher.Idvoucher, voucher.VoucherName, voucher.Discount, voucher.StartTime, (DateTime)voucher.EndTime, voucher.UsageCount - 1, voucher.Idaccount))
                             {
                                 MessageBox.Show("Thanh toán thành công");
+                                CreateBill(txtIdOrder.Text, cbbVoucher.Text, formThanhToan.Get);
                                 ResetTexbox(txtIdProductDetaiOrderDetail, txtIdOrder, txtphone, txtName, txtaddres, txtIdProduct, txtProductName, txtBrandName, txtInventory, txtFrom, txtTo, txtSearch, txtIdCustomerQueue, txtTotalAmountQuese, txtVoucherDiscount, txtFinalAmount);
                                 ResetCombobox(cbbColor, cbbStorage, cbbVoucher, cbbVoucher);
                                 dgvOrderDetails.Rows.Clear();
+                                
                             }
                             else
                                 MessageBox.Show("Update Voucher thất bại");

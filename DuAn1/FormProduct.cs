@@ -1,6 +1,7 @@
 ﻿using BUS;
 using BUS.Services;
 using DAL.Models;
+using DoAn1_QuanLyPhanMemBanPKDT;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,7 @@ namespace DuAn1
         CpuBUS cpuBUS = new CpuBUS();
         Validate validate = new Validate();
         FormMenu menu = new FormMenu();
+        XuatExcel xuatExcel=new XuatExcel();
         public FormProduct()
         {
             InitializeComponent();
@@ -397,7 +399,7 @@ namespace DuAn1
 
         private void btnFillter_Click(object sender, EventArgs e)
         {
-            
+
             double from = -1;
             double to = int.MaxValue;
             if (CheckNull(txtFrom.Text) && CheckNull(txtTo.Text))
@@ -420,11 +422,16 @@ namespace DuAn1
                     }
                     else
                         MessageBox.Show("Chọn một giá trị từ combobox filter");
-                }    
+                }
                 else
                     MessageBox.Show(check);
-            }    
-                
+            }
+
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            xuatExcel.ExportToExcel(dgvListProduct, "Product", $"Product-{DateTime.Today.ToString("dd-MM-yyyy")}");
         }
     }
 }

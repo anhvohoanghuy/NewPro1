@@ -1,5 +1,6 @@
 ﻿using BUS.Services;
 using DAL.Models;
+using DoAn1_QuanLyPhanMemBanPKDT;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace DuAn1
         PromotionBUS promotionBUS = new PromotionBUS();
         AccountBUS accountBUS = new AccountBUS();
         FormMenu menu = new FormMenu();
+        XuatExcel xuatExcel = new XuatExcel();
+        ImeiBUS imeiBUS = new ImeiBUS();
         string idProduct;
         public ProductDeltailForm()
         {
@@ -104,13 +107,13 @@ namespace DuAn1
         public void ShowOnDataGridView(List<ProductDetail> productDetails)
         {
             dgvProductDetail.Rows.Clear();
-            if(productDetails!=null)
+            if (productDetails != null)
             {
                 foreach (ProductDetail productDetail in productDetails)
                 {
                     dgvProductDetail.Rows.Add(productDetail.Idproduct, productDetail.IdproductDetails, productDetail.Idcolor, productDetail.Storage, productDetail.Price, productDetail.Idpromotion, productDetail.WarrantyPeriod, productDetail.Inventory, productDetail.Idaccount);
                 }
-            }    
+            }
         }
         public bool CheckProductDetailIfExists(string idProductDetail)
         {
@@ -205,7 +208,7 @@ namespace DuAn1
                                     formImei.ShowDialog();
                                     if (formImei.Comfirm)
                                     {
-                                        if (productDetailBUS.UpdateProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod),formImei.inventory , idAccount))
+                                        if (productDetailBUS.UpdateProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod), formImei.inventory, idAccount))
                                             MessageBox.Show("Thêm thành công");
                                         else
                                             MessageBox.Show("Thêm thất bại");
@@ -262,7 +265,7 @@ namespace DuAn1
                             formImei.ShowDialog();
                             if (formImei.Comfirm)
                             {
-                                if (productDetailBUS.UpdateProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod),formImei.inventory , idAccount))
+                                if (productDetailBUS.UpdateProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod), formImei.inventory, idAccount))
                                     MessageBox.Show("Sửa thành công");
                                 else
                                     MessageBox.Show("Sửa thất bại");
@@ -424,6 +427,41 @@ namespace DuAn1
         private void vbButton2_Click(object sender, EventArgs e)
         {
             ResetProductDetailForm();
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            xuatExcel.ExportToExcel(dgvProductDetail, "ProductDetail", $"ProductDetail-{DateTime.Now.ToString("dd-MM-yyyy")}");
+        }
+
+        private void btnFastImportImei_Click(object sender, EventArgs e)
+        {
+            var excel = OpenFile("Excel Files|*.xlsx;*.xls");
+            if (excel != null)
+            {
+                var count = 0;
+                var err = 0;
+                FileInfo file = new FileInfo(excel);
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                using (ExcelPackage package = new ExcelPackage(file))
+                {
+                    List<string> imeis = new List<string>();
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+                    for (int i = 2; i <= worksheet.Dimension.End.Row; i++)
+                    {
+                        if (imeiBUS.AddNewImei(worksheet.Cells[i, 2].Text, worksheet.Cells[i, 3].Text, menu.IdAccountMenu, false))
+                        {
+                            count++;
+                            var productDetail = productDetailBUS.GetProductDetailByID(worksheet.Cells[i, 2].Text);
+                            if (!productDetailBUS.UpdateProductDetail(productDetail.Idproduct, productDetail.IdproductDetails, productDetail.Idcolor, productDetail.Storage, productDetail.Price, productDetail.Idpromotion, productDetail.WarrantyPeriod, productDetail.Inventory + 1, productDetail.Idaccount))
+                                MessageBox.Show("sửa thất bại");
+                        }
+                        else
+                            err++;
+                    }
+                }
+                MessageBox.Show($"Thêm thành công {count}, thất bại {err}");
+            }
         }
     }
 }

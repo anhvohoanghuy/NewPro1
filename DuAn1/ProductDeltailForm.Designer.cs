@@ -33,6 +33,7 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
+            btnFastImportImei = new CustomButton.VBButton();
             btnFillter = new CustomButton.VBButton();
             txtTo = new TextBox();
             txtFrom = new TextBox();
@@ -85,6 +86,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnFastImportImei);
             groupBox1.Controls.Add(btnFillter);
             groupBox1.Controls.Add(txtTo);
             groupBox1.Controls.Add(txtFrom);
@@ -133,6 +135,26 @@
             groupBox1.Size = new Size(1302, 421);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
+            // 
+            // btnFastImportImei
+            // 
+            btnFastImportImei.Anchor = AnchorStyles.Left;
+            btnFastImportImei.BackColor = Color.MediumSlateBlue;
+            btnFastImportImei.BackgroundColor = Color.MediumSlateBlue;
+            btnFastImportImei.BorderColor = Color.PaleVioletRed;
+            btnFastImportImei.BorderRadius = 20;
+            btnFastImportImei.BorderSize = 0;
+            btnFastImportImei.FlatAppearance.BorderSize = 0;
+            btnFastImportImei.FlatStyle = FlatStyle.Flat;
+            btnFastImportImei.ForeColor = Color.White;
+            btnFastImportImei.Location = new Point(890, 305);
+            btnFastImportImei.Name = "btnFastImportImei";
+            btnFastImportImei.Size = new Size(131, 40);
+            btnFastImportImei.TabIndex = 182;
+            btnFastImportImei.Text = "Fast import Imei";
+            btnFastImportImei.TextColor = Color.White;
+            btnFastImportImei.UseVisualStyleBackColor = false;
+            btnFastImportImei.Click += btnFastImportImei_Click;
             // 
             // btnFillter
             // 
@@ -308,6 +330,7 @@
             btnExcel.Text = "Xuất excel";
             btnExcel.TextColor = Color.White;
             btnExcel.UseVisualStyleBackColor = false;
+            btnExcel.Click += btnExcel_Click;
             // 
             // dtpEndDate
             // 
@@ -745,5 +768,6 @@
         private Label label3;
         private Label label5;
         private ComboBox cbbFillter;
+        private CustomButton.VBButton btnFastImportImei;
     }
 }

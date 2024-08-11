@@ -1,0 +1,11 @@
+Hóa đơn
+ID customer: C004
+Hóa đơn chi tiết
+Tên: Oppo Find X3 Pro
+Số lượng: 1
+Số tiền: 899.9900
+Khuyến mãi: 300.0000
+Tổng tiền: 399.9900
+Voucher: 200.0000
+Tiền nhận: 12345
+Tiền trả: 11945.0100

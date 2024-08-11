@@ -527,6 +527,7 @@
             txtInventory.Anchor = AnchorStyles.Left;
             txtInventory.Location = new Point(312, 278);
             txtInventory.Name = "txtInventory";
+            txtInventory.ReadOnly = true;
             txtInventory.Size = new Size(172, 27);
             txtInventory.TabIndex = 120;
             // 

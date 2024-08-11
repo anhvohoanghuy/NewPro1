@@ -158,9 +158,9 @@ namespace DuAn1
             }
             return null;
         }
-        public string CheckIsNumberProductDetail(TextBox storage, TextBox price, TextBox warrantyPeriod, TextBox inventory)
+        public string CheckIsNumberProductDetail(TextBox storage, TextBox price, TextBox warrantyPeriod)
         {
-            var check = CheckIsInt(storage, warrantyPeriod, inventory);
+            var check = CheckIsInt(storage, warrantyPeriod);
             var check2 = CheckIsDouble(price);
             if (check != null)
                 return check;
@@ -196,7 +196,7 @@ namespace DuAn1
                 {
                     if (CheckProductDetailIfExists(cbbIdProduct.SelectedItem.ToString()) == false)
                     {
-                        var check = CheckIsNumberProductDetail(txtStorage, txtPrice, txtWarrantyPeriod, txtInventory);
+                        var check = CheckIsNumberProductDetail(txtStorage, txtPrice, txtWarrantyPeriod);
                         if (check == null)
                         {
                             if (productDetailBUS.AddNewProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod), 0, idAccount))
@@ -209,7 +209,10 @@ namespace DuAn1
                                     if (formImei.Comfirm)
                                     {
                                         if (productDetailBUS.UpdateProductDetail(idProduct, idProductDetail, idColor, int.Parse(storage), decimal.Parse(price), idPromotion, int.Parse(warrantyPeriod), formImei.inventory, idAccount))
+                                        {
                                             MessageBox.Show("Thêm thành công");
+                                            txtInventory.Text = formImei.inventory.ToString();
+                                        }
                                         else
                                             MessageBox.Show("Thêm thất bại");
                                     }
@@ -255,7 +258,7 @@ namespace DuAn1
             {
                 if (CheckProductDetailIfExists(cbbIdProduct.Text) == false)
                 {
-                    var check = CheckIsNumberProductDetail(txtStorage, txtPrice, txtWarrantyPeriod, txtInventory);
+                    var check = CheckIsNumberProductDetail(txtStorage, txtPrice, txtWarrantyPeriod);
                     if (check == null)
                     {
                         var productDetail = productDetailBUS.GetProductDetailByID(txtIdProductDetail.Text);

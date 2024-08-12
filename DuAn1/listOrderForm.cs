@@ -1,4 +1,5 @@
 ﻿using BUS.Services;
+using DoAn1_QuanLyPhanMemBanPKDT;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace DuAn1
     public partial class listOrderForm : Form
     {
         listOrderBLL listorderBLL = new listOrderBLL();
+        XuatExcel xuatExcel=new XuatExcel();
         public listOrderForm()
         {
             InitializeComponent();
@@ -106,6 +108,11 @@ namespace DuAn1
         private void txtTImKiem_Click(object sender, EventArgs e)
         {
             txtTImKiem.Text = "";
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            xuatExcel.ExportToExcel(dataGridView1, "List order", $"List-order-{DateTime.Now.ToString("dd-MM-yyyy")}");
         }
     }
 }

@@ -16,7 +16,7 @@ namespace DuAn1
     {
 
         string IDAccount;
-        CpuBUS cpuBUS  = new CpuBUS();
+        CpuBUS cpuBUS = new CpuBUS();
         public FormCPU()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace DuAn1
 
         private void dgvListCPU_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) 
+            if (e.RowIndex >= 0&&e.RowIndex<=dgvListCPU.Rows.Count-1)
             {
                 DataGridViewRow row = dgvListCPU.Rows[e.RowIndex];
 
@@ -54,7 +54,7 @@ namespace DuAn1
                 string idCpu = cPuID.Text.Trim();
                 string nameCpu = txtNAMECPU.Text.Trim();
                 string manufacturer = txtManufacturer.Text.Trim();
-                string idAccount = IDAccount; 
+                string idAccount = IDAccount;
 
                 bool isAdded = cpuBUS.AddNewCPU(idCpu, nameCpu, manufacturer, idAccount);
 
@@ -62,7 +62,7 @@ namespace DuAn1
                 {
                     MessageBox.Show("Thêm CPU thành công!");
                     ClearForm();
-                    LoadDataGridView(); 
+                    LoadDataGridView();
                 }
                 else
                 {
@@ -97,7 +97,7 @@ namespace DuAn1
                 if (isUpdated)
                 {
                     MessageBox.Show("Cập nhật CPU thành công!");
-                    ClearForm(); 
+                    ClearForm();
                     LoadDataGridView();
                 }
                 else
@@ -144,6 +144,9 @@ namespace DuAn1
             dgvListCPU.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
+        private void FormCPU_Load_1(object sender, EventArgs e)
+        {
 
+        }
     }
 }

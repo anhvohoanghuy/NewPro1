@@ -46,6 +46,7 @@
             btnToday = new CustomButton.VBButton();
             dtpStartdate = new DateTimePicker();
             dtpEndate = new DateTimePicker();
+            btnExcel = new CustomButton.VBButton();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
@@ -118,6 +119,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnExcel);
             groupBox1.Controls.Add(btnCustom);
             groupBox1.Controls.Add(btnOk);
             groupBox1.Controls.Add(btnRefesh);
@@ -325,6 +327,26 @@
             dtpEndate.Size = new Size(186, 27);
             dtpEndate.TabIndex = 3;
             // 
+            // btnExcel
+            // 
+            btnExcel.Anchor = AnchorStyles.Left;
+            btnExcel.BackColor = Color.MediumSlateBlue;
+            btnExcel.BackgroundColor = Color.MediumSlateBlue;
+            btnExcel.BorderColor = Color.PaleVioletRed;
+            btnExcel.BorderRadius = 20;
+            btnExcel.BorderSize = 0;
+            btnExcel.FlatAppearance.BorderSize = 0;
+            btnExcel.FlatStyle = FlatStyle.Flat;
+            btnExcel.ForeColor = Color.White;
+            btnExcel.Location = new Point(864, 169);
+            btnExcel.Name = "btnExcel";
+            btnExcel.Size = new Size(135, 40);
+            btnExcel.TabIndex = 103;
+            btnExcel.Text = "Xuất excel";
+            btnExcel.TextColor = Color.White;
+            btnExcel.UseVisualStyleBackColor = false;
+            btnExcel.Click += btnExcel_Click;
+            // 
             // listOrderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -358,5 +380,6 @@
         private CustomButton.VBButton btnTimKiem;
         private TextBox txtTImKiem;
         private CustomButton.VBButton btnRefesh;
+        private CustomButton.VBButton btnExcel;
     }
 }

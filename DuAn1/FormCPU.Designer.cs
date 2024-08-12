@@ -71,18 +71,16 @@
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panel1.Location = new Point(87, 38);
-            panel1.Margin = new Padding(3, 2, 3, 2);
+            panel1.Location = new Point(99, 51);
             panel1.Name = "panel1";
-            panel1.Size = new Size(981, 204);
+            panel1.Size = new Size(1121, 272);
             panel1.TabIndex = 1;
             // 
             // cPuID
             // 
-            cPuID.Location = new Point(30, 38);
-            cPuID.Margin = new Padding(3, 2, 3, 2);
+            cPuID.Location = new Point(34, 51);
             cPuID.Name = "cPuID";
-            cPuID.Size = new Size(152, 27);
+            cPuID.Size = new Size(173, 31);
             cPuID.TabIndex = 165;
             // 
             // label6
@@ -90,9 +88,9 @@
             label6.Anchor = AnchorStyles.Left;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 11F);
-            label6.Location = new Point(30, 198);
+            label6.Location = new Point(34, 264);
             label6.Name = "label6";
-            label6.Size = new Size(68, 20);
+            label6.Size = new Size(86, 25);
             label6.TabIndex = 164;
             label6.Text = "Tìm theo";
             // 
@@ -108,10 +106,9 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.ForeColor = Color.White;
             btnSearch.Image = Properties.Resources.search__1_3;
-            btnSearch.Location = new Point(467, 221);
-            btnSearch.Margin = new Padding(3, 2, 3, 2);
+            btnSearch.Location = new Point(534, 295);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(63, 22);
+            btnSearch.Size = new Size(72, 29);
             btnSearch.TabIndex = 162;
             btnSearch.TextColor = Color.White;
             btnSearch.UseVisualStyleBackColor = false;
@@ -121,11 +118,10 @@
             txtTimKiem.Anchor = AnchorStyles.Left;
             txtTimKiem.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtTimKiem.ForeColor = Color.Gray;
-            txtTimKiem.Location = new Point(186, 218);
-            txtTimKiem.Margin = new Padding(3, 2, 3, 2);
+            txtTimKiem.Location = new Point(213, 291);
             txtTimKiem.Multiline = true;
             txtTimKiem.Name = "txtTimKiem";
-            txtTimKiem.Size = new Size(353, 28);
+            txtTimKiem.Size = new Size(403, 36);
             txtTimKiem.TabIndex = 161;
             txtTimKiem.Text = "Tìm kiếm";
             // 
@@ -140,10 +136,9 @@
             btnExcel.FlatAppearance.BorderSize = 0;
             btnExcel.FlatStyle = FlatStyle.Flat;
             btnExcel.ForeColor = Color.White;
-            btnExcel.Location = new Point(805, 214);
-            btnExcel.Margin = new Padding(3, 2, 3, 2);
+            btnExcel.Location = new Point(920, 285);
             btnExcel.Name = "btnExcel";
-            btnExcel.Size = new Size(115, 30);
+            btnExcel.Size = new Size(131, 40);
             btnExcel.TabIndex = 82;
             btnExcel.Text = "Xuất excel";
             btnExcel.TextColor = Color.White;
@@ -153,18 +148,17 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(492, 16);
+            label5.Location = new Point(562, 21);
             label5.Name = "label5";
-            label5.Size = new Size(97, 20);
+            label5.Size = new Size(117, 25);
             label5.TabIndex = 87;
             label5.Text = "Manufacturer";
             // 
             // txtManufacturer
             // 
-            txtManufacturer.Location = new Point(492, 38);
-            txtManufacturer.Margin = new Padding(3, 2, 3, 2);
+            txtManufacturer.Location = new Point(562, 51);
             txtManufacturer.Name = "txtManufacturer";
-            txtManufacturer.Size = new Size(218, 27);
+            txtManufacturer.Size = new Size(249, 31);
             txtManufacturer.TabIndex = 86;
             // 
             // vbButton1
@@ -179,10 +173,9 @@
             vbButton1.FlatStyle = FlatStyle.Flat;
             vbButton1.ForeColor = Color.White;
             vbButton1.Image = Properties.Resources.search__1_3;
-            vbButton1.Location = new Point(311, 321);
-            vbButton1.Margin = new Padding(3, 2, 3, 2);
+            vbButton1.Location = new Point(355, 428);
             vbButton1.Name = "vbButton1";
-            vbButton1.Size = new Size(63, 22);
+            vbButton1.Size = new Size(72, 29);
             vbButton1.TabIndex = 81;
             vbButton1.TextColor = Color.White;
             vbButton1.UseVisualStyleBackColor = false;
@@ -192,11 +185,10 @@
             textBox7.Anchor = AnchorStyles.Left;
             textBox7.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox7.ForeColor = Color.Gray;
-            textBox7.Location = new Point(30, 320);
-            textBox7.Margin = new Padding(3, 2, 3, 2);
+            textBox7.Location = new Point(34, 427);
             textBox7.Multiline = true;
             textBox7.Name = "textBox7";
-            textBox7.Size = new Size(353, 28);
+            textBox7.Size = new Size(403, 36);
             textBox7.TabIndex = 80;
             textBox7.Text = "Tìm kiếm";
             // 
@@ -210,10 +202,9 @@
             btnSua.FlatAppearance.BorderSize = 0;
             btnSua.FlatStyle = FlatStyle.Flat;
             btnSua.ForeColor = Color.White;
-            btnSua.Location = new Point(805, 58);
-            btnSua.Margin = new Padding(3, 2, 3, 2);
+            btnSua.Location = new Point(920, 77);
             btnSua.Name = "btnSua";
-            btnSua.Size = new Size(115, 30);
+            btnSua.Size = new Size(131, 40);
             btnSua.TabIndex = 77;
             btnSua.Text = "Sửa";
             btnSua.TextColor = Color.White;
@@ -230,10 +221,9 @@
             btnThem.FlatAppearance.BorderSize = 0;
             btnThem.FlatStyle = FlatStyle.Flat;
             btnThem.ForeColor = Color.White;
-            btnThem.Location = new Point(805, 10);
-            btnThem.Margin = new Padding(3, 2, 3, 2);
+            btnThem.Location = new Point(920, 13);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(115, 30);
+            btnThem.Size = new Size(131, 40);
             btnThem.TabIndex = 76;
             btnThem.Text = "Thêm";
             btnThem.TextColor = Color.White;
@@ -242,19 +232,18 @@
             // 
             // txtNAMECPU
             // 
-            txtNAMECPU.Location = new Point(241, 38);
-            txtNAMECPU.Margin = new Padding(3, 2, 3, 2);
+            txtNAMECPU.Location = new Point(275, 51);
             txtNAMECPU.Name = "txtNAMECPU";
-            txtNAMECPU.Size = new Size(185, 27);
+            txtNAMECPU.Size = new Size(211, 31);
             txtNAMECPU.TabIndex = 7;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(241, 16);
+            label2.Location = new Point(275, 21);
             label2.Name = "label2";
-            label2.Size = new Size(80, 20);
+            label2.Size = new Size(97, 25);
             label2.TabIndex = 1;
             label2.Text = "Name CPU";
             // 
@@ -262,9 +251,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(30, 16);
+            label1.Location = new Point(34, 21);
             label1.Name = "label1";
-            label1.Size = new Size(52, 20);
+            label1.Size = new Size(65, 25);
             label1.TabIndex = 0;
             label1.Text = "Id Cpu";
             // 
@@ -273,11 +262,9 @@
             groupBoxCPU.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             groupBoxCPU.Controls.Add(dgvListCPU);
             groupBoxCPU.Font = new Font("Segoe UI", 12F);
-            groupBoxCPU.Location = new Point(87, 268);
-            groupBoxCPU.Margin = new Padding(3, 2, 3, 2);
+            groupBoxCPU.Location = new Point(99, 357);
             groupBoxCPU.Name = "groupBoxCPU";
-            groupBoxCPU.Padding = new Padding(3, 2, 3, 2);
-            groupBoxCPU.Size = new Size(981, 201);
+            groupBoxCPU.Size = new Size(1121, 268);
             groupBoxCPU.TabIndex = 67;
             groupBoxCPU.TabStop = false;
             groupBoxCPU.Text = "Danh sách CPU ";
@@ -309,8 +296,7 @@
             dgvListCPU.Dock = DockStyle.Fill;
             dgvListCPU.EnableHeadersVisualStyles = false;
             dgvListCPU.GridColor = Color.MediumSlateBlue;
-            dgvListCPU.Location = new Point(3, 24);
-            dgvListCPU.Margin = new Padding(3, 2, 3, 2);
+            dgvListCPU.Location = new Point(3, 30);
             dgvListCPU.Name = "dgvListCPU";
             dgvListCPU.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -329,19 +315,20 @@
             dataGridViewCellStyle4.SelectionForeColor = Color.Black;
             dgvListCPU.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvListCPU.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvListCPU.Size = new Size(975, 175);
+            dgvListCPU.Size = new Size(1115, 235);
             dgvListCPU.TabIndex = 1;
             // 
             // FormCPU
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1280, 533);
+            ClientSize = new Size(1463, 711);
             Controls.Add(groupBoxCPU);
             Controls.Add(panel1);
-            Margin = new Padding(2);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "FormCPU";
             Text = "FormCPU";
+            Load += FormCPU_Load_1;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             groupBoxCPU.ResumeLayout(false);

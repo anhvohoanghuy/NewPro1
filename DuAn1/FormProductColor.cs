@@ -32,7 +32,7 @@ namespace DuAn1
 
         private void dgvListProductColor_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0&&e.RowIndex<=dgvListColor.Rows.Count-1)
             {
                 DataGridViewRow row = dgvListColor.Rows[e.RowIndex];
 
@@ -52,7 +52,7 @@ namespace DuAn1
 
 
 
-                bool isAdded = productColorBUS.AddNewColor(idColor,colorName,idAccount);
+                bool isAdded = productColorBUS.AddNewColor(idColor, colorName, idAccount);
 
                 if (isAdded)
                 {
@@ -85,9 +85,9 @@ namespace DuAn1
                 string colorName = txtColorName.Text.Trim();
                 string idAccount = IDAccount;
 
-              
 
-                bool isUpdated = productColorBUS.UpdateProductColor(idCol, colorName,idAccount);
+
+                bool isUpdated = productColorBUS.UpdateProductColor(idCol, colorName, idAccount);
 
                 if (isUpdated)
                 {
@@ -134,6 +134,11 @@ namespace DuAn1
 
             dgvListColor.RowTemplate.Height = 40;
             dgvListColor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void FormProductColor_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

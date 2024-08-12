@@ -90,7 +90,7 @@ namespace DuAn1
         }
         private void FormCustomer_Load(object sender, EventArgs e)
         {
-            cbbTimKiem.Items.AddRange(["By id customer", "By name", "By phone number", "By id account"]);
+            cbbTimKiem.Items.AddRange(["By id customer", "By name", "By phone number","By address" ,"By id account"]);
             LoadDataGridView();
             ShowOnDataGridView(customerBUS.GetAllCustomer());
             txtIdAccount.Text = IDAccount;

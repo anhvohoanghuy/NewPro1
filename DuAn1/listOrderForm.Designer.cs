@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             groupBox2 = new GroupBox();
             dataGridView1 = new DataGridView();
             groupBox1 = new GroupBox();
@@ -46,6 +46,7 @@
             btnToday = new CustomButton.VBButton();
             dtpStartdate = new DateTimePicker();
             dtpEndate = new DateTimePicker();
+            btnExcel = new CustomButton.VBButton();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
@@ -71,45 +72,45 @@
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridView1.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.Control;
-            dataGridViewCellStyle1.SelectionBackColor = Color.MediumPurple;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.Control;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.MediumSlateBlue;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = SystemColors.Control;
+            dataGridViewCellStyle5.SelectionBackColor = Color.MediumPurple;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.Control;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridView1.ColumnHeadersHeight = 29;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.MediumPurple;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.MediumPurple;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.MediumSlateBlue;
             dataGridView1.Location = new Point(3, 27);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Control;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.Control;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.Control;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 62;
-            dataGridViewCellStyle4.BackColor = SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.BackColor = SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(1449, 320);
             dataGridView1.TabIndex = 0;
@@ -118,6 +119,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnExcel);
             groupBox1.Controls.Add(btnCustom);
             groupBox1.Controls.Add(btnOk);
             groupBox1.Controls.Add(btnRefesh);
@@ -325,6 +327,26 @@
             dtpEndate.Size = new Size(186, 27);
             dtpEndate.TabIndex = 3;
             // 
+            // btnExcel
+            // 
+            btnExcel.Anchor = AnchorStyles.Left;
+            btnExcel.BackColor = Color.MediumSlateBlue;
+            btnExcel.BackgroundColor = Color.MediumSlateBlue;
+            btnExcel.BorderColor = Color.PaleVioletRed;
+            btnExcel.BorderRadius = 20;
+            btnExcel.BorderSize = 0;
+            btnExcel.FlatAppearance.BorderSize = 0;
+            btnExcel.FlatStyle = FlatStyle.Flat;
+            btnExcel.ForeColor = Color.White;
+            btnExcel.Location = new Point(677, 181);
+            btnExcel.Name = "btnExcel";
+            btnExcel.Size = new Size(135, 40);
+            btnExcel.TabIndex = 103;
+            btnExcel.Text = "Xuất excel";
+            btnExcel.TextColor = Color.White;
+            btnExcel.UseVisualStyleBackColor = false;
+            btnExcel.Click += btnExcel_Click;
+            // 
             // listOrderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -358,5 +380,6 @@
         private CustomButton.VBButton btnTimKiem;
         private TextBox txtTImKiem;
         private CustomButton.VBButton btnRefesh;
+        private CustomButton.VBButton btnExcel;
     }
 }

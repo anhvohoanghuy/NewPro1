@@ -1,4 +1,5 @@
 ﻿using BUS.Services;
+using DoAn1_QuanLyPhanMemBanPKDT;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -106,6 +107,13 @@ namespace DuAn1
         private void txtTImKiem_Click(object sender, EventArgs e)
         {
             txtTImKiem.Text = "";
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            XuatExcel xuatExcel = new XuatExcel();
+            string[] tieudecolumn = { "Id Order", "Id Account", "Id customer", "Established date", "Total amount", "Id voucher", "Order status", "Id Product detail", "Quantity", "Amount", "Reduce Amount" };
+            xuatExcel.ExportToExcel(dataGridView1, "Danh Sách Order", tieudecolumn, "danhsachOrder.xlsx");
         }
     }
 }

@@ -37,7 +37,7 @@ namespace DuAn1
         }
         private void FormThanhToan_Load(object sender, EventArgs e)
         {
-            txtTongTien.Text = (TongTien).ToString();
+            txtTongTien.Text = (TongTien>0?TongTien:0).ToString();
         }
 
         private void txtTienNhan_Leave(object sender, EventArgs e)

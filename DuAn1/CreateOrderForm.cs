@@ -1,6 +1,7 @@
 ﻿using BUS.Services;
 using DAL.Models;
 using System.Drawing;
+using System.Globalization;
 using static DuAn1.DangNhapForm;
 
 namespace DuAn1
@@ -148,7 +149,7 @@ namespace DuAn1
                 {
                     totalAmount += (item.Amount - item.ReducedAmount);
                 }
-                return totalAmount;
+                return totalAmount>0?totalAmount:0;
             }
             return 0;
         }
@@ -231,7 +232,7 @@ namespace DuAn1
                         ShowOnDgvOrderDetail(txtIdOrder.Text);
                         ResetCombobox(cbbColor, cbbStorage, cbbImei);
                         ResetTexbox(txtIdProduct, txtBrandName, txtInventory, txtProductName);
-                        txtFinalAmount.Text = FinalAmount(txtIdOrder.Text).ToString();
+                        txtFinalAmount.Text = FinalAmount(txtIdOrder.Text).ToString("C", new CultureInfo("vi-VN"));
                     }
                     else
                         MessageBox.Show("Thêm imei thất bại");
@@ -654,7 +655,7 @@ namespace DuAn1
                     txtName.Text = customer.CustomerName;
                     txtaddres.Text = customer.CustomerAddress;
                     ShowOnDgvOrderDetail(txtIdOrder.Text);
-                    txtFinalAmount.Text = FinalAmount(txtIdOrder.Text).ToString();
+                    txtFinalAmount.Text = FinalAmount(txtIdOrder.Text).ToString("C", new CultureInfo("vi-VN"));
                 }
                 else
                     MessageBox.Show("Không tìm thấy order này");

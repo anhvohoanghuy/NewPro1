@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
 using System.Drawing.Design;
+using System.Globalization;
 
 namespace DuAn1
 {
@@ -72,7 +73,7 @@ namespace DuAn1
             txtNumberOfOder.Text = thongkeBLL.NumberOfOrder(from, to).ToString();
             txtProductsImported.Text=thongkeBLL.NumberOfNewProduct(from, to).ToString();
             txtNewCustomer.Text=thongkeBLL.NumberOfNewCustomer(from, to).ToString();
-            txtGrossRevenue.Text=thongkeBLL.GetGrossRevenue(from, to).ToString();
+            txtGrossRevenue.Text=thongkeBLL.GetGrossRevenue(from, to).ToString("C", new CultureInfo("vi-VN"));
         }
         public void LoadDataGridView()
         {
